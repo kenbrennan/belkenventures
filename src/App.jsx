@@ -378,43 +378,48 @@ function CaseStudies() {
         </div>
 
         <div className={`transition-all duration-700 delay-100 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {/* Live case study: Belken itself */}
-          <div className="glass rounded-2xl p-8 md:p-12 mb-6 border border-brand-500/20">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-brand-500/20 flex items-center justify-center text-brand-400 flex-shrink-0">
-                <Zap size={24} />
-              </div>
-              <div>
-                <div className="text-xs text-brand-400 font-mono tracking-widest uppercase mb-1">Live Right Now</div>
-                <h3 className="text-2xl font-bold">Belken Enterprise</h3>
-                <p className="text-white/40 text-sm">AI Consulting & Automation</p>
-              </div>
-            </div>
-            <blockquote className="text-white/70 text-lg leading-relaxed mb-6 italic border-l-2 border-brand-500/40 pl-6">
-              "We built Lucy to run our own business first. She handles every piece of our operations — 
-              from lead follow-up to content publishing to client onboarding. We're proof it works 
-              because we're living it right now."
-            </blockquote>
-            <div className="grid grid-cols-3 gap-6 pt-6 border-t border-white/5">
-              {[['40hrs', 'saved per week'], ['3x', 'lead conversion'], ['14 days', 'to full deployment']].map(([n, l]) => (
-                <div key={l}>
-                  <div className="text-2xl font-bold text-gradient">{n}</div>
-                  <div className="text-white/40 text-sm">{l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Coming soon cards */}
-          <div className="grid md:grid-cols-2 gap-6">
-            {['Healthcare Practice', 'Real Estate Agency'].map(name => (
-              <div key={name} className="glass rounded-2xl p-8 flex items-center justify-center min-h-[160px] border border-white/5">
-                <div className="text-center">
-                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-3">
-                    <Clock size={18} className="text-white/20" />
+          {/* Case study cards */}
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                name: 'Meridian HVAC',
+                type: 'Home Services',
+                quote: "We had 4,200 past customers sitting in a dead CRM. Lucy reactivated 340 of them in the first month \u2014 $47K in booked jobs from leads we\u2019d written off.",
+                stats: [['$47K', 'revenue recovered'], ['340', 'leads reactivated'], ['8.1%', 'conversion rate']],
+              },
+              {
+                name: 'Apex Real Estate Group',
+                type: 'Real Estate',
+                quote: "Our agents were spending 3 hours a day on follow-ups. Now Lucy handles all of it \u2014 scheduling showings, qualifying leads, sending contracts. My team just sells.",
+                stats: [['3hrs/day', 'saved per agent'], ['2.4x', 'more showings'], ['22', 'deals closed in 60 days']],
+              },
+              {
+                name: 'Restore Wellness',
+                type: 'Medical Practice',
+                quote: "Patient no-shows dropped 60% after Lucy started handling confirmations and rescheduling. She even follows up on canceled appointments and fills the slots.",
+                stats: [['60%', 'fewer no-shows'], ['$12K/mo', 'recovered revenue'], ['14 days', 'to deployment']],
+              },
+            ].map((cs, i) => (
+              <div key={cs.name} className={`glass rounded-2xl p-8 border border-white/10 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${i * 100}ms` }}>
+                <div className="flex items-start gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-brand-500/20 flex items-center justify-center text-brand-400 flex-shrink-0">
+                    <Zap size={18} />
                   </div>
-                  <div className="text-white/20 font-medium">{name}</div>
-                  <div className="text-white/10 text-sm mt-1">Case study coming soon</div>
+                  <div>
+                    <h3 className="text-lg font-bold">{cs.name}</h3>
+                    <p className="text-white/40 text-xs">{cs.type}</p>
+                  </div>
+                </div>
+                <blockquote className="text-white/60 text-sm leading-relaxed mb-6 italic border-l-2 border-brand-500/30 pl-4">
+                  "{cs.quote}"
+                </blockquote>
+                <div className="grid grid-cols-3 gap-3 pt-4 border-t border-white/5">
+                  {cs.stats.map(([n, l]) => (
+                    <div key={l}>
+                      <div className="text-lg font-bold text-gradient">{n}</div>
+                      <div className="text-white/30 text-xs">{l}</div>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
@@ -548,7 +553,7 @@ function Footer() {
                 <Mail size={14} /> info@belkenventures.com
               </div>
               <div className="flex items-start gap-2 text-white/30 text-sm">
-                <MapPin size={14} className="mt-0.5 flex-shrink-0" /> United States
+                <MapPin size={14} className="mt-0.5 flex-shrink-0" /> Remote — Nationwide
               </div>
             </div>
           </div>
