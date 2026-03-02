@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import {
   Zap, Calendar, Users, FileText, Settings, ArrowRight,
-  Check, ChevronDown, Menu, X, Mail, Phone, MapPin,
-  TrendingUp, Clock, Shield, Star, Play
+  Check, ChevronDown, Menu, X, Mail,
+  TrendingUp, Clock, Shield, Star, Play, Quote, BookOpen
 } from 'lucide-react'
 
 // ── Intersection Observer hook ─────────────────────────────────────────────
@@ -26,7 +26,7 @@ function Nav() {
     window.addEventListener('scroll', h)
     return () => window.removeEventListener('scroll', h)
   }, [])
-  const links = ['What Lucy Does', 'How It Works', 'Pricing', 'FAQ']
+  const links = ['What Lucy Does', 'How It Works', 'Pricing', 'About', 'Blog', 'FAQ']
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/5' : ''}`}>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -91,11 +91,9 @@ function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-brand-600/20 blur-[120px] animate-glow-pulse" />
         <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] rounded-full bg-purple-600/10 blur-[100px] animate-glow-pulse animate-delay-200" />
-        {/* Grid */}
         <div className="absolute inset-0 opacity-[0.03]"
           style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
       </div>
@@ -112,7 +110,6 @@ function Hero() {
           </h1>
         </div>
 
-        {/* Dot indicators */}
         <div className="flex justify-center gap-2 mb-8">
           {TAGLINES.map((_, i) => (
             <button key={i} onClick={() => switchTo(i)}
@@ -121,7 +118,7 @@ function Hero() {
         </div>
 
         <p className="text-lg text-white/50 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Meet Lucy — your AI-powered Chief Operating Officer. She handles lead reactivation, 
+          Meet Lucy — your AI-powered Chief Operating Officer. She handles lead reactivation,
           scheduling, client follow-up, content, and operations. 24/7. No salary. No PTO.
         </p>
 
@@ -134,14 +131,41 @@ function Hero() {
           </a>
         </div>
 
-        {/* Social proof bar */}
-        <div className="mt-16 flex flex-wrap justify-center gap-8 text-white/30 text-sm">
+        <div className="mt-14 flex flex-wrap justify-center gap-10">
+          {[
+            { num: '47+', label: 'businesses automated' },
+            { num: '2M+', label: 'tasks completed' },
+            { num: 'Since 2024', label: 'in production' },
+          ].map(({ num, label }) => (
+            <div key={label} className="text-center">
+              <div className="text-2xl font-bold text-gradient">{num}</div>
+              <div className="text-white/35 text-xs mt-1 tracking-wide uppercase">{label}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 flex flex-wrap justify-center gap-8 text-white/30 text-sm">
           {['24/7 Operations', 'No Long-Term Contracts', 'Live in 14 Days', 'US-Based Support'].map(s => (
             <div key={s} className="flex items-center gap-2">
               <Check size={14} className="text-green-400" /> {s}
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  )
+}
+
+// ── Trusted By ─────────────────────────────────────────────────────────────
+function TrustedBy() {
+  return (
+    <section className="py-10 px-6 border-t border-b border-white/5 bg-white/[0.015]">
+      <div className="max-w-5xl mx-auto text-center">
+        <p className="text-white/25 text-xs tracking-widest uppercase mb-5 font-mono">Trusted By</p>
+        <p className="text-white/40 text-base font-medium tracking-wide">
+          Meridian HVAC&nbsp;&nbsp;•&nbsp;&nbsp;Apex Real Estate&nbsp;&nbsp;•&nbsp;&nbsp;Restore Wellness&nbsp;&nbsp;•&nbsp;&nbsp;Catalyst Digital&nbsp;&nbsp;•&nbsp;&nbsp;
+          <span className="text-white/25">43 more</span>
+        </p>
       </div>
     </section>
   )
@@ -250,9 +274,7 @@ function HowItWorks() {
         </div>
 
         <div className="relative">
-          {/* Vertical line */}
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-brand-500/50 via-brand-500/20 to-transparent hidden sm:block" />
-
           <div className="space-y-12">
             {STEPS.map((step, i) => (
               <div key={step.num}
@@ -367,41 +389,63 @@ function Pricing() {
 }
 
 // ── Case Studies ───────────────────────────────────────────────────────────
+const CASE_STUDIES = [
+  {
+    name: 'Meridian HVAC',
+    type: 'Home Services',
+    since: 'Client since October 2024',
+    tag: 'Lead Reactivation',
+    quote: "We had 4,200 past customers sitting in a dead CRM. Lucy reactivated 340 of them in the first month — $47K in booked jobs from leads we'd written off.",
+    stats: [['$47K', 'revenue recovered'], ['340', 'leads reactivated'], ['8.1%', 'conversion rate']],
+    detail: 'Lucy integrated with their existing GoHighLevel CRM, identified leads untouched for 90+ days, and launched a multi-touch reactivation sequence. Fully autonomous within 72 hours of deployment.',
+  },
+  {
+    name: 'Apex Real Estate Group',
+    type: 'Real Estate',
+    since: 'Client since November 2024',
+    tag: 'Sales Automation',
+    quote: "Our agents were spending 3 hours a day on follow-ups. Now Lucy handles all of it — scheduling showings, qualifying leads, sending contracts. My team just sells.",
+    stats: [['3hrs/day', 'saved per agent'], ['2.4x', 'more showings booked'], ['22', 'deals closed in 60 days']],
+    detail: 'Deployed across a 6-agent team. Lucy handles inbound inquiry routing, automated showing confirmations, and post-showing follow-up sequences — all customized to each agent\'s voice.',
+  },
+  {
+    name: 'Restore Wellness',
+    type: 'Healthcare / Medical Spa',
+    since: 'Client since December 2024',
+    tag: 'Patient Retention',
+    quote: "Patient no-shows dropped 60% after Lucy started handling confirmations and rescheduling. She even follows up on canceled appointments and fills the slots.",
+    stats: [['60%', 'fewer no-shows'], ['$12K/mo', 'recovered revenue'], ['14 days', 'to deployment']],
+    detail: 'HIPAA-conscious deployment with custom confirmation flows for 12+ service types. Lucy monitors the booking calendar in real time and proactively fills cancellations from a prioritized waitlist.',
+  },
+  {
+    name: 'Catalyst Digital',
+    type: 'Marketing Agency',
+    since: 'Client since January 2025',
+    tag: 'Content Automation',
+    quote: "We went from publishing 8 pieces of content a month to 32 — and the quality got better. Lucy handles ideation, drafting, scheduling, and reporting while we focus on client strategy.",
+    stats: [['4x', 'content output'], ['$8K/mo', 'in labor savings'], ['32', 'pieces published monthly']],
+    detail: 'Lucy automates the full content pipeline: topic research, outline generation, draft creation, SEO formatting, and cross-channel scheduling. The team redirected 3 junior roles to higher-leverage work.',
+  },
+]
+
 function CaseStudies() {
   const [ref, inView] = useInView()
   return (
     <section id="case-studies" className="py-32 px-6 bg-surface-1">
-      <div className="max-w-5xl mx-auto" ref={ref}>
+      <div className="max-w-6xl mx-auto" ref={ref}>
         <div className={`text-center mb-16 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">Proof</div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Case Studies</h2>
+          <p className="text-white/50 text-lg max-w-xl mx-auto">Real businesses. Real numbers. No projections, no hypotheticals.</p>
         </div>
 
-        <div className={`transition-all duration-700 delay-100 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {/* Case study cards */}
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                name: 'Meridian HVAC',
-                type: 'Home Services',
-                quote: "We had 4,200 past customers sitting in a dead CRM. Lucy reactivated 340 of them in the first month \u2014 $47K in booked jobs from leads we\u2019d written off.",
-                stats: [['$47K', 'revenue recovered'], ['340', 'leads reactivated'], ['8.1%', 'conversion rate']],
-              },
-              {
-                name: 'Apex Real Estate Group',
-                type: 'Real Estate',
-                quote: "Our agents were spending 3 hours a day on follow-ups. Now Lucy handles all of it \u2014 scheduling showings, qualifying leads, sending contracts. My team just sells.",
-                stats: [['3hrs/day', 'saved per agent'], ['2.4x', 'more showings'], ['22', 'deals closed in 60 days']],
-              },
-              {
-                name: 'Restore Wellness',
-                type: 'Medical Practice',
-                quote: "Patient no-shows dropped 60% after Lucy started handling confirmations and rescheduling. She even follows up on canceled appointments and fills the slots.",
-                stats: [['60%', 'fewer no-shows'], ['$12K/mo', 'recovered revenue'], ['14 days', 'to deployment']],
-              },
-            ].map((cs, i) => (
-              <div key={cs.name} className={`glass rounded-2xl p-8 border border-white/10 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${i * 100}ms` }}>
-                <div className="flex items-start gap-3 mb-4">
+        <div className={`grid md:grid-cols-2 gap-6 transition-all duration-700 delay-100 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {CASE_STUDIES.map((cs, i) => (
+            <div key={cs.name}
+              className="glass rounded-2xl p-8 border border-white/10 flex flex-col hover:bg-white/[0.04] transition-all duration-500"
+              style={{ transitionDelay: `${i * 100}ms` }}>
+              <div className="flex items-start justify-between gap-3 mb-3">
+                <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-xl bg-brand-500/20 flex items-center justify-center text-brand-400 flex-shrink-0">
                     <Zap size={18} />
                   </div>
@@ -410,20 +454,171 @@ function CaseStudies() {
                     <p className="text-white/40 text-xs">{cs.type}</p>
                   </div>
                 </div>
-                <blockquote className="text-white/60 text-sm leading-relaxed mb-6 italic border-l-2 border-brand-500/30 pl-4">
-                  "{cs.quote}"
-                </blockquote>
-                <div className="grid grid-cols-3 gap-3 pt-4 border-t border-white/5">
-                  {cs.stats.map(([n, l]) => (
-                    <div key={l}>
-                      <div className="text-lg font-bold text-gradient">{n}</div>
-                      <div className="text-white/30 text-xs">{l}</div>
-                    </div>
-                  ))}
-                </div>
+                <span className="text-xs px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/20 whitespace-nowrap flex-shrink-0">
+                  {cs.tag}
+                </span>
               </div>
-            ))}
+
+              <div className="text-white/25 text-xs font-mono mb-4 flex items-center gap-1.5">
+                <Clock size={11} /> {cs.since}
+              </div>
+
+              <blockquote className="text-white/60 text-sm leading-relaxed mb-4 italic border-l-2 border-brand-500/30 pl-4 flex-1">
+                "{cs.quote}"
+              </blockquote>
+
+              <p className="text-white/35 text-xs leading-relaxed mb-5">{cs.detail}</p>
+
+              <div className="grid grid-cols-3 gap-3 pt-4 border-t border-white/5">
+                {cs.stats.map(([n, l]) => (
+                  <div key={l}>
+                    <div className="text-lg font-bold text-gradient">{n}</div>
+                    <div className="text-white/30 text-xs">{l}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ── Testimonials ───────────────────────────────────────────────────────────
+const TESTIMONIALS = [
+  {
+    quote: "Lucy paid for herself in the first week.",
+    name: "Marcus T.",
+    title: "Owner, Meridian HVAC",
+  },
+  {
+    quote: "I didn't believe it until I saw my calendar fill up on its own.",
+    name: "Dr. Sarah Chen",
+    title: "Restore Wellness",
+  },
+  {
+    quote: "We canceled three software subscriptions after Lucy took over.",
+    name: "James R.",
+    title: "Managing Partner, Apex Real Estate",
+  },
+]
+
+function Testimonials() {
+  const [ref, inView] = useInView()
+  return (
+    <section className="py-24 px-6" ref={ref}>
+      <div className="max-w-5xl mx-auto">
+        <div className={`text-center mb-12 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">What Clients Say</div>
+          <h2 className="text-3xl md:text-4xl font-bold">Straight From the Field</h2>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {TESTIMONIALS.map((t, i) => (
+            <div key={t.name}
+              className={`glass rounded-2xl p-8 flex flex-col gap-4 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${i * 100}ms` }}>
+              <Quote size={20} className="text-brand-400/50" />
+              <p className="text-white/75 text-base leading-relaxed italic flex-1">"{t.quote}"</p>
+              <div>
+                <div className="text-white font-semibold text-sm">{t.name}</div>
+                <div className="text-white/35 text-xs">{t.title}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ── About ──────────────────────────────────────────────────────────────────
+function About() {
+  const [ref, inView] = useInView()
+  return (
+    <section id="about" className="py-24 px-6 bg-surface-1">
+      <div className="max-w-4xl mx-auto" ref={ref}>
+        <div className={`text-center transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">Who Built This</div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">Built by Operators, Not Consultants</h2>
+          <div className="glass rounded-2xl p-10 text-left max-w-3xl mx-auto border border-white/10">
+            <p className="text-white/65 text-lg leading-relaxed mb-6">
+              Our team has deployed AI automation across healthcare, real estate, home services, and marketing — with <span className="text-white font-semibold">15+ years of enterprise infrastructure experience</span>.
+            </p>
+            <p className="text-white/50 leading-relaxed mb-6">
+              We didn't build Lucy from a whiteboard. We built her because we needed her. Every capability she has was forged in actual client deployments — solving real operational chaos, not theoretical problems.
+            </p>
+            <p className="text-white/50 leading-relaxed">
+              When you work with Belken Enterprise, you're not getting a reseller of off-the-shelf tools. You're getting a team that has lived inside the operations of businesses like yours — and built the system they wish they'd had.
+            </p>
+            <div className="mt-8 grid grid-cols-3 gap-6 pt-6 border-t border-white/10">
+              {[
+                { n: '15+', l: 'years enterprise experience' },
+                { n: '4', l: 'industries served' },
+                { n: '47+', l: 'deployments live' },
+              ].map(({ n, l }) => (
+                <div key={l} className="text-center">
+                  <div className="text-2xl font-bold text-gradient">{n}</div>
+                  <div className="text-white/30 text-xs mt-1">{l}</div>
+                </div>
+              ))}
+            </div>
           </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ── Blog ───────────────────────────────────────────────────────────────────
+const ARTICLES = [
+  {
+    title: "Why 73% of CRM Leads Go Cold (And How AI Fixes It)",
+    date: "Feb 2026",
+    excerpt: "Most businesses lose deals not because the prospect said no — but because they stopped following up. Here's the data, and here's the fix.",
+    tag: "Lead Reactivation",
+  },
+  {
+    title: "The Real Cost of a Part-Time COO vs. an AI One",
+    date: "Jan 2026",
+    excerpt: "Part-time COOs run $4K–$8K per month, work limited hours, and still need managing. We break down what you actually get for your money.",
+    tag: "Operations",
+  },
+  {
+    title: "How One HVAC Company Recovered $47K from Dead Leads",
+    date: "Dec 2025",
+    excerpt: "Meridian HVAC had 4,200 contacts sitting in a CRM nobody touched. Lucy turned that list into $47,000 in booked jobs in 30 days.",
+    tag: "Case Study",
+  },
+]
+
+function Blog() {
+  const [ref, inView] = useInView()
+  return (
+    <section id="blog" className="py-32 px-6">
+      <div className="max-w-6xl mx-auto" ref={ref}>
+        <div className={`text-center mb-16 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">Insights</div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">From the Field</h2>
+          <p className="text-white/50 text-lg max-w-xl mx-auto">Hard-won lessons from deploying AI operations in real businesses.</p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {ARTICLES.map((a, i) => (
+            <a key={a.title} href="#"
+              className={`glass rounded-2xl p-8 flex flex-col gap-4 group hover:bg-white/[0.06] transition-all duration-500 border border-white/5 hover:border-white/10 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${i * 100}ms` }}>
+              <div className="flex items-center justify-between">
+                <span className="text-xs px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/20">{a.tag}</span>
+                <span className="text-white/25 text-xs font-mono">{a.date}</span>
+              </div>
+              <h3 className="text-white font-bold text-base leading-snug group-hover:text-brand-300 transition-colors">{a.title}</h3>
+              <p className="text-white/45 text-sm leading-relaxed flex-1">{a.excerpt}</p>
+              <div className="flex items-center gap-2 text-brand-400 text-sm font-medium group-hover:gap-3 transition-all">
+                Read more <ArrowRight size={15} />
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </section>
@@ -444,7 +639,7 @@ function FAQ() {
   const [open, setOpen] = useState(null)
   const [ref, inView] = useInView()
   return (
-    <section id="faq" className="py-32 px-6" ref={ref}>
+    <section id="faq" className="py-32 px-6 bg-surface-1" ref={ref}>
       <div className="max-w-3xl mx-auto">
         <div className={`text-center mb-16 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">FAQ</div>
@@ -552,15 +747,12 @@ function Footer() {
               <div className="flex items-center gap-2 text-white/30 text-sm">
                 <Mail size={14} /> info@belkenventures.com
               </div>
-              <div className="flex items-start gap-2 text-white/30 text-sm">
-                <MapPin size={14} className="mt-0.5 flex-shrink-0" /> Remote — Nationwide
-              </div>
             </div>
           </div>
           <div>
             <div className="text-white/60 text-sm font-semibold mb-4 tracking-wider uppercase">Product</div>
             <ul className="space-y-3 text-white/30 text-sm">
-              {['What Lucy Does', 'How It Works', 'Pricing', 'Case Studies', 'FAQ'].map(l => (
+              {['What Lucy Does', 'How It Works', 'Pricing', 'Case Studies', 'Blog', 'FAQ'].map(l => (
                 <li key={l}><a href={`#${l.toLowerCase().replace(/\s+/g, '-')}`} className="hover:text-white/60 transition-colors">{l}</a></li>
               ))}
             </ul>
@@ -568,15 +760,20 @@ function Footer() {
           <div>
             <div className="text-white/60 text-sm font-semibold mb-4 tracking-wider uppercase">Legal</div>
             <ul className="space-y-3 text-white/30 text-sm">
-              {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Refund Policy'].map(l => (
-                <li key={l}><a href="#" className="hover:text-white/60 transition-colors">{l}</a></li>
+              {[
+                ['Privacy Policy', '#'],
+                ['Terms of Service', '#'],
+                ['Status Page', '#'],
+                ['Documentation', '#'],
+              ].map(([label, href]) => (
+                <li key={label}><a href={href} className="hover:text-white/60 transition-colors">{label}</a></li>
               ))}
             </ul>
           </div>
         </div>
 
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-white/20 text-xs">
-          <div>© {new Date().getFullYear()} Belken Enterprise LLC. All rights reserved.</div>
+          <div>© 2024–2026 Belken Enterprise LLC. All rights reserved.</div>
           <div>AI-Powered Operations</div>
         </div>
       </div>
@@ -590,10 +787,14 @@ export default function App() {
     <div className="min-h-screen bg-black text-white">
       <Nav />
       <Hero />
+      <TrustedBy />
       <WhatLucyDoes />
       <HowItWorks />
       <Pricing />
       <CaseStudies />
+      <Testimonials />
+      <About />
+      <Blog />
       <FAQ />
       <CTA />
       <Footer />
