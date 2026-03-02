@@ -387,7 +387,7 @@ function CaseStudies() {
               <div>
                 <div className="text-xs text-brand-400 font-mono tracking-widest uppercase mb-1">Live Right Now</div>
                 <h3 className="text-2xl font-bold">Belken Enterprise</h3>
-                <p className="text-white/40 text-sm">Cheyenne, WY — AI Consulting & Automation</p>
+                <p className="text-white/40 text-sm">AI Consulting & Automation</p>
               </div>
             </div>
             <blockquote className="text-white/70 text-lg leading-relaxed mb-6 italic border-l-2 border-brand-500/40 pl-6">
@@ -548,7 +548,7 @@ function Footer() {
                 <Mail size={14} /> info@belkenventures.com
               </div>
               <div className="flex items-start gap-2 text-white/30 text-sm">
-                <MapPin size={14} className="mt-0.5 flex-shrink-0" /> 1712 Pioneer Ave, Ste 135<br />Cheyenne, WY 82001
+                <MapPin size={14} className="mt-0.5 flex-shrink-0" /> United States
               </div>
             </div>
           </div>
@@ -572,7 +572,7 @@ function Footer() {
 
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-white/20 text-xs">
           <div>© {new Date().getFullYear()} Belken Enterprise LLC. All rights reserved.</div>
-          <div>1712 Pioneer Ave, Ste 135, Cheyenne, WY 82001 · AI-Powered Operations</div>
+          <div>AI-Powered Operations</div>
         </div>
       </div>
     </footer>
