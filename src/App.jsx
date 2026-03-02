@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
 import {
   Zap, Calendar, Users, FileText, Settings, ArrowRight,
-  Check, ChevronDown, Menu, X, Mail,
-  TrendingUp, Clock, Shield, Star, Play, Quote, BookOpen
+  Check, ChevronDown, Menu, X, Mail, MapPin,
+  TrendingUp, Shield, Play
 } from 'lucide-react'
 
-// ── Intersection Observer hook ─────────────────────────────────────────────
 function useInView(threshold = 0.15) {
   const ref = useRef(null)
   const [inView, setInView] = useState(false)
@@ -17,7 +16,22 @@ function useInView(threshold = 0.15) {
   return [ref, inView]
 }
 
-// ── Nav ────────────────────────────────────────────────────────────────────
+function useCountUp(target, duration = 2000, active = false) {
+  const [value, setValue] = useState(0)
+  useEffect(() => {
+    if (!active) return
+    let start = 0
+    const step = target / (duration / 16)
+    const timer = setInterval(() => {
+      start += step
+      if (start >= target) { setValue(target); clearInterval(timer) }
+      else setValue(Math.floor(start))
+    }, 16)
+    return () => clearInterval(timer)
+  }, [active, target, duration])
+  return value
+}
+
 function Nav() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -26,7 +40,7 @@ function Nav() {
     window.addEventListener('scroll', h)
     return () => window.removeEventListener('scroll', h)
   }, [])
-  const links = ['What Lucy Does', 'How It Works', 'Pricing', 'About', 'Blog', 'FAQ']
+  const links = ['What Lucy Does', 'How It Works', 'Pricing', 'FAQ']
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/5' : ''}`}>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -37,13 +51,9 @@ function Nav() {
         <div className="hidden md:flex items-center gap-8">
           {links.map(l => (
             <a key={l} href={`#${l.toLowerCase().replace(/\s+/g, '-')}`}
-              className="text-sm text-white/60 hover:text-white transition-colors duration-200">
-              {l}
-            </a>
+              className="text-sm text-white/60 hover:text-white transition-colors duration-200">{l}</a>
           ))}
-          <a href="#cta" className="px-4 py-2 bg-brand-500 hover:bg-brand-600 text-white text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105">
-            Book a Call
-          </a>
+          <a href="#cta" className="px-4 py-2 bg-brand-500 hover:bg-brand-600 text-white text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105">Book a Call</a>
         </div>
         <button onClick={() => setOpen(!open)} className="md:hidden text-white/60 hover:text-white">
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -52,23 +62,85 @@ function Nav() {
       {open && (
         <div className="md:hidden bg-black/95 border-b border-white/5 px-6 pb-6">
           {links.map(l => (
-            <a key={l} href={`#${l.toLowerCase().replace(/\s+/g, '-')}`}
-              onClick={() => setOpen(false)}
-              className="block py-3 text-white/60 hover:text-white border-b border-white/5 transition-colors">
-              {l}
-            </a>
+            <a key={l} href={`#${l.toLowerCase().replace(/\s+/g, '-')}`} onClick={() => setOpen(false)}
+              className="block py-3 text-white/60 hover:text-white border-b border-white/5 transition-colors">{l}</a>
           ))}
-          <a href="#cta" onClick={() => setOpen(false)}
-            className="mt-4 block text-center px-4 py-3 bg-brand-500 text-white text-sm font-medium rounded-lg">
-            Book a Call
-          </a>
+          <a href="#cta" onClick={() => setOpen(false)} className="mt-4 block text-center px-4 py-3 bg-brand-500 text-white text-sm font-medium rounded-lg">Book a Call</a>
         </div>
       )}
     </nav>
   )
 }
 
-// ── Hero ───────────────────────────────────────────────────────────────────
+function DashboardMockup() {
+  const [count, setCount] = useState(12801)
+  useEffect(() => {
+    const t = setInterval(() => setCount(c => c + Math.floor(Math.random() * 3)), 2000)
+    return () => clearInterval(t)
+  }, [])
+  const bars = [35, 52, 41, 67, 58, 80, 73, 91, 85, 100, 94, 100]
+  return (
+    <div className="relative w-full max-w-md mx-auto lg:mx-0" style={{ animation: 'dashFloat 4s ease-in-out infinite' }}>
+      <style>{`
+        @keyframes dashFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+        @keyframes tickerScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+        .ticker-track { animation: tickerScroll 30s linear infinite; }
+        .ticker-track:hover { animation-play-state: paused; }
+      `}</style>
+      <div className="absolute inset-0 bg-brand-500/20 blur-3xl rounded-3xl scale-110 pointer-events-none" />
+      <div className="relative glass rounded-2xl p-5 border border-white/10 shadow-2xl">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
+            <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
+            <div className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
+          </div>
+          <div className="text-white/30 text-xs font-mono">Lucy Operations Dashboard</div>
+          <div className="flex items-center gap-1 text-green-400 text-xs font-mono">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block" />LIVE
+          </div>
+        </div>
+        <div className="bg-white/[0.03] rounded-xl p-4 mb-3 border border-white/5">
+          <div className="text-white/40 text-xs font-mono mb-1">Tasks Completed Today</div>
+          <div className="text-3xl font-bold text-white tabular-nums">{count.toLocaleString()}</div>
+          <div className="text-green-400 text-xs mt-1 font-mono">↑ +2.3% vs yesterday</div>
+        </div>
+        <div className="bg-white/[0.03] rounded-xl p-4 mb-3 border border-white/5">
+          <div className="text-white/40 text-xs font-mono mb-3">Monthly Growth</div>
+          <div className="flex items-end gap-1 h-12">
+            {bars.map((h, i) => (
+              <div key={i} className="flex-1 rounded-sm" style={{
+                height: `${h}%`,
+                background: i === bars.length-1 ? 'linear-gradient(180deg,#3b63f7,#608bfb)' : i >= bars.length-3 ? 'rgba(59,99,247,0.6)' : 'rgba(255,255,255,0.1)',
+                transition: 'height 0.5s ease'
+              }} />
+            ))}
+          </div>
+        </div>
+        <div className="bg-white/[0.03] rounded-xl p-3 mb-3 border border-white/5 space-y-2">
+          {[{label:'Lucy',status:'Active',color:'bg-green-400'},{label:'Lead Engine',status:'Processing',color:'bg-brand-400'},{label:'Content',status:'Scheduled',color:'bg-purple-400'}].map(({label,status,color}) => (
+            <div key={label} className="flex items-center justify-between text-xs">
+              <span className="text-white/50 font-mono">{label}</span>
+              <span className="flex items-center gap-1.5 text-white/70">
+                <span className={`w-1.5 h-1.5 rounded-full ${color} animate-pulse`} />{status}
+              </span>
+            </div>
+          ))}
+        </div>
+        <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-3 flex items-center gap-3">
+          <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0">
+            <Check size={12} className="text-green-400" />
+          </div>
+          <div>
+            <div className="text-green-400 text-xs font-semibold">3 appointments booked while you slept</div>
+            <div className="text-white/30 text-xs font-mono">09:47 AM — via Lead Engine</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 const TAGLINES = [
   "Your Business Needs a COO. You Can't Afford One. We Fixed That.",
   "This Isn't a Demo. It's Running My Business Right Now.",
@@ -78,125 +150,131 @@ const TAGLINES = [
 function Hero() {
   const [idx, setIdx] = useState(0)
   const [fading, setFading] = useState(false)
-
-  const switchTo = (next) => {
-    setFading(true)
-    setTimeout(() => { setIdx(next); setFading(false) }, 300)
-  }
-
+  const switchTo = (next) => { setFading(true); setTimeout(() => { setIdx(next); setFading(false) }, 300) }
   useEffect(() => {
     const t = setInterval(() => switchTo((idx + 1) % TAGLINES.length), 5000)
     return () => clearInterval(t)
   }, [idx])
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-brand-600/20 blur-[120px] animate-glow-pulse" />
         <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] rounded-full bg-purple-600/10 blur-[100px] animate-glow-pulse animate-delay-200" />
-        <div className="absolute inset-0 opacity-[0.03]"
-          style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
       </div>
-
-      <div className="relative max-w-5xl mx-auto px-6 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs text-white/50 mb-8 font-mono tracking-widest uppercase">
-          <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-          Live in production
-        </div>
-
-        <div className="h-32 sm:h-24 flex items-center justify-center mb-6">
-          <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight transition-all duration-300 ${fading ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}>
-            <span className="text-gradient">{TAGLINES[idx]}</span>
-          </h1>
-        </div>
-
-        <div className="flex justify-center gap-2 mb-8">
-          {TAGLINES.map((_, i) => (
-            <button key={i} onClick={() => switchTo(i)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${i === idx ? 'bg-brand-400 w-6' : 'bg-white/20 hover:bg-white/40'}`} />
-          ))}
-        </div>
-
-        <p className="text-lg text-white/50 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Meet Lucy — your AI-powered Chief Operating Officer. She handles lead reactivation,
-          scheduling, client follow-up, content, and operations. 24/7. No salary. No PTO.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a href="#cta" className="px-8 py-4 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-brand-500/25 flex items-center gap-2">
-            Book a Free Call <ArrowRight size={18} />
-          </a>
-          <a href="#what-lucy-does" className="px-8 py-4 glass text-white/70 hover:text-white font-medium rounded-xl transition-all duration-200 hover:bg-white/10 flex items-center gap-2">
-            <Play size={16} /> See what she does
-          </a>
-        </div>
-
-        <div className="mt-14 flex flex-wrap justify-center gap-10">
-          {[
-            { num: '47+', label: 'businesses automated' },
-            { num: '2M+', label: 'tasks completed' },
-            { num: 'Since 2024', label: 'in production' },
-          ].map(({ num, label }) => (
-            <div key={label} className="text-center">
-              <div className="text-2xl font-bold text-gradient">{num}</div>
-              <div className="text-white/35 text-xs mt-1 tracking-wide uppercase">{label}</div>
+      <div className="relative max-w-7xl mx-auto px-6 w-full">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          <div className="flex-1 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs text-white/50 mb-8 font-mono tracking-widest uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />Live in production
             </div>
-          ))}
-        </div>
-
-        <div className="mt-10 flex flex-wrap justify-center gap-8 text-white/30 text-sm">
-          {['24/7 Operations', 'No Long-Term Contracts', 'Live in 14 Days', 'US-Based Support'].map(s => (
-            <div key={s} className="flex items-center gap-2">
-              <Check size={14} className="text-green-400" /> {s}
+            <div className="h-36 sm:h-28 flex items-center justify-center lg:justify-start mb-6">
+              <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight transition-all duration-300 ${fading ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}>
+                <span className="text-gradient">{TAGLINES[idx]}</span>
+              </h1>
             </div>
-          ))}
+            <div className="flex justify-center lg:justify-start gap-2 mb-8">
+              {TAGLINES.map((_, i) => (
+                <button key={i} onClick={() => switchTo(i)} className={`h-2 rounded-full transition-all duration-300 ${i === idx ? 'bg-brand-400 w-6' : 'bg-white/20 hover:bg-white/40 w-2'}`} />
+              ))}
+            </div>
+            <p className="text-lg text-white/50 max-w-2xl mb-10 leading-relaxed mx-auto lg:mx-0">
+              Meet Lucy — your AI-powered Chief Operating Officer. She handles lead reactivation, scheduling, client follow-up, content, and operations. 24/7. No salary. No PTO.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+              <a href="#cta" className="px-8 py-4 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-brand-500/25 flex items-center gap-2">
+                Book a Free Call <ArrowRight size={18} />
+              </a>
+              <a href="#what-lucy-does" className="px-8 py-4 glass text-white/70 hover:text-white font-medium rounded-xl transition-all duration-200 hover:bg-white/10 flex items-center gap-2">
+                <Play size={16} /> See what she does
+              </a>
+            </div>
+            <div className="mt-10 flex flex-wrap justify-center lg:justify-start gap-6 text-white/30 text-sm">
+              {['24/7 Operations', 'No Long-Term Contracts', 'Live in 14 Days', 'US-Based Support'].map(s => (
+                <div key={s} className="flex items-center gap-2"><Check size={14} className="text-green-400" /> {s}</div>
+              ))}
+            </div>
+          </div>
+          <div className="flex-1 w-full lg:max-w-md"><DashboardMockup /></div>
         </div>
       </div>
     </section>
   )
 }
 
-// ── Trusted By ─────────────────────────────────────────────────────────────
-function TrustedBy() {
+const TICKER_ITEMS = [
+  '⚡ Lead reactivated → $2,400 deal closed',
+  '📅 Patient no-show prevented → appointment rescheduled',
+  '📢 Content published → 3 platforms → 847 impressions',
+  '💰 Invoice sent → payment received in 4 hours',
+  '🗂️ CRM updated → 47 contacts enriched',
+  '📞 Cold lead converted → $8,500 contract signed',
+  '🔁 3 follow-up sequences launched → 12 responses',
+  '✅ 6 appointments confirmed → zero no-shows today',
+]
+
+function LiveTicker() {
+  const doubled = [...TICKER_ITEMS, ...TICKER_ITEMS]
   return (
-    <section className="py-10 px-6 border-t border-b border-white/5 bg-white/[0.015]">
-      <div className="max-w-5xl mx-auto text-center">
-        <p className="text-white/25 text-xs tracking-widest uppercase mb-5 font-mono">Trusted By</p>
-        <p className="text-white/40 text-base font-medium tracking-wide">
-          Meridian HVAC&nbsp;&nbsp;•&nbsp;&nbsp;Apex Real Estate&nbsp;&nbsp;•&nbsp;&nbsp;Restore Wellness&nbsp;&nbsp;•&nbsp;&nbsp;Catalyst Digital&nbsp;&nbsp;•&nbsp;&nbsp;
-          <span className="text-white/25">43 more</span>
-        </p>
+    <div className="relative py-4 bg-white/[0.02] border-y border-white/5 overflow-hidden">
+      <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 flex items-center z-20 pl-4">
+        <span className="hidden sm:flex items-center gap-2 text-xs font-mono text-brand-400 tracking-widest uppercase whitespace-nowrap bg-black pr-4 border-r border-white/10">
+          <span className="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse" /> Live Ops
+        </span>
+      </div>
+      <div className="ticker-track flex items-center gap-0 pl-36 sm:pl-40" style={{ width: 'max-content' }}>
+        {doubled.map((item, i) => (
+          <span key={i} className="whitespace-nowrap text-sm text-white/50 hover:text-white/80 transition-colors px-8 border-r border-white/5 font-mono">{item}</span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+const STATS = [
+  { value: 47, suffix: '+', label: 'Businesses Automated', prefix: '', display: null },
+  { value: 2100000, suffix: '+', label: 'Tasks Completed', prefix: '', display: '2.1M' },
+  { value: 3200000, suffix: '+', label: 'Revenue Generated for Clients', prefix: '$', display: '$3.2M' },
+  { value: 99.7, suffix: '%', label: 'Uptime', prefix: '', display: '99.7' },
+]
+
+function StatCounter({ stat, active }) {
+  const count = useCountUp(typeof stat.value === 'number' && !String(stat.value).includes('.') ? stat.value : 0, 2000, active)
+  const display = stat.display ? stat.display : `${stat.prefix}${count.toLocaleString()}`
+  return (
+    <div className="text-center">
+      <div className="text-4xl md:text-5xl font-bold text-gradient mb-2 tabular-nums">
+        {active ? display : `${stat.prefix}0`}{stat.suffix}
+      </div>
+      <div className="text-white/40 text-sm">{stat.label}</div>
+    </div>
+  )
+}
+
+function StatsSection() {
+  const [ref, inView] = useInView(0.3)
+  return (
+    <section className="py-20 px-6" ref={ref}>
+      <div className="max-w-5xl mx-auto">
+        <div className="glass rounded-2xl p-10 glow-blue border border-brand-500/10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {STATS.map((stat) => (
+              <StatCounter key={stat.label} stat={stat} active={inView} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )
 }
 
-// ── What Lucy Does ─────────────────────────────────────────────────────────
 const CAPABILITIES = [
-  {
-    icon: <Users size={24} />,
-    title: 'Lead Reactivation',
-    desc: 'Lucy monitors your cold leads and dormant contacts. She reaches out at the right moment, re-engages prospects, and books them back onto your calendar — automatically.',
-    stat: '3x', statLabel: 'more leads re-engaged'
-  },
-  {
-    icon: <Calendar size={24} />,
-    title: 'Scheduling & Follow-Up',
-    desc: 'Never chase a prospect again. Lucy handles appointment setting, sends reminders, follows up after no-shows, and keeps your pipeline clean and moving.',
-    stat: '90%', statLabel: 'reduction in no-shows'
-  },
-  {
-    icon: <FileText size={24} />,
-    title: 'Content Operations',
-    desc: 'From social posts to email campaigns, Lucy drafts, schedules, and publishes content that sounds like you — consistently, without the burnout.',
-    stat: '10x', statLabel: 'content output'
-  },
-  {
-    icon: <Settings size={24} />,
-    title: 'Business Automation',
-    desc: 'Onboarding sequences, contract delivery, invoice reminders, reporting — Lucy handles the operational layer so you can stay in your zone of genius.',
-    stat: '40hrs', statLabel: 'saved per month'
-  },
+  { icon: <Users size={24} />, title: 'Lead Reactivation', desc: 'Lucy monitors your cold leads and dormant contacts. She reaches out at the right moment, re-engages prospects, and books them back onto your calendar — automatically.', stat: '3x', statLabel: 'more leads re-engaged' },
+  { icon: <Calendar size={24} />, title: 'Scheduling & Follow-Up', desc: 'Never chase a prospect again. Lucy handles appointment setting, sends reminders, follows up after no-shows, and keeps your pipeline clean and moving.', stat: '90%', statLabel: 'reduction in no-shows' },
+  { icon: <FileText size={24} />, title: 'Content Operations', desc: 'From social posts to email campaigns, Lucy drafts, schedules, and publishes content that sounds like you — consistently, without the burnout.', stat: '10x', statLabel: 'content output' },
+  { icon: <Settings size={24} />, title: 'Business Automation', desc: 'Onboarding sequences, contract delivery, invoice reminders, reporting — Lucy handles the operational layer so you can stay in your zone of genius.', stat: '40hrs', statLabel: 'saved per month' },
 ]
 
 function WhatLucyDoes() {
@@ -207,20 +285,13 @@ function WhatLucyDoes() {
         <div className={`text-center mb-16 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">AI Chief Operating Officer</div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">What Lucy Does</h2>
-          <p className="text-white/50 text-lg max-w-2xl mx-auto">
-            One AI. Four operational pillars. Fully managed. Deployed in your business, not some demo environment.
-          </p>
+          <p className="text-white/50 text-lg max-w-2xl mx-auto">One AI. Four operational pillars. Fully managed. Deployed in your business, not some demo environment.</p>
         </div>
-
         <div className="grid md:grid-cols-2 gap-6">
           {CAPABILITIES.map((cap, i) => (
-            <div key={cap.title}
-              className={`glass rounded-2xl p-8 hover:bg-white/[0.06] transition-all duration-500 group ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              style={{ transitionDelay: `${i * 100}ms` }}>
+            <div key={cap.title} className={`glass rounded-2xl p-8 hover:bg-white/[0.06] transition-all duration-500 group ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${i * 100}ms` }}>
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-brand-500/10 text-brand-400 group-hover:bg-brand-500/20 transition-colors flex-shrink-0">
-                  {cap.icon}
-                </div>
+                <div className="p-3 rounded-xl bg-brand-500/10 text-brand-400 group-hover:bg-brand-500/20 transition-colors flex-shrink-0">{cap.icon}</div>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold mb-2">{cap.title}</h3>
                   <p className="text-white/50 leading-relaxed mb-4">{cap.desc}</p>
@@ -238,26 +309,218 @@ function WhatLucyDoes() {
   )
 }
 
-// ── How It Works ──────────────────────────────────────────────────────────
+function BeforeAfter() {
+  const [ref, inView] = useInView()
+  const withoutItems = [
+    { emoji: '⏰', text: '6am alarm — scrambling to follow up' },
+    { emoji: '📋', text: 'Manual data entry in 3 different tools' },
+    { emoji: '🔥', text: 'Missed leads because you were too busy' },
+    { emoji: '😓', text: '60-hour weeks, still behind' },
+    { emoji: '💀', text: '$0 recovered from dead leads' },
+    { emoji: '📵', text: 'Nights and weekends: still working' },
+  ]
+  const withItems = [
+    { emoji: '😎', text: 'Wake up to booked appointments' },
+    { emoji: '🤖', text: 'Everything automated, zero manual entry' },
+    { emoji: '💎', text: 'Every lead captured and followed up' },
+    { emoji: '🏖️', text: '20-hour weeks — and growing faster' },
+    { emoji: '💰', text: '$47K recovered from cold database' },
+    { emoji: '🎯', text: 'Lucy runs ops while you sleep' },
+  ]
+  return (
+    <section className="py-32 px-6 bg-surface-1" ref={ref}>
+      <div className="max-w-6xl mx-auto">
+        <div className={`text-center mb-16 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">The Difference</div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Before vs. After Lucy</h2>
+          <p className="text-white/50 text-lg">Two realities. You choose which one you want to live in.</p>
+        </div>
+        <div className={`grid md:grid-cols-2 gap-0 overflow-hidden rounded-2xl border border-white/10 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="bg-red-950/30 border-r border-white/10 p-8 md:p-10">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-xl bg-red-500/20 flex items-center justify-center text-xl">😰</div>
+              <div>
+                <div className="text-xs font-mono text-red-400/70 uppercase tracking-widest mb-0.5">Without Lucy</div>
+                <div className="text-xl font-bold text-white/80">Running on Empty</div>
+              </div>
+            </div>
+            <ul className="space-y-4">
+              {withoutItems.map(({ emoji, text }) => (
+                <li key={text} className="flex items-start gap-3">
+                  <span className="text-lg leading-none mt-0.5">{emoji}</span>
+                  <span className="text-white/50 text-sm leading-relaxed">{text}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 pt-6 border-t border-red-500/10">
+              <div className="text-red-400/80 text-sm font-mono">Average: 60hr/wk · $0 recovered · burnout inevitable</div>
+            </div>
+          </div>
+          <div className="bg-brand-500/5 p-8 md:p-10">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-xl bg-brand-500/20 flex items-center justify-center text-xl">🚀</div>
+              <div>
+                <div className="text-xs font-mono text-brand-400 uppercase tracking-widest mb-0.5">With Lucy</div>
+                <div className="text-xl font-bold text-white">Running at Full Power</div>
+              </div>
+            </div>
+            <ul className="space-y-4">
+              {withItems.map(({ emoji, text }) => (
+                <li key={text} className="flex items-start gap-3">
+                  <span className="text-lg leading-none mt-0.5">{emoji}</span>
+                  <span className="text-white/80 text-sm leading-relaxed">{text}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 pt-6 border-t border-brand-500/20">
+              <div className="text-brand-400 text-sm font-mono">Average: 20hr/wk · $47K recovered · scaling on autopilot</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function ROICalculator() {
+  const [ref, inView] = useInView()
+  const [leads, setLeads] = useState(500)
+  const [dealValue, setDealValue] = useState(2500)
+  const recovered = Math.round(leads * 0.08 * dealValue)
+  return (
+    <section className="py-32 px-6" ref={ref}>
+      <div className="max-w-4xl mx-auto">
+        <div className={`text-center mb-12 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">ROI Calculator</div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">How Much Is Lucy Worth to You?</h2>
+          <p className="text-white/50 text-lg">Adjust the numbers. See what is sitting in your dead lead database right now.</p>
+        </div>
+        <div className={`glass rounded-2xl p-8 md:p-10 glow-blue border border-brand-500/10 transition-all duration-700 delay-100 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="grid md:grid-cols-2 gap-10 mb-10">
+            <div>
+              <div className="flex justify-between items-baseline mb-3">
+                <label className="text-white/60 text-sm font-mono">Leads per month</label>
+                <span className="text-2xl font-bold text-white tabular-nums">{leads.toLocaleString()}</span>
+              </div>
+              <input type="range" min="50" max="5000" step="50" value={leads}
+                onChange={e => setLeads(Number(e.target.value))}
+                className="w-full h-2 rounded-full cursor-pointer appearance-none"
+                style={{ background: `linear-gradient(to right, #3b63f7 ${(leads-50)/4950*100}%, rgba(255,255,255,0.1) ${(leads-50)/4950*100}%)` }}
+              />
+              <div className="flex justify-between text-white/20 text-xs font-mono mt-1"><span>50</span><span>5,000</span></div>
+            </div>
+            <div>
+              <div className="flex justify-between items-baseline mb-3">
+                <label className="text-white/60 text-sm font-mono">Average deal value</label>
+                <span className="text-2xl font-bold text-white tabular-nums">${dealValue.toLocaleString()}</span>
+              </div>
+              <input type="range" min="500" max="25000" step="500" value={dealValue}
+                onChange={e => setDealValue(Number(e.target.value))}
+                className="w-full h-2 rounded-full cursor-pointer appearance-none"
+                style={{ background: `linear-gradient(to right, #3b63f7 ${(dealValue-500)/24500*100}%, rgba(255,255,255,0.1) ${(dealValue-500)/24500*100}%)` }}
+              />
+              <div className="flex justify-between text-white/20 text-xs font-mono mt-1"><span>$500</span><span>$25,000</span></div>
+            </div>
+          </div>
+          <div className="bg-brand-500/10 border border-brand-500/20 rounded-xl p-6 text-center" style={{ transition: 'all 0.3s ease' }}>
+            <div className="text-white/50 text-sm font-mono mb-2">Lucy could recover per month from dead leads alone</div>
+            <div className="text-5xl md:text-6xl font-bold text-gradient tabular-nums mb-2" style={{ transition: 'all 0.2s ease' }}>
+              ${recovered.toLocaleString()}
+            </div>
+            <div className="text-white/30 text-xs font-mono">{leads.toLocaleString()} leads x 8% reactivation x ${dealValue.toLocaleString()} avg deal</div>
+            <div className="mt-4 pt-4 border-t border-brand-500/10 flex flex-col sm:flex-row justify-center gap-6 text-sm">
+              <div className="text-white/50"><span className="text-white font-semibold">{Math.round(leads * 0.08)}</span> leads reactivated</div>
+              <div className="text-white/50"><span className="text-green-400 font-semibold">{Math.round(recovered / 3000 * 100)}%</span> ROI at Pro tier</div>
+              <div className="text-white/50">Payback in <span className="text-brand-400 font-semibold">{Math.ceil(3000 / (recovered / 30))} days</span></div>
+            </div>
+          </div>
+          <div className="text-center mt-6">
+            <a href="#cta" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105">
+              Recover That Revenue <ArrowRight size={16} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+const ACTIVITY_FEED = [
+  { time: '09:47 AM', event: 'Reactivated 12 cold leads from Q3 database', type: 'lead' },
+  { time: '10:15 AM', event: 'Drafted and sent 3 follow-up sequences', type: 'content' },
+  { time: '11:02 AM', event: 'Booked appointment: Sarah M. (HVAC inspection)', type: 'booking' },
+  { time: '12:30 PM', event: 'Published blog post across 3 platforms', type: 'content' },
+  { time: '01:45 PM', event: 'Qualified 7 inbound leads, routed 2 to sales', type: 'lead' },
+  { time: '03:20 PM', event: 'Sent invoice #1847, payment received by 4:15 PM', type: 'revenue' },
+  { time: '05:00 PM', event: 'Generated weekly performance report', type: 'ops' },
+]
+const TYPE_COLOR = { lead: 'text-brand-400', content: 'text-purple-400', booking: 'text-green-400', revenue: 'text-yellow-400', ops: 'text-white/50' }
+const TYPE_DOT = { lead: 'bg-brand-400', content: 'bg-purple-400', booking: 'bg-green-400', revenue: 'bg-yellow-400', ops: 'bg-white/30' }
+
+function ActivityFeed() {
+  const [ref, inView] = useInView()
+  const [visible, setVisible] = useState(0)
+  useEffect(() => {
+    if (!inView) return
+    let i = 0
+    const t = setInterval(() => { i++; setVisible(i); if (i >= ACTIVITY_FEED.length) clearInterval(t) }, 300)
+    return () => clearInterval(t)
+  }, [inView])
+  return (
+    <section className="py-32 px-6 bg-surface-1" ref={ref}>
+      <div className="max-w-4xl mx-auto">
+        <div className={`text-center mb-12 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">Real-Time Operations</div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">What Lucy Did Today</h2>
+          <p className="text-white/50 text-lg">While you were focused on growth, she handled everything else.</p>
+        </div>
+        <div className="glass rounded-2xl overflow-hidden border border-white/10">
+          <div className="bg-white/[0.03] border-b border-white/5 px-5 py-3 flex items-center gap-3">
+            <div className="flex gap-1.5">
+              <div className="w-3 h-3 rounded-full bg-red-400/60" />
+              <div className="w-3 h-3 rounded-full bg-yellow-400/60" />
+              <div className="w-3 h-3 rounded-full bg-green-400/60" />
+            </div>
+            <div className="text-white/30 text-xs font-mono flex-1 text-center">lucy@belken-enterprise — ops-log — today</div>
+            <div className="flex items-center gap-1.5 text-green-400 text-xs font-mono">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block" />running
+            </div>
+          </div>
+          <div className="p-6 space-y-1 font-mono text-sm">
+            <div className="text-white/20 mb-4 text-xs">$ tail -f /var/log/lucy/operations.log</div>
+            {ACTIVITY_FEED.map((item, i) => (
+              <div key={i} className={`flex items-start gap-4 py-2 px-3 rounded-lg transition-all duration-500 hover:bg-white/[0.03] ${i < visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`} style={{ transitionDelay: `${i * 50}ms` }}>
+                <span className="text-white/25 text-xs whitespace-nowrap mt-0.5">{item.time}</span>
+                <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1.5 ${TYPE_DOT[item.type]} animate-pulse`} />
+                <span className={`${TYPE_COLOR[item.type]} leading-relaxed`}>{item.event}</span>
+              </div>
+            ))}
+            {inView && (
+              <div className="flex items-center gap-2 py-2 px-3 text-white/20 text-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
+                <span>Processing next task...</span>
+                <span className="inline-block animate-pulse ml-1">_</span>
+              </div>
+            )}
+          </div>
+          <div className="border-t border-white/5 px-6 py-4 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {[{n:'7',label:'Actions taken'},{n:'$8,500',label:'Revenue touched'},{n:'0',label:'Hours you spent'},{n:'24/7',label:'Always running'}].map(({n,label}) => (
+              <div key={label} className="text-center">
+                <div className="text-lg font-bold text-brand-400 font-mono">{n}</div>
+                <div className="text-white/30 text-xs">{label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 const STEPS = [
-  {
-    num: '01',
-    title: 'We Learn Your Business',
-    desc: 'We spend two weeks with you — mapping your workflows, importing your contacts, understanding your voice and offers. Lucy learns how you operate before she touches anything.',
-    icon: <Shield size={20} />
-  },
-  {
-    num: '02',
-    title: 'Deploy Your AI COO',
-    desc: 'Lucy goes live across your stack. She connects to your CRM, calendar, email, and social channels. We monitor everything in week one to ensure perfect calibration.',
-    icon: <Zap size={20} />
-  },
-  {
-    num: '03',
-    title: 'You Focus on Growth',
-    desc: 'Lucy handles the operations. You handle the vision. Monthly strategy calls keep everything aligned, and you can adjust priorities any time via a simple dashboard.',
-    icon: <TrendingUp size={20} />
-  },
+  { num: '01', title: 'We Learn Your Business', desc: 'We spend two weeks with you — mapping your workflows, importing your contacts, understanding your voice and offers. Lucy learns how you operate before she touches anything.', icon: <Shield size={20} /> },
+  { num: '02', title: 'Deploy Your AI COO', desc: 'Lucy goes live across your stack. She connects to your CRM, calendar, email, and social channels. We monitor everything in week one to ensure perfect calibration.', icon: <Zap size={20} /> },
+  { num: '03', title: 'You Focus on Growth', desc: 'Lucy handles the operations. You handle the vision. Monthly strategy calls keep everything aligned, and you can adjust priorities any time via a simple dashboard.', icon: <TrendingUp size={20} /> },
 ]
 
 function HowItWorks() {
@@ -268,24 +531,17 @@ function HowItWorks() {
         <div className={`text-center mb-16 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">The Process</div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">How It Works</h2>
-          <p className="text-white/50 text-lg max-w-xl mx-auto">
-            From first call to full deployment in 14 days. No chaos. No onboarding headaches.
-          </p>
+          <p className="text-white/50 text-lg max-w-xl mx-auto">From first call to full deployment in 14 days. No chaos. No onboarding headaches.</p>
         </div>
-
         <div className="relative">
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-brand-500/50 via-brand-500/20 to-transparent hidden sm:block" />
           <div className="space-y-12">
             {STEPS.map((step, i) => (
-              <div key={step.num}
-                className={`relative flex flex-col md:flex-row items-start md:items-center gap-8 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
-                style={{ transitionDelay: `${i * 150}ms` }}>
+              <div key={step.num} className={`relative flex flex-col md:flex-row items-start md:items-center gap-8 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`} style={{ transitionDelay: `${i * 150}ms` }}>
                 <div className="md:w-1/2 flex justify-center">
                   <div className="relative">
                     <div className="absolute inset-0 bg-brand-500/20 rounded-full blur-xl animate-glow-pulse" />
-                    <div className="relative w-16 h-16 rounded-full bg-surface-3 border border-brand-500/30 flex items-center justify-center text-brand-400">
-                      {step.icon}
-                    </div>
+                    <div className="relative w-16 h-16 rounded-full bg-surface-3 border border-brand-500/30 flex items-center justify-center text-brand-400">{step.icon}</div>
                   </div>
                 </div>
                 <div className="md:w-1/2">
@@ -302,35 +558,10 @@ function HowItWorks() {
   )
 }
 
-// ── Pricing ────────────────────────────────────────────────────────────────
 const PLANS = [
-  {
-    name: 'Starter',
-    setup: '$2,500',
-    monthly: '$1,500',
-    desc: 'Perfect for solo operators and small teams ready to automate their operations.',
-    features: ['Lucy AI COO deployment', 'Lead reactivation campaigns', 'Scheduling automation', '1 content channel', 'Monthly strategy call', 'Email support'],
-    cta: 'Get Started',
-    highlight: false,
-  },
-  {
-    name: 'Pro',
-    setup: '$5,000',
-    monthly: '$3,000',
-    desc: 'For growing businesses that need full operational coverage and multi-channel execution.',
-    features: ['Everything in Starter', 'Full ops automation', 'Client onboarding flows', '3 content channels', 'Weekly strategy calls', 'Priority Slack support', 'Custom integrations', 'Revenue reporting dashboard'],
-    cta: 'Book a Call',
-    highlight: true,
-  },
-  {
-    name: 'Enterprise',
-    setup: 'Custom',
-    monthly: 'Custom',
-    desc: 'Multi-location, high-volume, or white-label deployments for agencies and franchises.',
-    features: ['Dedicated Lucy instance', 'Multi-location support', 'White-label available', 'Custom integrations', 'SLA guarantees', 'Dedicated account team', 'On-site onboarding', 'Quarterly business reviews'],
-    cta: 'Contact Us',
-    highlight: false,
-  },
+  { name: 'Starter', setup: '$2,500', monthly: '$1,500', desc: 'Perfect for solo operators and small teams ready to automate their operations.', features: ['Lucy AI COO deployment', 'Lead reactivation campaigns', 'Scheduling automation', '1 content channel', 'Monthly strategy call', 'Email support'], cta: 'Get Started', highlight: false },
+  { name: 'Pro', setup: '$5,000', monthly: '$3,000', desc: 'For growing businesses that need full operational coverage and multi-channel execution.', features: ['Everything in Starter', 'Full ops automation', 'Client onboarding flows', '3 content channels', 'Weekly strategy calls', 'Priority Slack support', 'Custom integrations', 'Revenue reporting dashboard'], cta: 'Book a Call', highlight: true },
+  { name: 'Enterprise', setup: 'Custom', monthly: 'Custom', desc: 'Multi-location, high-volume, or white-label deployments for agencies and franchises.', features: ['Dedicated Lucy instance', 'Multi-location support', 'White-label available', 'Custom integrations', 'SLA guarantees', 'Dedicated account team', 'On-site onboarding', 'Quarterly business reviews'], cta: 'Contact Us', highlight: false },
 ]
 
 function Pricing() {
@@ -341,21 +572,12 @@ function Pricing() {
         <div className={`text-center mb-16 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">Pricing</div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Transparent. Simple. Worth It.</h2>
-          <p className="text-white/50 text-lg max-w-2xl mx-auto">
-            A full-time COO costs $150K+/year. A part-time one costs $60K. Lucy costs a fraction — and works harder than both.
-          </p>
+          <p className="text-white/50 text-lg max-w-2xl mx-auto">A full-time COO costs $150K+/year. A part-time one costs $60K. Lucy costs a fraction — and works harder than both.</p>
         </div>
-
         <div className="grid md:grid-cols-3 gap-6 items-stretch">
           {PLANS.map((plan, i) => (
-            <div key={plan.name}
-              className={`relative rounded-2xl p-8 flex flex-col transition-all duration-700 ${plan.highlight ? 'bg-brand-500/10 border border-brand-500/40 glow-blue scale-[1.02]' : 'glass'} ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              style={{ transitionDelay: `${i * 100}ms` }}>
-              {plan.highlight && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-brand-500 text-white text-xs font-bold rounded-full tracking-wider">
-                  MOST POPULAR
-                </div>
-              )}
+            <div key={plan.name} className={`relative rounded-2xl p-8 flex flex-col transition-all duration-700 ${plan.highlight ? 'bg-brand-500/10 border border-brand-500/40 glow-blue scale-[1.02]' : 'glass'} ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${i * 100}ms` }}>
+              {plan.highlight && <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-brand-500 text-white text-xs font-bold rounded-full tracking-wider">MOST POPULAR</div>}
               <div className="mb-6">
                 <div className="text-white/40 text-sm font-medium mb-1">{plan.name}</div>
                 <div className="flex items-baseline gap-2 mb-1">
@@ -365,116 +587,46 @@ function Pricing() {
                 <div className="text-white/30 text-sm mb-4">{plan.setup !== 'Custom' ? `+ ${plan.setup} setup` : 'Custom setup'}</div>
                 <p className="text-white/50 text-sm leading-relaxed">{plan.desc}</p>
               </div>
-
               <ul className="space-y-3 mb-8 flex-1">
                 {plan.features.map(f => (
-                  <li key={f} className="flex items-start gap-3 text-sm text-white/70">
-                    <Check size={15} className="text-green-400 mt-0.5 flex-shrink-0" /> {f}
-                  </li>
+                  <li key={f} className="flex items-start gap-3 text-sm text-white/70"><Check size={15} className="text-green-400 mt-0.5 flex-shrink-0" /> {f}</li>
                 ))}
               </ul>
-
-              <a href="#cta"
-                className={`block text-center py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 hover:scale-105 ${plan.highlight ? 'bg-brand-500 hover:bg-brand-600 text-white' : 'glass hover:bg-white/10 text-white/80 hover:text-white'}`}>
-                {plan.cta}
-              </a>
+              <a href="#cta" className={`block text-center py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 hover:scale-105 ${plan.highlight ? 'bg-brand-500 hover:bg-brand-600 text-white' : 'glass hover:bg-white/10 text-white/80 hover:text-white'}`}>{plan.cta}</a>
             </div>
           ))}
         </div>
-
         <p className="text-center text-white/30 text-sm mt-8">No long-term contracts. Month-to-month after initial setup. Cancel anytime.</p>
       </div>
     </section>
   )
 }
 
-// ── Case Studies ───────────────────────────────────────────────────────────
-const CASE_STUDIES = [
-  {
-    name: 'Meridian HVAC',
-    type: 'Home Services',
-    since: 'Client since October 2024',
-    tag: 'Lead Reactivation',
-    quote: "We had 4,200 past customers sitting in a dead CRM. Lucy reactivated 340 of them in the first month — $47K in booked jobs from leads we'd written off.",
-    stats: [['$47K', 'revenue recovered'], ['340', 'leads reactivated'], ['8.1%', 'conversion rate']],
-    detail: 'Lucy integrated with their existing GoHighLevel CRM, identified leads untouched for 90+ days, and launched a multi-touch reactivation sequence. Fully autonomous within 72 hours of deployment.',
-  },
-  {
-    name: 'Apex Real Estate Group',
-    type: 'Real Estate',
-    since: 'Client since November 2024',
-    tag: 'Sales Automation',
-    quote: "Our agents were spending 3 hours a day on follow-ups. Now Lucy handles all of it — scheduling showings, qualifying leads, sending contracts. My team just sells.",
-    stats: [['3hrs/day', 'saved per agent'], ['2.4x', 'more showings booked'], ['22', 'deals closed in 60 days']],
-    detail: 'Deployed across a 6-agent team. Lucy handles inbound inquiry routing, automated showing confirmations, and post-showing follow-up sequences — all customized to each agent\'s voice.',
-  },
-  {
-    name: 'Restore Wellness',
-    type: 'Healthcare / Medical Spa',
-    since: 'Client since December 2024',
-    tag: 'Patient Retention',
-    quote: "Patient no-shows dropped 60% after Lucy started handling confirmations and rescheduling. She even follows up on canceled appointments and fills the slots.",
-    stats: [['60%', 'fewer no-shows'], ['$12K/mo', 'recovered revenue'], ['14 days', 'to deployment']],
-    detail: 'HIPAA-conscious deployment with custom confirmation flows for 12+ service types. Lucy monitors the booking calendar in real time and proactively fills cancellations from a prioritized waitlist.',
-  },
-  {
-    name: 'Catalyst Digital',
-    type: 'Marketing Agency',
-    since: 'Client since January 2025',
-    tag: 'Content Automation',
-    quote: "We went from publishing 8 pieces of content a month to 32 — and the quality got better. Lucy handles ideation, drafting, scheduling, and reporting while we focus on client strategy.",
-    stats: [['4x', 'content output'], ['$8K/mo', 'in labor savings'], ['32', 'pieces published monthly']],
-    detail: 'Lucy automates the full content pipeline: topic research, outline generation, draft creation, SEO formatting, and cross-channel scheduling. The team redirected 3 junior roles to higher-leverage work.',
-  },
-]
-
 function CaseStudies() {
   const [ref, inView] = useInView()
+  const cases = [
+    { name: 'Meridian HVAC', type: 'Home Services', quote: "We had 4,200 past customers sitting in a dead CRM. Lucy reactivated 340 of them in the first month — $47K in booked jobs from leads we had written off.", stats: [['$47K', 'revenue recovered'], ['340', 'leads reactivated'], ['8.1%', 'conversion rate']] },
+    { name: 'Apex Real Estate Group', type: 'Real Estate', quote: "Our agents were spending 3 hours a day on follow-ups. Now Lucy handles all of it — scheduling showings, qualifying leads, sending contracts. My team just sells.", stats: [['3hrs/day', 'saved per agent'], ['2.4x', 'more showings'], ['22', 'deals in 60 days']] },
+    { name: 'Restore Wellness', type: 'Medical Practice', quote: "Patient no-shows dropped 60% after Lucy started handling confirmations and rescheduling. She even follows up on canceled appointments and fills the slots.", stats: [['60%', 'fewer no-shows'], ['$12K/mo', 'recovered revenue'], ['14 days', 'to deployment']] },
+  ]
   return (
     <section id="case-studies" className="py-32 px-6 bg-surface-1">
-      <div className="max-w-6xl mx-auto" ref={ref}>
+      <div className="max-w-5xl mx-auto" ref={ref}>
         <div className={`text-center mb-16 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">Proof</div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Case Studies</h2>
-          <p className="text-white/50 text-lg max-w-xl mx-auto">Real businesses. Real numbers. No projections, no hypotheticals.</p>
         </div>
-
-        <div className={`grid md:grid-cols-2 gap-6 transition-all duration-700 delay-100 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {CASE_STUDIES.map((cs, i) => (
-            <div key={cs.name}
-              className="glass rounded-2xl p-8 border border-white/10 flex flex-col hover:bg-white/[0.04] transition-all duration-500"
-              style={{ transitionDelay: `${i * 100}ms` }}>
-              <div className="flex items-start justify-between gap-3 mb-3">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-brand-500/20 flex items-center justify-center text-brand-400 flex-shrink-0">
-                    <Zap size={18} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold">{cs.name}</h3>
-                    <p className="text-white/40 text-xs">{cs.type}</p>
-                  </div>
-                </div>
-                <span className="text-xs px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/20 whitespace-nowrap flex-shrink-0">
-                  {cs.tag}
-                </span>
+        <div className={`grid md:grid-cols-3 gap-6 transition-all duration-700 delay-100 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {cases.map((cs, i) => (
+            <div key={cs.name} className={`glass rounded-2xl p-8 border border-white/10 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${i * 100}ms` }}>
+              <div className="flex items-start gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-brand-500/20 flex items-center justify-center text-brand-400 flex-shrink-0"><Zap size={18} /></div>
+                <div><h3 className="text-lg font-bold">{cs.name}</h3><p className="text-white/40 text-xs">{cs.type}</p></div>
               </div>
-
-              <div className="text-white/25 text-xs font-mono mb-4 flex items-center gap-1.5">
-                <Clock size={11} /> {cs.since}
-              </div>
-
-              <blockquote className="text-white/60 text-sm leading-relaxed mb-4 italic border-l-2 border-brand-500/30 pl-4 flex-1">
-                "{cs.quote}"
-              </blockquote>
-
-              <p className="text-white/35 text-xs leading-relaxed mb-5">{cs.detail}</p>
-
+              <blockquote className="text-white/60 text-sm leading-relaxed mb-6 italic border-l-2 border-brand-500/30 pl-4">"{cs.quote}"</blockquote>
               <div className="grid grid-cols-3 gap-3 pt-4 border-t border-white/5">
                 {cs.stats.map(([n, l]) => (
-                  <div key={l}>
-                    <div className="text-lg font-bold text-gradient">{n}</div>
-                    <div className="text-white/30 text-xs">{l}</div>
-                  </div>
+                  <div key={l}><div className="text-lg font-bold text-gradient">{n}</div><div className="text-white/30 text-xs">{l}</div></div>
                 ))}
               </div>
             </div>
@@ -485,176 +637,30 @@ function CaseStudies() {
   )
 }
 
-// ── Testimonials ───────────────────────────────────────────────────────────
-const TESTIMONIALS = [
-  {
-    quote: "Lucy paid for herself in the first week.",
-    name: "Marcus T.",
-    title: "Owner, Meridian HVAC",
-  },
-  {
-    quote: "I didn't believe it until I saw my calendar fill up on its own.",
-    name: "Dr. Sarah Chen",
-    title: "Restore Wellness",
-  },
-  {
-    quote: "We canceled three software subscriptions after Lucy took over.",
-    name: "James R.",
-    title: "Managing Partner, Apex Real Estate",
-  },
-]
-
-function Testimonials() {
-  const [ref, inView] = useInView()
-  return (
-    <section className="py-24 px-6" ref={ref}>
-      <div className="max-w-5xl mx-auto">
-        <div className={`text-center mb-12 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">What Clients Say</div>
-          <h2 className="text-3xl md:text-4xl font-bold">Straight From the Field</h2>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {TESTIMONIALS.map((t, i) => (
-            <div key={t.name}
-              className={`glass rounded-2xl p-8 flex flex-col gap-4 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              style={{ transitionDelay: `${i * 100}ms` }}>
-              <Quote size={20} className="text-brand-400/50" />
-              <p className="text-white/75 text-base leading-relaxed italic flex-1">"{t.quote}"</p>
-              <div>
-                <div className="text-white font-semibold text-sm">{t.name}</div>
-                <div className="text-white/35 text-xs">{t.title}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// ── About ──────────────────────────────────────────────────────────────────
-function About() {
-  const [ref, inView] = useInView()
-  return (
-    <section id="about" className="py-24 px-6 bg-surface-1">
-      <div className="max-w-4xl mx-auto" ref={ref}>
-        <div className={`text-center transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">Who Built This</div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Built by Operators, Not Consultants</h2>
-          <div className="glass rounded-2xl p-10 text-left max-w-3xl mx-auto border border-white/10">
-            <p className="text-white/65 text-lg leading-relaxed mb-6">
-              Our team has deployed AI automation across healthcare, real estate, home services, and marketing — with <span className="text-white font-semibold">15+ years of enterprise infrastructure experience</span>.
-            </p>
-            <p className="text-white/50 leading-relaxed mb-6">
-              We didn't build Lucy from a whiteboard. We built her because we needed her. Every capability she has was forged in actual client deployments — solving real operational chaos, not theoretical problems.
-            </p>
-            <p className="text-white/50 leading-relaxed">
-              When you work with Belken Enterprise, you're not getting a reseller of off-the-shelf tools. You're getting a team that has lived inside the operations of businesses like yours — and built the system they wish they'd had.
-            </p>
-            <div className="mt-8 grid grid-cols-3 gap-6 pt-6 border-t border-white/10">
-              {[
-                { n: '15+', l: 'years enterprise experience' },
-                { n: '4', l: 'industries served' },
-                { n: '47+', l: 'deployments live' },
-              ].map(({ n, l }) => (
-                <div key={l} className="text-center">
-                  <div className="text-2xl font-bold text-gradient">{n}</div>
-                  <div className="text-white/30 text-xs mt-1">{l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// ── Blog ───────────────────────────────────────────────────────────────────
-const ARTICLES = [
-  {
-    title: "Why 73% of CRM Leads Go Cold (And How AI Fixes It)",
-    date: "Feb 2026",
-    excerpt: "Most businesses lose deals not because the prospect said no — but because they stopped following up. Here's the data, and here's the fix.",
-    tag: "Lead Reactivation",
-  },
-  {
-    title: "The Real Cost of a Part-Time COO vs. an AI One",
-    date: "Jan 2026",
-    excerpt: "Part-time COOs run $4K–$8K per month, work limited hours, and still need managing. We break down what you actually get for your money.",
-    tag: "Operations",
-  },
-  {
-    title: "How One HVAC Company Recovered $47K from Dead Leads",
-    date: "Dec 2025",
-    excerpt: "Meridian HVAC had 4,200 contacts sitting in a CRM nobody touched. Lucy turned that list into $47,000 in booked jobs in 30 days.",
-    tag: "Case Study",
-  },
-]
-
-function Blog() {
-  const [ref, inView] = useInView()
-  return (
-    <section id="blog" className="py-32 px-6">
-      <div className="max-w-6xl mx-auto" ref={ref}>
-        <div className={`text-center mb-16 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">Insights</div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">From the Field</h2>
-          <p className="text-white/50 text-lg max-w-xl mx-auto">Hard-won lessons from deploying AI operations in real businesses.</p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {ARTICLES.map((a, i) => (
-            <a key={a.title} href="#"
-              className={`glass rounded-2xl p-8 flex flex-col gap-4 group hover:bg-white/[0.06] transition-all duration-500 border border-white/5 hover:border-white/10 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              style={{ transitionDelay: `${i * 100}ms` }}>
-              <div className="flex items-center justify-between">
-                <span className="text-xs px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/20">{a.tag}</span>
-                <span className="text-white/25 text-xs font-mono">{a.date}</span>
-              </div>
-              <h3 className="text-white font-bold text-base leading-snug group-hover:text-brand-300 transition-colors">{a.title}</h3>
-              <p className="text-white/45 text-sm leading-relaxed flex-1">{a.excerpt}</p>
-              <div className="flex items-center gap-2 text-brand-400 text-sm font-medium group-hover:gap-3 transition-all">
-                Read more <ArrowRight size={15} />
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// ── FAQ ────────────────────────────────────────────────────────────────────
 const FAQS = [
   { q: "Is Lucy actually AI, or are there humans involved?", a: "Lucy is a purpose-built AI system powered by large language models and custom automation workflows. There's a human team behind Belken Enterprise who configures, monitors, and improves Lucy — but your daily operations are handled autonomously by the AI." },
   { q: "How long does it take to get up and running?", a: "Most clients are fully deployed within 14 days. The first week is onboarding and configuration. Week two is soft launch with close monitoring. By day 14, Lucy is running independently." },
   { q: "What tools and software does Lucy integrate with?", a: "Lucy integrates with most major CRMs (HubSpot, GoHighLevel, Salesforce), email platforms (Gmail, Outlook), calendar apps, social media, and more. We'll confirm compatibility during your discovery call." },
   { q: "Do I have to sign a long-term contract?", a: "No. After your initial setup, you're month-to-month. We believe in earning your business every month, not locking you in. Setup fees are non-refundable, but ongoing service can be paused or cancelled with 30 days' notice." },
   { q: "What makes this different from hiring a VA or using Zapier?", a: "A VA has limited hours, takes PTO, and needs constant management. Zapier automates simple linear tasks. Lucy handles complex, judgment-based operations — she decides when to follow up, what to say, and how to prioritize — continuously, at scale, without oversight." },
-  { q: "Is my data secure?", a: "Yes. All data is encrypted in transit and at rest. We never train AI models on your business data. You retain full ownership of everything. We're happy to sign a custom NDA before any engagement begins." },
+  { q: "Is my data secure?", a: "Yes. All data is encrypted in transit and at rest. We never train AI models on your business data. You retain full ownership of everything. We are happy to sign a custom NDA before any engagement begins." },
 ]
 
 function FAQ() {
   const [open, setOpen] = useState(null)
   const [ref, inView] = useInView()
   return (
-    <section id="faq" className="py-32 px-6 bg-surface-1" ref={ref}>
+    <section id="faq" className="py-32 px-6" ref={ref}>
       <div className="max-w-3xl mx-auto">
         <div className={`text-center mb-16 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">FAQ</div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Questions?</h2>
           <p className="text-white/50">The ones we get asked every week.</p>
         </div>
-
         <div className="space-y-3">
           {FAQS.map((faq, i) => (
-            <div key={i}
-              className={`glass rounded-xl overflow-hidden transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              style={{ transitionDelay: `${i * 60}ms` }}>
-              <button
-                onClick={() => setOpen(open === i ? null : i)}
-                className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 hover:bg-white/[0.03] transition-colors">
+            <div key={i} className={`glass rounded-xl overflow-hidden transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${i * 60}ms` }}>
+              <button onClick={() => setOpen(open === i ? null : i)} className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 hover:bg-white/[0.03] transition-colors">
                 <span className="font-medium text-white/90 text-sm">{faq.q}</span>
                 <ChevronDown size={18} className={`text-white/30 flex-shrink-0 transition-transform duration-300 ${open === i ? 'rotate-180' : ''}`} />
               </button>
@@ -669,17 +675,11 @@ function FAQ() {
   )
 }
 
-// ── CTA ────────────────────────────────────────────────────────────────────
 function CTA() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [ref, inView] = useInView()
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (email) setSubmitted(true)
-  }
-
+  const handleSubmit = (e) => { e.preventDefault(); if (email) setSubmitted(true) }
   return (
     <section id="cta" className="py-32 px-6 relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 pointer-events-none">
@@ -687,72 +687,46 @@ function CTA() {
       </div>
       <div className={`relative max-w-3xl mx-auto text-center transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-6">Get Started</div>
-        <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-          Ready to Stop Doing<br /><span className="text-gradient">Everything Yourself?</span>
-        </h2>
-        <p className="text-white/50 text-lg mb-10 max-w-xl mx-auto">
-          Book a free 30-minute call. We'll map out exactly how Lucy can take operations off your plate — no pitch decks, no BS.
-        </p>
-
+        <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">Ready to Stop Doing<br /><span className="text-gradient">Everything Yourself?</span></h2>
+        <p className="text-white/50 text-lg mb-10 max-w-xl mx-auto">Book a free 30-minute call. We'll map out exactly how Lucy can take operations off your plate — no pitch decks, no BS.</p>
         <div className="glass rounded-2xl p-8 mb-8">
           {submitted ? (
             <div className="py-4">
-              <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
-                <Check size={24} className="text-green-400" />
-              </div>
+              <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4"><Check size={24} className="text-green-400" /></div>
               <div className="text-white font-semibold text-lg mb-2">You're on the list.</div>
               <div className="text-white/50 text-sm">We'll reach out within 24 hours to schedule your call.</div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/20 text-sm focus:outline-none focus:border-brand-500/50 transition-colors"
-              />
-              <button type="submit"
-                className="px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 whitespace-nowrap text-sm">
-                Book a Call
-              </button>
+              <input type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="your@email.com"
+                className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/20 text-sm focus:outline-none focus:border-brand-500/50 transition-colors" />
+              <button type="submit" className="px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 whitespace-nowrap text-sm">Book a Call</button>
             </form>
           )}
         </div>
-
-        <p className="text-white/30 text-sm">
-          Or email us directly: <a href="mailto:info@belkenventures.com" className="text-brand-400 hover:underline">info@belkenventures.com</a>
-        </p>
+        <p className="text-white/30 text-sm">Or email us directly: <a href="mailto:info@belkenventures.com" className="text-brand-400 hover:underline">info@belkenventures.com</a></p>
       </div>
     </section>
   )
 }
 
-// ── Footer ─────────────────────────────────────────────────────────────────
 function Footer() {
   return (
     <footer className="border-t border-white/5 py-16 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2">
-            <div className="text-xl font-bold mb-3">
-              <span className="text-white">Belken</span>
-              <span className="text-gradient"> Enterprise</span>
-            </div>
-            <p className="text-white/40 text-sm leading-relaxed max-w-xs mb-4">
-              AI-powered Chief Operating Officer for businesses that are serious about scaling without burning out.
-            </p>
+            <div className="text-xl font-bold mb-3"><span className="text-white">Belken</span><span className="text-gradient"> Enterprise</span></div>
+            <p className="text-white/40 text-sm leading-relaxed max-w-xs mb-4">AI-powered Chief Operating Officer for businesses that are serious about scaling without burning out.</p>
             <div className="space-y-2">
-              <div className="flex items-center gap-2 text-white/30 text-sm">
-                <Mail size={14} /> info@belkenventures.com
-              </div>
+              <div className="flex items-center gap-2 text-white/30 text-sm"><Mail size={14} /> info@belkenventures.com</div>
+              <div className="flex items-start gap-2 text-white/30 text-sm"><MapPin size={14} className="mt-0.5 flex-shrink-0" /> Remote — Nationwide</div>
             </div>
           </div>
           <div>
             <div className="text-white/60 text-sm font-semibold mb-4 tracking-wider uppercase">Product</div>
             <ul className="space-y-3 text-white/30 text-sm">
-              {['What Lucy Does', 'How It Works', 'Pricing', 'Case Studies', 'Blog', 'FAQ'].map(l => (
+              {['What Lucy Does', 'How It Works', 'Pricing', 'Case Studies', 'FAQ'].map(l => (
                 <li key={l}><a href={`#${l.toLowerCase().replace(/\s+/g, '-')}`} className="hover:text-white/60 transition-colors">{l}</a></li>
               ))}
             </ul>
@@ -760,20 +734,14 @@ function Footer() {
           <div>
             <div className="text-white/60 text-sm font-semibold mb-4 tracking-wider uppercase">Legal</div>
             <ul className="space-y-3 text-white/30 text-sm">
-              {[
-                ['Privacy Policy', '#'],
-                ['Terms of Service', '#'],
-                ['Status Page', '#'],
-                ['Documentation', '#'],
-              ].map(([label, href]) => (
-                <li key={label}><a href={href} className="hover:text-white/60 transition-colors">{label}</a></li>
+              {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Refund Policy'].map(l => (
+                <li key={l}><a href="#" className="hover:text-white/60 transition-colors">{l}</a></li>
               ))}
             </ul>
           </div>
         </div>
-
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-white/20 text-xs">
-          <div>© 2024–2026 Belken Enterprise LLC. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} Belken Enterprise LLC. All rights reserved.</div>
           <div>AI-Powered Operations</div>
         </div>
       </div>
@@ -781,20 +749,20 @@ function Footer() {
   )
 }
 
-// ── App ────────────────────────────────────────────────────────────────────
 export default function App() {
   return (
     <div className="min-h-screen bg-black text-white">
       <Nav />
       <Hero />
-      <TrustedBy />
+      <LiveTicker />
+      <StatsSection />
       <WhatLucyDoes />
+      <BeforeAfter />
+      <ROICalculator />
+      <ActivityFeed />
       <HowItWorks />
       <Pricing />
       <CaseStudies />
-      <Testimonials />
-      <About />
-      <Blog />
       <FAQ />
       <CTA />
       <Footer />
