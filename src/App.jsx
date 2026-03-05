@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import {
   Zap, Calendar, Users, FileText, Settings, ArrowRight,
   Check, ChevronDown, Menu, X, Mail, MapPin,
-  TrendingUp, Shield, Play
+  TrendingUp, Shield, Play, Twitter, Youtube, Package, Wrench, ShoppingBag
 } from 'lucide-react'
 
 function useInView(threshold = 0.15) {
@@ -40,7 +40,7 @@ function Nav() {
     window.addEventListener('scroll', h)
     return () => window.removeEventListener('scroll', h)
   }, [])
-  const links = ['What Lucy Does', 'How It Works', 'Pricing', 'FAQ']
+  const links = ['What Lucy Does', 'How It Works', 'Products', 'Pricing', 'FAQ']
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/5' : ''}`}>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -637,6 +637,98 @@ function CaseStudies() {
   )
 }
 
+function Products() {
+  const [ref, inView] = useInView()
+  return (
+    <section id="products" className="py-32 px-6" ref={ref}>
+      <div className="max-w-7xl mx-auto">
+        <div className={`text-center mb-16 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">Tools & Services</div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Products</h2>
+          <p className="text-white/50 text-lg max-w-2xl mx-auto">Real systems built in production — available for you to use right now.</p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6">
+
+          {/* Vibe Coding Prompt Pack */}
+          <div className={`glass rounded-2xl p-8 border border-white/10 flex flex-col transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="p-3 rounded-xl bg-purple-500/10 text-purple-400 w-fit mb-4">
+              <Package size={24} />
+            </div>
+            <div className="flex-1">
+              <div className="text-xs font-mono text-purple-400 uppercase tracking-widest mb-2">Digital Download</div>
+              <h3 className="text-xl font-bold mb-2">Vibe Coding Agent Prompt Pack</h3>
+              <p className="text-white/50 text-sm leading-relaxed mb-4">6 battle-tested prompts for AI-powered app development. Scaffold, build, debug, and ship with precision — no rewrites, no drift. Works with Claude, GPT-4, Cursor, Windsurf.</p>
+              <ul className="space-y-2 mb-6">
+                {['Core System Prompt', 'App Scaffolding Prompt', 'Debugging Templates (4 modes)', 'Client Handoff Prompt', 'Prompt Chaining Guide', 'Quick Start Guide'].map(f => (
+                  <li key={f} className="flex items-center gap-2 text-sm text-white/60">
+                    <Check size={13} className="text-green-400 flex-shrink-0" /> {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <div className="flex items-baseline gap-2 mb-4">
+                <span className="text-3xl font-bold text-white">$29</span>
+                <span className="text-white/40 text-sm">one-time · instant download</span>
+              </div>
+              <a href="https://belken.gumroad.com/l/vibe-coding-agent-prompt-pack" target="_blank" rel="noopener noreferrer"
+                className="block text-center py-3 px-6 bg-purple-500 hover:bg-purple-600 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 text-sm">
+                Get It on Gumroad →
+              </a>
+            </div>
+          </div>
+
+          {/* Setup-as-a-Service */}
+          <div className={`relative glass rounded-2xl p-8 border border-brand-500/40 bg-brand-500/5 flex flex-col transition-all duration-700 delay-100 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-brand-500 text-white text-xs font-bold rounded-full tracking-wider">MOST POPULAR</div>
+            <div className="p-3 rounded-xl bg-brand-500/10 text-brand-400 w-fit mb-4">
+              <Wrench size={24} />
+            </div>
+            <div className="flex-1">
+              <div className="text-xs font-mono text-brand-400 uppercase tracking-widest mb-2">Done-for-You Service</div>
+              <h3 className="text-xl font-bold mb-2">OpenClaw Setup-as-a-Service</h3>
+              <p className="text-white/50 text-sm leading-relaxed mb-4">Don't want to deal with Docker, API keys, and agent wiring? We set up your full OpenClaw AI stack — configured, personalized, and handed to you running. Flat rate. No surprises.</p>
+              <ul className="space-y-2 mb-6">
+                {['Full OpenClaw installation', 'Custom AI persona setup', 'Discord / Telegram integration', 'Skills configured for your use case', 'Cron jobs & automations wired', '1 week post-setup support'].map(f => (
+                  <li key={f} className="flex items-center gap-2 text-sm text-white/70">
+                    <Check size={13} className="text-green-400 flex-shrink-0" /> {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <div className="flex items-baseline gap-2 mb-4">
+                <span className="text-3xl font-bold text-white">$800</span>
+                <span className="text-white/40 text-sm">flat rate · no hidden fees</span>
+              </div>
+              <a href="mailto:info@belkenventures.com?subject=OpenClaw Setup Service — Book a Call"
+                className="block text-center py-3 px-6 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 text-sm">
+                Book Setup Call →
+              </a>
+            </div>
+          </div>
+
+          {/* More Coming Soon */}
+          <div className={`glass rounded-2xl p-8 border border-white/10 flex flex-col items-center justify-center text-center transition-all duration-700 delay-200 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="p-4 rounded-2xl bg-white/[0.03] text-white/20 w-fit mb-5 mx-auto">
+              <ShoppingBag size={28} />
+            </div>
+            <div className="text-xs font-mono text-white/30 uppercase tracking-widest mb-3">Coming Soon</div>
+            <h3 className="text-xl font-bold mb-3 text-white/60">More Products Dropping</h3>
+            <p className="text-white/30 text-sm leading-relaxed mb-6">AI Agency Starter Kit · OpenClaw Self-Hosting Guide · Competitor Intelligence Playbook · Agent Factory Templates. Follow us for every drop.</p>
+            <a href="https://twitter.com/BelkenAI" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 glass border border-white/10 text-white/50 hover:text-white text-sm rounded-xl transition-all hover:bg-white/10">
+              <Twitter size={15} /> Follow @BelkenAI
+            </a>
+          </div>
+
+        </div>
+        <p className="text-center text-white/30 text-sm mt-8 font-mono">All digital products are instant download · Setup service includes a free 20-min discovery call before purchase</p>
+      </div>
+    </section>
+  )
+}
+
 const FAQS = [
   { q: "Is Lucy actually AI, or are there humans involved?", a: "Lucy is a purpose-built AI system powered by large language models and custom automation workflows. There's a human team behind Belken Enterprise who configures, monitors, and improves Lucy — but your daily operations are handled autonomously by the AI." },
   { q: "How long does it take to get up and running?", a: "Most clients are fully deployed within 14 days. The first week is onboarding and configuration. Week two is soft launch with close monitoring. By day 14, Lucy is running independently." },
@@ -679,7 +771,13 @@ function CTA() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [ref, inView] = useInView()
-  const handleSubmit = (e) => { e.preventDefault(); if (email) setSubmitted(true) }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (email) {
+      window.location.href = `mailto:info@belkenventures.com?subject=Book a Call — Belken Enterprise&body=Hi, I'd like to book a free call. My email is: ${email}%0A%0ATell us a bit about your business so we can prepare:`
+      setSubmitted(true)
+    }
+  }
   return (
     <section id="cta" className="py-32 px-6 relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 pointer-events-none">
@@ -718,15 +816,25 @@ function Footer() {
           <div className="md:col-span-2">
             <div className="text-xl font-bold mb-3"><span className="text-white">Belken</span><span className="text-gradient"> Enterprise</span></div>
             <p className="text-white/40 text-sm leading-relaxed max-w-xs mb-4">AI-powered Chief Operating Officer for businesses that are serious about scaling without burning out.</p>
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 text-white/30 text-sm"><Mail size={14} /> info@belkenventures.com</div>
+            <div className="space-y-2 mb-5">
+              <a href="mailto:info@belkenventures.com" className="flex items-center gap-2 text-white/30 text-sm hover:text-white/60 transition-colors"><Mail size={14} /> info@belkenventures.com</a>
               <div className="flex items-start gap-2 text-white/30 text-sm"><MapPin size={14} className="mt-0.5 flex-shrink-0" /> Remote — Nationwide</div>
+            </div>
+            <div className="flex items-center gap-3">
+              <a href="https://twitter.com/BelkenAI" target="_blank" rel="noopener noreferrer" aria-label="Twitter @BelkenAI"
+                className="w-9 h-9 rounded-xl glass border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-brand-500/50 transition-all duration-200">
+                <Twitter size={16} />
+              </a>
+              <a href="https://youtube.com/@Belkenbot" target="_blank" rel="noopener noreferrer" aria-label="YouTube Belkenbot"
+                className="w-9 h-9 rounded-xl glass border border-white/10 flex items-center justify-center text-white/40 hover:text-red-400 hover:border-red-500/30 transition-all duration-200">
+                <Youtube size={16} />
+              </a>
             </div>
           </div>
           <div>
             <div className="text-white/60 text-sm font-semibold mb-4 tracking-wider uppercase">Product</div>
             <ul className="space-y-3 text-white/30 text-sm">
-              {['What Lucy Does', 'How It Works', 'Pricing', 'Case Studies', 'FAQ'].map(l => (
+              {['What Lucy Does', 'How It Works', 'Products', 'Pricing', 'FAQ'].map(l => (
                 <li key={l}><a href={`#${l.toLowerCase().replace(/\s+/g, '-')}`} className="hover:text-white/60 transition-colors">{l}</a></li>
               ))}
             </ul>
@@ -763,6 +871,7 @@ export default function App() {
       <HowItWorks />
       <Pricing />
       <CaseStudies />
+      <Products />
       <FAQ />
       <CTA />
       <Footer />
