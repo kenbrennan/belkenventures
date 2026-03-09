@@ -701,7 +701,7 @@ function Products() {
                 <span className="text-3xl font-bold text-white">$800</span>
                 <span className="text-white/40 text-sm">flat rate · no hidden fees</span>
               </div>
-              <a href="mailto:info@belkenventures.com?subject=OpenClaw Setup Service — Book a Call"
+              <a href="mailto:info@belken.ai?subject=OpenClaw Setup Service — Book a Call"
                 className="block text-center py-3 px-6 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 text-sm">
                 Book Setup Call →
               </a>
@@ -716,9 +716,9 @@ function Products() {
             <div className="text-xs font-mono text-white/30 uppercase tracking-widest mb-3">Coming Soon</div>
             <h3 className="text-xl font-bold mb-3 text-white/60">More Products Dropping</h3>
             <p className="text-white/30 text-sm leading-relaxed mb-6">AI Agency Starter Kit · OpenClaw Self-Hosting Guide · Competitor Intelligence Playbook · Agent Factory Templates. Follow us for every drop.</p>
-            <a href="https://twitter.com/BelkenAI" target="_blank" rel="noopener noreferrer"
+            <a href="https://x.com/LucyBelkenAI" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 glass border border-white/10 text-white/50 hover:text-white text-sm rounded-xl transition-all hover:bg-white/10">
-              <Twitter size={15} /> Follow @BelkenAI
+              <Twitter size={15} /> Follow @LucyBelkenAI
             </a>
           </div>
 
@@ -774,7 +774,7 @@ function CTA() {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (email) {
-      window.location.href = `mailto:info@belkenventures.com?subject=Book a Call — Belken Enterprise&body=Hi, I'd like to book a free call. My email is: ${email}%0A%0ATell us a bit about your business so we can prepare:`
+      window.location.href = `mailto:info@belken.ai?subject=Book a Call — Belken Enterprise&body=Hi, I'd like to book a free call. My email is: ${email}%0A%0ATell us a bit about your business so we can prepare:`
       setSubmitted(true)
     }
   }
@@ -802,7 +802,7 @@ function CTA() {
             </form>
           )}
         </div>
-        <p className="text-white/30 text-sm">Or email us directly: <a href="mailto:info@belkenventures.com" className="text-brand-400 hover:underline">info@belkenventures.com</a></p>
+        <p className="text-white/30 text-sm">Or email us directly: <a href="mailto:info@belken.ai" className="text-brand-400 hover:underline">info@belken.ai</a></p>
       </div>
     </section>
   )
@@ -817,15 +817,15 @@ function Footer() {
             <div className="text-xl font-bold mb-3"><span className="text-white">Belken</span><span className="text-gradient"> Enterprise</span></div>
             <p className="text-white/40 text-sm leading-relaxed max-w-xs mb-4">AI-powered Chief Operating Officer for businesses that are serious about scaling without burning out.</p>
             <div className="space-y-2 mb-5">
-              <a href="mailto:info@belkenventures.com" className="flex items-center gap-2 text-white/30 text-sm hover:text-white/60 transition-colors"><Mail size={14} /> info@belkenventures.com</a>
+              <a href="mailto:info@belken.ai" className="flex items-center gap-2 text-white/30 text-sm hover:text-white/60 transition-colors"><Mail size={14} /> info@belken.ai</a>
               <div className="flex items-start gap-2 text-white/30 text-sm"><MapPin size={14} className="mt-0.5 flex-shrink-0" /> Remote — Nationwide</div>
             </div>
             <div className="flex items-center gap-3">
-              <a href="https://twitter.com/BelkenAI" target="_blank" rel="noopener noreferrer" aria-label="Twitter @BelkenAI"
+              <a href="https://x.com/LucyBelkenAI" target="_blank" rel="noopener noreferrer" aria-label="Twitter @LucyBelkenAI"
                 className="w-9 h-9 rounded-xl glass border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-brand-500/50 transition-all duration-200">
                 <Twitter size={16} />
               </a>
-              <a href="https://youtube.com/@Belkenbot" target="_blank" rel="noopener noreferrer" aria-label="YouTube Belkenbot"
+              <a href="https://youtube.com/@LucyBelKenAI" target="_blank" rel="noopener noreferrer" aria-label="YouTube LucyBelKenAI"
                 className="w-9 h-9 rounded-xl glass border border-white/10 flex items-center justify-center text-white/40 hover:text-red-400 hover:border-red-500/30 transition-all duration-200">
                 <Youtube size={16} />
               </a>
