@@ -16,21 +16,7 @@ function useInView(threshold = 0.15) {
   return [ref, inView]
 }
 
-function useCountUp(target, duration = 2000, active = false) {
-  const [value, setValue] = useState(0)
-  useEffect(() => {
-    if (!active) return
-    let start = 0
-    const step = target / (duration / 16)
-    const timer = setInterval(() => {
-      start += step
-      if (start >= target) { setValue(target); clearInterval(timer) }
-      else setValue(Math.floor(start))
-    }, 16)
-    return () => clearInterval(timer)
-  }, [active, target, duration])
-  return value
-}
+
 
 function Nav() {
   const [open, setOpen] = useState(false)
@@ -42,7 +28,7 @@ function Nav() {
   }, [])
   const links = ['What Lucy Does', 'How It Works', 'Products', 'Pricing', 'FAQ']
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/5' : ''}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0f1a]/80 backdrop-blur-xl border-b border-white/5' : ''}`}>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="text-xl font-bold tracking-tight">
           <span className="text-white">Belken</span>
@@ -60,7 +46,7 @@ function Nav() {
         </button>
       </div>
       {open && (
-        <div className="md:hidden bg-black/95 border-b border-white/5 px-6 pb-6">
+        <div className="md:hidden bg-[#0a0f1a]/95 border-b border-white/5 px-6 pb-6">
           {links.map(l => (
             <a key={l} href={`#${l.toLowerCase().replace(/\s+/g, '-')}`} onClick={() => setOpen(false)}
               className="block py-3 text-white/60 hover:text-white border-b border-white/5 transition-colors">{l}</a>
@@ -178,9 +164,12 @@ function Hero() {
                 <button key={i} onClick={() => switchTo(i)} className={`h-2 rounded-full transition-all duration-300 ${i === idx ? 'bg-brand-400 w-6' : 'bg-white/20 hover:bg-white/40 w-2'}`} />
               ))}
             </div>
-            <p className="text-lg text-white/50 max-w-2xl mb-10 leading-relaxed mx-auto lg:mx-0">
-              Meet Lucy — your AI-powered Chief Operating Officer. She handles lead reactivation, scheduling, client follow-up, content, and operations. 24/7. No salary. No PTO.
-            </p>
+            <div className="flex items-center gap-4 mb-6 justify-center lg:justify-start">
+              <img src="/lucy-avatar.jpg" alt="Lucy — AI COO" className="w-16 h-16 rounded-full object-cover border-2 border-brand-500/40 shadow-lg shadow-brand-500/20 flex-shrink-0" />
+              <p className="text-lg text-white/50 leading-relaxed">
+                Meet Lucy — your AI-powered Chief Operating Officer. She handles lead reactivation, scheduling, client follow-up, content, and operations. 24/7. No salary. No PTO.
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
               <a href="#cta" className="px-8 py-4 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-brand-500/25 flex items-center gap-2">
                 Book a Free Call <ArrowRight size={18} />
@@ -203,24 +192,24 @@ function Hero() {
 }
 
 const TICKER_ITEMS = [
-  '⚡ Lead reactivated → $2,400 deal closed',
-  '📅 Patient no-show prevented → appointment rescheduled',
-  '📢 Content published → 3 platforms → 847 impressions',
-  '💰 Invoice sent → payment received in 4 hours',
-  '🗂️ CRM updated → 47 contacts enriched',
-  '📞 Cold lead converted → $8,500 contract signed',
-  '🔁 3 follow-up sequences launched → 12 responses',
-  '✅ 6 appointments confirmed → zero no-shows today',
+  'Lead reactivated → $2,400 deal closed',
+  'Patient no-show prevented → appointment rescheduled',
+  'Content published → 3 platforms → 847 impressions',
+  'Invoice sent → payment received in 4 hours',
+  'CRM updated → 47 contacts enriched',
+  'Cold lead converted → $8,500 contract signed',
+  '3 follow-up sequences launched → 12 responses',
+  '6 appointments confirmed → zero no-shows today',
 ]
 
 function LiveTicker() {
   const doubled = [...TICKER_ITEMS, ...TICKER_ITEMS]
   return (
     <div className="relative py-4 bg-white/[0.02] border-y border-white/5 overflow-hidden">
-      <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0a0f1a] to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0a0f1a] to-transparent z-10 pointer-events-none" />
       <div className="absolute left-0 top-0 bottom-0 flex items-center z-20 pl-4">
-        <span className="hidden sm:flex items-center gap-2 text-xs font-mono text-brand-400 tracking-widest uppercase whitespace-nowrap bg-black pr-4 border-r border-white/10">
+        <span className="hidden sm:flex items-center gap-2 text-xs font-mono text-brand-400 tracking-widest uppercase whitespace-nowrap bg-[#0a0f1a] pr-4 border-r border-white/10">
           <span className="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse" /> Live Ops
         </span>
       </div>
@@ -234,24 +223,11 @@ function LiveTicker() {
 }
 
 const STATS = [
-  { value: 47, suffix: '+', label: 'Businesses Automated', prefix: '', display: null },
-  { value: 2100000, suffix: '+', label: 'Tasks Completed', prefix: '', display: '2.1M' },
-  { value: 3200000, suffix: '+', label: 'Revenue Generated for Clients', prefix: '$', display: '$3.2M' },
-  { value: 99.7, suffix: '%', label: 'Uptime', prefix: '', display: '99.7' },
+  { label: '14+ Agent Stack', sublabel: 'Deployed AI agents running production ops' },
+  { label: '24/7 Operations', sublabel: 'Always on. Always working.' },
+  { label: 'Live in 14 Days', sublabel: 'From first call to full deployment' },
+  { label: 'US-Based Support', sublabel: 'Real humans behind every deployment' },
 ]
-
-function StatCounter({ stat, active }) {
-  const count = useCountUp(typeof stat.value === 'number' && !String(stat.value).includes('.') ? stat.value : 0, 2000, active)
-  const display = stat.display ? stat.display : `${stat.prefix}${count.toLocaleString()}`
-  return (
-    <div className="text-center">
-      <div className="text-4xl md:text-5xl font-bold text-gradient mb-2 tabular-nums">
-        {active ? display : `${stat.prefix}0`}{stat.suffix}
-      </div>
-      <div className="text-white/40 text-sm">{stat.label}</div>
-    </div>
-  )
-}
 
 function StatsSection() {
   const [ref, inView] = useInView(0.3)
@@ -261,7 +237,10 @@ function StatsSection() {
         <div className="glass rounded-2xl p-10 glow-blue border border-brand-500/10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {STATS.map((stat) => (
-              <StatCounter key={stat.label} stat={stat} active={inView} />
+              <div key={stat.label} className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-gradient mb-2">{stat.label}</div>
+                <div className="text-white/40 text-sm">{stat.sublabel}</div>
+              </div>
             ))}
           </div>
         </div>
@@ -312,20 +291,20 @@ function WhatLucyDoes() {
 function BeforeAfter() {
   const [ref, inView] = useInView()
   const withoutItems = [
-    { emoji: '⏰', text: '6am alarm — scrambling to follow up' },
-    { emoji: '📋', text: 'Manual data entry in 3 different tools' },
-    { emoji: '🔥', text: 'Missed leads because you were too busy' },
-    { emoji: '😓', text: '60-hour weeks, still behind' },
-    { emoji: '💀', text: '$0 recovered from dead leads' },
-    { emoji: '📵', text: 'Nights and weekends: still working' },
+    { text: '6am alarm — scrambling to follow up' },
+    { text: 'Manual data entry in 3 different tools' },
+    { text: 'Missed leads because you were too busy' },
+    { text: '60-hour weeks, still behind' },
+    { text: '$0 recovered from dead leads' },
+    { text: 'Nights and weekends: still working' },
   ]
   const withItems = [
-    { emoji: '😎', text: 'Wake up to booked appointments' },
-    { emoji: '🤖', text: 'Everything automated, zero manual entry' },
-    { emoji: '💎', text: 'Every lead captured and followed up' },
-    { emoji: '🏖️', text: '20-hour weeks — and growing faster' },
-    { emoji: '💰', text: '$47K recovered from cold database' },
-    { emoji: '🎯', text: 'Lucy runs ops while you sleep' },
+    { text: 'Wake up to booked appointments' },
+    { text: 'Everything automated, zero manual entry' },
+    { text: 'Every lead captured and followed up' },
+    { text: '20-hour weeks — and growing faster' },
+    { text: '$47K recovered from cold database' },
+    { text: 'Lucy runs ops while you sleep' },
   ]
   return (
     <section className="py-32 px-6 bg-surface-1" ref={ref}>
@@ -338,16 +317,16 @@ function BeforeAfter() {
         <div className={`grid md:grid-cols-2 gap-0 overflow-hidden rounded-2xl border border-white/10 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="bg-red-950/30 border-r border-white/10 p-8 md:p-10">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-xl bg-red-500/20 flex items-center justify-center text-xl">😰</div>
+              <div className="w-10 h-10 rounded-xl bg-red-500/20 flex items-center justify-center"><X size={18} className="text-red-400" /></div>
               <div>
                 <div className="text-xs font-mono text-red-400/70 uppercase tracking-widest mb-0.5">Without Lucy</div>
                 <div className="text-xl font-bold text-white/80">Running on Empty</div>
               </div>
             </div>
             <ul className="space-y-4">
-              {withoutItems.map(({ emoji, text }) => (
+              {withoutItems.map(({ text }) => (
                 <li key={text} className="flex items-start gap-3">
-                  <span className="text-lg leading-none mt-0.5">{emoji}</span>
+                  <span className="text-red-400/60 mt-0.5 flex-shrink-0"><X size={14} /></span>
                   <span className="text-white/50 text-sm leading-relaxed">{text}</span>
                 </li>
               ))}
@@ -358,16 +337,16 @@ function BeforeAfter() {
           </div>
           <div className="bg-brand-500/5 p-8 md:p-10">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-xl bg-brand-500/20 flex items-center justify-center text-xl">🚀</div>
+              <div className="w-10 h-10 rounded-xl bg-brand-500/20 flex items-center justify-center"><Zap size={18} className="text-brand-400" /></div>
               <div>
                 <div className="text-xs font-mono text-brand-400 uppercase tracking-widest mb-0.5">With Lucy</div>
                 <div className="text-xl font-bold text-white">Running at Full Power</div>
               </div>
             </div>
             <ul className="space-y-4">
-              {withItems.map(({ emoji, text }) => (
+              {withItems.map(({ text }) => (
                 <li key={text} className="flex items-start gap-3">
-                  <span className="text-lg leading-none mt-0.5">{emoji}</span>
+                  <span className="text-green-400 mt-0.5 flex-shrink-0"><Check size={14} /></span>
                   <span className="text-white/80 text-sm leading-relaxed">{text}</span>
                 </li>
               ))}
@@ -526,12 +505,17 @@ const STEPS = [
 function HowItWorks() {
   const [ref, inView] = useInView()
   return (
-    <section id="how-it-works" className="py-32 px-6 bg-surface-1">
-      <div className="max-w-5xl mx-auto" ref={ref}>
+    <section id="how-it-works" className="py-32 px-6 relative" style={{
+      backgroundColor: '#f8fafc',
+      backgroundImage: 'linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px)',
+      backgroundSize: '40px 40px',
+    }}>
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, rgba(248,250,252,0) 0%, rgba(248,250,252,0.8) 100%)' }} />
+      <div className="max-w-5xl mx-auto relative" ref={ref}>
         <div className={`text-center mb-16 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">The Process</div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">How It Works</h2>
-          <p className="text-white/50 text-lg max-w-xl mx-auto">From first call to full deployment in 14 days. No chaos. No onboarding headaches.</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#0f172a' }}>How It Works</h2>
+          <p className="text-lg max-w-xl mx-auto" style={{ color: '#475569' }}>From first call to full deployment in 14 days. No chaos. No onboarding headaches.</p>
         </div>
         <div className="relative">
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-brand-500/50 via-brand-500/20 to-transparent hidden sm:block" />
@@ -545,9 +529,9 @@ function HowItWorks() {
                   </div>
                 </div>
                 <div className="md:w-1/2">
-                  <div className="text-brand-400/50 font-mono text-sm mb-2">{step.num}</div>
-                  <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-                  <p className="text-white/50 leading-relaxed">{step.desc}</p>
+                  <div className="text-brand-400 font-mono text-sm mb-2">{step.num}</div>
+                  <h3 className="text-2xl font-bold mb-3" style={{ color: '#0f172a' }}>{step.title}</h3>
+                  <p className="leading-relaxed" style={{ color: '#475569' }}>{step.desc}</p>
                 </div>
               </div>
             ))}
@@ -604,33 +588,28 @@ function Pricing() {
 
 function CaseStudies() {
   const [ref, inView] = useInView()
-  const cases = [
-    { name: 'Meridian HVAC', type: 'Home Services', quote: "We had 4,200 past customers sitting in a dead CRM. Lucy reactivated 340 of them in the first month — $47K in booked jobs from leads we had written off.", stats: [['$47K', 'revenue recovered'], ['340', 'leads reactivated'], ['8.1%', 'conversion rate']] },
-    { name: 'Apex Real Estate Group', type: 'Real Estate', quote: "Our agents were spending 3 hours a day on follow-ups. Now Lucy handles all of it — scheduling showings, qualifying leads, sending contracts. My team just sells.", stats: [['3hrs/day', 'saved per agent'], ['2.4x', 'more showings'], ['22', 'deals in 60 days']] },
-    { name: 'Restore Wellness', type: 'Medical Practice', quote: "Patient no-shows dropped 60% after Lucy started handling confirmations and rescheduling. She even follows up on canceled appointments and fills the slots.", stats: [['60%', 'fewer no-shows'], ['$12K/mo', 'recovered revenue'], ['14 days', 'to deployment']] },
-  ]
   return (
     <section id="case-studies" className="py-32 px-6 bg-surface-1">
       <div className="max-w-5xl mx-auto" ref={ref}>
         <div className={`text-center mb-16 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-4">Proof</div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Case Studies</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Real Results. Real Clients.</h2>
         </div>
-        <div className={`grid md:grid-cols-3 gap-6 transition-all duration-700 delay-100 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {cases.map((cs, i) => (
-            <div key={cs.name} className={`glass rounded-2xl p-8 border border-white/10 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${i * 100}ms` }}>
-              <div className="flex items-start gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-brand-500/20 flex items-center justify-center text-brand-400 flex-shrink-0"><Zap size={18} /></div>
-                <div><h3 className="text-lg font-bold">{cs.name}</h3><p className="text-white/40 text-xs">{cs.type}</p></div>
-              </div>
-              <blockquote className="text-white/60 text-sm leading-relaxed mb-6 italic border-l-2 border-brand-500/30 pl-4">"{cs.quote}"</blockquote>
-              <div className="grid grid-cols-3 gap-3 pt-4 border-t border-white/5">
-                {cs.stats.map(([n, l]) => (
-                  <div key={l}><div className="text-lg font-bold text-gradient">{n}</div><div className="text-white/30 text-xs">{l}</div></div>
-                ))}
-              </div>
+        <div className={`transition-all duration-700 delay-100 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="glass rounded-2xl p-10 md:p-14 border border-white/10 text-center max-w-2xl mx-auto">
+            <div className="w-14 h-14 rounded-2xl bg-brand-500/10 flex items-center justify-center text-brand-400 mx-auto mb-6">
+              <Zap size={26} />
             </div>
-          ))}
+            <p className="text-white/70 text-lg leading-relaxed mb-6">
+              We're in early deployment. Case studies from our first clients are being documented now.
+            </p>
+            <p className="text-white/40 text-sm leading-relaxed mb-8">
+              Want to be featured? Book a call — early clients get priority placement.
+            </p>
+            <a href="#cta" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 text-sm">
+              Book a Call <ArrowRight size={16} />
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -859,7 +838,7 @@ function Footer() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-[#0a0f1a] text-white">
       <Nav />
       <Hero />
       <LiveTicker />
