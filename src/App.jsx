@@ -650,7 +650,7 @@ function Products() {
                 <span className="text-3xl font-bold text-white">$29</span>
                 <span className="text-white/40 text-sm">one-time · instant download</span>
               </div>
-              <a href="https://belken.gumroad.com/l/vibe-coding-agent-prompt-pack" target="_blank" rel="noopener noreferrer"
+              <a href="https://belken.gumroad.com" target="_blank" rel="noopener noreferrer"
                 className="block text-center py-3 px-6 bg-purple-500 hover:bg-purple-600 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 text-sm">
                 Get It on Gumroad →
               </a>
