@@ -747,16 +747,7 @@ function FAQ() {
 }
 
 function CTA() {
-  const [email, setEmail] = useState('')
-  const [submitted, setSubmitted] = useState(false)
   const [ref, inView] = useInView()
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (email) {
-      window.location.href = `mailto:info@belken.ai?subject=Book a Call — Belken Enterprise&body=Hi, I'd like to book a free call. My email is: ${email}%0A%0ATell us a bit about your business so we can prepare:`
-      setSubmitted(true)
-    }
-  }
   return (
     <section id="cta" className="py-32 px-6 relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 pointer-events-none">
@@ -766,22 +757,18 @@ function CTA() {
         <div className="text-brand-400 text-sm font-mono tracking-widest uppercase mb-6">Get Started</div>
         <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">Ready to Stop Doing<br /><span className="text-gradient">Everything Yourself?</span></h2>
         <p className="text-white/50 text-lg mb-10 max-w-xl mx-auto">Book a free 30-minute call. We'll map out exactly how Lucy can take operations off your plate — no pitch decks, no BS.</p>
-        <div className="glass rounded-2xl p-8 mb-8">
-          {submitted ? (
-            <div className="py-4">
-              <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4"><Check size={24} className="text-green-400" /></div>
-              <div className="text-white font-semibold text-lg mb-2">You're on the list.</div>
-              <div className="text-white/50 text-sm">We'll reach out within 24 hours to schedule your call.</div>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-              <input type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="your@email.com"
-                className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/20 text-sm focus:outline-none focus:border-brand-500/50 transition-colors" />
-              <button type="submit" className="px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 whitespace-nowrap text-sm">Book a Call</button>
-            </form>
-          )}
+        <div className="glass rounded-2xl p-8 mb-8 flex flex-col items-center gap-4">
+          <a
+            href="https://calendly.com/belkenbot/free-30-min-discovery-call"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-10 py-4 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-brand-500/25 flex items-center gap-2 text-base"
+          >
+            Book Your Free 30-Min Call <ArrowRight size={18} />
+          </a>
+          <p className="text-white/30 text-sm">Pick a time that works for you — no sales pressure.</p>
         </div>
-        <p className="text-white/30 text-sm">Or email us directly: <a href="mailto:info@belken.ai" className="text-brand-400 hover:underline">info@belken.ai</a></p>
+        <p className="text-white/30 text-sm">Questions? Email us: <a href="mailto:info@belken.ai" className="text-brand-400 hover:underline">info@belken.ai</a></p>
       </div>
     </section>
   )
