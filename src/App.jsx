@@ -164,7 +164,7 @@ export default function App() {
         <div className="rounded-2xl bg-gradient-to-br from-blue-600/10 to-purple-600/10 border border-blue-600/20 p-10 md:p-16 text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">Ready to Automate?</h2>
           <p className="text-gray-400 mb-8 max-w-lg mx-auto">Book a free 30-minute discovery call. We'll map your automation opportunities and show you exactly what's possible.</p>
-          <a href="https://calendly.com/belkenbot" target="_blank" rel="noopener" className="inline-flex items-center gap-2 px-10 py-5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xl transition-all hover:scale-105">
+          <a href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener" className="inline-flex items-center gap-2 px-10 py-5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xl transition-all hover:scale-105">
             Book Your Free Call
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
           </a>
@@ -187,7 +187,7 @@ export default function App() {
               <h4 className="font-semibold text-sm mb-3">Links</h4>
               <div className="space-y-2 text-sm text-gray-400">
                 <a href="https://belken.gumroad.com" target="_blank" rel="noopener" className="block hover:text-white transition">Gumroad Store</a>
-                <a href="https://calendly.com/belkenbot" target="_blank" rel="noopener" className="block hover:text-white transition">Book a Call</a>
+                <a href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener" className="block hover:text-white transition">Book a Call</a>
                 <a href="mailto:info@belkenventures.com" className="block hover:text-white transition">info@belkenventures.com</a>
               </div>
             </div>
@@ -212,7 +212,7 @@ export default function App() {
 
       {/* MOBILE STICKY CTA */}
       <div className="fixed bottom-0 left-0 right-0 md:hidden z-[60] p-4 bg-[#0a0a0f]/95 backdrop-blur-lg border-t border-white/5">
-        <a href="https://calendly.com/belkenbot" target="_blank" rel="noopener noreferrer" className="block w-full py-4 bg-blue-600 active:bg-blue-700 text-white font-bold rounded-xl text-center text-lg touch-manipulation">
+        <a href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener noreferrer" className="block w-full py-4 bg-blue-600 active:bg-blue-700 text-white font-bold rounded-xl text-center text-lg touch-manipulation">
           Book Free Discovery Call
         </a>
       </div>
