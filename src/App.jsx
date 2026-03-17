@@ -207,9 +207,12 @@ export default function App() {
         </div>
       </footer>
 
+      {/* Bottom spacer for mobile sticky CTA */}
+      <div className="h-20 md:hidden" />
+
       {/* MOBILE STICKY CTA */}
-      <div className="fixed bottom-0 left-0 right-0 md:hidden z-50 p-4 bg-[#0a0a0f]/90 backdrop-blur-lg border-t border-white/5">
-        <a href="https://calendly.com/belkenbot/discovery-call" target="_blank" rel="noopener" className="block w-full py-3.5 bg-blue-600 text-white font-bold rounded-xl text-center text-lg">
+      <div className="fixed bottom-0 left-0 right-0 md:hidden z-[60] p-4 bg-[#0a0a0f]/95 backdrop-blur-lg border-t border-white/5">
+        <a href="https://calendly.com/belkenbot/discovery-call" target="_blank" rel="noopener noreferrer" className="block w-full py-4 bg-blue-600 active:bg-blue-700 text-white font-bold rounded-xl text-center text-lg touch-manipulation">
           Book Free Discovery Call
         </a>
       </div>
