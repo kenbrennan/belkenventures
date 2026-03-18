@@ -188,7 +188,7 @@ export default function App() {
               <div className="space-y-2 text-sm text-gray-400">
                 <a href="https://belken.gumroad.com" target="_blank" rel="noopener" className="block hover:text-white transition">Gumroad Store</a>
                 <a href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener" className="block hover:text-white transition">Book a Call</a>
-                <a href="mailto:info@belkenventures.com" className="block hover:text-white transition">info@belkenventures.com</a>
+                <a href="mailto:info@belken.ai" className="block hover:text-white transition">info@belken.ai</a>
               </div>
             </div>
             <div>
