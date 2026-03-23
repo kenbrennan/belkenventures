@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARIA Reactivation — Turn Your Dead List Into Revenue</title>
+  <meta name="description" content="AI-powered voice calls + SMS reactivation for Shopify stores. We turn forgotten customers into repeat buyers. $750 Discovery Audit. Done for you." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            amber: {
+              400: '#FBBF24',
+              500: '#F59E0B',
+              600: '#D97706',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.7s ease forwards; }
+    .fade-up-delay-1 { animation: fadeUp 0.7s ease 0.1s forwards; opacity: 0; }
+    .fade-up-delay-2 { animation: fadeUp 0.7s ease 0.2s forwards; opacity: 0; }
+    .fade-up-delay-3 { animation: fadeUp 0.7s ease 0.3s forwards; opacity: 0; }
+    .glow-amber { box-shadow: 0 0 40px rgba(245, 158, 11, 0.12); }
+    .glow-amber-hover:hover { box-shadow: 0 0 40px rgba(245, 158, 11, 0.2); }
+  </style>
+</head>
+<body class="min-h-screen bg-[#0a0a0f] text-gray-100">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="https://belken.ai" class="flex items-center gap-2">
+        <span class="text-2xl">⚡</span>
+        <span class="text-xl font-bold tracking-tight">Belken<span class="text-amber-500">AI</span></span>
+        <span class="ml-2 text-xs text-gray-500 font-mono">/aria</span>
+      </a>
+      <div class="hidden sm:flex items-center gap-6 text-sm text-gray-400">
+        <a href="#how-it-works" class="hover:text-white transition">How It Works</a>
+        <a href="#pricing" class="hover:text-white transition">Pricing</a>
+        <a href="#book" class="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-black font-semibold rounded-lg transition">Get Audit →</a>
+      </div>
+      <a href="#book" class="sm:hidden px-4 py-2 bg-amber-500 hover:bg-amber-400 text-black font-semibold rounded-lg text-sm transition">Get Audit →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="relative overflow-hidden pt-24">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/4 left-1/3 w-[500px] h-[400px] bg-amber-500/6 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-1/3 right-1/4 w-[400px] h-[300px] bg-orange-600/4 rounded-full blur-3xl"></div>
+      <div class="absolute top-1/2 left-1/2 w-[200px] h-[200px] bg-amber-400/3 rounded-full blur-2xl"></div>
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto px-6 py-24 md:py-36 text-center">
+      <div class="inline-block mb-6 px-4 py-1.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20 fade-up">
+        AI Voice + SMS • Done For You • Shopify Stores
+      </div>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight mb-6 fade-up-delay-1">
+        Your dead list isn't dead.<br />
+        <span class="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">It's sleeping.</span>
+      </h1>
+      <p class="text-xl md:text-2xl font-light text-amber-400/80 mb-4 fade-up-delay-1">We wake it up.</p>
+      <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-10 fade-up-delay-2">
+        AI-powered voice calls, personalized SMS, and ringless voicemail — done for you. We take your dead Klaviyo list and turn it back into revenue. No SaaS to learn. No campaigns to manage. Just results.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 fade-up-delay-3">
+        <a href="#book" class="px-8 py-4 bg-amber-500 hover:bg-amber-400 text-black font-bold rounded-xl text-lg transition-all hover:scale-105 shadow-lg">
+          Start With a $750 Audit →
+        </a>
+        <a href="#pricing" class="px-8 py-4 border border-white/10 hover:border-amber-500/30 text-white font-semibold rounded-xl text-lg transition-all hover:scale-105">
+          See Pricing
+        </a>
+      </div>
+      <p class="mt-4 text-sm text-gray-600">Audit fee credited toward setup. 5 business days.</p>
+    </div>
+  </div>
+
+  <!-- SOCIAL PROOF STATS -->
+  <div class="max-w-5xl mx-auto px-6 py-12">
+    <p class="text-center text-xs text-gray-600 uppercase tracking-widest mb-8 font-mono">From our pilot program</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="text-center p-6 rounded-xl bg-white/[0.02] border border-white/5 glow-amber">
+        <div class="text-3xl md:text-4xl font-bold text-amber-400 mb-1">22%</div>
+        <div class="text-sm text-gray-500">Avg Reactivation Rate</div>
+      </div>
+      <div class="text-center p-6 rounded-xl bg-white/[0.02] border border-white/5">
+        <div class="text-3xl md:text-4xl font-bold text-amber-400 mb-1">$3,400</div>
+        <div class="text-sm text-gray-500">Revenue in 30 Days</div>
+      </div>
+      <div class="text-center p-6 rounded-xl bg-white/[0.02] border border-white/5">
+        <div class="text-3xl md:text-4xl font-bold text-amber-400 mb-1">34%</div>
+        <div class="text-sm text-gray-500">Email Open Rate (vs 7%)</div>
+      </div>
+      <div class="text-center p-6 rounded-xl bg-white/[0.02] border border-white/5">
+        <div class="text-3xl md:text-4xl font-bold text-amber-400 mb-1">800</div>
+        <div class="text-sm text-gray-500">Contacts Reactivated</div>
+      </div>
+    </div>
+    <!-- Testimonial -->
+    <div class="mt-8 p-6 rounded-xl bg-amber-500/5 border border-amber-500/15 text-center max-w-2xl mx-auto">
+      <p class="text-gray-300 text-lg italic mb-3">"We reactivated 22% of an 800-contact dead list and generated $3,400 in 30 days."</p>
+      <p class="text-sm text-amber-500/70">— Belken Ventures (internal pilot case study)</p>
+    </div>
+  </div>
+
+  <!-- WHAT WE DO -->
+  <div class="max-w-5xl mx-auto px-6 py-20">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">What ARIA Does</h2>
+    <p class="text-gray-400 text-center mb-12 max-w-xl mx-auto">Not a platform. Not a chatbot. A fully managed reactivation service — we operate everything.</p>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="p-6 rounded-xl bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all duration-300 glow-amber-hover">
+        <div class="text-3xl mb-4">📞</div>
+        <h3 class="font-semibold text-lg mb-2">AI Voice Calls</h3>
+        <p class="text-sm text-gray-400">Personalized AI calls based on each customer's purchase history. Not robocalls — genuine, contextual outreach that feels human.</p>
+      </div>
+      <div class="p-6 rounded-xl bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all duration-300 glow-amber-hover">
+        <div class="text-3xl mb-4">💬</div>
+        <h3 class="font-semibold text-lg mb-2">Personalized SMS</h3>
+        <p class="text-sm text-gray-400">Dynamic SMS sequences timed to follow up voice touches. 5-segment approach: high-value lapsed, one-time buyers, cart abandoners, and more.</p>
+      </div>
+      <div class="p-6 rounded-xl bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all duration-300 glow-amber-hover">
+        <div class="text-3xl mb-4">📍</div>
+        <h3 class="font-semibold text-lg mb-2">Ringless Voicemail</h3>
+        <p class="text-sm text-gray-400">Drop personalized voicemails silently. Customers call back curious, not annoyed. High engagement with zero interruption.</p>
+      </div>
+      <div class="p-6 rounded-xl bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all duration-300 glow-amber-hover">
+        <div class="text-3xl mb-4">🔔</div>
+        <h3 class="font-semibold text-lg mb-2">Real-Time Hot Lead Alerts</h3>
+        <p class="text-sm text-gray-400">The moment a contact re-engages, you get a notification. Strike while the iron is hot — no leads fall through the cracks.</p>
+      </div>
+      <div class="p-6 rounded-xl bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all duration-300 glow-amber-hover">
+        <div class="text-3xl mb-4">📊</div>
+        <h3 class="font-semibold text-lg mb-2">Weekly Revenue Reports</h3>
+        <p class="text-sm text-gray-400">We attribute every dollar. You see exactly what the campaign generated, which segments responded, and what's next.</p>
+      </div>
+      <div class="p-6 rounded-xl bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all duration-300 glow-amber-hover">
+        <div class="text-3xl mb-4">🧠</div>
+        <h3 class="font-semibold text-lg mb-2">Behavioral Segmentation</h3>
+        <p class="text-sm text-gray-400">We don't blast your whole list. We analyze purchase behavior, segment intelligently, and craft unique messaging per group.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div id="how-it-works" class="max-w-4xl mx-auto px-6 py-20">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">How It Works</h2>
+    <div class="space-y-6">
+      <div class="flex gap-6 items-start p-6 rounded-xl bg-white/[0.02] border border-white/5">
+        <div class="text-3xl font-bold text-amber-500/40 shrink-0 font-mono">01</div>
+        <div>
+          <h3 class="font-semibold text-lg mb-1">Export Your List</h3>
+          <p class="text-sm text-gray-400">Export your Klaviyo, Mailchimp, or Omnisend list as CSV. That's it. We do everything from there.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 items-start p-6 rounded-xl bg-white/[0.02] border border-white/5">
+        <div class="text-3xl font-bold text-amber-500/40 shrink-0 font-mono">02</div>
+        <div>
+          <h3 class="font-semibold text-lg mb-1">We Audit & Segment</h3>
+          <p class="text-sm text-gray-400">Our AI analyzes every contact — purchase history, frequency, value, recency. We segment into 5 behavioral groups and build the recovery roadmap.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 items-start p-6 rounded-xl bg-white/[0.02] border border-white/5">
+        <div class="text-3xl font-bold text-amber-500/40 shrink-0 font-mono">03</div>
+        <div>
+          <h3 class="font-semibold text-lg mb-1">Campaign Launches</h3>
+          <p class="text-sm text-gray-400">7-day multi-channel campaign: AI voice → SMS follow-up → ringless voicemail. Each touchpoint personalized to the customer's history.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 items-start p-6 rounded-xl bg-white/[0.02] border border-white/5">
+        <div class="text-3xl font-bold text-amber-500/40 shrink-0 font-mono">04</div>
+        <div>
+          <h3 class="font-semibold text-lg mb-1">You Get Results</h3>
+          <p class="text-sm text-gray-400">Hot lead alerts hit your phone in real time. Weekly report lands in your inbox with full revenue attribution. We keep optimizing monthly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div id="pricing" class="max-w-6xl mx-auto px-6 py-20">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Simple Pricing. Real Results.</h2>
+    <p class="text-gray-400 text-center mb-4 max-w-xl mx-auto">No contracts. No long-term commitments. Start with the audit — if the numbers don't work, you pay nothing more.</p>
+    <p class="text-center text-sm text-amber-500/70 mb-12 font-mono">Less than what you're paying Klaviyo to email people who stopped opening.</p>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-8">
+
+      <!-- Discovery Audit -->
+      <div class="p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-amber-500/20 transition-all duration-300 flex flex-col">
+        <div class="text-2xl mb-3">🔍</div>
+        <h3 class="text-xl font-bold mb-1">Discovery Audit</h3>
+        <div class="text-4xl font-bold text-amber-400 mb-1">$750</div>
+        <p class="text-sm text-gray-500 mb-6">One-time · Credited toward setup</p>
+        <ul class="space-y-3 text-sm text-gray-300 mb-8 flex-1">
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> Complete list health analysis</li>
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> Behavioral segmentation (5 segments)</li>
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> 3-point reactivation roadmap</li>
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> Revenue recovery estimate</li>
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> 100-contact test campaign</li>
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> Credited toward Setup if you proceed</li>
+        </ul>
+        <p class="text-xs text-gray-600 mb-4">Delivery: 5 business days</p>
+        <a href="https://calendly.com/belkenventures" target="_blank" rel="noopener" class="block text-center px-6 py-3 border border-amber-500/40 hover:bg-amber-500/10 text-amber-400 font-semibold rounded-xl transition-all">
+          Start Audit →
+        </a>
+      </div>
+
+      <!-- Setup + Launch (Featured) -->
+      <div class="p-8 rounded-2xl bg-amber-500/5 border border-amber-500/30 hover:border-amber-500/50 transition-all duration-300 flex flex-col relative glow-amber">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-amber-500 text-black text-xs font-bold rounded-full">MOST POPULAR</div>
+        <div class="text-2xl mb-3">🚀</div>
+        <h3 class="text-xl font-bold mb-1">Setup + Launch</h3>
+        <div class="text-4xl font-bold text-amber-400 mb-1">$2,500</div>
+        <p class="text-sm text-gray-500 mb-6">One-time · Audit credited</p>
+        <ul class="space-y-3 text-sm text-gray-300 mb-8 flex-1">
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> Everything in Discovery Audit</li>
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> Full ARIA deployment on your list</li>
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> AI-personalized scripts per segment</li>
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> 7-day multi-channel campaign</li>
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> Hot lead alerts to your phone</li>
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> First monthly report included</li>
+        </ul>
+        <p class="text-xs text-gray-600 mb-4">Delivery: 7 days from data receipt</p>
+        <a href="https://calendly.com/belkenventures" target="_blank" rel="noopener" class="block text-center px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black font-bold rounded-xl transition-all hover:scale-105">
+          Book Discovery Call →
+        </a>
+      </div>
+
+      <!-- Monthly Retainer -->
+      <div class="p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-amber-500/20 transition-all duration-300 flex flex-col">
+        <div class="text-2xl mb-3">📊</div>
+        <h3 class="text-xl font-bold mb-1">Monthly Retainer</h3>
+        <div class="text-4xl font-bold text-amber-400 mb-1">$750<span class="text-lg text-gray-500">/mo</span></div>
+        <p class="text-sm text-gray-500 mb-6">Cancel anytime · No contracts</p>
+        <ul class="space-y-3 text-sm text-gray-300 mb-8 flex-1">
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> Ongoing campaign optimization</li>
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> New sequences + A/B testing</li>
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> Monthly revenue attribution report</li>
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> Continuous list monitoring</li>
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> Priority support</li>
+          <li class="flex gap-2"><span class="text-amber-500 shrink-0">✓</span> Quarterly strategy call</li>
+        </ul>
+        <p class="text-xs text-gray-600 mb-4">Starts after Setup + Launch</p>
+        <a href="https://calendly.com/belkenventures" target="_blank" rel="noopener" class="block text-center px-6 py-3 border border-amber-500/40 hover:bg-amber-500/10 text-amber-400 font-semibold rounded-xl transition-all">
+          Learn More →
+        </a>
+      </div>
+
+    </div>
+
+    <!-- All-In Bundle -->
+    <div class="p-6 rounded-xl bg-white/[0.02] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2 mb-1">
+          <span class="text-xl">💰</span>
+          <h3 class="font-bold text-lg">First Month All-In</h3>
+        </div>
+        <p class="text-sm text-gray-400">Audit ($750) + Setup ($2,500) = <strong class="text-white">$3,250 total to start</strong>, then $750/month. Full campaign live within 2 weeks.</p>
+      </div>
+      <a href="https://calendly.com/belkenventures" target="_blank" rel="noopener" class="shrink-0 px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black font-bold rounded-xl transition-all whitespace-nowrap">
+        Get Started →
+      </a>
+    </div>
+
+    <!-- Enterprise row -->
+    <div class="mt-4 p-5 rounded-xl bg-white/[0.01] border border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2 mb-1">
+          <span class="text-xl">🏆</span>
+          <h3 class="font-semibold">Enterprise / Large Lists (10K+)</h3>
+        </div>
+        <p class="text-sm text-gray-500">Custom pricing · Performance-based option available ($30–50 per booked appointment) · Dedicated account manager</p>
+      </div>
+      <a href="https://calendly.com/belkenventures" target="_blank" rel="noopener" class="shrink-0 text-amber-400 hover:text-amber-300 text-sm font-medium transition whitespace-nowrap">
+        Contact us →
+      </a>
+    </div>
+  </div>
+
+  <!-- WHO IT'S FOR -->
+  <div class="max-w-4xl mx-auto px-6 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-10">Built for Shopify Operators Who Know Their List Is Worth More</h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5">
+        <h3 class="font-semibold text-amber-400 mb-3">✅ Perfect if you have:</h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li>• Shopify store doing $5K–$50K/month</li>
+          <li>• 1,000–100,000 contacts in Klaviyo/Mailchimp</li>
+          <li>• Email open rates below 15%</li>
+          <li>• Rising cost to acquire new customers</li>
+          <li>• Customers who bought once and disappeared</li>
+        </ul>
+      </div>
+      <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5">
+        <h3 class="font-semibold text-gray-500 mb-3">❌ Not the right fit if:</h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li>• Your list has fewer than 500 contacts</li>
+          <li>• You want a DIY tool or platform</li>
+          <li>• You're looking for cold lead generation</li>
+          <li>• You need enterprise-level contracts</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOK A CALL CTA -->
+  <div id="book" class="max-w-4xl mx-auto px-6 py-20">
+    <div class="rounded-2xl bg-gradient-to-br from-amber-600/10 to-orange-600/8 border border-amber-500/20 p-10 md:p-16 text-center glow-amber">
+      <p class="text-amber-500/70 text-sm font-mono mb-4 uppercase tracking-widest">Start here</p>
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">
+        Find out what your<br />dead list is worth.
+      </h2>
+      <p class="text-gray-400 mb-8 max-w-lg mx-auto">
+        Book a free 15-minute call. We'll look at your list, tell you what we think is recoverable, and give you a straight answer on whether ARIA makes sense for you.
+      </p>
+      <a href="https://calendly.com/belkenventures" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-10 py-5 bg-amber-500 hover:bg-amber-400 text-black font-bold rounded-xl text-xl transition-all hover:scale-105 shadow-lg">
+        Book Free Discovery Call
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
+      <p class="mt-4 text-sm text-gray-600">No commitment. No pitch deck. Just a real conversation about your list.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6 py-12">
+      <div class="grid md:grid-cols-3 gap-8 items-start">
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xl">⚡</span>
+            <span class="font-bold">Belken<span class="text-amber-500">AI</span></span>
+          </div>
+          <p class="text-sm text-gray-500">ARIA Reactivation is a service of<br />Belken Ventures Inc.</p>
+          <p class="text-xs text-gray-600 mt-2">AI voice + SMS reactivation.<br />Done for you.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-sm mb-3">ARIA</h4>
+          <div class="space-y-2 text-sm text-gray-400">
+            <a href="#pricing" class="block hover:text-white transition">Pricing</a>
+            <a href="#how-it-works" class="block hover:text-white transition">How It Works</a>
+            <a href="https://calendly.com/belkenventures" target="_blank" rel="noopener" class="block hover:text-white transition">Book a Call</a>
+            <a href="mailto:info@belkenventures.com" class="block hover:text-white transition">info@belkenventures.com</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-semibold text-sm mb-3">Belken AI</h4>
+          <div class="space-y-2 text-sm text-gray-400">
+            <a href="https://belken.ai" class="block hover:text-white transition">belken.ai</a>
+            <a href="https://belken.gumroad.com" target="_blank" rel="noopener" class="block hover:text-white transition">Gumroad Store</a>
+            <a href="https://x.com/LucyBelkenAI" target="_blank" rel="noopener" class="block hover:text-white transition">𝕏 @LucyBelkenAI</a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-white/5 text-center text-xs text-gray-600">
+        © 2026 Belken Ventures Inc. All rights reserved. · ARIA Reactivation is a DBA of Belken Ventures Inc.
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE STICKY CTA -->
+  <div class="h-20 md:hidden"></div>
+  <div class="fixed bottom-0 left-0 right-0 md:hidden z-[60] p-4 bg-[#0a0a0f]/95 backdrop-blur-lg border-t border-white/5">
+    <a href="https://calendly.com/belkenventures" target="_blank" rel="noopener noreferrer" class="block w-full py-4 bg-amber-500 active:bg-amber-600 text-black font-bold rounded-xl text-center text-lg touch-manipulation">
+      Book Free Discovery Call →
+    </a>
+  </div>
+
+</body>
+</html>
