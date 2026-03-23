@@ -60,6 +60,7 @@ export default function App() {
           <div className="hidden sm:flex items-center gap-6 text-sm text-gray-400">
             <a href="#services" className="hover:text-white transition">Services</a>
             <a href="#products" className="hover:text-white transition">Products</a>
+            <a href="/aria" className="hover:text-white transition">ARIA</a>
             <a href="#book" className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition">Book a Call</a>
           </div>
         </div>
