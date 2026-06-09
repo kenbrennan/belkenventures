@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TikTok Integration — BelkenAI</title>
+  <meta name="description" content="How BelkenAI integrates with TikTok: authenticated users connect their own TikTok account to publish and schedule video content directly from the BelkenAI dashboard." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style> html { scroll-behavior: smooth; } </style>
+</head>
+<body class="min-h-screen bg-[#0a0a0f] text-gray-100">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="https://belkenai.com" class="flex items-center gap-2">
+        <span class="text-2xl">&#9889;</span>
+        <span class="text-xl font-bold tracking-tight">Belken<span class="text-blue-400">AI</span></span>
+      </a>
+      <div class="flex items-center gap-6 text-sm text-gray-400">
+        <a href="https://belkenai.com" class="hover:text-white transition">Home</a>
+        <a href="/privacy" class="hover:text-white transition">Privacy</a>
+        <a href="/terms" class="hover:text-white transition">Terms</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-3xl mx-auto px-6 pt-32 pb-24">
+    <p class="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-3">Integration</p>
+    <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-6">BelkenAI &times; TikTok</h1>
+    <p class="text-lg text-gray-400 leading-relaxed mb-10">
+      BelkenAI is an AI content and operations platform. Our TikTok integration lets an authenticated
+      user securely connect their own TikTok account and publish or schedule video content to it directly
+      from the BelkenAI dashboard. We never post without the account owner&rsquo;s action and authorization.
+    </p>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-4">How it works (end&#8209;to&#8209;end)</h2>
+      <ol class="space-y-4 text-gray-300 leading-relaxed list-decimal list-inside">
+        <li><span class="font-semibold text-white">Connect:</span> The user clicks &ldquo;Connect TikTok&rdquo; in the BelkenAI dashboard and is sent to TikTok&rsquo;s official Login Kit / OAuth screen, where they review and approve the requested permissions.</li>
+        <li><span class="font-semibold text-white">Authorize:</span> TikTok returns an access token scoped only to the permissions the user approved. BelkenAI stores this token securely and uses it solely on the user&rsquo;s behalf.</li>
+        <li><span class="font-semibold text-white">Create &amp; review:</span> The user uploads or selects a video and writes a caption inside BelkenAI. Nothing is sent to TikTok until the user confirms.</li>
+        <li><span class="font-semibold text-white">Publish or schedule:</span> On the user&rsquo;s command, BelkenAI uses the TikTok Content Posting API to upload the video to the user&rsquo;s own TikTok account &mdash; immediately or at a scheduled time the user chooses.</li>
+        <li><span class="font-semibold text-white">Disconnect anytime:</span> The user can revoke access at any time from the BelkenAI dashboard or from their TikTok account settings, which immediately ends BelkenAI&rsquo;s access.</li>
+      </ol>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-4">Permissions we request &mdash; and why</h2>
+      <div class="space-y-4">
+        <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+          <p class="font-mono text-blue-400 text-sm mb-1">user.info.basic</p>
+          <p class="text-gray-300">Read the connected account&rsquo;s basic profile (display name and avatar) so the user can confirm which TikTok account they are posting to.</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+          <p class="font-mono text-blue-400 text-sm mb-1">video.upload</p>
+          <p class="text-gray-300">Upload a video the user created into their own TikTok account as a draft for the user to review and post.</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+          <p class="font-mono text-blue-400 text-sm mb-1">video.publish</p>
+          <p class="text-gray-300">Publish or schedule the user&rsquo;s video to their own TikTok account when the user explicitly chooses to post.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-4">Your data &amp; control</h2>
+      <p class="text-gray-300 leading-relaxed">
+        BelkenAI accesses TikTok data only to provide the features above. We do not sell TikTok data, and we
+        do not share it with third parties except the infrastructure providers required to operate the service.
+        For full details on what we collect, how we use it, how long we keep it, and how to delete it, see our
+        <a href="/privacy" class="text-blue-400 hover:underline">Privacy Policy</a>.
+        Your use of the integration is governed by our
+        <a href="/terms" class="text-blue-400 hover:underline">Terms of Service</a>.
+      </p>
+    </section>
+
+    <p class="text-gray-500">Questions about this integration? Email <a href="mailto:info@belken.ai" class="text-blue-400 hover:underline">info@belken.ai</a>.</p>
+  </main>
+
+  <footer class="border-t border-white/5 py-8 text-center text-sm text-gray-600">
+    &copy; 2026 Belken Ventures &middot; <a href="https://belkenai.com" class="hover:text-gray-400">belkenai.com</a>
+  </footer>
+</body>
+</html>
