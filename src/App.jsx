@@ -54,7 +54,7 @@ export default function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-2xl">⚡</span>
+            <span className="inline-grid place-items-center w-8 h-8 rounded-lg bg-blue-600 text-white"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 10-12h-6l1-8z"/></svg></span>
             <span className="text-xl font-bold tracking-tight">Belken<span className="text-blue-400">AI</span></span>
           </div>
           <div className="hidden sm:flex items-center gap-6 text-sm text-gray-400">
@@ -179,7 +179,7 @@ export default function App() {
           <div className="grid md:grid-cols-3 gap-8 items-start">
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <span className="text-xl">⚡</span>
+                <span className="inline-grid place-items-center w-7 h-7 rounded-md bg-blue-600 text-white"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 10-12h-6l1-8z"/></svg></span>
                 <span className="font-bold">Belken<span className="text-blue-400">AI</span></span>
               </div>
               <p className="text-sm text-gray-500">AI COO-as-a-Service.<br />Built for businesses that want to scale without hiring.</p>
