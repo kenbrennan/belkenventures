@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARIA for HVAC — Never Miss Another Service Call | BelkenAI</title>
+  <meta name="description" content="ARIA answers every HVAC call 24/7 — no-cooling emergencies, the heat-wave rush, after-hours — books the job, and calls past customers to schedule maintenance. Built for HVAC companies." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['Inter','system-ui','sans-serif'] },
+      colors: {
+        navy:{700:'#1e3a5f',800:'#14283f',900:'#0c1b2e',950:'#081320'},
+        brand:{300:'#93b4f5',400:'#5b8def',500:'#2563eb',600:'#1d4ed8',700:'#1e40af'},
+      }
+    }}}
+  </script>
+  <style>
+    html{scroll-behavior:smooth} body{font-family:'Inter',system-ui,sans-serif}
+    .ico{stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+    .hero-grad{background:radial-gradient(900px 500px at 75% 10%, #1e3a5f 0%, #0c1b2e 55%, #081320 100%)}
+    @keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .b{opacity:0;animation:pop .5s ease forwards}
+    .b1{animation-delay:.2s}.b2{animation-delay:.9s}.b3{animation-delay:1.6s}.b4{animation-delay:2.3s}.b5{animation-delay:3.0s}
+    input[type=range]{-webkit-appearance:none;appearance:none;height:8px;border-radius:9999px;background:#e2e8f0;outline:none}
+    input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#1d4ed8;cursor:pointer;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+  </style>
+</head>
+<body class="min-h-screen bg-white text-navy-900 antialiased">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-100">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <a href="https://belken.ai" class="flex items-center gap-2.5 font-extrabold text-xl tracking-tight text-navy-900">
+          <span class="inline-grid place-items-center w-8 h-8 rounded-lg bg-brand-600 text-white"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 10-12h-6l1-8z"/></svg></span>
+          BelkenAI
+        </a>
+        <span class="text-slate-300 font-light text-xl">/</span>
+        <a href="/aria" class="font-bold text-lg text-brand-600">ARIA</a>
+        <span class="text-slate-300 font-light hidden sm:inline">/</span>
+        <span class="font-semibold text-slate-500 hidden sm:inline">HVAC</span>
+      </div>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#calc" class="hover:text-navy-900 transition">What it costs you</a>
+        <a href="#how" class="hover:text-navy-900 transition">How it works</a>
+        <a href="#pricing" class="hover:text-navy-900 transition">Pricing</a>
+        <a href="#book" class="px-4 py-2 rounded-lg bg-brand-600 text-white hover:bg-brand-700 transition">Book a Call</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-grad text-white">
+    <div class="max-w-6xl mx-auto px-6 pt-16 pb-20 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="inline-block text-xs font-semibold tracking-widest uppercase text-brand-300 bg-white/10 px-3 py-1 rounded-full mb-6">ARIA for HVAC</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.08]">When the AC quits<br>in July, whoever answers<br>first gets the job.</h1>
+        <p class="mt-6 text-lg text-slate-300 leading-relaxed max-w-lg">ARIA answers every HVAC call 24/7 — no-cooling emergencies, after-hours, the heat-wave rush — books the appointment, and calls your past customers to schedule maintenance before the season turns. You stay on the roof.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="#book" class="px-7 py-4 rounded-xl bg-brand-500 hover:bg-brand-400 text-white font-bold text-lg text-center transition shadow-lg shadow-brand-500/30">Book a Free 15-Min Call</a>
+          <a href="#calc" class="px-7 py-4 rounded-xl border border-white/25 hover:bg-white/10 font-semibold text-lg text-center transition">What missed calls cost you →</a>
+        </div>
+        <p class="mt-4 text-sm text-slate-400">Answers 24/7 · US-based · No long contracts</p>
+      </div>
+      <!-- ANIMATED CALL DEMO -->
+      <div class="bg-white rounded-3xl shadow-2xl p-5 text-navy-900 max-w-sm w-full mx-auto">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+          <span class="inline-grid place-items-center w-9 h-9 rounded-full bg-brand-600 text-white"><svg class="ico" width="18" height="18" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div><div class="font-bold text-sm leading-tight">Incoming call · 2:15 PM</div><div class="text-xs text-slate-400">You're on a rooftop. ARIA picks up.</div></div>
+        </div>
+        <div class="space-y-2.5 pt-4 text-sm">
+          <div class="b b1 max-w-[80%] bg-slate-100 rounded-2xl rounded-tl-sm px-4 py-2.5">My AC just died and it's 95 degrees in here with a newborn. How soon can someone come?</div>
+          <div class="b b2 max-w-[85%] ml-auto bg-brand-600 text-white rounded-2xl rounded-tr-sm px-4 py-2.5">This is ARIA at Comfort Air. That's a priority — I can get a tech to you today between 4 and 6. Want me to lock it in?</div>
+          <div class="b b3 max-w-[80%] bg-slate-100 rounded-2xl rounded-tl-sm px-4 py-2.5">Yes please, as soon as possible.</div>
+          <div class="b b4 max-w-[85%] ml-auto bg-brand-600 text-white rounded-2xl rounded-tr-sm px-4 py-2.5">Done — you're on the schedule for 4–6 today. Texting you the confirmation now.</div>
+          <div class="b b5 flex items-center gap-2 text-xs text-emerald-600 font-semibold pt-1"><svg class="ico" width="16" height="16" viewBox="0 0 24 24" style="stroke:#059669"><path d="M20 6 9 17l-5-5"/></svg> Job booked · on your calendar · you got a text</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <section class="bg-navy-800 text-white/90 border-b border-navy-700">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex flex-wrap justify-center gap-x-10 gap-y-2 text-sm font-medium">
+      <span>Catches the no-cooling emergency calls</span><span class="text-white/30">|</span>
+      <span>Handles the heat-wave surge</span><span class="text-white/30">|</span>
+      <span>Books straight to your calendar</span><span class="text-white/30">|</span>
+      <span>Rebooks past customers for maintenance</span>
+    </div>
+  </section>
+
+  <!-- COST CALCULATOR -->
+  <section id="calc" class="max-w-5xl mx-auto px-6 py-20">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">What are missed calls costing your HVAC business?</h2>
+      <p class="mt-3 text-slate-600">Move the sliders. This is your number, not ours.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8 items-center bg-slate-50 border border-slate-200 rounded-3xl p-8 md:p-10">
+      <div class="space-y-8">
+        <div>
+          <div class="flex justify-between mb-2"><label class="font-semibold">Calls you miss per week</label><span id="cwLbl" class="font-bold text-brand-600">10</span></div>
+          <input id="cw" type="range" min="1" max="40" value="10" class="w-full">
+        </div>
+        <div>
+          <div class="flex justify-between mb-2"><label class="font-semibold">Average value of an HVAC job</label><span id="ajLbl" class="font-bold text-brand-600">$550</span></div>
+          <input id="aj" type="range" min="100" max="8000" step="50" value="550" class="w-full">
+        </div>
+        <p class="text-xs text-slate-400">Assumes about half of missed callers would've booked. With installs running into the thousands, even that's a brutal number.</p>
+      </div>
+      <div class="text-center bg-white rounded-2xl border border-slate-200 p-8">
+        <p class="text-sm font-medium text-slate-500 uppercase tracking-wide">Lost to the competition, every month</p>
+        <p id="lost" class="text-5xl md:text-6xl font-extrabold text-red-600 mt-2">$11,907</p>
+        <p class="text-sm text-slate-500 mt-1">≈ <span id="lostYr" class="font-semibold">$142,890</span> a year</p>
+        <a href="#book" class="inline-block mt-6 px-6 py-3 rounded-xl bg-brand-600 text-white font-bold hover:bg-brand-700 transition">Stop the bleed →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="bg-navy-900 text-white">
+    <div class="max-w-6xl mx-auto px-6 py-20">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-center tracking-tight">ARIA works two ways — both fill your schedule.</h2>
+      <div class="mt-14 grid md:grid-cols-2 gap-6">
+        <div class="bg-navy-800 rounded-2xl p-8">
+          <span class="inline-grid place-items-center w-12 h-12 rounded-xl bg-brand-500/20 text-brand-300 mb-5"><svg class="ico" width="26" height="26" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <h3 class="text-xl font-bold">Catches the calls you can't get to</h3>
+          <p class="mt-3 text-slate-300">On a rooftop, in an attic, mid-install, or a 9 PM no-heat call — ARIA answers in your company's name, triages the emergency, and books it. The call that used to hit voicemail becomes a job on the board.</p>
+        </div>
+        <div class="bg-navy-800 rounded-2xl p-8">
+          <span class="inline-grid place-items-center w-12 h-12 rounded-xl bg-brand-500/20 text-brand-300 mb-5"><svg class="ico" width="26" height="26" viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.5 9a9 9 0 0 1 14.9-3.4L23 10M1 14l4.6 4.4A9 9 0 0 0 20.5 15"/></svg></span>
+          <h3 class="text-xl font-bold">Fills the slow season with maintenance</h3>
+          <p class="mt-3 text-slate-300">Every system you've installed needs a tune-up, a filter, a check before the season turns. Upload your customer list and ARIA calls them by name to schedule maintenance — recurring revenue you already earned.</p>
+        </div>
+      </div>
+      <div class="mt-10 grid md:grid-cols-3 gap-6 text-center">
+        <div class="p-2"><div class="w-10 h-10 mx-auto rounded-full bg-brand-600 grid place-items-center font-bold">1</div><p class="mt-3 font-semibold">One 15-minute setup call</p><p class="text-sm text-slate-400 mt-1">We learn your services, hours, and service area. You touch nothing technical.</p></div>
+        <div class="p-2"><div class="w-10 h-10 mx-auto rounded-full bg-brand-600 grid place-items-center font-bold">2</div><p class="mt-3 font-semibold">Keep your number</p><p class="text-sm text-slate-400 mt-1">ARIA picks up when you can't — after hours, on a job, or all the time.</p></div>
+        <div class="p-2"><div class="w-10 h-10 mx-auto rounded-full bg-brand-600 grid place-items-center font-bold">3</div><p class="mt-3 font-semibold">Jobs hit your calendar</p><p class="text-sm text-slate-400 mt-1">You get a text for every call. That's the whole job.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILT FOR HVAC -->
+  <section class="max-w-6xl mx-auto px-6 py-20">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-center tracking-tight">Built for how HVAC companies actually work.</h2>
+    <div class="mt-12 grid md:grid-cols-3 gap-6">
+      <div class="p-7 rounded-2xl border border-slate-200">
+        <h3 class="font-bold text-lg">You can't answer on a roof</h3>
+        <p class="mt-2 text-slate-600 text-sm leading-relaxed">Hands full, harness on, unit screaming. ARIA picks up on the second ring so the lead doesn't call the next company.</p>
+      </div>
+      <div class="p-7 rounded-2xl border border-slate-200">
+        <h3 class="font-bold text-lg">The season floods your phones</h3>
+        <p class="mt-2 text-slate-600 text-sm leading-relaxed">First heat wave or cold snap and every phone in town rings at once. ARIA handles the surge so no emergency slips through.</p>
+      </div>
+      <div class="p-7 rounded-2xl border border-slate-200">
+        <h3 class="font-bold text-lg">Maintenance is your recurring gold</h3>
+        <p class="mt-2 text-slate-600 text-sm leading-relaxed">Tune-ups and service plans are steady money. ARIA works your past-customer list to keep the schedule full year-round.</p>
+      </div>
+    </div>
+    <p class="text-center mt-10 text-slate-500 text-sm">Run plumbing, real estate, a medspa, or a law firm too? <a href="/aria" class="text-brand-600 font-semibold hover:underline">See ARIA for your trade →</a></p>
+  </section>
+
+  <!-- FOUNDING OFFER -->
+  <section class="max-w-5xl mx-auto px-6 pb-20">
+    <div class="rounded-3xl border-2 border-brand-500 bg-brand-500/5 p-10 md:p-12 text-center">
+      <p class="text-xs font-bold tracking-widest uppercase text-brand-600">Founding Customer Program</p>
+      <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight">We're new — and that's your advantage.</h2>
+      <p class="mt-4 text-slate-600 max-w-2xl mx-auto text-lg">We're taking on our first <span class="font-bold text-navy-900">5 Frederick County HVAC companies</span> at a founding rate. Hands-on setup, a direct line to the founder, and a price that won't be offered again. In return, you become the case study we build this on.</p>
+      <div class="mt-8 flex justify-center">
+        <a href="#book" class="px-8 py-4 rounded-xl bg-brand-600 text-white font-bold text-lg hover:bg-brand-700 transition">Claim a Founding Spot</a>
+      </div>
+      <p class="mt-4 text-sm text-slate-500">No long contract. If ARIA doesn't book you jobs, you walk. Simple.</p>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="bg-slate-50 border-y border-slate-100">
+    <div class="max-w-5xl mx-auto px-6 py-20">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-center tracking-tight">Two ways to run it.</h2>
+      <p class="text-center text-slate-600 mt-3">No per-minute meter. No surprise bills. Pick what fits.</p>
+      <div class="mt-12 grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-2xl border border-slate-200 p-8">
+          <h3 class="text-xl font-bold">Done-For-You</h3>
+          <p class="text-slate-500 text-sm mt-1">We run ARIA for you and keep it tuned. Most shops pick this.</p>
+          <p class="mt-5 text-4xl font-extrabold">$297<span class="text-base font-medium text-slate-500">–$900/mo</span></p>
+          <ul class="mt-5 space-y-2 text-sm text-slate-600">
+            <li>✓ We set up, run, and monitor everything</li>
+            <li>✓ After-hours answering + past-customer rebooking</li>
+            <li>✓ Weekly results report</li>
+            <li>✓ Priced to your call volume &amp; list size</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-8">
+          <h3 class="text-xl font-bold">Own It Outright</h3>
+          <p class="text-slate-500 text-sm mt-1">One-time build, it's yours, runs on its own.</p>
+          <p class="mt-5 text-4xl font-extrabold">$2,500<span class="text-base font-medium text-slate-500">–$3,500 once</span></p>
+          <ul class="mt-5 space-y-2 text-sm text-slate-600">
+            <li>✓ Full ARIA system, set up for you</li>
+            <li>✓ Simple dashboard — upload list, start calling</li>
+            <li>✓ No monthly fee</li>
+            <li>✓ Add managed support anytime</li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-center text-sm text-slate-500 mt-8">Not sure which? That's what the free call is for — we'll tell you straight.</p>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section id="book" class="max-w-4xl mx-auto px-6 py-20 text-center">
+    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Hear ARIA answer an HVAC call — free, 15 minutes.</h2>
+    <p class="mt-4 text-slate-600">No pressure, no jargon. We'll show you exactly how it sounds and what it'd catch for your business.</p>
+    <div class="mt-10 rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/belkenbot/free-30-min-discovery-call" style="min-width:320px;height:680px;"></div>
+    </div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <a href="https://calendly.com/belkenbot/free-30-min-discovery-call" class="inline-block mt-6 px-8 py-4 rounded-xl bg-brand-600 text-white font-bold text-lg hover:bg-brand-700 transition">Book a Free Call</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-navy-900 text-slate-300">
+    <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between gap-8">
+      <div>
+        <div class="flex items-center gap-2.5 font-extrabold text-xl text-white"><span class="inline-grid place-items-center w-8 h-8 rounded-lg bg-brand-600"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 10-12h-6l1-8z"/></svg></span> BelkenAI <span class="text-slate-500 font-light">/</span> <span class="text-brand-400 text-lg">ARIA</span></div>
+        <p class="mt-3 text-sm max-w-xs text-slate-400">ARIA is a BelkenAI product — the AI phone assistant for service businesses. Never miss a call. Win back old customers.</p>
+      </div>
+      <div class="text-sm">
+        <div class="font-semibold text-white mb-3">Contact</div>
+        <a href="mailto:info@belken.ai" class="block hover:text-white transition">info@belken.ai</a>
+        <a href="/aria" class="block hover:text-white transition mt-1">All industries</a>
+        <a href="https://belken.ai" class="block hover:text-white transition mt-1">belken.ai</a>
+      </div>
+    </div>
+    <div class="border-t border-navy-800 py-5 text-center text-xs text-slate-500">© 2026 Belken. US-based. Built for American service businesses.</div>
+  </footer>
+
+  <script>
+    const cw=document.getElementById('cw'),aj=document.getElementById('aj');
+    const cwLbl=document.getElementById('cwLbl'),ajLbl=document.getElementById('ajLbl');
+    const lost=document.getElementById('lost'),lostYr=document.getElementById('lostYr');
+    const fmt=n=>'$'+Math.round(n).toLocaleString();
+    function calc(){
+      const calls=+cw.value, job=+aj.value;
+      cwLbl.textContent=calls; ajLbl.textContent=fmt(job);
+      const monthly=calls*4.33*job*0.5;
+      lost.textContent=fmt(monthly); lostYr.textContent=fmt(monthly*12);
+    }
+    cw.addEventListener('input',calc); aj.addEventListener('input',calc); calc();
+  </script>
+</body>
+</html>
