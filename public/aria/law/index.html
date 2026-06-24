@@ -1,233 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ARIA for Law Firms — Never Miss an Intake | BelkenAI</title>
-  <meta name="description" content="ARIA answers every intake call 24/7, captures the details, books the consult, and follows up with leads who did not sign. Built for solo and small law firms." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { theme: { extend: {
-      fontFamily: { sans: ['Inter','system-ui','sans-serif'] },
-      colors: {
-        navy:{700:'#1e3a5f',800:'#14283f',900:'#0c1b2e',950:'#081320'},
-        brand:{300:'#93b4f5',400:'#5b8def',500:'#2563eb',600:'#1d4ed8',700:'#1e40af'},
-      }
-    }}}
-  </script>
-  <style>
-    html{scroll-behavior:smooth} body{font-family:'Inter',system-ui,sans-serif}
-    .ico{stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-    .hero-grad{background:radial-gradient(900px 500px at 75% 10%, #1e3a5f 0%, #0c1b2e 55%, #081320 100%)}
-    @keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-    .b{opacity:0;animation:pop .5s ease forwards}
-    .b1{animation-delay:.2s}.b2{animation-delay:.9s}.b3{animation-delay:1.6s}.b4{animation-delay:2.3s}.b5{animation-delay:3.0s}
-    input[type=range]{-webkit-appearance:none;appearance:none;height:8px;border-radius:9999px;background:#e2e8f0;outline:none}
-    input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#1d4ed8;cursor:pointer;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.2)}
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ARIA for Law Firms: Never Miss an Intake | Belken</title>
+<meta name="description" content="ARIA answers every intake call 24/7, captures the details, books the consult, and follows up with leads who did not sign. Built for solo and small law firms." />
+<link rel="canonical" href="https://belken.ai/aria/law" />
+<meta name="theme-color" content="#EEEAE1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23121110'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%231F32FF'/%3E%3C/svg%3E" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://belken.ai/aria/law" />
+<meta property="og:site_name" content="Belken" />
+<meta property="og:title" content="ARIA for Law Firms: Never miss an intake call." />
+<meta property="og:description" content="ARIA answers every intake call 24/7, captures the details, books the consult, and follows up with leads who did not sign." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#EEEAE1;--paper-2:#E4DFD3;--ink:#121110;--ink-soft:#3a382f;--line:#cdc6b6;
+    --ultra:#1F32FF;--ultra-deep:#0e1bb0;--flare:#FF4318;--paper-on-dark:#EDEAE1;
+    --display:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace;--r:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%}
+  ::selection{background:var(--ultra);color:#fff}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:2.5px solid var(--ultra);outline-offset:3px;border-radius:3px}
+  .wrap{width:100%;max-width:1240px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+  .ico{stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;opacity:.16;-webkit-mask-image:radial-gradient(circle at 72% 2%,#000 0%,transparent 62%);mask-image:radial-gradient(circle at 72% 2%,#000 0%,transparent 62%)}
+
+  /* nav */
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:.35s}
+  nav.stuck{background:rgba(238,234,225,.82);border-color:var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{font-family:var(--display);font-weight:800;font-size:23px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+  .brand .dot{width:13px;height:13px;background:var(--ultra);border-radius:50%;box-shadow:0 0 0 5px rgba(31,50,255,.16);animation:beat 2.4s ease-in-out infinite}
+  .brand .sub{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--ultra-deep);letter-spacing:.04em}
+  .brand .slash{color:var(--line);font-weight:400}
+  @keyframes beat{0%,100%{box-shadow:0 0 0 5px rgba(31,50,255,.16)}50%{box-shadow:0 0 0 9px rgba(31,50,255,.05)}}
+  .nav-links{display:flex;gap:30px;align-items:center;font-size:15px;font-weight:600}
+  .nav-links a:not(.btn){opacity:.7;transition:.2s}
+  .nav-links a:not(.btn):hover{opacity:1}
+  .btn{font-family:var(--body);font-weight:700;font-size:15px;border:none;cursor:pointer;padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:9px;transition:transform .18s cubic-bezier(.2,.7,.2,1),background .22s,color .22s;line-height:1}
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover{background:var(--ultra)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn .arr{transition:transform .22s cubic-bezier(.2,.7,.2,1)}
+  .btn:hover .arr{transform:translateX(4px)}
+  .navtog{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--ink);align-items:center;justify-content:center}
+  #mobnav{display:none}
+  @media(max-width:860px){
+    .nav-links{display:none}
+    .navtog{display:inline-flex}
+    #mobnav{display:block;position:fixed;top:72px;left:0;right:0;z-index:59;background:rgba(238,234,225,.97);backdrop-filter:blur(10px);
+      border-bottom:1.5px solid var(--ink);transform:translateY(-14px);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.16,1,.3,1),opacity .28s;padding:10px 0 16px}
+    #mobnav.open{transform:none;opacity:1;pointer-events:auto}
+    #mobnav a{display:block;padding:13px clamp(18px,4vw,40px);font-weight:600;font-size:17px;color:var(--ink);border-bottom:1px solid var(--line)}
+    #mobnav a:last-child{border-bottom:none}
+    #mobnav a.btn{margin:14px clamp(18px,4vw,40px) 2px;border-radius:999px;justify-content:center;color:var(--paper)}
+  }
+
+  /* hero */
+  .hero{position:relative;z-index:1;padding:150px 0 72px;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+  .hero-grid>*{min-width:0}
+  .eyebrow{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ultra-deep);display:inline-flex;align-items:center;gap:10px;margin-bottom:26px}
+  .eyebrow::before{content:"";width:30px;height:2px;background:var(--ultra)}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,5.6vw,82px);line-height:.98;letter-spacing:-.035em}
+  h1 .hl{color:var(--ultra);position:relative;white-space:nowrap}
+  h1 .underdraw{position:absolute;left:0;right:0;bottom:.02em;height:.1em;background:var(--flare);border-radius:2px;z-index:-1}
+  .lede{margin-top:28px;font-size:clamp(17px,1.5vw,21px);max-width:42ch;color:var(--ink-soft);font-weight:500}
+  .hero-cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+  .micro{margin-top:20px;font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);letter-spacing:.02em}
+
+  /* call scene (dark panel) */
+  .scene{background:var(--ink);border-radius:18px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.55)}
+  .scene-bar{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.1);font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:rgba(237,234,225,.62)}
+  .scene-bar .lt{width:11px;height:11px;border-radius:50%}
+  .lt.r{background:#ff5f57}.lt.y{background:#febc2e}.lt.g{background:#28c840}
+  .scene-bar .ttl{margin-left:8px}
+  .scene-bar .live{margin-left:auto;display:flex;align-items:center;gap:7px;color:#56e08a}
+  .scene-bar .live::before{content:"";width:7px;height:7px;border-radius:50%;background:#56e08a;box-shadow:0 0 0 0 rgba(86,224,138,.6);animation:pulse 1.6s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 7px rgba(86,224,138,0)}100%{box-shadow:0 0 0 0 rgba(86,224,138,0)}}
+  .chat{padding:20px 18px;display:flex;flex-direction:column;gap:11px;font-size:14.5px}
+  .bub{max-width:82%;padding:11px 15px;border-radius:16px;line-height:1.4;opacity:0;animation:pop .5s ease forwards}
+  .bub.them{background:rgba(255,255,255,.08);color:var(--paper-on-dark);border-top-left-radius:5px;align-self:flex-start}
+  .bub.aria{background:var(--ultra);color:#fff;border-top-right-radius:5px;align-self:flex-end}
+  .bub.b1{animation-delay:.2s}.bub.b2{animation-delay:.9s}.bub.b3{animation-delay:1.6s}.bub.b4{animation-delay:2.3s}.bub.b5{animation-delay:3s}
+  .booked{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:#7ff0a8;padding:2px 4px;opacity:0;animation:pop .5s 3.5s ease forwards}
+  .booked .ico{width:14px;height:14px;color:#7ff0a8}
+  @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  /* marquee */
+  .marquee{border-block:1.5px solid var(--ink);margin-top:60px;padding:16px 0;overflow:hidden;position:relative;z-index:1;background:var(--paper)}
+  .mq-track{display:flex;width:max-content;animation:scroll 32s linear infinite;font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:-.02em;align-items:center}
+  .mq-track span{display:flex;align-items:center;gap:42px;white-space:nowrap;padding-right:42px}
+  .mq-track .sep{color:var(--ultra)}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* sections */
+  section{position:relative;z-index:1}
+  .sec{padding:96px 0}
+  .sec-head{text-align:center;max-width:760px;margin:0 auto 52px}
+  .sec-kick{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ultra-deep);margin-bottom:14px}
+  h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,4.2vw,56px);line-height:1.0;letter-spacing:-.03em}
+  .sec-sub{margin-top:16px;color:var(--ink-soft);font-weight:500;font-size:17px}
+
+  /* calculator */
+  .calc-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch;border:1.5px solid var(--ink);border-radius:20px;background:var(--paper);padding:clamp(26px,4vw,42px);max-width:980px;margin:0 auto}
+  .calc-controls{display:flex;flex-direction:column;justify-content:center;gap:32px}
+  .calc-row .lab{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+  .calc-row .lab span:first-child{font-weight:600;font-size:16px}
+  .calc-row .lab .val{font-family:var(--display);font-weight:800;font-size:22px;color:var(--ultra)}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:999px;background:var(--paper-2);outline:none;border:1px solid var(--line)}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--ultra);cursor:pointer;border:3px solid var(--paper);box-shadow:0 2px 8px rgba(31,50,255,.4)}
+  input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--ultra);cursor:pointer;border:3px solid var(--paper)}
+  .calc-note{font-size:13px;color:var(--ink-soft);max-width:42ch}
+  .calc-result{background:var(--ink);color:var(--paper-on-dark);border-radius:16px;padding:34px 28px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+  .calc-result .rk{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(237,234,225,.6)}
+  .calc-result .big{font-family:var(--display);font-weight:800;font-size:clamp(48px,6vw,68px);letter-spacing:-.04em;color:var(--flare);line-height:1;margin:10px 0 6px}
+  .calc-result .yr{font-size:14px;color:rgba(237,234,225,.7)}
+  .calc-result .yr b{color:var(--paper-on-dark)}
+  .calc-result .btn{margin-top:22px;align-self:center;background:var(--ultra);color:#fff}
+  .calc-result .btn:hover{background:#fff;color:var(--ink)}
+
+  /* dark band */
+  .dark{background:var(--ink);color:var(--paper-on-dark);position:relative;overflow:hidden}
+  .dark::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:60px 60px;-webkit-mask-image:radial-gradient(circle at 85% 0%,#000,transparent 65%);mask-image:radial-gradient(circle at 85% 0%,#000,transparent 65%)}
+  .dark .wrap{position:relative;z-index:1}
+  .dark .sec-kick{color:#8ea2ff}
+  .dark h2{color:var(--paper-on-dark)}
+  .dark .sec-sub{color:rgba(237,234,225,.66)}
+
+  /* cards */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .card{border:1.5px solid var(--ink);border-radius:var(--r);padding:34px 32px;background:var(--paper);position:relative;overflow:hidden;transition:transform .26s cubic-bezier(.2,.7,.2,1),box-shadow .26s}
+  .card:hover{transform:translateY(-4px);box-shadow:9px 9px 0 var(--ink)}
+  .card .badge{width:52px;height:52px;border-radius:13px;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+  .card .badge .ico{width:26px;height:26px}
+  .card h3{font-family:var(--display);font-weight:700;font-size:23px;letter-spacing:-.02em;margin-bottom:11px;line-height:1.06}
+  .card p{font-size:15.5px;color:var(--ink-soft);line-height:1.55}
+  /* dark cards */
+  .dark .card{background:rgba(255,255,255,.025);border-color:rgba(237,234,225,.16)}
+  .dark .card:hover{box-shadow:none;border-color:rgba(142,162,255,.55)}
+  .dark .card .badge{background:rgba(142,162,255,.16);color:#8ea2ff}
+  .dark .card h3{color:var(--paper-on-dark)}
+  .dark .card p{color:rgba(237,234,225,.66)}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
+  .step{border-top:2px solid rgba(237,234,225,.3);padding-top:24px;position:relative}
+  .step .n{position:absolute;top:-2px;left:0;width:0;height:2px;background:#8ea2ff}
+  .step .num{font-family:var(--mono);font-size:13px;color:#8ea2ff;font-weight:600;margin-bottom:8px}
+  .step h4{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.02em;margin-bottom:7px;color:var(--paper-on-dark)}
+  .step p{font-size:14.5px;color:rgba(237,234,225,.62);line-height:1.5}
+
+  /* light card grid (3-col) */
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card-light{border:1.5px solid var(--ink);border-radius:var(--r);padding:34px 32px;background:var(--paper);transition:transform .26s cubic-bezier(.2,.7,.2,1),box-shadow .26s}
+  .card-light:hover{transform:translateY(-4px);box-shadow:9px 9px 0 var(--ink)}
+  .card-light h3{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.02em;margin-bottom:11px;line-height:1.08}
+  .card-light p{font-size:15px;color:var(--ink-soft);line-height:1.55}
+
+  /* founding offer */
+  .offer{border:2px solid var(--ultra);border-radius:24px;background:rgba(31,50,255,.05);padding:clamp(36px,5vw,60px);text-align:center;max-width:920px;margin:0 auto;position:relative;overflow:hidden}
+  .offer .ok{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ultra-deep);margin-bottom:14px}
+  .offer p.lead{margin:18px auto 0;max-width:60ch;color:var(--ink-soft);font-size:17px}
+  .offer .fine{margin-top:18px;font-size:14px;color:var(--ink-soft)}
+
+  /* pricing */
+  .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;margin:0 auto}
+  .price{border:1.5px solid var(--ink);border-radius:var(--r);padding:34px 30px;background:var(--paper)}
+  .price.feat{background:var(--ink);color:var(--paper-on-dark)}
+  .price h3{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.02em}
+  .price .desc{font-size:14px;color:var(--ink-soft);margin-top:5px}
+  .price.feat .desc{color:rgba(237,234,225,.6)}
+  .price .amt{font-family:var(--display);font-weight:800;font-size:42px;letter-spacing:-.03em;margin:18px 0 0}
+  .price .amt small{font-family:var(--body);font-size:16px;font-weight:500;color:var(--ink-soft)}
+  .price.feat .amt small{color:rgba(237,234,225,.6)}
+  .price ul{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:10px}
+  .price li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;font-weight:500}
+  .price li .ico{width:17px;height:17px;color:var(--ultra);margin-top:2px}
+  .price.feat li .ico{color:#8ea2ff}
+  .price .tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:#8ea2ff;margin-bottom:14px}
+
+  /* book */
+  .cal-frame{border:1.5px solid var(--ink);border-radius:18px;overflow:hidden;max-width:820px;margin:36px auto 0;background:var(--paper)}
+
+  /* footer */
+  footer{border-top:1.5px solid var(--ink);padding:52px 0 38px;position:relative;z-index:1}
+  .foot-in{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+  .foot-brand{max-width:34ch}
+  .foot-brand p{font-size:14.5px;color:var(--ink-soft);margin-top:14px}
+  .fcol h5{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px}
+  .fcol a{display:block;font-size:15px;font-weight:500;margin-bottom:9px;opacity:.8;transition:.2s}
+  .fcol a:hover{opacity:1;color:var(--ultra)}
+  .foot-base{margin-top:42px;padding-top:22px;border-top:1px solid var(--line);text-align:center;font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
+
+  .rv{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+
+  @media(max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:42px}
+    .scene{max-width:520px}
+    .calc-wrap{grid-template-columns:1fr;gap:26px}
+    .two{grid-template-columns:1fr}
+    .three{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr;gap:30px}
+    .price-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:560px){
+    body{font-size:17px}
+    .hero{padding:120px 0 52px}
+    h1{font-size:clamp(32px,8.4vw,46px);line-height:1.02}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .rv,.bub,.booked{opacity:1!important;transform:none!important}
+  }
+</style>
 </head>
-<body class="min-h-screen bg-white text-navy-900 antialiased">
+<body>
 
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-100">
-    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-2.5">
-        <a href="https://belken.ai" class="flex items-center gap-2.5 font-extrabold text-xl tracking-tight text-navy-900">
-          <span class="inline-grid place-items-center w-8 h-8 rounded-lg bg-brand-600 text-white"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 10-12h-6l1-8z"/></svg></span>
-          BelkenAI
-        </a>
-        <span class="text-slate-300 font-light text-xl">/</span>
-        <a href="/aria" class="font-bold text-lg text-brand-600">ARIA</a>
-        <span class="text-slate-300 font-light hidden sm:inline">/</span>
-        <span class="font-semibold text-slate-500 hidden sm:inline">Law Firms</span>
-      </div>
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-        <a href="#calc" class="hover:text-navy-900 transition">What it costs you</a>
-        <a href="#how" class="hover:text-navy-900 transition">How it works</a>
-        <a href="#pricing" class="hover:text-navy-900 transition">Pricing</a>
-        <a href="#book" class="px-4 py-2 rounded-lg bg-brand-600 text-white hover:bg-brand-700 transition">Book a Call</a>
-      </div>
-    </nav>
-  </header>
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="https://belken.ai"><span class="dot"></span>BELKEN<span class="slash">/</span><span class="sub">ARIA</span><span class="slash">/</span><span class="sub">Law Firms</span></a>
+    <div class="nav-links">
+      <a href="#calc">What it costs you</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a class="btn btn-primary" data-mag href="#book">Book a call</a>
+    </div>
+    <button class="navtog" id="navtog" aria-label="Open menu" aria-expanded="false" aria-controls="mobnav">
+      <svg class="ico" viewBox="0 0 24 24" width="26" height="26"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div id="mobnav">
+    <a href="#calc">What it costs you</a>
+    <a href="#how">How it works</a>
+    <a href="#pricing">Pricing</a>
+    <a class="btn btn-primary" href="#book">Book a free call</a>
+  </div>
+</nav>
 
-  <section class="hero-grad text-white">
-    <div class="max-w-6xl mx-auto px-6 pt-16 pb-20 grid md:grid-cols-2 gap-12 items-center">
-      <div>
-        <p class="inline-block text-xs font-semibold tracking-widest uppercase text-brand-300 bg-white/10 px-3 py-1 rounded-full mb-6">ARIA for Law Firms</p>
-        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.08]">Miss the intake call<br>and the case goes to<br>the next firm.</h1>
-        <p class="mt-6 text-lg text-slate-300 leading-relaxed max-w-lg">ARIA answers every intake call 24/7 — accidents and arrests don't keep business hours — captures the details, books the consult, and follows up with the leads who didn't sign. You stay focused on your cases.</p>
-        <div class="mt-8 flex flex-col sm:flex-row gap-3">
-          <a href="#book" class="px-7 py-4 rounded-xl bg-brand-500 hover:bg-brand-400 text-white font-bold text-lg text-center transition shadow-lg shadow-brand-500/30">Book a Free 15-Min Call</a>
-          <a href="#calc" class="px-7 py-4 rounded-xl border border-white/25 hover:bg-white/10 font-semibold text-lg text-center transition">What missed calls cost you →</a>
-        </div>
-        <p class="mt-4 text-sm text-slate-400">Answers 24/7 · US-based · No long contracts</p>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">ARIA for Law Firms</span>
+      <h1>Miss the intake call and the case goes to the <span class="hl">next firm.<span class="underdraw"></span></span></h1>
+      <p class="lede">ARIA answers every intake call 24/7. Accidents and arrests don't keep business hours. It captures the details, books the consult, and follows up with leads who didn't sign. You stay focused on your cases.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" data-mag href="#book">Book a free 15-min call <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#calc">What missed calls cost you</a>
       </div>
-      <div class="bg-white rounded-3xl shadow-2xl p-5 text-navy-900 max-w-sm w-full mx-auto">
-        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
-          <span class="inline-grid place-items-center w-9 h-9 rounded-full bg-brand-600 text-white"><svg class="ico" width="18" height="18" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-          <div><div class="font-bold text-sm leading-tight">Incoming call · 8:47 PM</div><div class="text-xs text-slate-400">You're in court all day. ARIA picks up.</div></div>
+      <p class="micro">// Answers 24/7 · US-based · No long contracts</p>
+    </div>
+
+    <aside class="scene" aria-label="Example intake call ARIA handled">
+      <div class="scene-bar">
+        <span class="lt r"></span><span class="lt y"></span><span class="lt g"></span>
+        <span class="ttl">ARIA · incoming call · 8:47 PM</span>
+        <span class="live">answering</span>
+      </div>
+      <div class="chat">
+        <div class="bub them b1">I was in a car accident today and I think I need a lawyer. Are you taking new clients?</div>
+        <div class="bub aria b2">This is ARIA at Brennan Law. I'm sorry that happened. We can help. I'll take a few details and get you a consult with an attorney. Are you available tomorrow at 10 or 2?</div>
+        <div class="bub them b3">Tomorrow at 10 works.</div>
+        <div class="bub aria b4">You're scheduled for 10 AM tomorrow. I've logged your details for the attorney and I'm texting you a confirmation now.</div>
+        <div class="booked"><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Consult booked · intake captured · client texted</div>
+      </div>
+    </aside>
+  </div>
+</header>
+
+<div class="marquee">
+  <div class="mq-track">
+    <span>Answers after-hours intake calls <i class="sep">/</i> Captures the details for your attorney <i class="sep">/</i> Books straight to your calendar <i class="sep">/</i> Follows up with leads who didn't sign <i class="sep">/</i></span>
+    <span>Answers after-hours intake calls <i class="sep">/</i> Captures the details for your attorney <i class="sep">/</i> Books straight to your calendar <i class="sep">/</i> Follows up with leads who didn't sign <i class="sep">/</i></span>
+  </div>
+</div>
+
+<section id="calc" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// What it costs you</p>
+      <h2>What are missed intakes costing your firm?</h2>
+      <p class="sec-sub">Move the sliders. This is your number, not ours.</p>
+    </div>
+    <div class="calc-wrap rv">
+      <div class="calc-controls">
+        <div class="calc-row">
+          <div class="lab"><span id="cwLbl-label">Intake calls you miss per week</span><span class="val" id="cwLbl">6</span></div>
+          <input id="cw" type="range" min="1" max="30" value="6">
         </div>
-        <div class="space-y-2.5 pt-4 text-sm">
-          <div class="b b1 max-w-[80%] bg-slate-100 rounded-2xl rounded-tl-sm px-4 py-2.5">I was in a car accident today and I think I need a lawyer. Are you taking new clients?</div>
-          <div class="b b2 max-w-[85%] ml-auto bg-brand-600 text-white rounded-2xl rounded-tr-sm px-4 py-2.5">This is ARIA at Brennan Law. I'm sorry that happened — we can help. I'll take a few details and get you a consult with an attorney. Are you available tomorrow at 10 or 2?</div>
-          <div class="b b3 max-w-[80%] bg-slate-100 rounded-2xl rounded-tl-sm px-4 py-2.5">Tomorrow at 10 works.</div>
-          <div class="b b4 max-w-[85%] ml-auto bg-brand-600 text-white rounded-2xl rounded-tr-sm px-4 py-2.5">You're scheduled for 10 AM tomorrow. I've logged your details for the attorney and I'm texting you a confirmation now.</div>
-          <div class="b b5 flex items-center gap-2 text-xs text-emerald-600 font-semibold pt-1"><svg class="ico" width="16" height="16" viewBox="0 0 24 24" style="stroke:#059669"><path d="M20 6 9 17l-5-5"/></svg> Consult booked · intake captured · client texted</div>
+        <div class="calc-row">
+          <div class="lab"><span id="ajLbl-label">Average value of a signed case</span><span class="val" id="ajLbl">$3,000</span></div>
+          <input id="aj" type="range" min="100" max="25000" step="500" value="3000">
         </div>
+        <p class="calc-note">Only some callers become clients. This assumes about 1 in 5 of your missed intakes would have signed. At these case values, missing them is expensive.</p>
+      </div>
+      <div class="calc-result">
+        <p class="rk">Going to the next firm, every month</p>
+        <p class="big" id="lost">$15,588</p>
+        <p class="yr">about <b id="lostYr">$187,056</b> a year</p>
+        <a class="btn" href="#book">Stop the bleed <svg class="ico arr" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="bg-navy-800 text-white/90 border-b border-navy-700">
-    <div class="max-w-6xl mx-auto px-6 py-5 flex flex-wrap justify-center gap-x-10 gap-y-2 text-sm font-medium">
-      <span>Answers after-hours intake calls</span><span class="text-white/30">|</span>
-      <span>Captures the details for your attorney</span><span class="text-white/30">|</span>
-      <span>Books straight to your calendar</span><span class="text-white/30">|</span>
-      <span>Follows up with leads who didn't sign</span>
+<section id="how" class="dark sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// How it works</p>
+      <h2>ARIA works two ways. Both fill your caseload.</h2>
     </div>
-  </section>
-
-  <section id="calc" class="max-w-5xl mx-auto px-6 py-20">
-    <div class="text-center mb-10">
-      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">What are missed intakes costing your firm?</h2>
-      <p class="mt-3 text-slate-600">Move the sliders. This is your number, not ours.</p>
-    </div>
-    <div class="grid md:grid-cols-2 gap-8 items-center bg-slate-50 border border-slate-200 rounded-3xl p-8 md:p-10">
-      <div class="space-y-8">
-        <div>
-          <div class="flex justify-between mb-2"><label class="font-semibold">Intake calls you miss per week</label><span id="cwLbl" class="font-bold text-brand-600">6</span></div>
-          <input id="cw" type="range" min="1" max="30" value="6" class="w-full">
-        </div>
-        <div>
-          <div class="flex justify-between mb-2"><label class="font-semibold">Average value of a signed case</label><span id="ajLbl" class="font-bold text-brand-600">$3,000</span></div>
-          <input id="aj" type="range" min="100" max="25000" step="500" value="3000" class="w-full">
-        </div>
-        <p class="text-xs text-slate-400">Only some callers become clients — this assumes about 1 in 5 of your missed intakes would have signed. At these case values, missing them is expensive.</p>
+    <div class="two rv">
+      <div class="card">
+        <div class="badge"><svg class="ico" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <h3>Captures every intake call, day or night</h3>
+        <p>In court, with a client, or after hours. ARIA answers in your firm's name, handles the intake professionally (no legal advice, just the facts), logs the details, and books the consult before the caller dials the next firm.</p>
       </div>
-      <div class="text-center bg-white rounded-2xl border border-slate-200 p-8">
-        <p class="text-sm font-medium text-slate-500 uppercase tracking-wide">Going to the next firm, every month</p>
-        <p id="lost" class="text-5xl md:text-6xl font-extrabold text-red-600 mt-2">$15,588</p>
-        <p class="text-sm text-slate-500 mt-1">≈ <span id="lostYr" class="font-semibold">$187,056</span> a year</p>
-        <a href="#book" class="inline-block mt-6 px-6 py-3 rounded-xl bg-brand-600 text-white font-bold hover:bg-brand-700 transition">Stop the bleed →</a>
+      <div class="card">
+        <div class="badge"><svg class="ico" viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.5 9a9 9 0 0 1 14.9-3.4L23 10M1 14l4.6 4.4A9 9 0 0 0 20.5 15"/></svg></div>
+        <h3>Follows up with leads who went quiet</h3>
+        <p>People call, get a quote or a consult, then go silent. ARIA follows up by call and text to bring the on-the-fence ones back to the table, so good cases don't slip away from a busy inbox.</p>
       </div>
     </div>
-  </section>
+    <div class="steps rv">
+      <div class="step"><div class="num">01</div><h4>One 15-minute setup call</h4><p>We learn your firm and how you like calls handled. You touch nothing technical.</p></div>
+      <div class="step"><div class="num">02</div><h4>Keep your number</h4><p>ARIA picks up when you can't. After hours, mid-task, or all the time.</p></div>
+      <div class="step"><div class="num">03</div><h4>Bookings hit your calendar</h4><p>You get a text for every call. That's the whole job.</p></div>
+    </div>
+  </div>
+</section>
 
-  <section id="how" class="bg-navy-900 text-white">
-    <div class="max-w-6xl mx-auto px-6 py-20">
-      <h2 class="text-3xl md:text-4xl font-extrabold text-center tracking-tight">ARIA works two ways — both fill your caseload.</h2>
-      <div class="mt-14 grid md:grid-cols-2 gap-6">
-        <div class="bg-navy-800 rounded-2xl p-8">
-          <span class="inline-grid place-items-center w-12 h-12 rounded-xl bg-brand-500/20 text-brand-300 mb-5"><svg class="ico" width="26" height="26" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-          <h3 class="text-xl font-bold">Captures every intake call, day or night</h3>
-          <p class="mt-3 text-slate-300">In court, with a client, or after hours — ARIA answers in your firm's name, handles the intake professionally (no legal advice, just the facts), logs the details, and books the consult before the caller dials the next firm.</p>
-        </div>
-        <div class="bg-navy-800 rounded-2xl p-8">
-          <span class="inline-grid place-items-center w-12 h-12 rounded-xl bg-brand-500/20 text-brand-300 mb-5"><svg class="ico" width="26" height="26" viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.5 9a9 9 0 0 1 14.9-3.4L23 10M1 14l4.6 4.4A9 9 0 0 0 20.5 15"/></svg></span>
-          <h3 class="text-xl font-bold">Follows up with leads who went quiet</h3>
-          <p class="mt-3 text-slate-300">People call, get a quote or a consult, then go silent. ARIA follows up — by call and text — to bring the on-the-fence ones back to the table, so good cases don't slip away from a busy inbox.</p>
-        </div>
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// Built for your practice</p>
+      <h2>Built for how small firms actually work.</h2>
+    </div>
+    <div class="three rv">
+      <div class="card-light">
+        <h3>You can't answer from the courtroom</h3>
+        <p>You're in a hearing or with a client and the phone keeps ringing. ARIA answers every call so a new matter never hits voicemail.</p>
       </div>
-      <div class="mt-10 grid md:grid-cols-3 gap-6 text-center">
-        <div class="p-2"><div class="w-10 h-10 mx-auto rounded-full bg-brand-600 grid place-items-center font-bold">1</div><p class="mt-3 font-semibold">One 15-minute setup call</p><p class="text-sm text-slate-400 mt-1">We learn your business and how you like calls handled. You touch nothing technical.</p></div>
-        <div class="p-2"><div class="w-10 h-10 mx-auto rounded-full bg-brand-600 grid place-items-center font-bold">2</div><p class="mt-3 font-semibold">Keep your number</p><p class="text-sm text-slate-400 mt-1">ARIA picks up when you can't — after hours, mid-task, or all the time.</p></div>
-        <div class="p-2"><div class="w-10 h-10 mx-auto rounded-full bg-brand-600 grid place-items-center font-bold">3</div><p class="mt-3 font-semibold">Bookings hit your calendar</p><p class="text-sm text-slate-400 mt-1">You get a text for every call. That's the whole job.</p></div>
+      <div class="card-light">
+        <h3>Legal clients call several firms</h3>
+        <p>They keep dialing until someone picks up. The firm that answers and books first usually signs them. ARIA makes sure that's you.</p>
+      </div>
+      <div class="card-light">
+        <h3>Intake happens at all hours</h3>
+        <p>Accidents, arrests, and emergencies happen nights and weekends. ARIA captures those intakes around the clock, professionally.</p>
       </div>
     </div>
-  </section>
+    <p class="rv" style="text-align:center;margin-top:42px;font-size:15px;color:var(--ink-soft)">Run a different kind of business? <a href="/aria" style="color:var(--ultra);font-weight:600">See ARIA for your trade</a></p>
+  </div>
+</section>
 
-  <section class="max-w-6xl mx-auto px-6 py-20">
-    <h2 class="text-3xl md:text-4xl font-extrabold text-center tracking-tight">Built for how small firms actually work.</h2>
-    <div class="mt-12 grid md:grid-cols-3 gap-6">
-      <div class="p-7 rounded-2xl border border-slate-200"><h3 class="font-bold text-lg">You can't answer from the courtroom</h3><p class="mt-2 text-slate-600 text-sm leading-relaxed">You're in a hearing or with a client and the phone keeps ringing. ARIA answers every call so a new matter never hits voicemail.</p></div>
-      <div class="p-7 rounded-2xl border border-slate-200"><h3 class="font-bold text-lg">Legal clients call several firms</h3><p class="mt-2 text-slate-600 text-sm leading-relaxed">They keep dialing until someone picks up. The firm that answers and books first usually signs them. ARIA makes sure that's you.</p></div>
-      <div class="p-7 rounded-2xl border border-slate-200"><h3 class="font-bold text-lg">Intake at all hours</h3><p class="mt-2 text-slate-600 text-sm leading-relaxed">Accidents, arrests, and emergencies happen nights and weekends. ARIA captures those intakes around the clock, professionally.</p></div>
-    </div>
-    <p class="text-center mt-10 text-slate-500 text-sm">Run a different kind of business too? <a href="/aria" class="text-brand-600 font-semibold hover:underline">See ARIA for your trade →</a></p>
-  </section>
-
-  <section class="max-w-5xl mx-auto px-6 pb-20">
-    <div class="rounded-3xl border-2 border-brand-500 bg-brand-500/5 p-10 md:p-12 text-center">
-      <p class="text-xs font-bold tracking-widest uppercase text-brand-600">Founding Customer Program</p>
-      <h2 class="mt-3 text-3xl md:text-4xl font-extrabold tracking-tight">We're new — and that's your advantage.</h2>
-      <p class="mt-4 text-slate-600 max-w-2xl mx-auto text-lg">We're taking on our first <span class="font-bold text-navy-900">5 Frederick County law firms</span> at a founding rate. Hands-on setup, a direct line to the founder, and a price that won't be offered again. In return, you become the case study we build this on.</p>
-      <div class="mt-8 flex justify-center"><a href="#book" class="px-8 py-4 rounded-xl bg-brand-600 text-white font-bold text-lg hover:bg-brand-700 transition">Claim a Founding Spot</a></div>
-      <p class="mt-4 text-sm text-slate-500">No long contract. If ARIA doesn't book you business, you walk. Simple.</p>
-    </div>
-  </section>
-
-  <section id="pricing" class="bg-slate-50 border-y border-slate-100">
-    <div class="max-w-5xl mx-auto px-6 py-20">
-      <h2 class="text-3xl md:text-4xl font-extrabold text-center tracking-tight">Two ways to run it.</h2>
-      <p class="text-center text-slate-600 mt-3">No per-minute meter. No surprise bills. Pick what fits.</p>
-      <div class="mt-12 grid md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-2xl border border-slate-200 p-8">
-          <h3 class="text-xl font-bold">Done-For-You</h3>
-          <p class="text-slate-500 text-sm mt-1">We run ARIA for you and keep it tuned. Most pick this.</p>
-          <p class="mt-5 text-4xl font-extrabold">$297<span class="text-base font-medium text-slate-500">–$900/mo</span></p>
-          <ul class="mt-5 space-y-2 text-sm text-slate-600">
-            <li>✓ We set up, run, and monitor everything</li>
-            <li>✓ After-hours answering + past-customer follow-up</li>
-            <li>✓ Weekly results report</li>
-            <li>✓ Priced to your call volume &amp; list size</li>
-          </ul>
-        </div>
-        <div class="bg-white rounded-2xl border border-slate-200 p-8">
-          <h3 class="text-xl font-bold">Own It Outright</h3>
-          <p class="text-slate-500 text-sm mt-1">One-time build, it's yours, runs on its own.</p>
-          <p class="mt-5 text-4xl font-extrabold">$2,500<span class="text-base font-medium text-slate-500">–$3,500 once</span></p>
-          <ul class="mt-5 space-y-2 text-sm text-slate-600">
-            <li>✓ Full ARIA system, set up for you</li>
-            <li>✓ Simple dashboard — upload list, start calling</li>
-            <li>✓ No monthly fee</li>
-            <li>✓ Add managed support anytime</li>
-          </ul>
-        </div>
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="offer rv">
+      <p class="ok">Founding Customer Program</p>
+      <h2>We're new, and that's your advantage.</h2>
+      <p class="lead">We're taking on our first <b>5 Frederick County law firms</b> at a founding rate. Hands-on setup, a direct line to the founder, and a price that won't be offered again. In return, you become the case study we build this on.</p>
+      <div class="hero-cta" style="justify-content:center;margin-top:30px">
+        <a class="btn btn-primary" data-mag href="#book">Claim a founding spot <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
-      <p class="text-center text-sm text-slate-500 mt-8">Not sure which? That's what the free call is for — we'll tell you straight.</p>
+      <p class="fine">No long contract. If ARIA doesn't book you business, you walk. Simple.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="book" class="max-w-4xl mx-auto px-6 py-20 text-center">
-    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Hear ARIA handle an intake call — free, 15 minutes.</h2>
-    <p class="mt-4 text-slate-600">No pressure, no jargon. We'll show you exactly how it sounds and what it'd catch for you.</p>
-    <div class="mt-10 rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+<section id="pricing" class="dark sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// Pricing</p>
+      <h2>Two ways to run it.</h2>
+      <p class="sec-sub">No per-minute meter. No surprise bills. Pick what fits.</p>
+    </div>
+    <div class="price-grid rv">
+      <div class="price feat">
+        <span class="tag">Most firms pick this</span>
+        <h3>Done for you</h3>
+        <p class="desc">We run ARIA for you and keep it tuned.</p>
+        <p class="amt">$297<small>–$900/mo</small></p>
+        <ul>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> We set up, run, and monitor everything</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> After-hours answering plus past-lead follow-up</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Weekly results report</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Priced to your call volume and list size</li>
+        </ul>
+      </div>
+      <div class="price">
+        <span class="tag" style="color:var(--ultra-deep)">One-time build</span>
+        <h3>Own it outright</h3>
+        <p class="desc">One build, it's yours, runs on its own.</p>
+        <p class="amt">$2,500<small>–$3,500 once</small></p>
+        <ul>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Full ARIA system, set up for you</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Simple dashboard: upload list, start calling</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> No monthly fee</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Add managed support anytime</li>
+        </ul>
+      </div>
+    </div>
+    <p class="sec-sub rv" style="text-align:center;margin-top:30px">Not sure which? That's what the free call is for. We'll tell you straight.</p>
+  </div>
+</section>
+
+<section id="book" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// Hear it for yourself</p>
+      <h2>Hear ARIA handle an intake call. Free, 15 minutes.</h2>
+      <p class="sec-sub">No pressure, no jargon. We'll show you exactly how it sounds and what it would catch for your firm.</p>
+    </div>
+    <div class="cal-frame rv">
       <div class="calendly-inline-widget" data-url="https://calendly.com/belkenbot/free-30-min-discovery-call?hide_gdpr_banner=1" style="min-width:320px;height:680px;"></div>
     </div>
-    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-    <a href="https://calendly.com/belkenbot/free-30-min-discovery-call" class="inline-block mt-6 px-8 py-4 rounded-xl bg-brand-600 text-white font-bold text-lg hover:bg-brand-700 transition">Book a Free Call</a>
-  </section>
+    <div class="hero-cta" style="justify-content:center;margin-top:26px">
+      <a class="btn btn-primary" data-mag href="https://calendly.com/belkenbot/free-30-min-discovery-call">Book a free call <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
 
-  <footer class="bg-navy-900 text-slate-300">
-    <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between gap-8">
-      <div>
-        <div class="flex items-center gap-2.5 font-extrabold text-xl text-white"><span class="inline-grid place-items-center w-8 h-8 rounded-lg bg-brand-600"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 10-12h-6l1-8z"/></svg></span> BelkenAI <span class="text-slate-500 font-light">/</span> <span class="text-brand-400 text-lg">ARIA</span></div>
-        <p class="mt-3 text-sm max-w-xs text-slate-400">ARIA is a BelkenAI product — the AI phone assistant for service businesses. Never miss a call. Win back old customers.</p>
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <div class="foot-brand">
+        <a class="brand" href="https://belken.ai"><span class="dot"></span>BELKEN<span class="slash">/</span><span class="sub">ARIA</span></a>
+        <p>ARIA is a Belken product. The AI phone assistant for service businesses. Never miss an intake. Win back the leads you already have.</p>
       </div>
-      <div class="text-sm">
-        <div class="font-semibold text-white mb-3">Contact</div>
-        <a href="mailto:info@belken.ai" class="block hover:text-white transition">info@belken.ai</a>
-        <a href="/aria" class="block hover:text-white transition mt-1">All industries</a>
-        <a href="https://belken.ai" class="block hover:text-white transition mt-1">belken.ai</a>
+      <div class="fcol">
+        <h5>Start</h5>
+        <a href="#book">Book a call</a>
+        <a href="#calc">What it costs you</a>
+        <a href="/aria">All industries</a>
+        <a href="https://belken.ai">belken.ai</a>
+      </div>
+      <div class="fcol">
+        <h5>Contact</h5>
+        <a href="mailto:info@belken.ai">info@belken.ai</a>
+        <a href="https://calendly.com/belkenbot/free-30-min-discovery-call">Book a call</a>
       </div>
     </div>
-    <div class="border-t border-navy-800 py-5 text-center text-xs text-slate-500">© 2026 Belken. US-based. Built for American service businesses.</div>
-  </footer>
+    <div class="foot-base">© 2026 Belken · US-based · built for American service businesses</div>
+  </div>
+</footer>
 
-  <script>
-    const cw=document.getElementById('cw'),aj=document.getElementById('aj');
-    const cwLbl=document.getElementById('cwLbl'),ajLbl=document.getElementById('ajLbl');
-    const lost=document.getElementById('lost'),lostYr=document.getElementById('lostYr');
-    const CONV=0.2;
-    const fmt=n=>'$'+Math.round(n).toLocaleString();
-    function calc(){
-      const calls=+cw.value, job=+aj.value;
-      cwLbl.textContent=calls; ajLbl.textContent=fmt(job);
-      const monthly=calls*4.33*job*CONV;
-      lost.textContent=fmt(monthly); lostYr.textContent=fmt(monthly*12);
-    }
-    cw.addEventListener('input',calc); aj.addEventListener('input',calc); calc();
-  </script>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+  var nav=document.getElementById('nav');
+  addEventListener('scroll',function(){nav.classList.toggle('stuck',scrollY>20)},{passive:true});
+
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+  /* mobile menu */
+  var navtog=document.getElementById('navtog'),mobnav=document.getElementById('mobnav');
+  if(navtog&&mobnav){
+    navtog.addEventListener('click',function(){var o=mobnav.classList.toggle('open');navtog.setAttribute('aria-expanded',o?'true':'false')});
+    mobnav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mobnav.classList.remove('open');navtog.setAttribute('aria-expanded','false')})});
+  }
+
+  /* magnetic buttons */
+  if(!matchMedia('(prefers-reduced-motion:reduce)').matches && matchMedia('(pointer:fine)').matches){
+    document.querySelectorAll('[data-mag]').forEach(function(b){
+      b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+((e.clientX-r.left-r.width/2)*.25)+'px,'+((e.clientY-r.top-r.height/2)*.35)+'px)'});
+      b.addEventListener('mouseleave',function(){b.style.transform=''});
+    });
+  }
+
+  /* cost calculator */
+  var cw=document.getElementById('cw'),aj=document.getElementById('aj');
+  var cwLbl=document.getElementById('cwLbl'),ajLbl=document.getElementById('ajLbl');
+  var lost=document.getElementById('lost'),lostYr=document.getElementById('lostYr');
+  var fmt=function(n){return '$'+Math.round(n).toLocaleString()};
+  function calc(){
+    var calls=+cw.value, job=+aj.value;
+    cwLbl.textContent=calls; ajLbl.textContent=fmt(job);
+    var monthly=calls*4.33*job*0.2;
+    lost.textContent=fmt(monthly);
+    lostYr.textContent=fmt(monthly*12);
+  }
+  cw.addEventListener('input',calc); aj.addEventListener('input',calc); calc();
+</script>
 </body>
 </html>
