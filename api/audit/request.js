@@ -81,7 +81,9 @@ export default async function handler(req, res){
       // fire and forget — but await a short timeout so we don't return before request lands
       const ctrl = new AbortController();
       const t = setTimeout(() => ctrl.abort(), 4000);
-      await fetch(rtxUrl, {
+      // RTX_RENDER_WEBHOOK_URL is the base URL of the render server; the endpoint is POST /render
+      const renderEndpoint = `${rtxUrl.replace(/\/$/, '')}/render`;
+      await fetch(renderEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
