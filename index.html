@@ -11,10 +11,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://belken.ai/" />
 <meta property="og:site_name" content="Belken" />
-<meta property="og:title" content="Belken — we build and run the AI that handles the boring half of your business" />
+<meta property="og:title" content="Belken: we build and run the AI that handles the boring half of your business" />
 <meta property="og:description" content="Done for you AI automation for local businesses. Real engineers build it, we run it 24/7." />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Belken — the AI that runs the boring half of your business" />
+<meta name="twitter:title" content="Belken: the AI that runs the boring half of your business" />
 <meta name="twitter:description" content="Done for you AI automation for local businesses. Real engineers build it, we run it 24/7." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -373,6 +373,36 @@
   .prod .go{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--ultra);display:flex;align-items:center;gap:6px;transition:.2s}
   .prod:hover .go{gap:11px}
 
+  /* website tiers */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+  .tier{border:1.5px solid var(--ink);border-radius:var(--r);padding:32px 28px 28px;background:var(--paper);
+    display:flex;flex-direction:column;transition:transform .18s cubic-bezier(.2,.7,.2,1),box-shadow .18s}
+  .tier:hover{transform:translateY(-5px);box-shadow:8px 8px 0 var(--ink)}
+  .tier.feat{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .tier.feat:hover{box-shadow:8px 8px 0 var(--ultra)}
+  .tk{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ultra-deep);display:flex;justify-content:space-between;align-items:center}
+  .tier.feat .tk{color:#8ea2ff}
+  .tbadge{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--ink);background:var(--flare);border-radius:999px;padding:4px 10px}
+  .tier h3{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.02em;margin:14px 0 4px;line-height:1.05}
+  .tprice{font-family:var(--display);font-weight:800;font-size:46px;letter-spacing:-.03em;line-height:1;margin-top:8px}
+  .tprice .tp-unit{font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.02em;color:var(--ink-soft);margin-left:8px}
+  .tier.feat .tprice .tp-unit{color:rgba(237,234,225,.62)}
+  .tdesc{font-size:14.5px;color:var(--ink-soft);line-height:1.5;margin-top:14px}
+  .tier.feat .tdesc{color:rgba(237,234,225,.72)}
+  .tlist{list-style:none;margin:18px 0 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .tlist li{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;font-weight:500;line-height:1.35}
+  .tlist .ico{width:16px;height:16px;color:var(--ultra);flex:none;margin-top:2px}
+  .tier.feat .tlist .ico{color:var(--flare)}
+  .tbtn{font-family:var(--body);font-weight:700;font-size:15px;border:1.5px solid var(--ink);cursor:pointer;
+    padding:13px 20px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:9px;
+    background:var(--ink);color:var(--paper);transition:transform .18s cubic-bezier(.2,.7,.2,1),background .22s,color .22s}
+  .tbtn:hover{background:var(--ultra);border-color:var(--ultra)}
+  .tier.feat .tbtn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+  .tier.feat .tbtn:hover{background:var(--flare);border-color:var(--flare);color:var(--ink)}
+  .tnote{margin-top:26px;font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);letter-spacing:.01em}
+  .tnote a{color:var(--ultra);font-weight:600}
+  @media(max-width:860px){.tiers{grid-template-columns:1fr}}
+
   /* cta */
   .cta{background:var(--ultra);color:#fff;border-radius:24px;padding:clamp(44px,6vw,86px);position:relative;overflow:hidden}
   .cta::after{content:"";position:absolute;right:-80px;bottom:-120px;width:420px;height:420px;border-radius:50%;
@@ -458,6 +488,7 @@
     <a class="brand" href="#top"><span class="dot"></span>BELKEN</a>
     <div class="nav-links">
       <a href="#services">Services</a>
+      <a href="#websites">Websites</a>
       <a href="#industries">Industries</a>
       <a href="#how">How it works</a>
       <a href="#kits">Kits</a>
@@ -469,6 +500,7 @@
   </div>
   <div id="mobnav">
     <a href="#services">Services</a>
+    <a href="#websites">Websites</a>
     <a href="#industries">Industries</a>
     <a href="#how">How it works</a>
     <a href="#kits">Kits</a>
@@ -747,7 +779,7 @@
           <span class="vid-badge">Ad 01 · in production</span>
           <span class="vid-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
         </div>
-        <div class="vid-meta"><span class="vid-title">The missed-call save — Joe's Plumbing</span><span class="vid-dur">0:30</span></div>
+        <div class="vid-meta"><span class="vid-title">The missed-call save, Joe's Plumbing</span><span class="vid-dur">0:30</span></div>
       </a>
       <div class="wall-strip">
         <a class="vid" href="#" aria-label="HVAC ad">
@@ -818,6 +850,64 @@
   </div>
 </section>
 
+<section id="websites" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <p class="sec-kick">// Websites, done for you</p>
+        <h2>A site that sells while you work.</h2>
+      </div>
+      <p class="sec-sub">Custom built by a real engineer, no template soup and no AI slop. Book a quick call, we scope it, and you are live in days.</p>
+    </div>
+    <div class="tiers rv">
+
+      <div class="tier">
+        <div class="tk"><span>// Starter</span></div>
+        <h3>Starter</h3>
+        <div class="tprice">$150<span class="tp-unit">one time</span></div>
+        <p class="tdesc">A sharp single page that makes you look established. Live in about a day.</p>
+        <ul class="tlist">
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg> Single page, up to five sections</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg> Contact form wired to your inbox</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg> Clean on every phone and screen</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg> One day delivery, one revision</li>
+        </ul>
+        <a class="tbtn" href="https://calendly.com/belkenbot/free-30-min-discovery-call">Start your build <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+
+      <div class="tier feat">
+        <div class="tk"><span>// Standard</span><span class="tbadge">Most picked</span></div>
+        <h3>Standard</h3>
+        <div class="tprice">$300<span class="tp-unit">one time</span></div>
+        <p class="tdesc">The full single page with a design system built around your brand, plus SEO so you get found.</p>
+        <ul class="tlist">
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg> Everything in Starter</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg> Custom color and type system</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg> Basic SEO so Google can find you</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg> Two day delivery, one revision</li>
+        </ul>
+        <a class="tbtn" href="https://calendly.com/belkenbot/free-30-min-discovery-call">Start your build <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+
+      <div class="tier">
+        <div class="tk"><span>// Premium</span></div>
+        <h3>Premium</h3>
+        <div class="tprice">$500<span class="tp-unit">one time</span></div>
+        <p class="tdesc">A multi page site deployed to your own domain, with a short note on what to improve next.</p>
+        <ul class="tlist">
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg> Everything in Standard</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg> Up to three pages</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg> Deployed live to your domain</li>
+          <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5L20 6"/></svg> Two revisions plus a what to fix next note</li>
+        </ul>
+        <a class="tbtn" href="https://calendly.com/belkenbot/free-30-min-discovery-call">Start your build <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+
+    </div>
+    <p class="tnote rv">Want it hosted and kept fresh? Add Website Care for monthly hosting and edits, or <a href="https://calendly.com/belkenbot/free-30-min-discovery-call">book a call</a> if you are not sure which tier fits.</p>
+  </div>
+</section>
+
 <section class="sec" style="padding-top:0">
   <div class="wrap">
     <div class="cta rv">
@@ -857,8 +947,14 @@
         </div>
         <div class="fcol">
           <h5>Start</h5>
+          <a href="#websites">Get a website</a>
           <a href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener">Book a call</a>
           <a href="mailto:info@belken.ai">info@belken.ai</a>
+        </div>
+        <div class="fcol">
+          <h5>Legal</h5>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
         </div>
       </div>
     </div>
