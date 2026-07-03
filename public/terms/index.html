@@ -1,84 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terms of Service — BelkenAI</title>
-  <meta name="description" content="BelkenAI Terms of Service governing use of belkenai.com and the BelkenAI platform, including connected platform integrations such as TikTok." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style> html { scroll-behavior: smooth; } </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terms of Service | Belken</title>
+<meta name="description" content="Belken Terms of Service governing use of belkenai.com, belken.ai, and the Belken platform and services, including connected platform integrations such as TikTok, AI-generated content, our automated voice assistant, and paid plans." />
+<link rel="canonical" href="https://belkenai.com/terms" />
+<meta name="theme-color" content="#EEEAE1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23121110'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%231F32FF'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#EEEAE1;--paper-2:#E4DFD3;--ink:#121110;--ink-soft:#3a382f;--line:#cdc6b6;
+    --ultra:#1F32FF;--ultra-deep:#0e1bb0;--flare:#FF4318;
+    --display:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace;--r:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:var(--ultra);color:#fff}
+  a{color:var(--ultra-deep);text-decoration:none}
+  a:hover{text-decoration:underline}
+  :focus-visible{outline:2.5px solid var(--ultra);outline-offset:3px;border-radius:3px}
+  .wrap{width:100%;max-width:840px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;opacity:.14;
+    -webkit-mask-image:radial-gradient(circle at 80% 0%,#000 0%,transparent 58%);
+    mask-image:radial-gradient(circle at 80% 0%,#000 0%,transparent 58%)}
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);background:rgba(238,234,225,.82);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{font-family:var(--display);font-weight:800;font-size:23px;letter-spacing:-.02em;display:flex;align-items:center;gap:11px;color:var(--ink)}
+  .brand .dot{width:12px;height:12px;background:var(--ultra);border-radius:50%;box-shadow:0 0 0 5px rgba(31,50,255,.16)}
+  .nav-links{display:flex;gap:26px;align-items:center;font-size:15px;font-weight:600}
+  .nav-links a{color:var(--ink);opacity:.7}
+  .nav-links a:hover{opacity:1;text-decoration:none}
+  main{position:relative;z-index:1;padding-top:118px;padding-bottom:96px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ultra);font-weight:600;margin-bottom:14px}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(38px,7vw,60px);line-height:1.02;letter-spacing:-.03em;margin-bottom:10px}
+  .eff{font-family:var(--mono);font-size:13px;color:var(--ink-soft);margin-bottom:42px}
+  .lede{font-size:19px;color:var(--ink-soft);margin-bottom:40px;line-height:1.6}
+  section{margin-bottom:34px;position:relative}
+  h2{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.01em;margin-bottom:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{font-family:var(--mono);font-size:14px;color:var(--ultra);font-weight:600;flex-shrink:0;min-width:26px}
+  p{margin-bottom:12px;color:var(--ink-soft)}
+  p strong{color:var(--ink);font-weight:700}
+  code{font-family:var(--mono);font-size:.88em;color:var(--ultra-deep);background:var(--paper-2);padding:2px 6px;border-radius:5px}
+  .flag{border-left:3px solid var(--flare);background:rgba(255,67,24,.05);padding:16px 20px;border-radius:0 var(--r) var(--r) 0;margin:8px 0 14px}
+  .flag p:last-child{margin-bottom:0}
+  section.flag{margin-bottom:34px}
+  section.flag h2 .n{color:var(--flare)}
+  footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:32px 0;font-family:var(--mono);font-size:13px;color:var(--ink-soft);text-align:center}
+  footer a{color:var(--ink-soft)}
+</style>
 </head>
-<body class="min-h-screen bg-[#0a0a0f] text-gray-100">
+<body>
 
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
-    <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="https://belkenai.com" class="flex items-center gap-2">
-        <span class="text-2xl">&#9889;</span>
-        <span class="text-xl font-bold tracking-tight">Belken<span class="text-blue-400">AI</span></span>
-      </a>
-      <div class="flex items-center gap-6 text-sm text-gray-400">
-        <a href="https://belkenai.com" class="hover:text-white transition">Home</a>
-        <a href="/privacy" class="hover:text-white transition">Privacy</a>
+<nav>
+  <div class="wrap nav-in">
+    <a href="https://belken.ai/" class="brand"><span class="dot"></span>Belken</a>
+    <div class="nav-links">
+      <a href="https://belken.ai/">Home</a>
+      <a href="/privacy">Privacy</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">Legal</p>
+    <h1>Terms of Service</h1>
+    <p class="eff">Effective date: July 2, 2026</p>
+
+    <p class="lede">These Terms of Service ("Terms") govern your use of belkenai.com, belken.ai, and the Belken platform and services (the "Service"), operated by BelKen Ventures Inc ("Belken," "we," "us"). By using the Service you agree to these Terms.</p>
+
+    <section>
+      <h2><span class="n">1</span>Use of the Service</h2>
+      <p>You may use the Service only in compliance with these Terms and all applicable laws. You are responsible for the content you create, upload, schedule, or publish through the Service, and for maintaining the security of your account.</p>
+    </section>
+
+    <section>
+      <h2><span class="n">2</span>Connected platforms</h2>
+      <p>The Service lets you connect third-party accounts (such as TikTok) to publish or schedule content. When you connect a platform, you authorize Belken to act on your behalf within the permissions you approve. Your use of each connected platform also remains subject to that platform's own terms and policies, including, for TikTok, the TikTok Terms of Service and Community Guidelines. You are responsible for ensuring your content complies with those rules.</p>
+    </section>
+
+    <section>
+      <h2><span class="n">3</span>Acceptable use</h2>
+      <p>You agree not to use the Service to post unlawful, infringing, deceptive, or harmful content, to spam, or to violate the rights of others or the policies of any connected platform. We may suspend or terminate access for violations.</p>
+    </section>
+
+    <section>
+      <h2><span class="n">4</span>AI-generated content</h2>
+      <p>The Service can generate content, including text, images, audio, and video, using artificial intelligence, at Customer's direction. Customer decides what, if anything, is published and to which platforms.</p>
+      <p><strong>Review and publishing.</strong> Customer is solely responsible for reviewing AI-generated output before publication and for the decision to publish it. Belken does not review or approve content before Customer publishes it.</p>
+      <div class="flag">
+        <p><strong>Platform disclosure and labeling.</strong> Customer is responsible for complying with the rules of each platform on which content is published, including any requirement to disclose or label AI-generated, synthetic, or altered content (for example, TikTok's AI-generated-content label, Meta's "AI info" labeling, and YouTube's altered- or synthetic-content disclosure). Where a platform provides an AI-content label or setting, Customer must enable it for content that requires it.</p>
+        <p><strong>Endorsements and truthfulness (FTC).</strong> Customer must not publish AI-generated content in a deceptive manner, including presenting AI-generated material as a genuine, independent consumer review, endorsement, or testimonial, or omitting disclosure of AI generation or of any material connection where disclosure is required by the Federal Trade Commission or applicable law.</p>
       </div>
-    </div>
-  </nav>
+      <p><strong>No warranty on output.</strong> AI-generated output is provided "as is." Belken does not warrant that it is accurate, original, non-infringing, or fit for any particular purpose. AI systems can produce incorrect, biased, or infringing material, and output may resemble content generated for others.</p>
+      <p><strong>Responsibility and indemnity.</strong> As between the parties, Customer is responsible for all content it publishes and will indemnify and hold Belken harmless from any claim, penalty, or loss arising out of content Customer published, including platform enforcement actions, intellectual-property claims, and claims of deceptive, unlabeled, or undisclosed AI or endorsement content.</p>
+    </section>
 
-  <main class="max-w-3xl mx-auto px-6 pt-32 pb-24">
-    <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-3">Terms of Service</h1>
-    <p class="text-gray-500 mb-10">Effective date: June 9, 2026</p>
+    <section>
+      <h2><span class="n">5</span>Voice / AI calling service</h2>
+      <p>The Service includes an automated voice assistant ("ARIA") that places and answers telephone calls on behalf of Customer's business, including missed-call follow-up and reactivation calls to Customer's existing contacts. ARIA uses an artificial (AI-generated) voice. Calls may be recorded, transcribed, and stored to operate the Service, maintain call quality, and keep records of the interaction and any consent given during the call.</p>
+    </section>
 
-    <div class="space-y-8 text-gray-300 leading-relaxed">
-      <p>These Terms of Service (&ldquo;Terms&rdquo;) govern your use of belkenai.com and the BelkenAI platform (the &ldquo;Service&rdquo;), operated by Belken Ventures (&ldquo;BelkenAI,&rdquo; &ldquo;we,&rdquo; &ldquo;us&rdquo;). By using the Service you agree to these Terms.</p>
+    <section class="flag">
+      <h2><span class="n">6</span>Call recording &amp; monitoring consent</h2>
+      <p>Calls handled by the Service may be monitored and recorded. Because Belken operates from Maryland, an all-party-consent state under the Maryland Wiretapping and Electronic Surveillance Act (Md. Code, Cts. &amp; Jud. Proc. &sect; 10-402), every recorded call begins with an audible notice that the call may be recorded before any substantive conversation. By continuing the call after that notice, all parties consent to being recorded. Any party who does not consent may end the call. Customer is responsible for ensuring the Service's recording notice remains enabled and unmodified.</p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">1. Use of the Service</h2>
-        <p>You may use the Service only in compliance with these Terms and all applicable laws. You are responsible for the content you create, upload, schedule, or publish through the Service, and for maintaining the security of your account.</p>
-      </section>
+    <section class="flag">
+      <h2><span class="n">7</span>Customer consent obligations &amp; warranty (TCPA)</h2>
+      <p>Customer is solely responsible for obtaining and maintaining all consents required by law for the contacts it uploads or directs the Service to call or text, including any prior express consent or prior express written consent required under the Telephone Consumer Protection Act (TCPA) and applicable state law for calls or texts made using an artificial or prerecorded voice or an automatic telephone dialing system. Customer represents and warrants that, for every phone number it provides, it has obtained all such consents and has not received a do-not-contact, opt-out, or revocation request. Customer will not upload numbers on any state or federal Do-Not-Call registry absent a valid exemption. Customer agrees to indemnify and hold Belken harmless from any claim, penalty, or loss arising out of contacts made to numbers Customer provided without the required consent.</p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">2. Connected platforms</h2>
-        <p>The Service lets you connect third&#8209;party accounts (such as TikTok) to publish or schedule content. When you connect a platform, you authorize BelkenAI to act on your behalf within the permissions you approve. Your use of each connected platform also remains subject to that platform&rsquo;s own terms and policies &mdash; including, for TikTok, the TikTok Terms of Service and Community Guidelines. You are responsible for ensuring your content complies with those rules.</p>
-      </section>
+    <section>
+      <h2><span class="n">8</span>Payments, billing &amp; renewal</h2>
+      <p>Paid plans are billed in advance on a recurring monthly basis unless stated otherwise, plus any one-time setup fee quoted at signup. Plans renew automatically each billing period until cancelled. Customer may cancel at any time effective at the end of the current billing period by contacting <a href="mailto:info@belken.ai">info@belken.ai</a>; cancellation stops future renewals but does not retroactively refund the current period. Setup fees are non-refundable once onboarding work has begun. Fees are exclusive of applicable taxes. Belken may change pricing on renewal with at least 30 days' notice.</p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">3. Acceptable use</h2>
-        <p>You agree not to use the Service to post unlawful, infringing, deceptive, or harmful content, to spam, or to violate the rights of others or the policies of any connected platform. We may suspend or terminate access for violations.</p>
-      </section>
+    <section>
+      <h2><span class="n">9</span>Refunds</h2>
+      <p>Except where required by law, recurring subscription fees already billed are non-refundable, including for partial periods after cancellation. If you believe you were billed in error, contact <a href="mailto:info@belken.ai">info@belken.ai</a> within 30 days and we will review it in good faith.</p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">4. Intellectual property</h2>
-        <p>You retain ownership of the content you provide. BelkenAI retains ownership of the Service, its software, and its branding. You grant us the limited rights needed to operate the Service and to publish your content where you direct.</p>
-      </section>
+    <section>
+      <h2><span class="n">10</span>Intellectual property</h2>
+      <p>You retain ownership of the content you provide. Belken retains ownership of the Service, its software, and its branding. You grant us the limited rights needed to operate the Service and to publish your content where you direct.</p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">5. Disclaimers</h2>
-        <p>The Service is provided &ldquo;as is&rdquo; without warranties of any kind. We do not guarantee that the Service will be uninterrupted, error&#8209;free, or that third&#8209;party platforms will remain available.</p>
-      </section>
+    <section>
+      <h2><span class="n">11</span>Disclaimers</h2>
+      <p>The Service is provided "as is" without warranties of any kind. We do not guarantee that the Service will be uninterrupted, error-free, or that third-party platforms will remain available.</p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">6. Limitation of liability</h2>
-        <p>To the maximum extent permitted by law, BelkenAI will not be liable for any indirect, incidental, or consequential damages arising from your use of the Service.</p>
-      </section>
+    <section>
+      <h2><span class="n">12</span>Limitation of liability</h2>
+      <p>To the maximum extent permitted by law, Belken will not be liable for any indirect, incidental, or consequential damages arising from your use of the Service.</p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">7. Termination</h2>
-        <p>You may stop using the Service at any time and disconnect any linked platform. We may suspend or terminate access if you violate these Terms.</p>
-      </section>
+    <section>
+      <h2><span class="n">13</span>Termination</h2>
+      <p>You may stop using the Service at any time and disconnect any linked platform. We may suspend or terminate access if you violate these Terms.</p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">8. Changes</h2>
-        <p>We may update these Terms from time to time. We will post the updated version here and revise the effective date above. Continued use of the Service means you accept the changes.</p>
-      </section>
+    <section>
+      <h2><span class="n">14</span>Changes</h2>
+      <p>We may update these Terms from time to time. We will post the updated version here and revise the effective date above. Continued use of the Service means you accept the changes.</p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">9. Contact</h2>
-        <p>Questions about these Terms? Email <a href="mailto:info@belken.ai" class="text-blue-400 hover:underline">info@belken.ai</a>.</p>
-      </section>
-    </div>
-  </main>
+    <section>
+      <h2><span class="n">15</span>Contact</h2>
+      <p>Questions about these Terms? Email <a href="mailto:info@belken.ai">info@belken.ai</a>.</p>
+      <p>BelKen Ventures Inc<br>5830 E 2nd St Ste 7000<br>Casper, WY 82609</p>
+    </section>
+  </div>
+</main>
 
-  <footer class="border-t border-white/5 py-8 text-center text-sm text-gray-600">
-    &copy; 2026 Belken Ventures &middot; <a href="https://belkenai.com" class="hover:text-gray-400">belkenai.com</a>
-  </footer>
+<footer>
+  <div class="wrap">&copy; 2026 BelKen Ventures Inc &middot; <a href="https://belkenai.com">belkenai.com</a></div>
+</footer>
 </body>
 </html>

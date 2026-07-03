@@ -1,108 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy — BelkenAI</title>
-  <meta name="description" content="BelkenAI Privacy Policy: what we collect, how we use it, how we handle data from connected platforms including TikTok, and how to delete your data." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style> html { scroll-behavior: smooth; } </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy | Belken</title>
+<meta name="description" content="Belken Privacy Policy: what we collect, how we use it, how we handle data from connected platforms including TikTok, SMS, AI content generation, and our automated voice assistant, and how to delete your data." />
+<link rel="canonical" href="https://belkenai.com/privacy" />
+<meta name="theme-color" content="#EEEAE1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23121110'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%231F32FF'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#EEEAE1;--paper-2:#E4DFD3;--ink:#121110;--ink-soft:#3a382f;--line:#cdc6b6;
+    --ultra:#1F32FF;--ultra-deep:#0e1bb0;--flare:#FF4318;
+    --display:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace;--r:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:var(--ultra);color:#fff}
+  a{color:var(--ultra-deep);text-decoration:none}
+  a:hover{text-decoration:underline}
+  :focus-visible{outline:2.5px solid var(--ultra);outline-offset:3px;border-radius:3px}
+  .wrap{width:100%;max-width:840px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;opacity:.14;
+    -webkit-mask-image:radial-gradient(circle at 80% 0%,#000 0%,transparent 58%);
+    mask-image:radial-gradient(circle at 80% 0%,#000 0%,transparent 58%)}
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);background:rgba(238,234,225,.82);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{font-family:var(--display);font-weight:800;font-size:23px;letter-spacing:-.02em;display:flex;align-items:center;gap:11px;color:var(--ink)}
+  .brand .dot{width:12px;height:12px;background:var(--ultra);border-radius:50%;box-shadow:0 0 0 5px rgba(31,50,255,.16)}
+  .nav-links{display:flex;gap:26px;align-items:center;font-size:15px;font-weight:600}
+  .nav-links a{color:var(--ink);opacity:.7}
+  .nav-links a:hover{opacity:1;text-decoration:none}
+  main{position:relative;z-index:1;padding-top:118px;padding-bottom:96px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ultra);font-weight:600;margin-bottom:14px}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(38px,7vw,60px);line-height:1.02;letter-spacing:-.03em;margin-bottom:10px}
+  .eff{font-family:var(--mono);font-size:13px;color:var(--ink-soft);margin-bottom:42px}
+  .lede{font-size:19px;color:var(--ink-soft);margin-bottom:40px;line-height:1.6}
+  section{margin-bottom:34px;position:relative}
+  h2{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.01em;margin-bottom:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{font-family:var(--mono);font-size:14px;color:var(--ultra);font-weight:600;flex-shrink:0;min-width:26px}
+  p{margin-bottom:12px;color:var(--ink-soft)}
+  p strong{color:var(--ink);font-weight:700}
+  ul{list-style:none;margin:12px 0}
+  li{position:relative;padding-left:22px;margin-bottom:9px;color:var(--ink-soft)}
+  li::before{content:"";position:absolute;left:3px;top:11px;width:7px;height:7px;background:var(--ultra);border-radius:2px}
+  li strong{color:var(--ink);font-weight:700}
+  code{font-family:var(--mono);font-size:.88em;color:var(--ultra-deep);background:var(--paper-2);padding:2px 6px;border-radius:5px}
+  footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:32px 0;font-family:var(--mono);font-size:13px;color:var(--ink-soft);text-align:center}
+  footer a{color:var(--ink-soft)}
+</style>
 </head>
-<body class="min-h-screen bg-[#0a0a0f] text-gray-100">
+<body>
 
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
-    <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="https://belkenai.com" class="flex items-center gap-2">
-        <span class="text-2xl">&#9889;</span>
-        <span class="text-xl font-bold tracking-tight">Belken<span class="text-blue-400">AI</span></span>
-      </a>
-      <div class="flex items-center gap-6 text-sm text-gray-400">
-        <a href="https://belkenai.com" class="hover:text-white transition">Home</a>
-        <a href="/terms" class="hover:text-white transition">Terms</a>
-      </div>
+<nav>
+  <div class="wrap nav-in">
+    <a href="https://belken.ai/" class="brand"><span class="dot"></span>Belken</a>
+    <div class="nav-links">
+      <a href="https://belken.ai/">Home</a>
+      <a href="/terms">Terms</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <main class="max-w-3xl mx-auto px-6 pt-32 pb-24">
-    <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-3">Privacy Policy</h1>
-    <p class="text-gray-500 mb-10">Effective date: July 1, 2026</p>
+<main>
+  <div class="wrap">
+    <p class="eyebrow">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="eff">Effective date: July 2, 2026</p>
 
-    <div class="space-y-8 text-gray-300 leading-relaxed">
-      <p>This Privacy Policy explains how Belken Ventures (&ldquo;BelkenAI,&rdquo; &ldquo;we,&rdquo; &ldquo;us&rdquo;) collects, uses, and protects information when you use belkenai.com and the BelkenAI platform (the &ldquo;Service&rdquo;). By using the Service you agree to this policy.</p>
+    <p class="lede">This Privacy Policy explains how BelKen Ventures Inc ("Belken," "we," "us") collects, uses, and protects information when you use belkenai.com, belken.ai, and the Belken platform and services (the "Service"). By using the Service you agree to this policy.</p>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">1. Information we collect</h2>
-        <ul class="list-disc list-inside space-y-2">
-          <li><span class="font-semibold text-white">Account information</span> you provide, such as your name and email address.</li>
-          <li><span class="font-semibold text-white">Content</span> you create, upload, or schedule through the Service.</li>
-          <li><span class="font-semibold text-white">Connected platform data</span> from third&#8209;party accounts you choose to link (for example TikTok), described in Section 3.</li>
-          <li><span class="font-semibold text-white">Mobile phone number and SMS consent</span> if you opt in to receive text messages from us, described in Section 4.</li>
-          <li><span class="font-semibold text-white">Usage data</span> such as log information and basic analytics used to operate and secure the Service.</li>
-        </ul>
-      </section>
+    <section>
+      <h2><span class="n">1</span>Information we collect</h2>
+      <ul>
+        <li><strong>Account information</strong> you provide, such as your name and email address.</li>
+        <li><strong>Content</strong> you create, upload, or schedule through the Service.</li>
+        <li><strong>Connected platform data</strong> from third-party accounts you choose to link (for example TikTok), described in Section 3.</li>
+        <li><strong>Mobile phone number and SMS consent</strong> if you opt in to receive text messages from us, described in Section 4.</li>
+        <li><strong>Voice call data</strong> such as call audio, transcripts, and consent records when you interact with our automated voice assistant, described in Section 5.</li>
+        <li><strong>Generation inputs</strong> such as the prompts and inputs you provide when you use the Service to generate content, described in Section 6.</li>
+        <li><strong>Billing information</strong> when you purchase a paid plan, described in Section 7.</li>
+        <li><strong>Usage data</strong> such as log information and basic analytics used to operate and secure the Service.</li>
+      </ul>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">2. How we use information</h2>
-        <ul class="list-disc list-inside space-y-2">
-          <li>To provide, maintain, and improve the Service.</li>
-          <li>To publish or schedule content to platforms you connect, at your direction.</li>
-          <li>To communicate with you about your account and support requests.</li>
-          <li>To protect the Service against fraud, abuse, and security threats.</li>
-        </ul>
-        <p class="mt-3">We do not sell your personal information.</p>
-      </section>
+    <section>
+      <h2><span class="n">2</span>How we use information</h2>
+      <ul>
+        <li>To provide, maintain, and improve the Service.</li>
+        <li>To generate content at your direction and to publish or schedule it to platforms you connect.</li>
+        <li>To operate our automated voice assistant and keep a record of the interaction and any consent given.</li>
+        <li>To communicate with you about your account and support requests.</li>
+        <li>To protect the Service against fraud, abuse, and security threats.</li>
+      </ul>
+      <p>We do not sell your personal information.</p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">3. TikTok data</h2>
-        <p>If you connect a TikTok account, you authorize BelkenAI to access certain TikTok data through TikTok&rsquo;s official APIs, limited to the permissions you approve:</p>
-        <ul class="list-disc list-inside space-y-2 mt-3">
-          <li><span class="font-mono text-blue-400">user.info.basic</span> &mdash; your basic profile (display name, avatar) to confirm the connected account.</li>
-          <li><span class="font-mono text-blue-400">video.upload</span> and <span class="font-mono text-blue-400">video.publish</span> &mdash; to upload, schedule, and publish videos to your own TikTok account when you choose.</li>
-        </ul>
-        <p class="mt-3">We use TikTok data <span class="font-semibold text-white">only</span> to provide these features. We do not use TikTok data for advertising, we do not sell it, and we do not share it with third parties except the service providers needed to operate the Service (Section 5). Access tokens are stored securely and used solely on your behalf. Our use of TikTok data complies with the <a href="https://developers.tiktok.com/doc/getting-started-platform-guidelines" class="text-blue-400 hover:underline">TikTok Developer Terms and Platform guidelines</a>.</p>
-      </section>
+    <section>
+      <h2><span class="n">3</span>TikTok data</h2>
+      <p>If you connect a TikTok account, you authorize Belken to access certain TikTok data through TikTok's official APIs, limited to the permissions you approve:</p>
+      <ul>
+        <li><code>user.info.basic</code>: your basic profile (display name, avatar) to confirm the connected account.</li>
+        <li><code>video.upload</code> and <code>video.publish</code>: to upload, schedule, and publish videos to your own TikTok account when you choose.</li>
+      </ul>
+      <p>We use TikTok data <strong>only</strong> to provide these features. We do not use TikTok data for advertising, we do not sell it, and we do not share it with third parties except the service providers needed to operate the Service (Section 9). Access tokens are stored securely and used solely on your behalf. Our use of TikTok data complies with the <a href="https://developers.tiktok.com/doc/getting-started-platform-guidelines">TikTok Developer Terms and Platform guidelines</a>.</p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">4. SMS / text messaging</h2>
-        <p>Belken Ventures operates SMS programs for appointment confirmations, reminders, missed&#8209;call follow&#8209;ups, and occasional service offers. You opt in by providing your mobile number on our contact or booking form, verbally, or by texting a keyword to our number. Consent to receive text messages is not a condition of any purchase.</p>
-        <p class="mt-3"><span class="font-semibold text-white">We do not sell or share your mobile phone number, or your SMS opt&#8209;in and consent information, with any third parties or affiliates for their marketing or promotional purposes.</span> Mobile information is used only to deliver the messages you signed up for and is shared solely with the service providers needed to send those messages on our behalf.</p>
-        <p class="mt-3">Message frequency varies. <span class="font-semibold text-white">Message and data rates may apply.</span> Reply <span class="font-semibold text-white">STOP</span> to any message to opt out at any time, or <span class="font-semibold text-white">HELP</span> for assistance. You can also email <a href="mailto:info@belken.ai" class="text-blue-400 hover:underline">info@belken.ai</a> for help.</p>
-      </section>
+    <section>
+      <h2><span class="n">4</span>SMS / text messaging</h2>
+      <p>Belken Ventures operates SMS programs for appointment confirmations, reminders, missed&#8209;call follow&#8209;ups, and occasional service offers. You opt in by providing your mobile number on our contact or booking form, verbally, or by texting a keyword to our number. Consent to receive text messages is not a condition of any purchase.</p>
+      <p><strong>We do not sell or share your mobile phone number, or your SMS opt&#8209;in and consent information, with any third parties or affiliates for their marketing or promotional purposes.</strong> Mobile information is used only to deliver the messages you signed up for and is shared solely with the service providers needed to send those messages on our behalf.</p>
+      <p>Message frequency varies. <strong>Message and data rates may apply.</strong> Reply <strong>STOP</strong> to any message to opt out at any time, or <strong>HELP</strong> for assistance. You can also email <a href="mailto:info@belken.ai">info@belken.ai</a> for help.</p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">5. Data retention &amp; deletion</h2>
-        <p>We keep your information only as long as needed to provide the Service or as required by law. You can disconnect any linked platform at any time from the BelkenAI dashboard or from that platform&rsquo;s own settings, which immediately revokes our access. To delete your account and associated data, email <a href="mailto:info@belken.ai" class="text-blue-400 hover:underline">info@belken.ai</a> and we will delete it within 30 days, except where retention is legally required.</p>
-      </section>
+    <section>
+      <h2><span class="n">5</span>Voice calls &amp; recordings</h2>
+      <p>When you interact with our automated voice assistant, we collect and process the call audio, a transcript of the conversation, your phone number, the date and time and outcome of the call, and any consent you give during the call. Calls begin with an audible notice that the call may be recorded; continuing the call indicates your consent. We use this information only to provide and operate the Service (connecting you to the business you were called on behalf of, scheduling, follow-up, quality, and keeping a record of consent). We do not sell call recordings or transcripts, and we do not use them for advertising.</p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">6. Sharing &amp; service providers</h2>
-        <p>We share information only with infrastructure and hosting providers that help us run the Service, and only to the extent necessary. These providers are bound by confidentiality and data&#8209;protection obligations. We may also disclose information if required by law.</p>
-      </section>
+    <section>
+      <h2><span class="n">6</span>AI content generation</h2>
+      <p>At your direction, the Service uses AI systems to generate content such as text, images, audio, and video. We process the prompts and inputs you provide in order to generate that content and operate the Service. The AI providers we rely on handle data under their own terms, and we do not sell your generation inputs.</p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">7. Security</h2>
-        <p>We use reasonable technical and organizational measures to protect your information, including encrypted storage of access credentials. No method of transmission or storage is fully secure, but we work to protect your data.</p>
-      </section>
+    <section>
+      <h2><span class="n">7</span>Payment information</h2>
+      <p>When you purchase a paid plan, payment is processed by our third-party payment processor. We do not store full card numbers on our systems; we retain billing records such as plan, amount, date, and the last four digits and status needed for accounting and support. Our payment processor handles card data under its own privacy and PCI obligations.</p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">8. Your rights</h2>
-        <p>You may request access to, correction of, or deletion of your personal information by contacting us. You can revoke third&#8209;party connections at any time.</p>
-      </section>
+    <section>
+      <h2><span class="n">8</span>Data retention &amp; deletion</h2>
+      <p>We keep your information only as long as needed to provide the Service or as required by law. Call recordings, transcripts, and consent records are retained only as long as needed to operate the Service, resolve disputes, and meet legal obligations, after which they are deleted or anonymized. You can disconnect any linked platform at any time from the Belken dashboard or from that platform's own settings, which immediately revokes our access. To delete your account and associated data, email <a href="mailto:info@belken.ai">info@belken.ai</a> and we will delete it within 30 days, except where retention is legally required.</p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">9. Changes</h2>
-        <p>We may update this policy from time to time. We will post the updated version here and revise the effective date above.</p>
-      </section>
+    <section>
+      <h2><span class="n">9</span>Sharing &amp; service providers</h2>
+      <p>We share information only with infrastructure, hosting, and payment providers that help us run the Service, and only to the extent necessary. These providers are bound by confidentiality and data-protection obligations. We may also disclose information if required by law.</p>
+    </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-white mb-3">10. Contact</h2>
-        <p>Questions about this policy? Email <a href="mailto:info@belken.ai" class="text-blue-400 hover:underline">info@belken.ai</a>.</p>
-      </section>
-    </div>
-  </main>
+    <section>
+      <h2><span class="n">10</span>Security</h2>
+      <p>We use reasonable technical and organizational measures to protect your information, including encrypted storage of access credentials. No method of transmission or storage is fully secure, but we work to protect your data.</p>
+    </section>
 
-  <footer class="border-t border-white/5 py-8 text-center text-sm text-gray-600">
-    &copy; 2026 Belken Ventures &middot; <a href="https://belkenai.com" class="hover:text-gray-400">belkenai.com</a>
-  </footer>
+    <section>
+      <h2><span class="n">11</span>Your rights</h2>
+      <p>You may request access to, correction of, or deletion of your personal information by contacting us. You can revoke third-party connections at any time.</p>
+    </section>
+
+    <section>
+      <h2><span class="n">12</span>Changes</h2>
+      <p>We may update this policy from time to time. We will post the updated version here and revise the effective date above.</p>
+    </section>
+
+    <section>
+      <h2><span class="n">13</span>Contact</h2>
+      <p>Questions about this policy? Email <a href="mailto:info@belken.ai">info@belken.ai</a>.</p>
+      <p>BelKen Ventures Inc<br>5830 E 2nd St Ste 7000<br>Casper, WY 82609</p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">&copy; 2026 BelKen Ventures Inc &middot; <a href="https://belkenai.com">belkenai.com</a></div>
+</footer>
 </body>
 </html>
