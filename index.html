@@ -43,7 +43,7 @@
 
   .btn{font-family:var(--body);font-weight:700;font-size:15px;border:none;cursor:pointer;
     padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:9px;line-height:1;
-    transition:background .22s,color .22s;will-change:transform}
+    transition:background .22s,color .22s,transform .28s cubic-bezier(.2,.7,.2,1),box-shadow .28s;will-change:transform}
   .btn-primary{background:var(--ink);color:var(--paper)}
   .btn-primary:hover{background:var(--ultra)}
   .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
@@ -232,6 +232,30 @@
   .foot-links a{opacity:.7;transition:.2s}.foot-links a:hover{opacity:1}
   .foot-legal{font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
   .trustline{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);margin-top:14px;opacity:.8}
+
+  /* ===== GOLDEN MOTION LAYER ===== */
+  .btn:not(#magnet):hover{transform:translateY(-2px)}
+  .btn:not(#magnet):active{transform:translateY(0)}
+  .btn-primary:hover{box-shadow:0 15px 32px -14px rgba(31,50,255,.6)}
+  .btn-flare:hover{box-shadow:0 15px 32px -14px rgba(255,67,24,.55)}
+  .btn-ghost:hover{box-shadow:0 14px 30px -16px rgba(18,17,16,.5)}
+
+  .col{transition:transform .42s cubic-bezier(.16,1,.3,1),box-shadow .42s cubic-bezier(.16,1,.3,1),border-color .42s}
+  .col:hover{transform:translateY(-5px)}
+  .compare .col:not(.us):hover{box-shadow:0 30px 60px -34px rgba(18,17,16,.4);border-color:var(--ultra)}
+  .compare .col.us:hover{box-shadow:0 34px 72px -34px rgba(0,0,0,.62),0 0 0 1px rgba(142,162,255,.34)}
+
+  .tier{transition:transform .42s cubic-bezier(.16,1,.3,1),box-shadow .42s cubic-bezier(.16,1,.3,1),border-color .42s}
+  .tier:not(.flag):hover{transform:translateY(-6px);box-shadow:0 32px 64px -36px rgba(18,17,16,.4);border-color:var(--ultra)}
+  .tier.flag{box-shadow:0 40px 80px -46px rgba(0,0,0,.55),0 0 0 1px rgba(142,162,255,.18)}
+  .tier.flag:hover{transform:translateY(-6px);box-shadow:0 56px 104px -40px rgba(0,0,0,.64),0 0 0 1px rgba(142,162,255,.46)}
+  .pcustom{font-family:var(--mono);font-size:11px;letter-spacing:.02em;color:rgba(237,234,225,.55);margin-bottom:16px}
+
+  .panel{transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1)}
+  .panel:hover{transform:translateY(-4px);box-shadow:0 54px 100px -44px rgba(0,0,0,.66)}
+
+  .call{transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s cubic-bezier(.16,1,.3,1)}
+  .call:hover{transform:translateY(-4px);box-shadow:0 54px 100px -44px rgba(0,0,0,.72)}
 
   @media(max-width:960px){
     .hero-grid,.aria-grid{grid-template-columns:1fr;gap:44px}
@@ -431,6 +455,7 @@
       <h3>Autonomous Operations Retainer</h3>
       <div class="price"><small style="display:block;margin-bottom:4px">Starting at</small>$4,500<small>&nbsp;/ mo</small></div>
       <div class="pnote">design · build · deploy · operate</div>
+      <div class="pcustom">Complex, multi-department builds are priced custom.</div>
       <ul>
         <li><span class="mk"><svg class="ico" width="16" height="16" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Custom multi-agent system built around how your business runs</li>
         <li><span class="mk"><svg class="ico" width="16" height="16" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Production infrastructure: Docker, monitoring, persistent memory</li>
