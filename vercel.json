@@ -1,5 +1,8 @@
 {
   "rewrites": [
     { "source": "/openclaw", "destination": "/openclaw.html" }
+  ],
+  "redirects": [
+    { "source": "/aria.html", "destination": "/aria", "permanent": true }
   ]
 }
