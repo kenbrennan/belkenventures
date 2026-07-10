@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/openclaw", "destination": "/openclaw.html" }
+  ]
+}
