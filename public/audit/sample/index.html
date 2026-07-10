@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Title is set from auditData at render time (see RENDER step) so nothing
+     business-specific is hardcoded in static markup. Placeholder only: -->
+<title>AI Opportunity Audit | BelKen AI</title>
+
+<!-- =========================================================================
+     BELKEN AI - AI OPPORTUNITY AUDIT (white-label deliverable, Phase 1)
+     Single self-contained file. The ENTIRE report renders from the auditData
+     object below. To produce a new client report (Phase 3), swap auditData
+     and nothing else. No business-specific value is hardcoded in the DOM.
+     ========================================================================= -->
+
+<!-- Tailwind (CDN, config below) + web fonts. No build step. -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Expanded:wght@600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+<script>
+/* ============================================================================
+   1.  auditData  -  THE ONLY THING THAT CHANGES PER CLIENT
+   ----------------------------------------------------------------------------
+   Every number on the page is either typed here as an INPUT, or DERIVED in the
+   compute() step from these inputs. A skeptical owner can trace every figure.
+   ============================================================================ */
+const auditData = {
+
+  // ---- 1. Business identity --------------------------------------------------
+  business: {
+    name: "Summit Comfort Heating & Air",
+    locationCity: "Frederick",
+    locationState: "MD",
+    segment: "Residential HVAC service & install",
+    fleet: 8,                      // number of trucks (for context/scale)
+    preparedFor: "Owner / General Manager",
+    reportDate: "June 25, 2026",
+    reportId: "BKA-HVAC-0427"      // internal report id, shown as a work-order tag
+  },
+
+  // ---- 2. Operating inputs (the assumptions the math is built on) ------------
+  // These are the figures we'd confirm with the owner on the discovery call.
+  // Kept deliberately conservative so the ROI is defensible, not hype.
+  inputs: {
+    callsPerMonth: 600,            // total inbound phone calls / month
+    missedCallRate: 0.22,          // % of those calls missed (after-hours + busy + overflow)
+    avgServiceTicket: 450,         // $ - average completed SERVICE ticket
+    avgInstallTicket: 8000,        // $ - average install (replacement) job
+    missedCallBookRate: 0.12,      // % of *recovered* missed calls that become a booked job (conservative)
+    installShareOfMissed: 0.04,    // installs are a small share of after-hours/missed calls (mostly service emergencies)
+    deadListSize: 2400,            // lapsed/dormant customers in the database
+    deadListReactivateRate: 0.025, // % of dead list a reactivation campaign re-books per year (conservative)
+    reviewsPerMonthNow: 4,         // current new reviews / month
+    reviewsPerMonthTarget: 22,     // achievable with automated post-job review requests
+    adminHoursPerWeek: 14,         // office hrs/wk on manual scheduling, callbacks, intake, review chasing
+    laborRate: 28,                 // $/hr loaded cost of office/dispatch labor
+    grossMargin: 0.45              // blended gross margin used to state PROFIT, not just revenue
+  },
+
+  // ---- 3. Headline framing (copy that sits on top of the computed numbers) ---
+  framing: {
+    eyebrow: "AI Opportunity Audit",
+    coverPromise: "A diagnostic of the revenue leaving through your phone lines, your dormant customer list, and your front-office workload, and exactly what to do about it.",
+    execSummary:
+      "Summit Comfort runs a healthy, busy shop. Demand is not the problem. Leakage is. " +
+      "Calls go unanswered after hours and during peak heat/cold snaps, a large dormant customer " +
+      "list sits untouched, and roughly two staff-days a week disappear into manual scheduling, " +
+      "callbacks, and review chasing. None of this requires more trucks or more ad spend to fix. " +
+      "It requires answering every call and following up on every lead automatically, around the clock."
+  },
+
+  // ---- 4. Pain section (HVAC-specific leaks). $ fields reference compute keys. -
+  // 'amountKey' points at a derived figure so copy and math never drift apart.
+  pains: [
+    {
+      tag: "LEAK-01",
+      title: "Calls slip through after-hours and during peak load",
+      body: "When the AC quits on the hottest Saturday of July, the homeowner calls three companies and books the first one that picks up. Voicemail loses that job. At your current volume, a fifth of inbound calls go unanswered.",
+      amountKey: "missedCallAnnualRevenue",
+      amountLabel: "in unbooked work flowing out the phone line each year"
+    },
+    {
+      tag: "LEAK-02",
+      title: "A dormant customer list nobody is following up with",
+      body: "Every past customer is a known, trust-already-earned buyer who eventually needs a tune-up, a part, or a replacement system. Without a systematic follow-up, that list quietly ages out to whoever markets to them next.",
+      amountKey: "deadListAnnualRevenue",
+      amountLabel: "in reactivation revenue sitting idle in your database"
+    },
+    {
+      tag: "LEAK-03",
+      title: "Slow lead response on web + after-hours forms",
+      body: "Speed-to-lead decides who wins. A homeowner who fills out a form at 9pm and hears nothing until the next afternoon has usually already booked elsewhere. Every hour of delay erodes the close rate.",
+      amountKey: null,
+      amountLabel: "Compounds LEAK-01. Captured in the recovery figure below"
+    },
+    {
+      tag: "LEAK-04",
+      title: "Front office buried in manual scheduling, callbacks & intake",
+      body: "Roughly two staff-days a week go to repetitive coordination work: booking, confirming, reminding, chasing reviews. That's time, not revenue, but it's the most expensive kind: skilled people doing work software should do.",
+      amountKey: "adminAnnualCost",
+      amountLabel: "in office labor spent on work an agent can run"
+    },
+    {
+      tag: "LEAK-05",
+      title: "Thin review pipeline limits how many calls you even get",
+      body: "Reviews are how the next customer chooses you. At ~4 new reviews a month you're under-indexed for a shop your size; competitors with steady, recent reviews outrank you in the map pack and win the click before the phone even rings.",
+      amountKey: null,
+      amountLabel: "Upstream of every leak above. Fixes itself once follow-up is automated"
+    }
+  ],
+
+  // ---- 5. Opportunity map ----------------------------------------------------
+  // Each card: what it is, OUR solution (the ARIA-swap), cost (OUR ladder),
+  // setup time, and what it saves. 'savesKey' / 'hoursKey' bind to compute().
+  opportunities: [
+    {
+      tag: "OPP-01",
+      title: "Answer every call, 24/7, and book the job",
+      solution: "ARIA, the 24/7 AI voice agent",
+      what: "ARIA answers every inbound call BelKen runs for you: after hours, weekends, and when all lines are busy. She qualifies the caller, answers common questions, and books the appointment straight onto your calendar. The customer never hits voicemail.",
+      cost: "Included in the Autonomous Operations Retainer, starting $4,500/mo",
+      setup: "Live in 4 days",
+      savesKey: "missedCallAnnualRevenue",
+      hoursKey: null,
+      hoursNote: "Recovers the LEAK-01 revenue above",
+      maps: "Directly closes LEAK-01 and LEAK-03."
+    },
+    {
+      tag: "OPP-02",
+      title: "Wake up the dormant customer list",
+      solution: "ARIA Outbound reactivation campaigns",
+      what: "BelKen runs ARIA outbound across your lapsed customers: seasonal tune-up reminders, maintenance-plan invites, and replacement-system outreach for aging equipment. Conversations land on your calendar as booked jobs, not a list of names for staff to cold-call.",
+      cost: "Included in the Autonomous Operations Retainer, starting $4,500/mo",
+      setup: "Campaign live in week 1",
+      savesKey: "deadListAnnualRevenue",
+      hoursKey: null,
+      hoursNote: "Recovers the LEAK-02 revenue above",
+      maps: "Directly closes LEAK-02."
+    },
+    {
+      tag: "OPP-03",
+      title: "Automate scheduling, reminders & intake",
+      solution: "BelKen Managed Agents",
+      what: "We run the repetitive front-office flow: appointment confirmations, reminder texts, rescheduling, and structured intake that hands your dispatcher a clean, complete job ticket. Your office staff stop chasing and start closing.",
+      cost: "Included in the Autonomous Operations Retainer, starting $4,500/mo",
+      setup: "Live in 4 days",
+      savesKey: "adminAnnualCost",
+      hoursKey: "adminHoursPerYear",
+      hoursNote: null,
+      maps: "Directly closes LEAK-04."
+    },
+    {
+      tag: "OPP-04",
+      title: "Turn finished jobs into a steady review stream",
+      solution: "BelKen Managed Agents review engine",
+      what: "Every completed job triggers a timed, personalized review request from BelKen's agent, routed to your Google profile, with negative-experience interception before it goes public. Steady recent reviews lift your map-pack ranking and feed the top of the funnel.",
+      cost: "Included in the Autonomous Operations Retainer, starting $4,500/mo",
+      setup: "Live in 4 days",
+      savesKey: null,
+      hoursKey: null,
+      hoursNote: "Lifts new reviews from ~4 to ~22 / month",
+      maps: "Directly closes LEAK-05 and compounds OPP-01 volume."
+    }
+  ],
+
+  // ---- 6. 4-Day Quick Wins plan (mapped to BelKen onboarding) ----------------
+  quickWins: [
+    {
+      day: "Day 1",
+      title: "ARIA starts answering your missed calls",
+      detail: "We point your after-hours and overflow lines to ARIA. From day one, the calls that used to hit voicemail get answered and booked. Nothing changes on your end. Your existing number stays the same."
+    },
+    {
+      day: "Day 2",
+      title: "Booking + calendar integration goes live",
+      detail: "ARIA is wired into your scheduling calendar and job-ticket flow. Booked calls land as real appointments your dispatcher sees instantly, with clean intake notes attached."
+    },
+    {
+      day: "Day 3",
+      title: "Review engine + reminders switch on",
+      detail: "Completed-job review requests and appointment reminders/confirmations start running automatically. Your office stops chasing; the review stream begins building."
+    },
+    {
+      day: "Day 4",
+      title: "Dormant-list reactivation campaign launches",
+      detail: "We load your lapsed-customer list and ARIA outbound begins seasonal tune-up and replacement outreach. First re-booked jobs typically appear within the first week."
+    }
+  ],
+
+  // ---- 7. Pricing ladder (the ascension) -------------------------------------
+  pricing: [
+    {
+      tier: "AI Opportunity Assessment",
+      price: "$0",
+      cadence: "",
+      blurb: "A snapshot of your biggest leak and a recoverable-revenue estimate. No card, no call required.",
+      cta: false,
+      highlight: false
+    },
+    {
+      tier: "Opportunity Audit",
+      price: "$1,997",
+      cadence: "one-time",
+      blurb: "This deliverable, built and walked through with you. Verified numbers, prioritized roadmap, and a fixed implementation scope.",
+      cta: false,
+      highlight: true,
+      badge: "This report"
+    },
+    {
+      tier: "Autonomous Operations Retainer",
+      price: "$4,500",
+      cadence: "/ month, starting",
+      blurb: "We run ARIA and every agent above for you: answered calls, reactivation, scheduling, reviews. You get the outcome, not another tool to learn.",
+      cta: true,
+      highlight: false
+    }
+  ],
+
+  // ---- 8. Why BelKen vs DIY --------------------------------------------------
+  whyBelken: [
+    {
+      title: "We run it, you don't",
+      diy: "Buy four to six tools, wire them together, maintain them, and troubleshoot when a call drops.",
+      belken: "One managed service. We own the stack, the uptime, and the result. Nothing for your team to learn or babysit."
+    },
+    {
+      title: "A real voice agent, live today",
+      diy: "Chatbots and web widgets that homeowners ignore, and that cannot answer a phone at 2am.",
+      belken: "ARIA answers the phone in a natural voice and books the job. Hear her live before you commit a dollar."
+    },
+    {
+      title: "Built for the trades, not generic SaaS",
+      diy: "Horizontal tools that don't know what a capacitor, a tune-up, or a peak-season surge is.",
+      belken: "Configured around HVAC call patterns, seasonality, and your job types, out of the box."
+    },
+    {
+      title: "Outcomes, measured",
+      diy: "A pile of dashboards and the homework of figuring out if any of it worked.",
+      belken: "We report recovered calls, booked jobs, and reactivated customers against the numbers in this audit."
+    }
+  ],
+
+  // ---- 9. CTA ----------------------------------------------------------------
+  cta: {
+    headline: "See ARIA answer a call. Then decide.",
+    body: "Book a free 30-minute discovery call. We'll confirm the numbers in this audit against your actual call data and let you hear ARIA handle a live HVAC call. No obligation, no pressure.",
+    calendly: "https://calendly.com/belkenbot/free-30-min-discovery-call",
+    calendlyLabel: "calendly.com/belkenbot/free-30-min-discovery-call",
+    buttonText: "Book your free discovery call",
+    secondary: "Prefer to hear it first? Ask for ARIA's live demo number on the call."
+  },
+
+  // ---- 10. Methodology / appendix -------------------------------------------
+  methodology: {
+    intro: "This audit is an estimate built entirely from the operating inputs listed below. Every figure on the ROI page is derived from these numbers using the stated arithmetic. Nothing is assumed beyond what is shown. On a discovery call we replace these estimates with your actual figures and the model updates accordingly.",
+    notes: [
+      "Revenue figures are conservative on purpose. We assume only 12% of recovered missed calls become booked jobs and only a 2.5% annual reactivation rate on the dormant list, both below typical results for a well-run campaign.",
+      "We report gross profit alongside revenue using a blended 45% margin, so the recoverable figure reflects money you keep, not just top-line sales.",
+      "Recovered and reactivated jobs are weighted as mostly standard service tickets. Installs are counted at just 4% of the mix, since after-hours and missed calls are overwhelmingly repair emergencies, not planned system replacements. This deliberately avoids inflating the total with high-ticket installs.",
+      "Front-office savings are stated as labor hours reclaimed, valued at a loaded office rate. They are a cost reduction and a capacity gain, not new sales.",
+      "This is a sample report for Summit Comfort Heating & Air, prepared to demonstrate BelKen's audit deliverable. All numbers are illustrative estimates derived from the inputs shown, not guarantees of results."
+    ]
+  }
+};
+</script>
+
+<script>
+/* ============================================================================
+   2.  compute()  -  derive every dollar/hour figure from auditData.inputs
+   ----------------------------------------------------------------------------
+   Pure arithmetic. Returned object is attached to auditData.computed and is
+   what the ROI ledger renders, so the page and the math are the same source.
+   ============================================================================ */
+function compute(d) {
+  const i = d.inputs;
+
+  // --- Missed-call recovery -------------------------------------------------
+  const missedCallsMonth   = i.callsPerMonth * i.missedCallRate;          // calls lost / mo
+  const recoveredBookings  = missedCallsMonth * i.missedCallBookRate;     // jobs we'd recover / mo
+  const recoveredInstalls  = recoveredBookings * i.installShareOfMissed;  // of those, installs
+  const recoveredService   = recoveredBookings - recoveredInstalls;       // the rest, service
+  const missedCallRevMonth = recoveredService * i.avgServiceTicket
+                           + recoveredInstalls * i.avgInstallTicket;      // recovered $ / mo
+  const missedCallAnnualRevenue = missedCallRevMonth * 12;
+
+  // --- Dormant-list reactivation -------------------------------------------
+  const reactivatedJobs    = i.deadListSize * i.deadListReactivateRate;   // re-booked jobs / yr
+  // dormant reactivations skew toward service (tune-ups); weight installs same as missed-call mix
+  const reactInstalls      = reactivatedJobs * i.installShareOfMissed;
+  const reactService       = reactivatedJobs - reactInstalls;
+  const deadListAnnualRevenue = reactService * i.avgServiceTicket
+                             + reactInstalls * i.avgInstallTicket;
+
+  // --- Front-office labor reclaimed ----------------------------------------
+  const adminHoursPerYear  = i.adminHoursPerWeek * 52;                    // hrs / yr
+  const adminAnnualCost    = adminHoursPerYear * i.laborRate;             // $ / yr (cost recovered)
+
+  // --- Totals ---------------------------------------------------------------
+  const totalRecoverableRevenue = missedCallAnnualRevenue + deadListAnnualRevenue;
+  const totalRecoverableProfit  = totalRecoverableRevenue * i.grossMargin;
+  const hoursReclaimedPerWeek   = i.adminHoursPerWeek;
+
+  return {
+    missedCallsMonth,
+    recoveredBookings,
+    recoveredInstalls,
+    recoveredService,
+    missedCallRevMonth,
+    missedCallAnnualRevenue,
+    reactivatedJobs,
+    deadListAnnualRevenue,
+    adminHoursPerYear,
+    adminAnnualCost,
+    totalRecoverableRevenue,
+    totalRecoverableProfit,
+    hoursReclaimedPerWeek
+  };
+}
+auditData.computed = compute(auditData);
+</script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        ink:    "#16181D",
+        paper:  "#F7F5F0",
+        copper: "#B45A2B",
+        cool:   "#2F6F8F",
+        loss:   "#C0392B",
+        steel:  "#5B6470",
+        line:   "#D9D4C9"
+      },
+      fontFamily: {
+        display: ['"Archivo Expanded"', '"Archivo"', "system-ui", "sans-serif"],
+        sans:    ['"Archivo"', "system-ui", "sans-serif"],
+        serif:   ['"Newsreader"', "Georgia", "serif"],
+        mono:    ['"JetBrains Mono"', "ui-monospace", "monospace"]
+      }
+    }
+  }
+};
+</script>
+
+<style>
+  :root{
+    --ink:#16181D; --paper:#F7F5F0; --copper:#B45A2B; --cool:#2F6F8F;
+    --loss:#C0392B; --steel:#5B6470; --line:#D9D4C9;
+  }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--paper); color:var(--ink); -webkit-font-smoothing:antialiased; }
+
+  /* Display face: industrial wide caps, tightly tracked */
+  .u-display{ font-family:"Archivo Expanded","Archivo",sans-serif; }
+  .u-mono{ font-family:"JetBrains Mono",monospace; }
+  .u-serif{ font-family:"Newsreader",Georgia,serif; }
+
+  /* Section ticket-tag (work-order style) - the structural signature */
+  .ticket{
+    font-family:"JetBrains Mono",monospace; font-weight:700; letter-spacing:.06em;
+    font-size:.72rem; color:var(--paper); background:var(--ink);
+    padding:.3rem .55rem; display:inline-block; line-height:1;
+  }
+  .ticket--copper{ background:var(--copper); }
+  .ticket--cool{ background:var(--cool); }
+
+  .eyebrow{
+    font-family:"JetBrains Mono",monospace; letter-spacing:.28em;
+    text-transform:uppercase; font-size:.7rem; color:var(--steel); font-weight:500;
+  }
+
+  /* Hairline divider used throughout */
+  .rule{ height:1px; background:var(--line); border:0; }
+  .rule-ink{ height:2px; background:var(--ink); border:0; }
+
+  /* The fixed left rail with the running ticket + progress line */
+  .rail{ position:fixed; left:0; top:0; bottom:0; width:64px; z-index:40;
+         border-right:1px solid var(--line); background:var(--paper);
+         display:flex; flex-direction:column; align-items:center; }
+  .rail-mark{ writing-mode:vertical-rl; transform:rotate(180deg);
+         font-family:"JetBrains Mono",monospace; font-size:.7rem; letter-spacing:.22em;
+         color:var(--steel); text-transform:uppercase; margin-top:1.25rem; }
+  .rail-prog-track{ flex:1; width:1px; background:var(--line); margin:1.25rem 0; position:relative; }
+  .rail-prog-fill{ position:absolute; top:0; left:-1px; width:3px; background:var(--copper); height:0; }
+  .rail-foot{ font-family:"JetBrains Mono",monospace; font-size:.62rem; color:var(--steel);
+         writing-mode:vertical-rl; transform:rotate(180deg); margin-bottom:1.25rem; letter-spacing:.12em; }
+
+  /* Big computed figure styling */
+  .figure-xl{ font-family:"Archivo Expanded","Archivo",sans-serif; font-weight:900;
+         line-height:.92; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+
+  /* Opportunity card */
+  .card{ background:#fff; border:1px solid var(--line); position:relative; }
+  .card-tag{ position:absolute; top:-1px; left:1.5rem; }
+
+  /* ROI ledger rows */
+  .ledger-row{ display:grid; grid-template-columns: 1fr auto; gap:1rem; align-items:baseline;
+        padding:.7rem 0; border-bottom:1px dashed var(--line); }
+  .ledger-row .lbl{ font-family:"Newsreader",serif; font-size:1.02rem; }
+  .ledger-row .val{ font-family:"JetBrains Mono",monospace; font-weight:500; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .ledger-op{ font-family:"JetBrains Mono",monospace; font-size:.7rem; color:var(--steel);
+        text-transform:uppercase; letter-spacing:.16em; }
+
+  /* Reveal-on-scroll (respects reduced motion) */
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .gauge-needle{ transition:none !important; }
+  }
+
+  /* Cover gauge needle animation */
+  .gauge-needle{ transform-box: fill-box; transform-origin: 50% 92%;
+        transition: transform 1.8s cubic-bezier(.16,1,.3,1); }
+
+  a:focus-visible, button:focus-visible{ outline:3px solid var(--cool); outline-offset:3px; }
+
+  /* ======================= PRINT (PDF) ======================= */
+  @page{ margin:18mm 16mm; }
+  @media print{
+    html,body{ background:#fff !important; color:#000 !important; }
+    .rail, .no-print{ display:none !important; }
+    .print-pad{ padding-left:0 !important; }
+    .reveal{ opacity:1 !important; transform:none !important; }
+    section{ break-inside:avoid-page; }
+    .page-break{ break-before:page; }
+    .avoid-break{ break-inside:avoid; }
+    .card{ border:1px solid #999 !important; box-shadow:none !important; }
+    .ticket{ background:#000 !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .ticket--copper, .ticket--cool{ background:#000 !important; }
+    /* keep the key accents legible/printable in color, but safe in B&W */
+    .fig-loss{ color:#000 !important; text-decoration:underline; text-decoration-color:#000; text-underline-offset:4px; }
+    .fig-copper{ color:#000 !important; }
+    .cover-dark{ background:#fff !important; color:#000 !important; }
+    .cover-dark .eyebrow, .cover-dark .u-mono, .cover-dark p, .cover-dark span{ color:#222 !important; }
+    a{ color:#000 !important; text-decoration:underline; }
+    .gauge-needle{ transform: rotate(38deg) !important; }
+    .no-break-after{ break-after:avoid; }
+    h1,h2,h3{ break-after:avoid; }
+  }
+</style>
+</head>
+
+<body class="font-serif">
+
+  <!-- LEFT RAIL (screen only) -->
+  <aside class="rail no-print" aria-hidden="true">
+    <div class="rail-mark" id="railMark">BELKEN&nbsp;AI</div>
+    <div class="rail-prog-track"><div class="rail-prog-fill" id="railFill"></div></div>
+    <div class="rail-foot" id="railFoot">AUDIT</div>
+  </aside>
+
+  <!-- App mounts here; everything is rendered by JS from auditData -->
+  <main id="app" class="print-pad" style="padding-left:64px;"></main>
+
+<script>
+/* ============================================================================
+   3.  RENDER  -  build the whole DOM from auditData. No business value below
+       is hardcoded; everything reads from `d` / `c`.
+   ============================================================================ */
+(function(){
+  const d = auditData;
+  const c = d.computed;
+
+  // ---- formatting helpers --------------------------------------------------
+  const usd0 = n => "$" + Math.round(n).toLocaleString("en-US");
+  const usdK = n => {                       // compact: $112,000 -> "$112K"
+    const r = Math.round(n);
+    return r >= 1000 ? "$" + Math.round(r/1000) + "K" : "$" + r;
+  };
+  const num0 = n => Math.round(n).toLocaleString("en-US");
+  const num1 = n => (Math.round(n*10)/10).toLocaleString("en-US");
+  const pct  = n => Math.round(n*100) + "%";
+  const byKey = k => k ? c[k] : null;       // resolve a compute() key for copy
+
+  // section registry for the rail/nav
+  const sections = [
+    {id:"cover",  tag:"00", label:"Cover"},
+    {id:"losing", tag:"01", label:"Losing Money"},
+    {id:"roi",    tag:"02", label:"ROI"},
+    {id:"map",    tag:"03", label:"Opportunity Map"},
+    {id:"plan",   tag:"04", label:"4-Day Plan"},
+    {id:"stack",  tag:"05", label:"Stack & Pricing"},
+    {id:"why",    tag:"06", label:"Why BelKen"},
+    {id:"next",   tag:"07", label:"Next Step"},
+    {id:"method", tag:"08", label:"Methodology"}
+  ];
+
+  // shared section-header block (ticket tag + eyebrow + title)
+  function head(tag, eyebrow, title, accent){
+    const cls = accent === "copper" ? "ticket ticket--copper" : accent === "cool" ? "ticket ticket--cool" : "ticket";
+    return `
+      <div class="flex items-center gap-3 mb-5">
+        <span class="${cls}">${tag}</span>
+        <span class="eyebrow">${eyebrow}</span>
+      </div>
+      <h2 class="u-display text-3xl md:text-[2.6rem] font-extrabold leading-[1.02] tracking-tight max-w-3xl mb-8 no-break-after">${title}</h2>
+    `;
+  }
+
+  const wrap = "max-w-5xl mx-auto px-6 md:px-12";
+
+  /* ---------------------------------------------------------------- COVER -- */
+  const cover = `
+  <section id="cover" data-tag="00" class="cover-dark relative" style="background:var(--ink); color:var(--paper); min-height:100vh;">
+    <div class="${wrap} pt-12 pb-16" style="min-height:100vh; display:flex; flex-direction:column;">
+      <!-- masthead -->
+      <div class="flex items-center justify-between border-b border-white/15 pb-5">
+        <div class="u-display font-extrabold tracking-tight text-lg">BelKen<span style="color:var(--copper)">.</span>AI</div>
+        <div class="u-mono text-[.7rem]" style="color:#9aa0a8; letter-spacing:.14em;">
+          REPORT&nbsp;${d.business.reportId} &middot; ${d.business.reportDate.toUpperCase()}
+        </div>
+      </div>
+
+      <!-- hero -->
+      <div class="flex-1 grid md:grid-cols-[1.15fr_.85fr] gap-10 items-center py-12">
+        <div>
+          <div class="eyebrow mb-6" style="color:var(--copper)">${d.framing.eyebrow}</div>
+          <h1 class="u-display font-black leading-[.95] tracking-tight"
+              style="font-size:clamp(2.5rem,6vw,4.4rem);">
+            ${d.business.name}
+          </h1>
+          <p class="u-mono mt-4 text-sm" style="color:#9aa0a8; letter-spacing:.08em;">
+            ${d.business.locationCity}, ${d.business.locationState} &nbsp;&middot;&nbsp; ${d.business.segment} &nbsp;&middot;&nbsp; ${d.business.fleet} trucks
+          </p>
+          <p class="u-serif mt-8 text-lg md:text-xl leading-relaxed max-w-xl" style="color:#d7d3ca;">
+            ${d.framing.coverPromise}
+          </p>
+          <div class="mt-9 u-mono text-[.72rem]" style="color:#7c828b; letter-spacing:.1em;">
+            PREPARED FOR ${d.business.preparedFor.toUpperCase()} &nbsp;/&nbsp; PREPARED BY BELKEN AI
+          </div>
+        </div>
+
+        <!-- SIGNATURE: the leak gauge - recoverable revenue as a manometer reading -->
+        <div class="flex justify-center md:justify-end">
+          ${gaugeSVG(c.totalRecoverableRevenue)}
+        </div>
+      </div>
+
+      <!-- bottom: the two headline stats -->
+      <div class="grid grid-cols-2 gap-px border-t border-white/15 pt-8" style="border-color:rgba(255,255,255,.15)">
+        <div class="pr-6">
+          <div class="eyebrow mb-2" style="color:#7c828b;">Recoverable / year</div>
+          <div class="figure-xl fig-copper" style="color:var(--copper); font-size:clamp(2rem,4.5vw,3.1rem);">${usd0(c.totalRecoverableRevenue)}</div>
+          <div class="u-mono text-[.7rem] mt-2" style="color:#9aa0a8;">≈ ${usd0(c.totalRecoverableProfit)} in gross profit at ${pct(d.inputs.grossMargin)} margin</div>
+        </div>
+        <div class="pl-6 border-l border-white/15" style="border-color:rgba(255,255,255,.15)">
+          <div class="eyebrow mb-2" style="color:#7c828b;">Hours reclaimed / week</div>
+          <div class="figure-xl" style="color:var(--paper); font-size:clamp(2rem,4.5vw,3.1rem);">${num0(c.hoursReclaimedPerWeek)} hrs</div>
+          <div class="u-mono text-[.7rem] mt-2" style="color:#9aa0a8;">${num0(c.adminHoursPerYear)} office hours back per year</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <section id="exec" data-tag="00" class="py-16 md:py-24">
+    <div class="${wrap}">
+      ${head("00", "Executive Summary", "Demand isn't your problem. Leakage is.", "copper")}
+      <div class="grid md:grid-cols-[1fr_320px] gap-10">
+        <p class="u-serif text-xl md:text-[1.45rem] leading-relaxed text-ink/90">${d.framing.execSummary}</p>
+        <div class="border-l-2 pl-6" style="border-color:var(--copper)">
+          <div class="eyebrow mb-3">The headline</div>
+          <p class="u-serif text-lg leading-snug mb-4">An estimated <strong class="fig-copper" style="color:var(--copper)">${usd0(c.totalRecoverableRevenue)}/yr</strong> is recoverable, plus <strong>${num0(c.hoursReclaimedPerWeek)} hours a week</strong> of front-office time, without adding a single truck or a dollar of ad spend.</p>
+          <p class="u-mono text-[.7rem] text-steel leading-relaxed">Every figure in this report is derived from your operating inputs. See the ROI page for the arithmetic and the appendix for assumptions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  `;
+
+  /* --------------------------------------------------- 01  LOSING MONEY ---- */
+  const painCards = d.pains.map(p => {
+    const amt = byKey(p.amountKey);
+    const amtBlock = amt
+      ? `<div class="mt-4 flex items-baseline gap-3">
+           <span class="figure-xl fig-loss" style="color:var(--loss); font-size:1.9rem;">${usd0(amt)}</span>
+           <span class="u-serif text-sm text-steel leading-snug">${p.amountLabel}</span>
+         </div>`
+      : `<div class="mt-4 u-mono text-[.72rem] text-steel leading-relaxed border-t border-line pt-3">${p.amountLabel}</div>`;
+    return `
+      <div class="avoid-break py-7 border-b border-line grid md:grid-cols-[88px_1fr] gap-5">
+        <div><span class="ticket ticket--cool">${p.tag}</span></div>
+        <div>
+          <h3 class="u-display text-xl font-bold tracking-tight mb-2">${p.title}</h3>
+          <p class="u-serif text-lg leading-relaxed text-ink/85 max-w-2xl">${p.body}</p>
+          ${amtBlock}
+        </div>
+      </div>`;
+  }).join("");
+
+  const losing = `
+  <section id="losing" data-tag="01" class="page-break py-16 md:py-24" style="background:#fff;">
+    <div class="${wrap}">
+      ${head("01", "The Diagnosis", "Where you're losing money right now", "cool")}
+      <p class="u-serif text-lg text-ink/80 max-w-2xl mb-4 -mt-3">Five leaks, ranked. Each is a known pattern in residential HVAC, sized against your numbers.</p>
+      ${painCards}
+    </div>
+  </section>
+  `;
+
+  /* ------------------------------------------------------------- 02  ROI --- */
+  const i = d.inputs;
+  const roi = `
+  <section id="roi" data-tag="02" class="page-break py-16 md:py-24">
+    <div class="${wrap}">
+      ${head("02", "The Arithmetic", "What that leak is worth, shown, not asserted", "copper")}
+      <p class="u-serif text-lg text-ink/80 max-w-2xl mb-10 -mt-3">No black box. Here is every step from your inputs to the recoverable figure on the cover. Change an input on our call and the total moves with it.</p>
+
+      <div class="grid lg:grid-cols-2 gap-x-14 gap-y-12">
+
+        <!-- LEDGER A: missed-call recovery -->
+        <div class="avoid-break">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="ticket">A</span>
+            <h3 class="u-display text-lg font-bold tracking-tight">Recovered missed calls</h3>
+          </div>
+          <div class="ledger-row"><span class="lbl">Inbound calls / month</span><span class="val">${num0(i.callsPerMonth)}</span></div>
+          <div class="ledger-row"><span class="lbl"><span class="ledger-op">×</span> Missed-call rate</span><span class="val">${pct(i.missedCallRate)}</span></div>
+          <div class="ledger-row"><span class="lbl"><span class="ledger-op">=</span> Missed calls / month</span><span class="val">${num1(c.missedCallsMonth)}</span></div>
+          <div class="ledger-row"><span class="lbl"><span class="ledger-op">×</span> Recovered → booked rate</span><span class="val">${pct(i.missedCallBookRate)}</span></div>
+          <div class="ledger-row"><span class="lbl"><span class="ledger-op">=</span> Recovered jobs / month</span><span class="val">${num1(c.recoveredBookings)}</span></div>
+          <div class="ledger-row"><span class="lbl" style="padding-left:1rem;">↳ service @ ${usd0(i.avgServiceTicket)}</span><span class="val">${num1(c.recoveredService)} jobs</span></div>
+          <div class="ledger-row"><span class="lbl" style="padding-left:1rem;">↳ install @ ${usd0(i.avgInstallTicket)}</span><span class="val">${num1(c.recoveredInstalls)} jobs</span></div>
+          <div class="ledger-row"><span class="lbl"><span class="ledger-op">=</span> Recovered revenue / month</span><span class="val">${usd0(c.missedCallRevMonth)}</span></div>
+          <div class="ledger-row" style="border-bottom:2px solid var(--ink);"><span class="lbl font-semibold"><span class="ledger-op">× 12 =</span> Annual</span><span class="val fig-copper" style="color:var(--copper); font-weight:700;">${usd0(c.missedCallAnnualRevenue)}</span></div>
+        </div>
+
+        <!-- LEDGER B: dormant list -->
+        <div class="avoid-break">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="ticket">B</span>
+            <h3 class="u-display text-lg font-bold tracking-tight">Dormant-list reactivation</h3>
+          </div>
+          <div class="ledger-row"><span class="lbl">Lapsed customers in database</span><span class="val">${num0(i.deadListSize)}</span></div>
+          <div class="ledger-row"><span class="lbl"><span class="ledger-op">×</span> Annual reactivation rate</span><span class="val">${pct(i.deadListReactivateRate)}</span></div>
+          <div class="ledger-row"><span class="lbl"><span class="ledger-op">=</span> Re-booked jobs / year</span><span class="val">${num0(c.reactivatedJobs)}</span></div>
+          <div class="ledger-row"><span class="lbl" style="padding-left:1rem;">↳ weighted service + install mix</span><span class="val">${usd0(i.avgServiceTicket)} to ${usdK(i.avgInstallTicket)}</span></div>
+          <div class="ledger-row" style="border-bottom:2px solid var(--ink);"><span class="lbl font-semibold"><span class="ledger-op">=</span> Annual</span><span class="val fig-copper" style="color:var(--copper); font-weight:700;">${usd0(c.deadListAnnualRevenue)}</span></div>
+
+          <div class="flex items-center gap-3 mb-4 mt-10">
+            <span class="ticket">C</span>
+            <h3 class="u-display text-lg font-bold tracking-tight">Front-office time reclaimed</h3>
+          </div>
+          <div class="ledger-row"><span class="lbl">Admin hours / week</span><span class="val">${num0(i.adminHoursPerWeek)} hrs</span></div>
+          <div class="ledger-row"><span class="lbl"><span class="ledger-op">× 52 =</span> Hours / year</span><span class="val">${num0(c.adminHoursPerYear)} hrs</span></div>
+          <div class="ledger-row" style="border-bottom:2px solid var(--ink);"><span class="lbl font-semibold"><span class="ledger-op">×</span> ${usd0(i.laborRate)}/hr loaded</span><span class="val" style="font-weight:700;">${usd0(c.adminAnnualCost)}</span></div>
+        </div>
+      </div>
+
+      <!-- TOTAL -->
+      <div class="avoid-break mt-14 p-8 md:p-10" style="background:var(--ink); color:var(--paper);">
+        <div class="grid md:grid-cols-[1fr_auto] gap-8 items-end">
+          <div>
+            <div class="eyebrow mb-3" style="color:var(--copper)">Total recoverable, A + B (revenue)</div>
+            <div class="figure-xl fig-copper" style="color:var(--copper); font-size:clamp(2.6rem,7vw,4.5rem);">${usd0(c.totalRecoverableRevenue)}<span class="u-mono text-base align-top" style="color:#9aa0a8;"> / yr</span></div>
+            <p class="u-mono text-[.74rem] mt-4 leading-relaxed" style="color:#9aa0a8; max-width:34rem;">
+              ≈ ${usd0(c.totalRecoverableProfit)} in gross profit at a ${pct(i.grossMargin)} blended margin, plus ${num0(c.adminHoursPerYear)} office hours (${usd0(c.adminAnnualCost)}) returned to capacity. Conservative by design. See appendix.
+            </p>
+          </div>
+          <div class="text-right">
+            <div class="eyebrow mb-2" style="color:#7c828b;">vs. the retainer</div>
+            <div class="u-mono text-sm" style="color:#d7d3ca;">$4,500 / mo = ${usd0(54000)} / yr</div>
+            <div class="figure-xl mt-2" style="color:var(--paper); font-size:2.2rem;">${(c.totalRecoverableRevenue/54000).toFixed(1)}×</div>
+            <div class="u-mono text-[.7rem] mt-1" style="color:#7c828b;">recoverable revenue ÷ cost</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  `;
+
+  /* ------------------------------------------------ 03  OPPORTUNITY MAP ---- */
+  const oppCards = d.opportunities.map(o => {
+    const saves = byKey(o.savesKey);
+    const hours = byKey(o.hoursKey);
+    const savesLine = saves
+      ? `<div class="figure-xl fig-copper" style="color:var(--copper); font-size:1.7rem;">${usd0(saves)}<span class="u-mono text-xs" style="color:var(--steel)"> / yr</span></div>`
+      : `<div class="u-display text-lg font-bold">${o.hoursNote || ""}</div>`;
+    const hoursLine = hours
+      ? `<div class="u-mono text-[.74rem] text-steel mt-1">+ ${num0(hours)} hrs/yr reclaimed</div>`
+      : (saves && o.hoursNote ? `<div class="u-mono text-[.74rem] text-steel mt-1">${o.hoursNote}</div>` : ``);
+    return `
+    <div class="card avoid-break p-7 pt-9">
+      <span class="card-tag ticket ticket--copper">${o.tag}</span>
+      <div class="grid md:grid-cols-[1fr_220px] gap-7">
+        <div>
+          <div class="eyebrow mb-2" style="color:var(--cool)">Our solution &middot; ${o.solution}</div>
+          <h3 class="u-display text-2xl font-extrabold tracking-tight leading-tight mb-3">${o.title}</h3>
+          <p class="u-serif text-lg leading-relaxed text-ink/85 mb-4">${o.what}</p>
+          <div class="u-mono text-[.72rem] text-steel border-t border-line pt-3" style="letter-spacing:.04em;">▸ ${o.maps}</div>
+        </div>
+        <div class="md:border-l md:pl-7 border-line grid grid-cols-2 md:grid-cols-1 gap-5 content-start">
+          <div>
+            <div class="eyebrow mb-1">What it saves</div>
+            ${savesLine}${hoursLine}
+          </div>
+          <div>
+            <div class="eyebrow mb-1">What it costs</div>
+            <div class="u-serif text-base font-semibold leading-snug">${o.cost}</div>
+          </div>
+          <div>
+            <div class="eyebrow mb-1">Setup time</div>
+            <div class="u-mono text-sm">${o.setup}</div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join("");
+
+  const map = `
+  <section id="map" data-tag="03" class="page-break py-16 md:py-24" style="background:#fff;">
+    <div class="${wrap}">
+      ${head("03", "The Fix", "Your AI opportunity map", "copper")}
+      <p class="u-serif text-lg text-ink/80 max-w-2xl mb-10 -mt-3">Each leak maps to one thing BelKen runs for you. You don't buy tools or wire anything together. We operate the agent and you get the booked jobs.</p>
+      <div class="grid gap-6">${oppCards}</div>
+    </div>
+  </section>
+  `;
+
+  /* --------------------------------------------------- 04  4-DAY PLAN ------ */
+  const planSteps = d.quickWins.map((w,idx) => `
+    <div class="avoid-break grid md:grid-cols-[120px_1fr] gap-5 py-7 ${idx < d.quickWins.length-1 ? 'border-b border-line':''}">
+      <div>
+        <div class="u-display font-black text-3xl tracking-tight" style="color:var(--copper)">${w.day}</div>
+      </div>
+      <div>
+        <h3 class="u-display text-xl font-bold tracking-tight mb-2">${w.title}</h3>
+        <p class="u-serif text-lg leading-relaxed text-ink/85 max-w-2xl">${w.detail}</p>
+      </div>
+    </div>`).join("");
+
+  const plan = `
+  <section id="plan" data-tag="04" class="page-break py-16 md:py-24">
+    <div class="${wrap}">
+      ${head("04", "Onboarding", "Your first four days with BelKen", "copper")}
+      <p class="u-serif text-lg text-ink/80 max-w-2xl mb-6 -mt-3">From signed to answering calls in four working days. Your phone number and your team stay exactly as they are.</p>
+      <div>${planSteps}</div>
+    </div>
+  </section>
+  `;
+
+  /* ----------------------------------------------- 05  STACK & PRICING ----- */
+  const tiers = d.pricing.map(t => {
+    const hi = t.highlight;
+    const base = hi ? "background:var(--ink); color:var(--paper);" : "background:#fff;";
+    const badge = t.badge ? `<span class="ticket ticket--copper absolute -top-3 left-6">${t.badge}</span>` : "";
+    const ctaBtn = t.cta
+      ? `<a href="${d.cta.calendly}" class="no-print inline-block mt-5 u-mono text-[.74rem] font-bold tracking-wide px-4 py-2.5" style="background:var(--copper); color:#fff; letter-spacing:.06em;">BOOK A CALL →</a>`
+      : "";
+    return `
+    <div class="card avoid-break relative p-6 ${hi ? '':'border-line'}" style="${base} ${hi?'border-color:var(--ink)':''}">
+      ${badge}
+      <div class="eyebrow mb-3" style="${hi?'color:var(--copper)':''}">${t.tier}</div>
+      <div class="flex items-baseline gap-1 mb-3">
+        <span class="figure-xl" style="font-size:1.9rem; ${hi?'color:var(--paper)':'color:var(--ink)'}">${t.price}</span>
+        <span class="u-mono text-xs" style="color:${hi?'#9aa0a8':'var(--steel)'}">${t.cadence}</span>
+      </div>
+      <p class="u-serif text-[.98rem] leading-snug" style="${hi?'color:#d7d3ca':'color:var(--ink)'};opacity:.9;">${t.blurb}</p>
+      ${ctaBtn}
+    </div>`;
+  }).join("");
+
+  const stack = `
+  <section id="stack" data-tag="05" class="page-break py-16 md:py-24" style="background:#fff;">
+    <div class="${wrap}">
+      ${head("05", "The Ladder", "Recommended stack & pricing", "cool")}
+      <p class="u-serif text-lg text-ink/80 max-w-2xl mb-10 -mt-3">Start anywhere. Most HVAC shops your size go straight to the retainer because the recoverable revenue dwarfs the cost, but the door is open at every rung.</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">${tiers}</div>
+      <p class="u-mono text-[.72rem] text-steel mt-8 max-w-3xl leading-relaxed">Everything in the Opportunity Map (ARIA inbound, ARIA outbound reactivation, scheduling, and the review engine) is included in the retainer. One price, one service, no per-tool fees.</p>
+    </div>
+  </section>
+  `;
+
+  /* ------------------------------------------------- 06  WHY BELKEN -------- */
+  const whyRows = d.whyBelken.map(w => `
+    <div class="avoid-break grid md:grid-cols-[260px_1fr_1fr] gap-6 py-7 border-b border-line items-start">
+      <h3 class="u-display text-xl font-bold tracking-tight">${w.title}</h3>
+      <div>
+        <div class="eyebrow mb-2" style="color:var(--loss)">Doing it yourself</div>
+        <p class="u-serif text-base leading-relaxed text-ink/70">${w.diy}</p>
+      </div>
+      <div class="md:pl-6 md:border-l border-line">
+        <div class="eyebrow mb-2" style="color:var(--copper)">With BelKen</div>
+        <p class="u-serif text-base leading-relaxed text-ink/90">${w.belken}</p>
+      </div>
+    </div>`).join("");
+
+  const why = `
+  <section id="why" data-tag="06" class="page-break py-16 md:py-24">
+    <div class="${wrap}">
+      ${head("06", "The Difference", "Why BelKen, not another tool", "copper")}
+      <p class="u-serif text-lg text-ink/80 max-w-2xl mb-4 -mt-3">The alternative to BelKen is not "do nothing". The alternative is assembling and running all of this yourself. Here is the honest comparison.</p>
+      <div>${whyRows}</div>
+    </div>
+  </section>
+  `;
+
+  /* --------------------------------------------------- 07  NEXT STEP ------- */
+  const next = `
+  <section id="next" data-tag="07" class="page-break py-20 md:py-28" style="background:var(--ink); color:var(--paper);">
+    <div class="${wrap}">
+      <div class="flex items-center gap-3 mb-7">
+        <span class="ticket ticket--copper">07</span>
+        <span class="eyebrow" style="color:#7c828b;">Your Next Step</span>
+      </div>
+      <h2 class="u-display font-black tracking-tight leading-[.98] mb-7" style="font-size:clamp(2.2rem,6vw,4rem); max-width:18ch;">${d.cta.headline}</h2>
+      <p class="u-serif text-xl leading-relaxed mb-10" style="color:#d7d3ca; max-width:42rem;">${d.cta.body}</p>
+      <a href="${d.cta.calendly}" class="inline-block u-display font-extrabold tracking-tight text-lg px-9 py-5" style="background:var(--copper); color:#fff;">
+        ${d.cta.buttonText} &nbsp;→
+      </a>
+      <div class="u-mono text-sm mt-6" style="color:#9aa0a8;">${d.cta.calendlyLabel}</div>
+      <p class="u-serif text-base mt-8" style="color:#9aa0a8; max-width:42rem;">${d.cta.secondary}</p>
+    </div>
+  </section>
+  `;
+
+  /* -------------------------------------------------- 08  METHODOLOGY ------ */
+  const methNotes = d.methodology.notes.map((n,idx) => `
+    <div class="avoid-break grid grid-cols-[40px_1fr] gap-4 py-4 border-b border-line">
+      <div class="u-mono text-sm text-steel font-bold">${String(idx+1).padStart(2,"0")}</div>
+      <p class="u-serif text-base leading-relaxed text-ink/85">${n}</p>
+    </div>`).join("");
+
+  // input snapshot table - proves the inputs the math used
+  const inputRows = [
+    ["Inbound calls / month", num0(i.callsPerMonth)],
+    ["Missed-call rate", pct(i.missedCallRate)],
+    ["Avg. service ticket", usd0(i.avgServiceTicket)],
+    ["Avg. install ticket", usd0(i.avgInstallTicket)],
+    ["Recovered missed call → booked", pct(i.missedCallBookRate)],
+    ["Install share of recovered jobs", pct(i.installShareOfMissed)],
+    ["Dormant customers", num0(i.deadListSize)],
+    ["Annual reactivation rate", pct(i.deadListReactivateRate)],
+    ["Admin hours / week", num0(i.adminHoursPerWeek)+" hrs"],
+    ["Loaded office labor rate", usd0(i.laborRate)+"/hr"],
+    ["Blended gross margin", pct(i.grossMargin)]
+  ].map(r => `<div class="ledger-row"><span class="lbl">${r[0]}</span><span class="val">${r[1]}</span></div>`).join("");
+
+  const method = `
+  <section id="method" data-tag="08" class="page-break py-16 md:py-24" style="background:#fff;">
+    <div class="${wrap}">
+      ${head("08", "Appendix", "How this audit was built", "cool")}
+      <div class="grid lg:grid-cols-[1fr_360px] gap-12">
+        <div>
+          <p class="u-serif text-lg leading-relaxed text-ink/85 mb-8 max-w-2xl">${d.methodology.intro}</p>
+          ${methNotes}
+        </div>
+        <div class="avoid-break">
+          <div class="eyebrow mb-4">Inputs this report ran on</div>
+          <div class="border border-line p-5">${inputRows}</div>
+          <p class="u-mono text-[.68rem] text-steel mt-4 leading-relaxed">Report ${d.business.reportId} &middot; generated ${d.business.reportDate}. Confirm these on your discovery call and the model recalculates live.</p>
+        </div>
+      </div>
+
+      <!-- footer -->
+      <div class="rule-ink mt-20 mb-6"></div>
+      <div class="flex flex-col md:flex-row justify-between gap-4 items-start md:items-center">
+        <div class="u-display font-extrabold tracking-tight text-lg">BelKen<span style="color:var(--copper)">.</span>AI</div>
+        <div class="u-mono text-[.7rem] text-steel" style="letter-spacing:.1em;">
+          AI OPPORTUNITY AUDIT &middot; PREPARED FOR ${d.business.name.toUpperCase()} &middot; ${d.business.reportDate.toUpperCase()}
+        </div>
+      </div>
+    </div>
+  </section>
+  `;
+
+  /* ---- set document title from data (no hardcoded business name in markup) ---- */
+  document.title = `${d.framing.eyebrow}: ${d.business.name} | BelKen AI`;
+
+  /* ---- mount everything ---- */
+  document.getElementById("app").innerHTML =
+    cover + losing + roi + map + plan + stack + why + next + method;
+
+  /* ---- the cover gauge: an SVG manometer; needle position scales to value ---- */
+  function gaugeSVG(value){
+    // map value onto a -38°..+38° sweep purely for the dramatic reading; the
+    // number printed is the real computed figure, the dial is illustrative.
+    return `
+    <svg width="290" height="290" viewBox="0 0 290 290" role="img"
+         aria-label="Recoverable revenue gauge reading ${usd0(value)} per year" class="select-none">
+      <defs>
+        <radialGradient id="dialface" cx="50%" cy="42%" r="65%">
+          <stop offset="0%" stop-color="#23262d"/><stop offset="100%" stop-color="#101216"/>
+        </radialGradient>
+      </defs>
+      <circle cx="145" cy="145" r="138" fill="url(#dialface)" stroke="#3a3e47" stroke-width="2"/>
+      <circle cx="145" cy="145" r="118" fill="none" stroke="#2a2d34" stroke-width="1"/>
+      <!-- tick arc -->
+      ${(function(){
+        let t="";
+        for(let k=0;k<=10;k++){
+          const a=(-130 + k*26) * Math.PI/180;
+          const r1=118, r2=k%5===0?100:108;
+          const x1=145+r1*Math.cos(a), y1=145+r1*Math.sin(a);
+          const x2=145+r2*Math.cos(a), y2=145+r2*Math.sin(a);
+          const col = k>=8 ? "#B45A2B" : "#5B6470";
+          t+=`<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${col}" stroke-width="${k%5===0?2.4:1.2}"/>`;
+        }
+        return t;
+      })()}
+      <!-- red 'loss' zone arc on the high end -->
+      <path d="M ${145+112*Math.cos(78*Math.PI/180)} ${145+112*Math.sin(78*Math.PI/180)}
+               A 112 112 0 0 1 ${145+112*Math.cos(130*Math.PI/180)} ${145+112*Math.sin(130*Math.PI/180)}"
+            fill="none" stroke="#B45A2B" stroke-width="4" stroke-linecap="round" transform="rotate(180 145 145)"/>
+      <text x="145" y="92" text-anchor="middle" fill="#7c828b" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2">RECOVERABLE / YR</text>
+      <!-- needle (animated from rest to reading) -->
+      <g class="gauge-needle" id="needle">
+        <polygon points="145,52 150,150 140,150" fill="#B45A2B"/>
+        <circle cx="145" cy="150" r="9" fill="#16181D" stroke="#B45A2B" stroke-width="2"/>
+      </g>
+      <text x="145" y="200" text-anchor="middle" fill="#F7F5F0" font-family="Archivo Expanded, Archivo, sans-serif" font-weight="900" font-size="30">${usdK(value)}</text>
+      <text x="145" y="222" text-anchor="middle" fill="#9aa0a8" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1">EST. ANNUAL LEAK, SEALED</text>
+    </svg>`;
+  }
+
+  /* ---- scroll: rail progress + section label + reveals ---- */
+  const railFill = document.getElementById("railFill");
+  const railMark = document.getElementById("railMark");
+  const railFoot = document.getElementById("railFoot");
+  const secEls = sections.map(s => document.getElementById(s.id)).filter(Boolean);
+
+  function onScroll(){
+    const h = document.documentElement;
+    const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
+    railFill.style.height = (scrolled*100) + "%";
+    // active section label
+    let active = sections[0];
+    for(const s of sections){
+      const el = document.getElementById(s.id);
+      if(el && el.getBoundingClientRect().top <= window.innerHeight*0.4) active = s;
+    }
+    railFoot.textContent = active.tag + " " + active.label.toUpperCase();
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+
+  // reveal-on-scroll
+  const mqReduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if(!mqReduce.matches){
+    document.querySelectorAll("section h2, .card, .ledger-row, .avoid-break").forEach(el => el.classList.add("reveal"));
+    const io = new IntersectionObserver((ents)=>{
+      ents.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} });
+    },{threshold:0.08});
+    document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+  }
+
+  // fire the gauge needle after paint
+  requestAnimationFrame(()=>{
+    setTimeout(()=>{
+      const n = document.getElementById("needle");
+      if(n && !mqReduce.matches){ n.style.transform = "rotate(38deg)"; }
+      else if(n){ n.style.transform = "rotate(38deg)"; }
+    }, 220);
+  });
+})();
+</script>
+</body>
+</html>
