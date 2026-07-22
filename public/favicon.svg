@@ -1,4 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="8" fill="#3b63f7"/>
-  <text x="16" y="22" font-family="sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">B</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+<rect width="1024" height="1024" fill="#000000"/>
+<circle cx="512.0" cy="512.0" r="430.0" fill="none" stroke="#9C7A4E" stroke-width="6.8"/>
+<circle cx="512.0" cy="112.0" r="6.5" fill="#9C7A4E"/>
+<circle cx="165.6" cy="712.0" r="6.5" fill="#9C7A4E"/>
+<circle cx="858.4" cy="712.0" r="6.5" fill="#9C7A4E"/>
+<circle cx="884.4" cy="297.0" r="5" fill="#9C7A4E"/>
+<circle cx="139.6" cy="297.0" r="5" fill="#9C7A4E"/>
+<circle cx="512.0" cy="942.0" r="5" fill="#9C7A4E"/>
+<circle cx="512.00" cy="512.00" r="150.0" fill="none" stroke="#E9E3D2" stroke-width="4.6"/>
+<circle cx="512.00" cy="662.00" r="150.0" fill="none" stroke="#E9E3D2" stroke-width="4.6"/>
+<circle cx="382.10" cy="587.00" r="150.0" fill="none" stroke="#E9E3D2" stroke-width="4.6"/>
+<circle cx="382.10" cy="437.00" r="150.0" fill="none" stroke="#E9E3D2" stroke-width="4.6"/>
+<circle cx="512.00" cy="362.00" r="150.0" fill="none" stroke="#E9E3D2" stroke-width="4.6"/>
+<circle cx="641.90" cy="437.00" r="150.0" fill="none" stroke="#E9E3D2" stroke-width="4.6"/>
+<circle cx="641.90" cy="587.00" r="150.0" fill="none" stroke="#E9E3D2" stroke-width="4.6"/>
+<circle cx="512.0" cy="512.0" r="26" fill="#4C9CD2" opacity="0.22"/>
+<circle cx="512.0" cy="512.0" r="17" fill="#4C9CD2"/>
 </svg>
