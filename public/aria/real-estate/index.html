@@ -39,7 +39,7 @@
   nav.stuck{background:rgba(238,234,225,.82);border-color:var(--line)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
   .brand{font-family:var(--display);font-weight:800;font-size:23px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
-  .brand .dot{width:13px;height:13px;background:var(--ultra);border-radius:50%;box-shadow:0 0 0 5px rgba(31,50,255,.16);animation:beat 2.4s ease-in-out infinite}
+  .brand .brandmark{width:28px;height:28px;border-radius:7px;display:block;flex:0 0 auto}
   .brand .sub{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--ultra-deep);letter-spacing:.04em}
   .brand .slash{color:var(--line);font-weight:400}
   @keyframes beat{0%,100%{box-shadow:0 0 0 5px rgba(31,50,255,.16)}50%{box-shadow:0 0 0 9px rgba(31,50,255,.05)}}
@@ -227,7 +227,7 @@
 
 <nav id="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="https://belken.ai"><span class="dot"></span>BELKEN<span class="slash">/</span><span class="sub">ARIA</span><span class="slash">/</span><span class="sub">Real Estate</span></a>
+    <a class="brand" href="https://belken.ai"><img class="brandmark" src="/favicon.svg" alt="Belken" width="28" height="28">BELKEN<span class="slash">/</span><span class="sub">ARIA</span><span class="slash">/</span><span class="sub">Real Estate</span></a>
     <div class="nav-links">
       <a href="#calc">What it costs you</a>
       <a href="#how">How it works</a>
@@ -438,7 +438,7 @@
   <div class="wrap">
     <div class="foot-in">
       <div class="foot-brand">
-        <a class="brand" href="https://belken.ai"><span class="dot"></span>BELKEN<span class="slash">/</span><span class="sub">ARIA</span></a>
+        <a class="brand" href="https://belken.ai"><img class="brandmark" src="/favicon.svg" alt="Belken" width="28" height="28">BELKEN<span class="slash">/</span><span class="sub">ARIA</span></a>
         <p>ARIA is a Belken product. The AI phone assistant for service businesses. Never miss a call. Win back old clients.</p>
       </div>
       <div class="fcol">

@@ -42,7 +42,7 @@
   nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);background:rgba(238,234,225,.6)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
   .brand{font-family:var(--display);font-weight:800;font-size:25px;letter-spacing:-.03em;display:flex;align-items:center;gap:11px}
-  .brand .dot{width:13px;height:13px;background:var(--ultra);border-radius:50%;box-shadow:0 0 0 5px rgba(31,50,255,.16);animation:beat 2.4s ease-in-out infinite}
+  .brand .brandmark{width:28px;height:28px;border-radius:7px;display:block;flex:0 0 auto}
   @keyframes beat{0%,100%{box-shadow:0 0 0 5px rgba(31,50,255,.16)}50%{box-shadow:0 0 0 9px rgba(31,50,255,.05)}}
   .nav-links{display:flex;gap:32px;align-items:center;font-size:15px;font-weight:600}
   .nav-links a:not(.btn){opacity:.7;transition:.2s}
@@ -347,7 +347,7 @@
 </head>
 <body>
 <nav><div class="wrap nav-in">
-  <a class="brand" href="#"><span class="dot"></span>Belken</a>
+  <a class="brand" href="#"><img class="brandmark" src="/favicon.svg" alt="Belken" width="28" height="28">Belken</a>
   <div class="nav-links">
     <a href="/">Home</a><a href="/openclaw">OpenClaw</a><a href="/aria">ARIA</a><a href="/openclaw#how">How it works</a><a href="/openclaw#offers">The offers</a>
     <a class="btn btn-primary" href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener">Book a free assessment <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -589,7 +589,7 @@
 <!-- FOOTER -->
 <footer><div class="wrap">
   <div class="foot-in">
-    <a class="brand" href="#"><span class="dot"></span>Belken</a>
+    <a class="brand" href="#"><img class="brandmark" src="/favicon.svg" alt="Belken" width="28" height="28">Belken</a>
     <div class="foot-links">
       <a href="/">Home</a><a href="/openclaw">OpenClaw</a><a href="/aria">ARIA</a><a href="/openclaw#how">How it works</a><a href="/openclaw#offers">The offers</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener">Book a call</a>
     </div>
