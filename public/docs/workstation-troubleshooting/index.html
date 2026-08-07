@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Belken Workstation troubleshooting · Docs · Belken</title>
+<meta name="description" content="Fourteen install and runtime failures with the exact symptom, the cause, and the command that fixes it. Every one of them happened on a real machine here first." />
+<meta property="og:title" content="Belken Workstation troubleshooting" />
+<meta property="og:description" content="Fourteen failures with the symptom, the cause and the fix." />
+<meta property="og:type" content="article" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#EEEAE1;--paper-2:#E4DFD3;--ink:#121110;--ink-soft:#3a382f;
+    --line:#cdc6b6;--ultra:#1F32FF;--ultra-deep:#0e1bb0;--flare:#FF4318;
+    --display:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;overflow-x:hidden;scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:100%;max-width:1320px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+  .ico{stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:58px 58px;opacity:.18;
+    -webkit-mask-image:radial-gradient(430px circle at var(--gx,20%) var(--gy,6%),#000 0%,transparent 70%);
+    mask-image:radial-gradient(430px circle at var(--gx,20%) var(--gy,6%),#000 0%,transparent 70%);
+  }
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:70;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);background:rgba(238,234,225,.6)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.02em;display:flex;align-items:center;gap:11px}
+  .brand .brandmark{width:38px;height:38px;border-radius:9px;display:block;flex:0 0 auto}
+  .nav-links{display:flex;gap:32px;align-items:center;font-size:15px;font-weight:600}
+  .nav-links a:not(.btn){opacity:.7;transition:.2s}
+  .nav-links a:not(.btn):hover{opacity:1}
+  .nav-links a.here{opacity:1;color:var(--ultra)}
+
+  .btn{font-family:var(--body);font-weight:700;font-size:15px;border:none;cursor:pointer;
+    padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:9px;line-height:1;
+    transition:background .22s,color .22s}
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover{background:var(--ultra)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn .arr{transition:transform .22s cubic-bezier(.16,1,.3,1)}
+  .btn:hover .arr{transform:translateX(4px)}
+  .btn-lg{padding:17px 30px;font-size:17px}
+
+  section{position:relative;z-index:1}
+  .crumbs{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.55;
+          display:flex;gap:10px;align-items:center;margin-bottom:20px}
+  .crumbs a:hover{color:var(--ultra);opacity:1}
+  .hero{padding:132px 0 0}
+  h1{font-family:var(--display);font-weight:800;letter-spacing:-.032em;line-height:.98;
+     font-size:clamp(38px,5.6vw,64px);margin-bottom:20px;max-width:880px}
+  .lede{font-size:clamp(18px,1.9vw,21px);line-height:1.5;max-width:700px;color:var(--ink-soft)}
+  .lede strong{color:var(--ink);font-weight:700}
+
+  .jump{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+        border:1px solid var(--line);margin-top:44px}
+  .jump a{background:var(--paper);padding:20px 20px 18px;display:block;transition:background .2s}
+  .jump a:hover{background:var(--paper-2)}
+  .jump .c{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ultra);margin-bottom:9px}
+  .jump .t{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.018em;line-height:1.15}
+  .jump .n{font-family:var(--mono);font-size:11.5px;opacity:.5;margin-top:8px}
+
+  .group{padding:70px 0 0}
+  .grouphead{display:flex;align-items:baseline;gap:16px;padding-bottom:16px;border-bottom:2px solid var(--ink);margin-bottom:0}
+  .grouphead .k{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--flare)}
+  .grouphead h2{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1;
+                font-size:clamp(28px,3.4vw,40px);scroll-margin-top:96px}
+
+  .fix{border-bottom:1px solid var(--line);padding:32px 0;max-width:880px}
+  .sym{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
+  .sym .dot{width:9px;height:9px;border-radius:50%;background:var(--flare);flex:0 0 auto;margin-top:9px}
+  .sym .txt{font-family:var(--mono);font-size:15px;line-height:1.5;font-weight:500;word-break:break-word}
+  .fix .why{font-size:16.5px;color:var(--ink-soft);margin-bottom:15px;max-width:720px}
+  .fix .why strong{color:var(--ink);font-weight:700}
+  .fix .why + .why{margin-top:-6px}
+  .fix code{font-family:var(--mono);font-size:.85em;background:var(--paper-2);border:1px solid var(--line);
+            border-radius:5px;padding:2px 6px;color:var(--ink);word-break:break-word}
+  .fix a.ln{color:var(--ultra);font-weight:600;border-bottom:1px solid rgba(31,50,255,.3)}
+  .fix a.ln:hover{border-bottom-color:var(--ultra)}
+
+  .term{background:#0d0c0b;border-radius:13px;padding:20px 20px;border:1px solid #2a2825;overflow-x:auto;margin:0}
+  .term pre{margin:0;font-family:var(--mono);font-size:13px;line-height:1.65;color:#d8d3c8;white-space:pre}
+  .term .d{opacity:.45}.term .g{color:#5fd08a}.term .w{color:#ffb74a}.term .c{color:#ff5f45}
+
+  .band.dark{background:var(--ink);color:var(--paper);padding:74px 0;margin-top:76px}
+  .band.dark h2{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:.99;
+                font-size:clamp(38px,5.2vw,72px);margin-bottom:22px;color:var(--paper);max-width:900px}
+  .band.dark p{color:#cfcabf;max-width:680px;margin-bottom:17px}
+  .band.dark .term{margin:26px 0 0;max-width:680px;border-color:#33302c;background:#0a0908}
+
+  footer{background:var(--ink);color:var(--paper);padding:0 0 34px;position:relative;z-index:1}
+  .foot-in{display:flex;flex-wrap:wrap;gap:26px;align-items:center;justify-content:space-between;padding-top:44px;border-top:1px solid #2a2825}
+  .foot-links{display:flex;flex-wrap:wrap;gap:22px;font-size:14.5px;opacity:.72}
+  .foot-links a:hover{opacity:1}
+  .foot-legal{font-size:13.5px;opacity:.5}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s cubic-bezier(.16,1,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  @media (max-width:980px){.jump{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:820px){
+    .nav-links a:not(.btn){display:none}
+    .hero{padding:112px 0 0}
+    .jump{grid-template-columns:1fr}
+    .group{padding:52px 0 0}
+    .term pre{font-size:12px}
+  }
+</style>
+</head>
+<body>
+<nav><div class="wrap nav-in">
+  <a class="brand" href="/"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">Belken</a>
+  <div class="nav-links">
+    <a href="/">Home</a><a href="/openclaw">OpenClaw</a><a href="/aria">ARIA</a><a class="here" href="/docs">Docs</a>
+    <a class="btn btn-primary" href="/docs/workstation-install">Install guide <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</div></nav>
+
+<section class="hero"><div class="wrap">
+  <div class="crumbs"><a href="/docs">Docs</a><span>/</span><span>Belken Workstation</span><span>/</span><span>Troubleshooting</span></div>
+  <h1>When the install does not go clean</h1>
+  <p class="lede">Fourteen failures, grouped by where they come from. Each one starts with <strong>the symptom you will actually see on screen</strong>, then why it happens, then the command that ends it. All of these happened on a real machine here before they got written down.</p>
+
+  <div class="jump">
+    <a href="#docker"><div class="c">Group 01</div><div class="t">Docker Desktop</div><div class="n">3 entries</div></a>
+    <a href="#flow"><div class="c">Group 02</div><div class="t">Install flow</div><div class="n">4 entries</div></a>
+    <a href="#services"><div class="c">Group 03</div><div class="t">Services and agents</div><div class="n">4 entries</div></a>
+    <a href="#hardware"><div class="c">Group 04</div><div class="t">Hardware and GPU</div><div class="n">3 entries</div></a>
+  </div>
+</div></section>
+
+<section class="group"><div class="wrap">
+  <div class="grouphead"><span class="k">Group 01</span><h2 id="docker">Docker Desktop</h2></div>
+
+  <div class="fix reveal">
+    <div class="sym"><span class="dot"></span><span class="txt">Docker Desktop will not start. Error dialogs mention Inference Manager or Secrets Engine.</span></div>
+    <p class="why">You are on Docker Desktop <strong>4.74.0</strong>, which has a Windows only regression. Several internal services try to listen on malformed socket paths that mix a Unix scheme with a Windows path. Each one fails in turn, you get an unexpected error dialog, and the Linux backend never comes up.</p>
+    <p class="why">Stop Docker, switch off the AI feature in the settings store, clear the zombie socket, then go back to <strong>4.73.1</strong>. Re running the installer does the downgrade and the AI disable for you.</p>
+    <div class="term">
+<pre><span class="d"># set "EnableDockerAI": false in</span>
+%APPDATA%\Docker\settings-store.json
+
+<span class="d"># clear the zombie socket file</span>
+<span class="d">PS&gt;</span> wsl -- rm -f /mnt/c/Users/$env:USERNAME/AppData/Local/Docker/run/dockerInference
+
+<span class="d"># then let the installer pin the version back</span>
+<span class="d">PS&gt;</span> .\install.ps1</pre>
+    </div>
+  </div>
+
+  <div class="fix reveal">
+    <div class="sym"><span class="dot"></span><span class="txt">Installer hangs at "Waiting for Docker to start".</span></div>
+    <p class="why">Docker Desktop is sitting behind a first run dialog waiting on you. License acceptance or a telemetry consent screen, usually. The daemon never comes online so the installer keeps waiting.</p>
+    <p class="why">Open Docker Desktop by hand from the Start menu, click through whatever it is asking, then re run <code>install.ps1</code>.</p>
+  </div>
+
+  <div class="fix reveal">
+    <div class="sym"><span class="dot"></span><span class="txt">The docker login step fails.</span></div>
+    <p class="why">Docker Hub login is optional. The installer prints a warning and carries on. All you lose is the higher pull rate limit that comes with being signed in, which in practice rarely matters for these images.</p>
+  </div>
+</div></section>
+
+<section class="group"><div class="wrap">
+  <div class="grouphead"><span class="k">Group 02</span><h2 id="flow">Install flow</h2></div>
+
+  <div class="fix reveal">
+    <div class="sym"><span class="dot"></span><span class="txt">"Reboot required" and you cannot reboot right now.</span></div>
+    <p class="why">Press Ctrl and C at the restart prompt. Nothing is left in a broken state. Reboot whenever you can, then run <code>install.ps1</code> again. The script is idempotent and resumes rather than starting over.</p>
+  </div>
+
+  <div class="fix reveal">
+    <div class="sym"><span class="dot"></span><span class="txt">The WSL2 update step fails on a slow connection.</span></div>
+    <p class="why"><code>wsl --update</code> is flaky over a poor link. Re run the installer. It picks up from where it stopped and the step is safe to repeat.</p>
+  </div>
+
+  <div class="fix reveal">
+    <div class="sym"><span class="dot"></span><span class="txt">The Tailscale download fails.</span></div>
+    <p class="why">The installer warns and continues, because Tailscale is only needed if you want the sibling machine tunnels. Install it by hand from <a class="ln" href="https://tailscale.com/download/windows" target="_blank" rel="noopener">tailscale.com</a> after the script finishes, then run <code>tailscale up</code> once.</p>
+  </div>
+
+  <div class="fix reveal">
+    <div class="sym"><span class="dot"></span><span class="txt">Age decryption fails with "no identity matched any of the recipients".</span></div>
+    <p class="why">The master key on this machine does not match the public recipient the vault was encrypted to. Secrets in this repo are encrypted at rest, and the master key is the only thing that opens them.</p>
+    <p class="why">Either restore the correct key from your password manager or backup, or delete the encrypted files and let the installer fall back to a fresh env file and a newly generated SSH key. <strong>Back that master key up somewhere off the machine.</strong> If it is gone, the vault is gone with it.</p>
+  </div>
+</div></section>
+
+<section class="group"><div class="wrap">
+  <div class="grouphead"><span class="k">Group 03</span><h2 id="services">Services and agents</h2></div>
+
+  <div class="fix reveal">
+    <div class="sym"><span class="dot"></span><span class="txt">docker compose pull fails with "denied" on a GHCR image.</span></div>
+    <p class="why">The image is private or the namespace is wrong. Sign in to the registry with a token that carries the <code>read:packages</code> scope, then pull again. For any other image, check the repo namespace in the compose file before assuming it is an auth problem.</p>
+    <div class="term">
+<pre><span class="d">PS&gt;</span> docker login ghcr.io
+<span class="d">PS&gt;</span> docker compose --profile mission-control up -d</pre>
+    </div>
+  </div>
+
+  <div class="fix reveal">
+    <div class="sym"><span class="dot"></span><span class="txt">A dependent container loops on ECONNREFUSED 127.0.0.1:18789.</span></div>
+    <p class="why">This is the one people trip on most. The dashboard container joins the gateway's network namespace directly and <strong>caches the original container ID</strong>. If you recreate the gateway on its own, the dashboard is left pointing at a namespace that no longer exists and just retries forever.</p>
+    <p class="why">Never recreate the gateway alone. Use the wrapper, which recreates both together.</p>
+    <div class="term">
+<pre><span class="c">#</span> do not do this
+<span class="d">PS&gt;</span> docker compose up -d --force-recreate openclaw
+
+<span class="g">#</span> do this
+<span class="d">PS&gt;</span> .\scripts\recreate-openclaw.ps1</pre>
+    </div>
+  </div>
+
+  <div class="fix reveal">
+    <div class="sym"><span class="dot"></span><span class="txt">The agent replies "access not configured. Your Telegram user id: ..."</span></div>
+    <p class="why">The operator allowlist is empty, so the bot is refusing everybody. That is the safe default and it is working as intended. Take the numeric ID out of that message, or get it from <a class="ln" href="https://t.me/userinfobot" target="_blank" rel="noopener">@userinfobot</a>, and write it into the allowlist.</p>
+    <div class="term">
+<pre><span class="d">PS&gt;</span> $id = "&lt;your-telegram-numeric-id&gt;"
+<span class="d">PS&gt;</span> '{"channels":{"telegram":{"accounts":{"default":{"allowFrom":["' + $id + '"]}}}}}' |
+        docker exec -i belken-openclaw openclaw config patch --stdin</pre>
+    </div>
+    <p class="why" style="margin-top:15px">Re running <code>install.ps1</code> also works. Its Telegram step prompts for the ID again.</p>
+  </div>
+
+  <div class="fix reveal">
+    <div class="sym"><span class="dot"></span><span class="txt">A browser sidecar returns HTTP 500 on the first screenshot with EACCES, permission denied, mkdir /data/...</span></div>
+    <p class="why">The sidecars run as a non root user but their named profile volumes come up owned by root, so the very first write fails. The installer fixes ownership after the containers are up, and this happens when that block ran before the containers were ready.</p>
+    <p class="why">Re running the installer is safe, since the fix is idempotent and only does anything on a fresh volume. Or do it by hand.</p>
+    <div class="term">
+<pre><span class="d">PS&gt;</span> foreach ($c in 'belken-browser-ken','belken-browser-lucy','belken-browser-youtube') {
+          docker exec -u 0 $c chown -R 999:999 /data
+      }</pre>
+    </div>
+  </div>
+</div></section>
+
+<section class="group"><div class="wrap">
+  <div class="grouphead"><span class="k">Group 04</span><h2 id="hardware">Hardware and GPU</h2></div>
+
+  <div class="fix reveal">
+    <div class="sym"><span class="dot"></span><span class="txt">GPU services error out with "could not select device driver".</span></div>
+    <p class="why">Confirm <code>nvidia-smi</code> works from PowerShell first. If it does not, the Windows driver is the problem, not Docker. Install a current NVIDIA driver and reboot. Docker Desktop's WSL2 backend picks up GPU support automatically once the Windows side is healthy, so there is no separate container toolkit to install.</p>
+  </div>
+
+  <div class="fix reveal">
+    <div class="sym"><span class="dot"></span><span class="txt">Repeated blue screens while the GPU stack is running.</span></div>
+    <p class="why">Do not guess at this one. Run the crash analysis script from an elevated shell. It reads the Windows minidumps and prints the faulting driver, which turns a vague stability problem into a named component.</p>
+    <p class="why">Three culprits cover almost every case. <code>nvlddmkm.sys</code> means the NVIDIA driver, and for AI workloads pick the Studio driver over the Game Ready one. <code>vmm.sys</code> points at Hyper V or Docker Desktop. <code>ntoskrnl.exe</code> usually means memory, so run a memory test and check Event Viewer for antivirus or disk errors.</p>
+    <div class="term">
+<pre><span class="d">PS&gt;</span> .\scripts\analyze-crashes.ps1
+<span class="w">Caused By Driver</span>  nvlddmkm.sys</pre>
+    </div>
+  </div>
+
+  <div class="fix reveal">
+    <div class="sym"><span class="dot"></span><span class="txt">Postgres takes longer than sixty seconds to report healthy.</span></div>
+    <p class="why">The installer warns but does not fail, because a slow first start is normal on a cold disk. Wait another minute and check again. If it is still unhealthy, read the container log before touching anything else.</p>
+    <div class="term">
+<pre><span class="d">PS&gt;</span> docker inspect --format='{{.State.Health.Status}}' belken-postgres
+<span class="d">PS&gt;</span> docker logs belken-postgres</pre>
+    </div>
+  </div>
+</div></section>
+
+<section class="band dark"><div class="wrap">
+  <h2>Still stuck</h2>
+  <p>Collect these four outputs before you ask anyone anything. Between them they answer most of the questions a first reply would have asked you, which usually saves a full round trip.</p>
+  <div class="term">
+<pre><span class="d">PS&gt;</span> docker compose ps
+<span class="d">PS&gt;</span> docker compose logs --tail=200
+<span class="d">PS&gt;</span> wsl --version
+<span class="d">PS&gt;</span> docker version</pre>
+  </div>
+  <p style="margin-top:26px">Hit something that is not on this page. Tell us and it goes on it.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:26px">
+    <a class="btn btn-primary btn-lg" style="background:var(--flare);color:#fff" href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener">Book a call <svg class="ico arr" width="17" height="17" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="btn btn-ghost btn-lg" style="border-color:var(--paper);color:var(--paper)" href="/docs/workstation-install">Back to the install guide</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="foot-in">
+    <a class="brand" href="/"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">Belken</a>
+    <div class="foot-links">
+      <a href="/">Home</a><a href="/openclaw">OpenClaw</a><a href="/aria">ARIA</a><a href="/docs">Docs</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+    </div>
+    <div class="foot-legal">© 2026 Belken Ventures</div>
+  </div>
+</div></footer>
+
+<script>
+  const root=document.documentElement;
+  window.addEventListener('pointermove',e=>{
+    root.style.setProperty('--gx',(e.clientX/window.innerWidth*100).toFixed(1)+'%');
+    root.style.setProperty('--gy',(e.clientY/window.innerHeight*100).toFixed(1)+'%');
+  },{passive:true});
+  const io=new IntersectionObserver((es)=>{es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(n=>io.observe(n));
+</script>
+</body>
+</html>

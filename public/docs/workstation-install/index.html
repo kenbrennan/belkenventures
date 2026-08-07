@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Belken Workstation install guide · Docs · Belken</title>
+<meta name="description" content="End to end install for the Belken Workstation stack on a fresh Windows 11 machine. Prerequisites, the one command install, what every step does, and how to verify it before you trust it." />
+<meta property="og:title" content="Belken Workstation install guide" />
+<meta property="og:description" content="One command, seven steps, on a fresh Windows 11 machine." />
+<meta property="og:type" content="article" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#EEEAE1;--paper-2:#E4DFD3;--ink:#121110;--ink-soft:#3a382f;
+    --line:#cdc6b6;--ultra:#1F32FF;--ultra-deep:#0e1bb0;--flare:#FF4318;
+    --display:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;overflow-x:hidden;scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:100%;max-width:1320px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+  .ico{stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:58px 58px;opacity:.18;
+    -webkit-mask-image:radial-gradient(430px circle at var(--gx,78%) var(--gy,8%),#000 0%,transparent 70%);
+    mask-image:radial-gradient(430px circle at var(--gx,78%) var(--gy,8%),#000 0%,transparent 70%);
+  }
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:70;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);background:rgba(238,234,225,.6)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.02em;display:flex;align-items:center;gap:11px}
+  .brand .brandmark{width:38px;height:38px;border-radius:9px;display:block;flex:0 0 auto}
+  .nav-links{display:flex;gap:32px;align-items:center;font-size:15px;font-weight:600}
+  .nav-links a:not(.btn){opacity:.7;transition:.2s}
+  .nav-links a:not(.btn):hover{opacity:1}
+  .nav-links a.here{opacity:1;color:var(--ultra)}
+
+  .btn{font-family:var(--body);font-weight:700;font-size:15px;border:none;cursor:pointer;
+    padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:9px;line-height:1;
+    transition:background .22s,color .22s}
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover{background:var(--ultra)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn .arr{transition:transform .22s cubic-bezier(.16,1,.3,1)}
+  .btn:hover .arr{transform:translateX(4px)}
+  .btn-lg{padding:17px 30px;font-size:17px}
+
+  section{position:relative;z-index:1}
+  .crumbs{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.55;
+          display:flex;gap:10px;align-items:center;margin-bottom:20px}
+  .crumbs a:hover{color:var(--ultra);opacity:1}
+  .hero{padding:132px 0 0}
+  h1{font-family:var(--display);font-weight:800;letter-spacing:-.032em;line-height:.98;
+     font-size:clamp(38px,5.6vw,64px);margin-bottom:20px;max-width:900px}
+  .lede{font-size:clamp(18px,1.9vw,21px);line-height:1.5;max-width:700px;color:var(--ink-soft)}
+  .lede strong{color:var(--ink);font-weight:700}
+
+  .facts{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .fact{flex:1 1 150px;padding:20px 22px 18px;border-right:1px solid var(--line)}
+  .fact:last-child{border-right:none}
+  .fact b{display:block;font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em;line-height:1}
+  .fact span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.58;display:block;margin-top:7px}
+
+  .doc{display:grid;grid-template-columns:222px 1fr;gap:64px;padding:56px 0 30px;align-items:start}
+  .toc{position:sticky;top:104px}
+  .toc .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.5;
+          padding-bottom:12px;border-bottom:1px solid var(--line);display:block;margin-bottom:14px}
+  .toc a{display:block;font-size:15px;padding:7px 0 7px 13px;border-left:2px solid var(--line);color:var(--ink-soft);transition:.2s}
+  .toc a:hover{border-left-color:var(--ultra);color:var(--ink)}
+
+  .prose{max-width:760px;min-width:0}
+  .prose h2{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1.02;
+            font-size:clamp(30px,3.6vw,42px);margin:0 0 18px;scroll-margin-top:96px}
+  .prose h2:not(:first-child){margin-top:74px;padding-top:34px;border-top:1px solid var(--line)}
+  .prose h3{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.015em;margin:34px 0 9px}
+  .prose p{margin-bottom:17px;color:var(--ink-soft)}
+  .prose p strong{color:var(--ink);font-weight:700}
+  .prose code{font-family:var(--mono);font-size:.85em;background:var(--paper-2);border:1px solid var(--line);
+              border-radius:5px;padding:2px 6px;color:var(--ink);word-break:break-word}
+  .prose ul{margin:0 0 19px 0;padding:0;list-style:none}
+  .prose li{position:relative;padding-left:22px;margin-bottom:10px;color:var(--ink-soft)}
+  .prose li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:1.5px;background:var(--ultra)}
+  .prose a.ln{color:var(--ultra);font-weight:600;border-bottom:1px solid rgba(31,50,255,.3)}
+  .prose a.ln:hover{border-bottom-color:var(--ultra)}
+
+  .term{background:#0d0c0b;border-radius:13px;padding:22px 22px;border:1px solid #2a2825;overflow-x:auto;margin:0 0 24px}
+  .term pre{margin:0;font-family:var(--mono);font-size:13px;line-height:1.65;color:#d8d3c8;white-space:pre}
+  .term .d{opacity:.45}.term .g{color:#5fd08a}.term .w{color:#ffb74a}.term .c{color:#ff5f45}
+  .term-head{display:flex;gap:7px;margin-bottom:14px}
+  .term-head i{width:10px;height:10px;border-radius:50%;background:#332f2b;display:block}
+
+  .steps{border-top:1px solid var(--line);margin-top:8px}
+  .step{display:grid;grid-template-columns:78px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}
+  .step .n{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--ultra);padding-top:5px}
+  .step h3{margin:0 0 7px}
+  .step p{margin:0;font-size:16.5px}
+  .step p + p{margin-top:10px}
+
+  .tbl{border-top:1px solid var(--line);margin:22px 0 26px}
+  .tr{display:grid;grid-template-columns:1fr 96px 1fr;gap:18px;padding:13px 2px;border-bottom:1px solid var(--line);font-size:15.5px;align-items:baseline}
+  .tr .s{font-weight:600}
+  .tr .p,.tr .u{font-family:var(--mono);font-size:13px;color:var(--ink-soft);word-break:break-all}
+  .tr.h{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.55}
+  .tr.h .p,.tr.h .u{font-family:var(--mono);font-size:11px;letter-spacing:.12em}
+
+  .note{border-left:3px solid var(--flare);padding:2px 0 2px 20px;margin:26px 0}
+  .note b{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--flare);display:block;margin-bottom:7px}
+  .note p{margin:0;font-size:16.5px}
+
+  .band.dark{background:var(--ink);color:var(--paper);padding:74px 0;margin-top:60px}
+  .band.dark h2{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:.99;
+                font-size:clamp(38px,5.2vw,72px);margin-bottom:22px;color:var(--paper);max-width:900px}
+  .band.dark p{color:#cfcabf;max-width:660px;margin-bottom:17px}
+
+  footer{background:var(--ink);color:var(--paper);padding:0 0 34px;position:relative;z-index:1}
+  .foot-in{display:flex;flex-wrap:wrap;gap:26px;align-items:center;justify-content:space-between;padding-top:44px;border-top:1px solid #2a2825}
+  .foot-links{display:flex;flex-wrap:wrap;gap:22px;font-size:14.5px;opacity:.72}
+  .foot-links a:hover{opacity:1}
+  .foot-legal{font-size:13.5px;opacity:.5}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s cubic-bezier(.16,1,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  @media (max-width:1000px){
+    .doc{grid-template-columns:1fr;gap:0}
+    .toc{display:none}
+  }
+  @media (max-width:820px){
+    .nav-links a:not(.btn){display:none}
+    .hero{padding:112px 0 0}
+    .step{grid-template-columns:1fr;gap:6px}
+    .step .n{padding-top:0}
+    .tr{grid-template-columns:1fr;gap:3px}
+    .tr.h{display:none}
+    .term pre{font-size:12px}
+  }
+</style>
+</head>
+<body>
+<nav><div class="wrap nav-in">
+  <a class="brand" href="/"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">Belken</a>
+  <div class="nav-links">
+    <a href="/">Home</a><a href="/openclaw">OpenClaw</a><a href="/aria">ARIA</a><a class="here" href="/docs">Docs</a>
+    <a class="btn btn-primary" href="/docs/workstation-troubleshooting">Troubleshooting <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</div></nav>
+
+<section class="hero"><div class="wrap">
+  <div class="crumbs"><a href="/docs">Docs</a><span>/</span><span>Belken Workstation</span><span>/</span><span>Install</span></div>
+  <h1>Belken Workstation install guide</h1>
+  <p class="lede">One command on a fresh Windows 11 box brings up the whole stack. This page covers what you need before you start, <strong>what each step is actually doing to your machine</strong>, and how to verify the thing is up before you trust it with work.</p>
+
+  <div class="facts">
+    <div class="fact"><b>1</b><span>command</span></div>
+    <div class="fact"><b>7</b><span>steps</span></div>
+    <div class="fact"><b>30 to 45</b><span>minutes, fresh box</span></div>
+    <div class="fact"><b>13</b><span>agent workspaces</span></div>
+  </div>
+</div></section>
+
+<div class="wrap doc">
+  <aside class="toc">
+    <span class="k">On this page</span>
+    <a href="#what">What it is</a>
+    <a href="#before">Before you start</a>
+    <a href="#install">The install</a>
+    <a href="#steps">What each step does</a>
+    <a href="#services">Services and ports</a>
+    <a href="#verify">Verify it worked</a>
+    <a href="#first">First session</a>
+    <a href="#later">Adding services later</a>
+    <a href="#reset">Resetting</a>
+  </aside>
+
+  <main class="prose">
+    <h2 id="what">What it is</h2>
+    <p>Belken Workstation is a single Docker Compose stack that puts an agent operations layer on one machine. The core of it is the <strong>OpenClaw gateway</strong> plus the infrastructure agents actually need: Postgres with pgvector, ChromaDB, Redis, n8n for workflows, and a private SearXNG for search.</p>
+    <p>Two one shot containers run on first boot. One seeds a writable config from the template in the repo. The other creates <strong>13 isolated agent workspaces</strong>, one directory per agent, so personalities never bleed into each other. That isolation is not a nicety. Sharing a workspace between agents is what produced the identity bleed we had to go back and fix once already.</p>
+    <p>Everything past the core is optional and turns on by profile. The branding machine adds Persona Studio and browser sidecars for posting from logged in accounts. The GPU profile adds ComfyUI, Forge and Remotion. The full profile adds a local Ollama. The installer decides which of these your hardware can carry and skips the rest with a stated reason.</p>
+
+    <h2 id="before">Before you start</h2>
+    <ul>
+      <li><strong>Windows 11</strong> Pro or Home, 22H2 or newer</li>
+      <li><strong>Administrator rights</strong> on the target account. The installer enables Windows features and installs system wide software</li>
+      <li><strong>16 GB RAM</strong> for the core stack. 32 GB or more if you want the full profile with a local model</li>
+      <li><strong>100 GB</strong> free disk</li>
+      <li>An internet connection that can pull <strong>7 GB or more of container images</strong></li>
+      <li>Optional: an <strong>NVIDIA GPU</strong> with current drivers if you want the GPU profile. Confirm with <code>nvidia-smi</code> from PowerShell first</li>
+    </ul>
+    <p>You do not need to pre install Docker, WSL2, Ubuntu, Tailscale, Python, UV, age or OpenSSH. The installer handles all of it.</p>
+    <p>Grab your numeric Telegram user ID before you run anything. The installer asks for it so the agent only answers you. You can get it from <a class="ln" href="https://t.me/userinfobot" target="_blank" rel="noopener">@userinfobot</a> in Telegram.</p>
+
+    <h2 id="install">The install</h2>
+    <p>Open <strong>PowerShell as Administrator</strong> and run this. The repo is private, so the clone uses SSH and your machine needs a key registered with a GitHub account that has access. An HTTPS clone returns <code>Repository not found</code>.</p>
+    <div class="term">
+      <div class="term-head"><i></i><i></i><i></i></div>
+<pre><span class="d">PS&gt;</span> git clone git@github.com:belkenbot/belken-workstation.git $env:USERPROFILE\belken-workstation
+<span class="d">PS&gt;</span> cd $env:USERPROFILE\belken-workstation
+<span class="d">PS&gt;</span> Set-ExecutionPolicy Bypass -Scope Process -Force
+<span class="d">PS&gt;</span> .\install.ps1</pre>
+    </div>
+    <div class="note">
+      <b>If it reboots, run it again</b>
+      <p>WSL2 needs a restart the first time its Windows features get enabled. The installer reboots once and the script is idempotent, so re running the same command picks up where it left off rather than starting over.</p>
+    </div>
+
+    <h2 id="steps">What each step does</h2>
+    <p>The installer prints a banner and walks seven numbered steps with four sub steps inside them. Most of the wall time is image pulls.</p>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="n">STEP 1</div>
+        <div>
+          <h3>WSL2</h3>
+          <p>Enables the <code>Microsoft-Windows-Subsystem-Linux</code> and <code>VirtualMachinePlatform</code> features. First time only, and it needs the reboot. If both are already on, this is a no op.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">STEP 2</div>
+        <div>
+          <h3>Ubuntu on WSL</h3>
+          <p>Installs the Ubuntu distro if no WSL distro is present and updates the WSL kernel. Ubuntu will ask you to set a username and password on first launch. That is optional and the Docker stack does not need it.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">STEP 3</div>
+        <div>
+          <h3>GPU detection, driver and crash audit</h3>
+          <p>Looks for <code>nvidia-smi</code>. If a GPU is there it prints the model and VRAM and unlocks the GPU services. If not, it continues and notes that those services will be unavailable.</p>
+          <p>When a GPU is found it also reads the driver date and <strong>warns loudly if the driver is more than 180 days old</strong>, then audits <code>C:\Windows\Minidump\</code>. Three or more blue screen dumps in the last twelve months gets flagged with the most recent filename, because a stale driver on a new GPU architecture under heavy load is a real crash risk and it is better to know now.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">STEP 4</div>
+        <div>
+          <h3>Docker Desktop</h3>
+          <p>Downloads and silently installs Docker Desktop, starts it, and waits up to 90 seconds for the daemon.</p>
+          <p><strong>The version is pinned to 4.73.1 on purpose.</strong> Release 4.74.0 has a Windows only regression where internal services try to listen on malformed socket paths, each one fails in turn, and the Linux backend never starts. The installer hardcodes the 4.73.1 download and also switches off Docker AI in the settings store, because that feature spawns the same broken socket and turns into a delayed failure after any crash or settings reset.</p>
+          <p>It then builds a local wrapper image around the upstream OpenClaw image that adds <code>ca-certificates</code>. Without that, every outbound HTTPS call from the gateway fails its TLS handshake quietly. Telegram polling dies and provider API calls error out with nothing useful in the log.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">STEP 5</div>
+        <div>
+          <h3>NVIDIA container toolkit</h3>
+          <p>On Windows with Docker Desktop, GPU passthrough is automatic through the WSL2 backend. No separate toolkit install is needed, so this step is a sanity check.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">STEP 5b</div>
+        <div>
+          <h3>Tailscale</h3>
+          <p>Silent install. You run <code>tailscale up</code> once from an interactive shell afterward to join your tailnet. Optional if you do not use it.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">STEP 5c</div>
+        <div>
+          <h3>Python 3.13 and UV</h3>
+          <p>Installs Python 3.13 and UV on the Windows host, and python3 with pip and venv inside WSL2 Ubuntu. Both are skipped if already present.</p>
+          <p>UV matters because most modern MCP servers spawn isolated environments through <code>uvx</code>. The step also scans for the recommended Claude Desktop connectors and prints which are installed and which are missing. It deliberately does not write the Claude Desktop config file, because Claude Desktop rewrites that block on startup. Install connectors through the in app Connectors screen instead.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">STEP 5d</div>
+        <div>
+          <h3>SSH keys and tunnels</h3>
+          <p>Enables the Windows OpenSSH client, generates an ed25519 keypair if you do not have one, and writes a marked block into your SSH config with host entries for sibling machines. Re running the installer replaces only that marked block, so any hosts you added yourself survive.</p>
+          <p>It prints the public key and the one line command to authorize it on each target box. After that, aliases like <code>ssh rtx</code> work, and a tunnel entry can forward a remote Ollama to <code>localhost:11434</code> on this machine.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">STEP 6</div>
+        <div>
+          <h3>Deploy the stack</h3>
+          <p>This is the long one. It creates <code>.env</code>, <strong>auto generates secure random values</strong> for the gateway token, dashboard auth secret, SearXNG secret and n8n encryption key, and writes a copy of everything it generated to a gitignored credentials file so you are not digging through the env file later.</p>
+          <p>It renders the live config files from their templates so the real token never lands in git, then <strong>picks profiles from your hardware</strong>. GPU services come on when a GPU is present. The local model profile only comes on with a GPU and at least 28 GB of RAM, because it runs out of memory below that. Anything it cannot pull is skipped with a stated reason rather than failing the run.</p>
+          <p>After the containers are up it waits for Postgres to report healthy, fixes the ownership of the browser sidecar data volumes so the first screenshot does not fail with a permission error, prompts you for an LLM provider and key, and wires the Telegram bot including the operator allowlist.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">STEP 6b</div>
+        <div>
+          <h3>Desktop shortcut</h3>
+          <p>Drops a Belken Control Center shortcut on your desktop pointing at the local dashboard. It polls every service every five seconds and gives you an open button for each one.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">STEP 7</div>
+        <div>
+          <h3>Verify</h3>
+          <p>Inspects every container that should be running for the profiles it chose, HTTP probes every service with a URL, and prints a final banner with running services, skipped profiles <strong>and the reason each was skipped</strong>, your generated credentials, and a first visit checklist.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="services">Services and ports</h2>
+    <p>The core stack is always on. Everything else appears only if its profile was enabled.</p>
+    <div class="tbl">
+      <div class="tr h"><div class="s">Service</div><div class="p">Port</div><div class="u">Reach it at</div></div>
+      <div class="tr"><div class="s">OpenClaw gateway</div><div class="p">18789</div><div class="u">http://localhost:18789</div></div>
+      <div class="tr"><div class="s">n8n workflows</div><div class="p">5678</div><div class="u">http://localhost:5678</div></div>
+      <div class="tr"><div class="s">SearXNG search</div><div class="p">8080</div><div class="u">http://localhost:8080</div></div>
+      <div class="tr"><div class="s">ChromaDB</div><div class="p">8400</div><div class="u">http://localhost:8400</div></div>
+      <div class="tr"><div class="s">Postgres with pgvector</div><div class="p">5432</div><div class="u">localhost:5432, no HTTP</div></div>
+      <div class="tr"><div class="s">Redis</div><div class="p">6379</div><div class="u">internal only</div></div>
+      <div class="tr"><div class="s">Persona frontend, branding profile</div><div class="p">5173</div><div class="u">http://localhost:5173</div></div>
+      <div class="tr"><div class="s">Persona API, branding profile</div><div class="p">3721</div><div class="u">http://localhost:3721</div></div>
+      <div class="tr"><div class="s">Headless browser sidecars</div><div class="p">18800 to 18802</div><div class="u">automation, always on with branding</div></div>
+      <div class="tr"><div class="s">Headed Chrome sidecars</div><div class="p">18803 to 18805</div><div class="u">interactive logins, off by default</div></div>
+      <div class="tr"><div class="s">ComfyUI, GPU profile</div><div class="p">8188</div><div class="u">http://localhost:8188</div></div>
+      <div class="tr"><div class="s">Forge pipeline, GPU profile</div><div class="p">8200</div><div class="u">http://localhost:8200</div></div>
+      <div class="tr"><div class="s">Remotion editor, GPU profile</div><div class="p">3100</div><div class="u">http://localhost:3100</div></div>
+      <div class="tr"><div class="s">Ollama, full profile</div><div class="p">11434</div><div class="u">http://localhost:11434</div></div>
+    </div>
+    <div class="note">
+      <b>Why two kinds of browser</b>
+      <p>The headless sidecars run automation and stay up. The headed ones run real Google Chrome and stay off by default, because Google sign in refuses containerized Chromium with a browser not secure message. Log in through the headed one, then point automation at the headless one. They keep separate profile volumes on purpose.</p>
+    </div>
+
+    <h2 id="verify">Verify it worked</h2>
+    <p>Do not take the banner's word for it. Three commands settle it.</p>
+    <div class="term">
+      <div class="term-head"><i></i><i></i><i></i></div>
+<pre><span class="d">PS&gt;</span> docker compose ps
+<span class="d">PS&gt;</span> docker inspect --format='{{.State.Health.Status}}' belken-postgres
+<span class="g">healthy</span>
+<span class="d">PS&gt;</span> curl http://localhost:18789</pre>
+    </div>
+    <p>If Postgres takes longer than sixty seconds to report healthy, the installer warns but does not fail. Give it another minute and check again. If it stays unhealthy, read <code>docker logs belken-postgres</code> before anything else.</p>
+
+    <h2 id="first">First session</h2>
+    <p>Every agent ships with a bootstrap prompt that runs a first conversation where the agent settles its own name, voice and identity through dialogue. <strong>Do not skip this for the agents you actually talk to.</strong> It is the difference between an assistant that feels like itself and one that feels like a template, and skipping it is what caused the identity problem we had to go back and fix.</p>
+    <div class="term">
+      <div class="term-head"><i></i><i></i><i></i></div>
+<pre><span class="d">PS&gt;</span> docker exec -it belken-openclaw openclaw agents list
+<span class="d">PS&gt;</span> docker exec -it belken-openclaw openclaw chat
+<span class="d"># talk with the main agent. it writes its own identity from the conversation.</span>
+
+<span class="d">PS&gt;</span> docker exec -it belken-openclaw openclaw chat --agent director</pre>
+    </div>
+    <p>Task agents that never hold a conversation can stay generic. Skipping the ritual for those is fine.</p>
+
+    <h2 id="later">Adding services later</h2>
+    <p>If a profile got skipped because you had no GPU, not enough RAM, or an image would not pull, you can opt in any time without reinstalling.</p>
+    <div class="term">
+      <div class="term-head"><i></i><i></i><i></i></div>
+<pre><span class="d">PS&gt;</span> cd $env:USERPROFILE\belken-workstation
+
+<span class="d"># GPU pipeline, if you added a GPU after install</span>
+<span class="d">PS&gt;</span> docker compose --profile gpu up -d
+
+<span class="d"># the four local MCP servers</span>
+<span class="d">PS&gt;</span> docker compose --profile mcp up -d
+
+<span class="d"># headed Chrome, first run builds the image and takes a couple of minutes</span>
+<span class="d">PS&gt;</span> docker compose --profile headed up -d --build
+
+<span class="d"># everything</span>
+<span class="d">PS&gt;</span> docker compose --profile full up -d</pre>
+    </div>
+    <p>The MCP profile brings up four local servers covering image generation, Persona operations, private search and workflow control. They register themselves with the gateway, so agents can call them without leaving it.</p>
+
+    <h2 id="reset">Resetting</h2>
+    <p>There are two levels of teardown and the difference matters.</p>
+    <h3>Light reset</h3>
+    <p><code>reset.ps1</code> wipes the stack, removes pulled images and deletes the install directory, but leaves Docker Desktop, Tailscale and WSL2 in place so the next install is fast. This is the one you want almost every time.</p>
+    <h3>Full cleanup</h3>
+    <p><code>cleanup.ps1</code> takes the machine back to a clean slate. It stops the stack, uninstalls Docker Desktop and Tailscale, scrubs the leftover Docker folders, unregisters the WSL distros and removes the working directories. It installs nothing and exits with a state report so you can check before reinstalling. Reboot once afterward to clear pending file deletions.</p>
+    <div class="note">
+      <b>Run both as Administrator</b>
+      <p>Cleanup deliberately leaves the WSL2 Windows features enabled. That means the next install skips its WSL step and avoids an extra reboot. Turn them off by hand only if you want the machine fully stock.</p>
+    </div>
+  </main>
+</div>
+
+<section class="band dark"><div class="wrap">
+  <h2>Something broke during the install</h2>
+  <p>Fourteen specific failures, each with the exact symptom you will see, the cause, and the command that fixes it. Every one of them happened on a real machine here first.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:30px">
+    <a class="btn btn-primary btn-lg" style="background:var(--flare);color:#fff" href="/docs/workstation-troubleshooting">Go to troubleshooting <svg class="ico arr" width="17" height="17" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="btn btn-ghost btn-lg" style="border-color:var(--paper);color:var(--paper)" href="/docs">All docs</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="foot-in">
+    <a class="brand" href="/"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">Belken</a>
+    <div class="foot-links">
+      <a href="/">Home</a><a href="/openclaw">OpenClaw</a><a href="/aria">ARIA</a><a href="/docs">Docs</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+    </div>
+    <div class="foot-legal">© 2026 Belken Ventures</div>
+  </div>
+</div></footer>
+
+<script>
+  const root=document.documentElement;
+  window.addEventListener('pointermove',e=>{
+    root.style.setProperty('--gx',(e.clientX/window.innerWidth*100).toFixed(1)+'%');
+    root.style.setProperty('--gy',(e.clientY/window.innerHeight*100).toFixed(1)+'%');
+  },{passive:true});
+  const io=new IntersectionObserver((es)=>{es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(n=>io.observe(n));
+</script>
+</body>
+</html>
