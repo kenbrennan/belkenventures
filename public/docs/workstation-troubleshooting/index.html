@@ -69,33 +69,40 @@
   .lede{font-size:clamp(18px,1.9vw,21px);line-height:1.5;max-width:700px;color:var(--ink-soft)}
   .lede strong{color:var(--ink);font-weight:700}
 
+  /* 1046 = 222 toc + 64 gap + 760 measure. every block on the page ends on that
+     same right edge, so the article reads as one rail instead of two widths. */
   .jump{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
-        border:1px solid var(--line);margin-top:44px}
+        border:1px solid var(--line);margin-top:44px;max-width:1046px}
   .jump a{background:var(--paper);padding:20px 20px 18px;display:block;transition:background .2s}
   .jump a:hover{background:var(--paper-2)}
   .jump .c{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ultra);margin-bottom:9px}
   .jump .t{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.018em;line-height:1.15}
   .jump .n{font-family:var(--mono);font-size:11.5px;opacity:.5;margin-top:8px}
 
-  .doc{display:grid;grid-template-columns:222px 1fr;gap:64px;padding:0 0 24px;align-items:start}
+  /* padding-block only. the shorthand would wipe .wrap's padding-inline and pull the body off the page edge */
+  .doc{display:grid;grid-template-columns:222px 1fr;gap:64px;padding-block:56px 24px;align-items:start}
   .toc{position:sticky;top:104px}
   .toc .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.5;
-          margin-bottom:14px;padding-left:13px}
+          padding-bottom:12px;border-bottom:1px solid var(--line);display:block;margin-bottom:14px}
   .toc a{display:block;font-size:15px;padding:7px 0 7px 13px;border-left:2px solid var(--line);color:var(--ink-soft);transition:border-left-color .22s cubic-bezier(.16,1,.3,1),color .22s}
   .toc a:hover{border-left-color:var(--ultra);color:var(--ink)}
   .toc a .n{font-family:var(--mono);font-size:11px;opacity:.5;margin-left:7px}
 
+  /* same 760px measure as the install guide, so rules terminate on the same right edge across both docs */
+  .docbody{max-width:760px;min-width:0}
   .group{padding:70px 0 0}
+  /* first group heading starts level with the TOC head, not 70px below it */
+  .group:first-child{padding-top:0}
   .grouphead{display:flex;align-items:baseline;gap:16px;padding-bottom:16px;border-bottom:2px solid var(--ink);margin-bottom:0}
   .grouphead .k{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--flare)}
   .grouphead h2{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1;
                 font-size:clamp(28px,3.4vw,40px);scroll-margin-top:96px}
 
-  .fix{border-bottom:1px solid var(--line);padding:32px 0;max-width:880px}
+  .fix{border-bottom:1px solid var(--line);padding:32px 0}
   .sym{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
   .sym .dot{width:9px;height:9px;border-radius:50%;background:var(--flare);flex:0 0 auto;margin-top:9px}
   .sym .txt{font-family:var(--mono);font-size:15px;line-height:1.5;font-weight:500;word-break:break-word}
-  .fix .why{font-size:16.5px;color:var(--ink-soft);margin-bottom:15px;max-width:720px}
+  .fix .why{font-size:16.5px;color:var(--ink-soft);margin-bottom:15px}
   .fix .why strong{color:var(--ink);font-weight:700}
   .fix .why + .why{margin-top:-6px}
   .fix code{font-family:var(--mono);font-size:.85em;background:var(--paper-2);border:1px solid var(--line);
