@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Operator's Field Manual · Belken</title>
-<meta name="description" content="What happens to your agent setup in month three, and how to be ready for it. 80 pages, written from 1,388 logged production failures across a four-machine agent fleet." />
+<meta name="description" content="What happens to your agent setup in month three, and how to be ready for it. 96 pages, written from 1,656 logged production failures across a four-machine agent fleet." />
 <meta property="og:title" content="The Operator's Field Manual" />
 <meta property="og:description" content="Everyone sells you the install. Nobody tells you what happens in month three." />
 <meta property="og:type" content="website" />
@@ -111,6 +111,32 @@
   .fail .tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--flare);padding-top:4px}
   .fail p{margin:0;font-size:16.5px}
 
+  /* two paid rungs. hairline pair, distinct from .parts (3-col) and .fails (index rows). */
+  .rungs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
+         border:1px solid var(--line);margin-top:44px}
+  @media (max-width:860px){.rungs{grid-template-columns:1fr}}
+  .rung{background:var(--paper);padding:34px 32px 32px;display:flex;flex-direction:column}
+  .rung.lead{background:var(--ink);color:var(--paper)}
+  .rung.lead h3{color:var(--paper)}
+  .rung.lead p{color:#cfcabf}
+  .rung .n{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
+           color:var(--ultra);margin-bottom:12px}
+  .rung.lead .n{color:var(--flare)}
+  .rung p{font-size:16px;color:var(--ink-soft)}
+  .rprice{font-family:var(--display);font-weight:800;font-size:40px;letter-spacing:-.025em;
+          line-height:1;margin:18px 0 5px}
+  .rsub{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+        opacity:.58;margin-bottom:22px}
+  .rlist{list-style:none;margin:0 0 26px;padding:0;border-top:1px solid var(--line)}
+  .rung.lead .rlist{border-top-color:#2a2825}
+  .rlist li{padding:11px 0;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.45;
+            display:grid;grid-template-columns:16px 1fr;gap:12px;align-items:start}
+  .rung.lead .rlist li{border-bottom-color:#2a2825}
+  .rlist .ico{margin-top:4px;stroke:var(--ultra)}
+  .rung.lead .rlist .ico{stroke:var(--flare)}
+  /* pins both buttons to the same baseline when the two cells differ in height */
+  .rung .rfoot{margin-top:auto}
+
   .cta{text-align:center;padding:100px 0}
   .cta h2{max-width:760px;margin-inline:auto}
 
@@ -142,9 +168,9 @@
 </div></nav>
 
 <section class="hero"><div class="wrap">
-  <div class="eyebrow">Belken Ventures · Version 2.0 · 80 pages</div>
+  <div class="eyebrow">Belken Ventures · Version 2.0 · 96 pages</div>
   <h1>The Operator's<br />Field Manual</h1>
-  <p class="lede">Everyone sells you the install. <strong>Nobody tells you what happens in month three.</strong> This is the other half, written from 1,388 logged production failures with the fix attached to each one.</p>
+  <p class="lede">Everyone sells you the install. <strong>Nobody tells you what happens in month three.</strong> This is the other half, written from 1,656 logged production failures with the fix attached to each one.</p>
 
   <div class="buybar">
     <a class="btn btn-flare btn-lg" href="https://belken.gumroad.com/l/bjcony" target="_blank" rel="noopener">Get the manual <svg class="ico arr" width="17" height="17" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -155,7 +181,7 @@
 
   <div class="specs">
     <div class="spec"><b>80</b><span>pages</span></div>
-    <div class="spec"><b>1,388</b><span>logged failures</span></div>
+    <div class="spec"><b>1,656</b><span>logged failures</span></div>
     <div class="spec"><b>21</b><span>checks in the free tool</span></div>
   </div>
 </div></section>
@@ -172,7 +198,7 @@
   <div style="max-width:720px">
     <div class="eyebrow" style="color:var(--flare);opacity:1">Free · no email · no account</div>
     <h2>Find out what is already wrong</h2>
-    <p class="lede">Before you buy anything, run the check. One bash file, twenty-one checks, offline and read-only. It tells you which of the failures in this manual are already sitting on your machine.</p>
+    <p class="lede">Before you buy anything, run the check. One bash file, offline and read-only. It tells you which of the failures in this manual are already sitting on your machine.</p>
   </div>
 
   <div class="term" style="margin-top:34px">
@@ -232,13 +258,60 @@ agentcheck v1.0  - what is going to break your agent setup
   <p>If you are still picking a tool, this will not help you yet. There is no prompt library in here and nothing about agents replacing your team.</p>
 </div></section>
 
+<section class="band" id="help"><div class="wrap reveal">
+  <div class="narrow">
+    <div class="eyebrow" style="color:var(--ultra);opacity:1">After the manual</div>
+    <h2>If you would rather not do it yourself</h2>
+    <p class="lede">The check is free and the manual is forty seven dollars because most people can fix this on their own once they know what to look for. These two are for when reading it yourself is not the fastest way there.</p>
+  </div>
+
+  <div class="rungs">
+    <div class="rung reveal">
+      <div class="n">The Fleet Audit</div>
+      <h3>Your setup, read by someone who has broken one</h3>
+      <div class="rprice">$750</div>
+      <div class="rsub">One time · report and a call</div>
+      <p>You run agentcheck and send me the output. I go through what you actually have running, not a generic checklist, and tell you what to fix and in what order.</p>
+      <ul class="rlist">
+        <li><svg class="ico" width="16" height="16" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>A written report on your machine, your agents, your config</span></li>
+        <li><svg class="ico" width="16" height="16" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>Every finding ranked by what takes you down first</span></li>
+        <li><svg class="ico" width="16" height="16" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>A 45 minute call to walk through it with you</span></li>
+        <li><svg class="ico" width="16" height="16" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>Fixes written for your setup, not lifted from a blog</span></li>
+      </ul>
+      <div class="microcopy" style="margin-bottom:26px">You get the report before the call, so the call is spent on decisions instead of reading it together.</div>
+      <div class="rfoot">
+        <a class="btn btn-primary btn-lg" href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener">Book the audit <svg class="ico arr" width="17" height="17" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+
+    <div class="rung lead reveal">
+      <div class="n">Done For You</div>
+      <h3>I build it on your machine and hand you the keys</h3>
+      <div class="rprice">$2,500</div>
+      <div class="rsub">One machine · one week · fixed scope</div>
+      <p>Your agents, your memory layer, your approval gates, your routing, running on your hardware and hardened against the failures we already paid for.</p>
+      <ul class="rlist">
+        <li><svg class="ico" width="16" height="16" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>One machine, set up end to end</span></li>
+        <li><svg class="ico" width="16" height="16" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>A memory layer that survives a restart</span></li>
+        <li><svg class="ico" width="16" height="16" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>Approval gates on anything that can do real damage</span></li>
+        <li><svg class="ico" width="16" height="16" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>Model routing so the cheap work stays cheap</span></li>
+        <li><svg class="ico" width="16" height="16" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>Monitoring that tells you when it stops</span></li>
+      </ul>
+      <div class="microcopy" style="margin-bottom:26px">Not included: running it for you afterwards, training your team, or a second machine. Three clients at a time, so the week you get is a real week.</div>
+      <div class="rfoot">
+        <a class="btn btn-flare btn-lg" href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener">Book a fit call <svg class="ico arr" width="17" height="17" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
 <section class="cta"><div class="wrap reveal">
   <h2>Run the check. If it finds nothing, keep your $47.</h2>
   <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:34px">
     <a class="btn btn-flare btn-lg" href="https://belken.gumroad.com/l/bjcony" target="_blank" rel="noopener">Get the manual · $47 <svg class="ico arr" width="17" height="17" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <a class="btn btn-ghost btn-lg" href="https://github.com/belkenbot/agentcheck" target="_blank" rel="noopener">agentcheck, free</a>
   </div>
-  <div class="microcopy" style="margin-top:18px">Instant PDF download. 80 pages. No subscription.</div>
+  <div class="microcopy" style="margin-top:18px">Instant PDF download. 96 pages. No subscription.</div>
 </div></section>
 
 <footer><div class="wrap">
