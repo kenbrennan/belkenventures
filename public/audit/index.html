@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Free Local Business Audit — see what every missed call is costing you | Belken</title>
+<meta name="description" content="Get a custom audit of your local service business in under 5 minutes. We show you exactly how much revenue you're leaving on the table — and what to do about it." />
+<link rel="canonical" href="https://belken.ai/audit" />
+<meta name="theme-color" content="#EEEAE1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23121110'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%231F32FF'/%3E%3C/svg%3E" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://belken.ai/audit" />
+<meta property="og:site_name" content="Belken" />
+<meta property="og:title" content="Free local-business audit — see what every missed call is costing you" />
+<meta property="og:description" content="60-second form. Custom PDF audit emailed to you within 5 minutes. No credit card, no call required." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#EEEAE1;--paper-2:#E4DFD3;--ink:#121110;--ink-soft:#3a382f;--line:#cdc6b6;
+    --ultra:#1F32FF;--ultra-deep:#0e1bb0;--flare:#FF4318;--paper-on-dark:#EDEAE1;
+    --display:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace;--r:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%}
+  ::selection{background:var(--ultra);color:#fff}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:2.5px solid var(--ultra);outline-offset:3px;border-radius:3px}
+  .wrap{width:100%;max-width:1100px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;opacity:.16;-webkit-mask-image:radial-gradient(circle at 72% 2%,#000 0%,transparent 62%);mask-image:radial-gradient(circle at 72% 2%,#000 0%,transparent 62%)}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:.35s;background:rgba(238,234,225,.82);border-color:var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1240px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+  .brand{font-family:var(--display);font-weight:800;font-size:23px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+  .brand .dot{width:13px;height:13px;background:var(--ultra);border-radius:50%;box-shadow:0 0 0 5px rgba(31,50,255,.16);animation:beat 2.4s ease-in-out infinite}
+  .brand .sub{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--ultra-deep);letter-spacing:.04em}
+  .brand .slash{color:var(--line);font-weight:400}
+  @keyframes beat{0%,100%{box-shadow:0 0 0 5px rgba(31,50,255,.16)}50%{box-shadow:0 0 0 9px rgba(31,50,255,.05)}}
+  .nav-back{font-size:14px;font-weight:600;opacity:.7;display:inline-flex;align-items:center;gap:6px}
+  .nav-back:hover{opacity:1}
+
+  .hero{position:relative;z-index:1;padding:130px 0 50px}
+  .eyebrow{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ultra-deep);display:inline-flex;align-items:center;gap:10px;margin-bottom:22px}
+  .eyebrow::before{content:"";width:30px;height:2px;background:var(--ultra)}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(38px,5.2vw,72px);line-height:1.0;letter-spacing:-.035em;margin-bottom:24px}
+  h1 .hl{color:var(--ultra);position:relative;white-space:nowrap}
+  h1 .underdraw{position:absolute;left:0;right:0;bottom:.02em;height:.1em;background:var(--flare);border-radius:2px;z-index:-1}
+  .lede{font-size:clamp(17px,1.5vw,21px);max-width:62ch;color:var(--ink-soft);font-weight:500}
+  .micro{margin-top:18px;font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);letter-spacing:.02em;display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .micro span{display:inline-flex;align-items:center;gap:6px}
+  .micro .dot{width:7px;height:7px;border-radius:50%;background:var(--ultra)}
+
+  /* form card */
+  .form-section{position:relative;z-index:1;padding:32px 0 100px}
+  .card{background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:clamp(28px,4vw,48px);box-shadow:0 30px 60px -40px rgba(0,0,0,.18)}
+  .card h2{font-family:var(--display);font-weight:700;font-size:clamp(24px,2.4vw,32px);letter-spacing:-.02em;margin-bottom:6px}
+  .card .sub{color:var(--ink-soft);margin-bottom:32px;font-size:16px}
+  .field{margin-bottom:22px}
+  .field label{display:block;font-weight:600;font-size:14px;margin-bottom:8px;color:var(--ink)}
+  .field label .req{color:var(--flare);font-weight:700;margin-left:3px}
+  .field input,.field select{width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:10px;font-family:var(--body);font-size:16px;background:var(--paper);color:var(--ink);transition:border-color .18s, background .18s}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--ultra);background:#fff}
+  .field input::placeholder{color:#9a957f}
+  .field .hint{font-size:12.5px;color:var(--ink-soft);margin-top:6px;font-family:var(--mono)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:640px){.row{grid-template-columns:1fr}}
+  .btn{font-family:var(--body);font-weight:700;font-size:16px;border:none;cursor:pointer;padding:16px 28px;border-radius:999px;display:inline-flex;align-items:center;gap:10px;transition:transform .18s,background .22s,color .22s;line-height:1;width:100%;justify-content:center}
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover:not(:disabled){background:var(--ultra)}
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+  .btn .arr{transition:transform .22s}
+  .btn:hover:not(:disabled) .arr{transform:translateX(4px)}
+  .legal{margin-top:16px;font-size:12.5px;color:var(--ink-soft);text-align:center;font-family:var(--mono)}
+  .err{background:#fff1ed;border:1.5px solid var(--flare);color:#7a1f00;padding:14px 18px;border-radius:10px;margin-bottom:20px;font-size:14.5px;display:none}
+  .err.show{display:block}
+
+  /* trust strip */
+  .trust{margin-top:40px;border-top:1.5px solid var(--line);padding-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  @media(max-width:760px){.trust{grid-template-columns:1fr;gap:18px}}
+  .trust .item{display:flex;gap:12px;align-items:flex-start}
+  .trust .ic{width:28px;height:28px;flex-shrink:0;background:var(--ultra);color:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;font-family:var(--mono)}
+  .trust .it h4{font-family:var(--display);font-size:16px;font-weight:700;margin-bottom:3px}
+  .trust .it p{font-size:14px;color:var(--ink-soft);line-height:1.45}
+
+  /* what you get */
+  .preview{margin-top:60px;padding-top:50px;border-top:1.5px solid var(--line)}
+  .preview h3{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.4vw,32px);margin-bottom:8px;letter-spacing:-.02em}
+  .preview p.sub{color:var(--ink-soft);margin-bottom:30px;max-width:54ch}
+  .what{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  @media(max-width:760px){.what{grid-template-columns:1fr}}
+  .what .item{padding:22px 24px;background:var(--paper-2);border-radius:14px;border:1px solid var(--line)}
+  .what .num{font-family:var(--mono);font-size:12px;color:var(--ultra-deep);letter-spacing:.1em;font-weight:600;margin-bottom:6px}
+  .what h5{font-family:var(--display);font-size:18px;font-weight:700;margin-bottom:6px;letter-spacing:-.01em}
+  .what p{font-size:14.5px;color:var(--ink-soft);line-height:1.5}
+
+  footer{padding:50px 0 60px;text-align:center;font-family:var(--mono);font-size:13px;color:var(--ink-soft)}
+  footer a{color:var(--ultra-deep);font-weight:600}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="/" class="brand">
+      <span class="dot"></span>
+      <span>Belken</span>
+      <span class="slash">/</span>
+      <span class="sub">audit</span>
+    </a>
+    <a href="/" class="nav-back">← back to belken</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">free · 60-second form · no call required</div>
+    <h1>See exactly what every <span class="hl">missed call<span class="underdraw"></span></span> is costing your business.</h1>
+    <p class="lede">Tell us about your local service business. In under five minutes you get back a custom PDF audit showing your missed-call revenue gap, your competitive position, and the three highest-leverage things you can fix this week.</p>
+    <div class="micro">
+      <span><span class="dot"></span>No credit card</span>
+      <span><span class="dot"></span>No sales call</span>
+      <span><span class="dot"></span>PDF emailed to you</span>
+    </div>
+  </div>
+</section>
+
+<section class="form-section">
+  <div class="wrap">
+    <div class="card">
+      <h2>Tell us about your business</h2>
+      <p class="sub">Five fields. We do the rest.</p>
+
+      <div id="err" class="err"></div>
+
+      <form id="audit-form" novalidate>
+        <div class="field">
+          <label for="business_name">Business name <span class="req">*</span></label>
+          <input id="business_name" name="business_name" type="text" placeholder="Acme Plumbing Co." required autocomplete="organization" />
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="owner_name">Your name <span class="req">*</span></label>
+            <input id="owner_name" name="owner_name" type="text" placeholder="Sam Rivera" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input id="email" name="email" type="email" placeholder="sam@acmeplumbing.com" required autocomplete="email" />
+            <div class="hint">we email your PDF audit here</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="phone">Business phone <span class="req">*</span></label>
+            <input id="phone" name="phone" type="tel" placeholder="(301) 555-0142" required autocomplete="tel" />
+          </div>
+          <div class="field">
+            <label for="industry">Industry <span class="req">*</span></label>
+            <select id="industry" name="industry" required>
+              <option value="" disabled selected>Select your industry…</option>
+              <option value="plumbing">Plumbing</option>
+              <option value="hvac" disabled>HVAC (coming soon)</option>
+              <option value="medspa" disabled>Med Spa (coming soon)</option>
+              <option value="real-estate" disabled>Real Estate (coming soon)</option>
+              <option value="law" disabled>Law Firm (coming soon)</option>
+              <option value="other" disabled>Other (coming soon)</option>
+            </select>
+            <div class="hint">starting with plumbing — more verticals next</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="location">City + state <span class="req">*</span></label>
+          <input id="location" name="location" type="text" placeholder="Frederick, MD" required autocomplete="address-level2" />
+          <div class="hint">we compare you against local competitors in this market</div>
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn btn-primary">
+          Generate my audit
+          <span class="arr">→</span>
+        </button>
+        <p class="legal">We don't share your info, ever. <a href="/privacy" style="text-decoration:underline">Privacy</a> · <a href="/terms" style="text-decoration:underline">Terms</a></p>
+      </form>
+
+      <div class="trust">
+        <div class="item">
+          <div class="ic">1</div>
+          <div class="it">
+            <h4>Custom, not template</h4>
+            <p>Real numbers for your specific market — not a generic checklist.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ic">2</div>
+          <div class="it">
+            <h4>Under 5 minutes</h4>
+            <p>You'll get an email with the PDF before you finish your coffee.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ic">3</div>
+          <div class="it">
+            <h4>Zero pressure</h4>
+            <p>No phone call required. Read it, use it, ignore us if you want.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview">
+        <h3>What's inside your audit</h3>
+        <p class="sub">Real numbers, not vague advice. Every figure ties to your specific business, market, and industry economics.</p>
+        <div class="what">
+          <div class="item">
+            <div class="num">01 / MISSED-CALL COST</div>
+            <h5>Your monthly revenue gap</h5>
+            <p>How much your business is losing to unanswered calls, based on your industry's average ticket and local call volume.</p>
+          </div>
+          <div class="item">
+            <div class="num">02 / COMPETITIVE BENCHMARK</div>
+            <h5>Where you sit in your market</h5>
+            <p>Reviews, response time, web presence — scored against the top 5 local competitors in your zip.</p>
+          </div>
+          <div class="item">
+            <div class="num">03 / FUNNEL LEAKS</div>
+            <h5>The three biggest holes in your customer flow</h5>
+            <p>Found from public data + industry benchmarks. Ranked by revenue impact.</p>
+          </div>
+          <div class="item">
+            <div class="num">04 / WHAT TO FIX FIRST</div>
+            <h5>Your highest-leverage move this week</h5>
+            <p>One concrete action. The number we'd expect it to move. The reason most of your competitors miss it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Belken &nbsp;·&nbsp; <a href="/">belken.ai</a> &nbsp;·&nbsp; <a href="/aria">ARIA</a> &nbsp;·&nbsp; <a href="mailto:info@belken.ai">info@belken.ai</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const form = document.getElementById('audit-form');
+  const btn = document.getElementById('submit-btn');
+  const err = document.getElementById('err');
+
+  function showError(msg){
+    err.textContent = msg;
+    err.classList.add('show');
+    err.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+  function clearError(){
+    err.classList.remove('show');
+    err.textContent = '';
+  }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    clearError();
+    btn.disabled = true;
+    const originalLabel = btn.innerHTML;
+    btn.innerHTML = 'Submitting… <span class="arr">→</span>';
+
+    const data = {
+      business_name: form.business_name.value.trim(),
+      owner_name: form.owner_name.value.trim(),
+      email: form.email.value.trim(),
+      phone: form.phone.value.trim(),
+      industry: form.industry.value,
+      location: form.location.value.trim(),
+      submitted_at: new Date().toISOString()
+    };
+
+    // basic client validation
+    if(!data.business_name || !data.email || !data.industry || !data.location){
+      showError('Please fill in all required fields.');
+      btn.disabled = false; btn.innerHTML = originalLabel; return;
+    }
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)){
+      showError('That email address doesn\'t look right.');
+      btn.disabled = false; btn.innerHTML = originalLabel; return;
+    }
+
+    try {
+      const r = await fetch('/api/audit/request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if(!r.ok){
+        const j = await r.json().catch(()=>({error:'request failed'}));
+        throw new Error(j.error || 'request failed');
+      }
+      const j = await r.json();
+      if(!j.audit_id){ throw new Error('server didn\'t return an audit id'); }
+      window.location.href = `/audit/processing?id=${encodeURIComponent(j.audit_id)}`;
+    } catch(err){
+      showError(err.message || 'Something went wrong. Try again or email info@belken.ai.');
+      btn.disabled = false; btn.innerHTML = originalLabel;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
