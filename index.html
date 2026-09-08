@@ -631,6 +631,24 @@
   // scroll reveals
   const io=new IntersectionObserver((es)=>{es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.14});
   document.querySelectorAll('.reveal').forEach(n=>io.observe(n));
+
+  // per-asset attribution: forward incoming utm_* / click ids onto the Calendly booking link.
+  // Each asset (video/post/PDF/lead magnet) links here with a distinct utm_content slug; the
+  // slug rides through to Calendly so every booking is attributed to the asset that drove it.
+  (function(){
+    var incoming = new URLSearchParams(window.location.search);
+    var keep = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
+    var carry = new URLSearchParams();
+    keep.forEach(function(k){ var v = incoming.get(k); if(v) carry.set(k, v); });
+    if(!carry.toString()) return; // no attribution params present, leave links untouched
+    document.querySelectorAll('a[href*="calendly.com"]').forEach(function(a){
+      try{
+        var u = new URL(a.href, window.location.origin);
+        carry.forEach(function(v,k){ u.searchParams.set(k, v); });
+        a.href = u.toString();
+      }catch(e){}
+    });
+  })();
 </script>
 </body>
 </html>
