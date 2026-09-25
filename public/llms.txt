@@ -1,0 +1,36 @@
+# Belken
+
+> Belken (BelKen Ventures Inc) builds and runs autonomous operations for local service businesses. Its flagship offer, OpenClaw, is a production-grade multi-agent system custom-designed for how a business runs and operated by Belken. ARIA is the ready-to-deploy version of the same engine: an AI phone assistant pre-tuned for local service businesses such as plumbers, HVAC companies, roofers, and electricians.
+
+## What ARIA does
+
+- Answers every call 24/7 in the business's own name, including nights and weekends.
+- Books appointments straight onto the business's calendar, and sends the owner a text for every call.
+- Texts missed callers back in about 60 seconds.
+- Calls the business's past customers by name to rebook them, and follows up on open estimates.
+- Requests reviews automatically.
+- The business keeps its existing phone number. Setup starts with one 15-minute call.
+- ARIA runs on the OpenClaw stack (multi-agent orchestration, persistent memory, Docker and n8n infrastructure, monitoring). Belken wires it into the tools a business already uses (calendar, CRM, phone) and operates it for the customer.
+
+## How pricing works
+
+- Free Operations Assessment: $0, 20 minutes, no pitch.
+- Opportunity Audit and 90-Day Roadmap: $1,997 one-time. A deep diagnostic, the top 5 to 7 automation targets, a conservative ROI model, and a prioritized 90-day roadmap.
+- Autonomous Operations Retainer: starting at $4,500 per month. Design, build, deploy, and operate, with monthly reporting on jobs booked, hours reclaimed, and revenue recovered. ARIA is included in the retainer, with no per-minute meter.
+
+## Key pages
+
+- [Home](https://belken.ai/): what Belken builds and runs
+- [OpenClaw](https://belken.ai/openclaw): the flagship autonomous operations offer and the full offer ladder
+- [ARIA](https://belken.ai/aria): the AI phone assistant for service businesses
+- [AI receptionist for plumbers](https://belken.ai/aria/plumbing)
+- [AI receptionist for HVAC companies](https://belken.ai/aria/hvac)
+- [AI receptionist for roofers](https://belken.ai/aria/roofing)
+- [AI receptionist for electricians](https://belken.ai/aria/electrical)
+- [ARIA for law firms](https://belken.ai/aria/law), [med spas](https://belken.ai/aria/medspa), [real estate](https://belken.ai/aria/real-estate)
+- [Opportunity Audit](https://belken.ai/audit) and a [sample audit report](https://belken.ai/audit/sample)
+
+## Contact
+
+- Email: info@belken.ai
+- Book a free call: https://calendly.com/belkenbot/free-30-min-discovery-call

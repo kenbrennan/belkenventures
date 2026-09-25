@@ -12,7 +12,7 @@ Lead with the inbound missed-call wedge; expand into "and it revives your custom
 
 ## Pages (all live)
 - `public/aria/index.html` — the hub (universal pain + industry tiles linking to verticals)
-- `public/aria/<slug>/index.html` — 5 verticals: `plumbing`, `hvac`, `real-estate`, `medspa`, `law`
+- `public/aria/<slug>/index.html`: 7 verticals: `plumbing`, `hvac`, `roofing`, `electrical`, `real-estate`, `medspa`, `law` (roofing + electrical added 2026-09-25, cloned from plumbing)
 - Hand-authored static HTML (Tailwind via CDN). The site root `/` is a Vite/React app (`src/App.jsx`); the `/aria/*` pages are plain static files in `public/` and deploy as-is. No build step touches them.
 
 ## Brand / design conventions
@@ -49,3 +49,8 @@ We have **no customers yet**. NEVER ship fake testimonials or invented stats —
 - Static `/aria/*` deploys in seconds; the Vite homepage takes ~1–2 min.
 - Poll live: `curl -s "https://belken.ai/aria/<slug>?cb=$RANDOM" | grep -c "<phrase>"`.
 - For screenshots: the OpenClaw browser tool BLOCKS localhost/private IPs by policy. Use the raw CDP endpoint on Thor's Chrome (9225) via `Target.createTarget` + sessionId (see session notes), or just screenshot the live URL.
+
+## SEO layer (added 2026-09-25)
+- `public/robots.txt` (allows all crawlers incl. AI crawlers), `public/sitemap.xml` (update when a page is added), `public/llms.txt` (facts only, mirrors site copy).
+- Every indexable page carries the same `Organization` JSON-LD block. Trade pages (plumbing, hvac, roofing, electrical) also carry an 8-question FAQ section plus matching `FAQPage` JSON-LD. FAQ answers use only claims already on the site; keep the visible FAQ and the JSON-LD in sync.
+- `/audit` (`public/audit/index.html`) is the Opportunity Audit landing page. `/audit/sample` is pre-rendered: the static `<main id="app">` holds the same markup the RENDER step builds from `auditData`. If you edit `auditData`, re-run the prerender so the static copy matches.

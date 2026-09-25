@@ -3,16 +3,19 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ARIA for Real Estate Agents: Never Miss a Lead | Belken</title>
-<meta name="description" content="ARIA answers every buyer and seller call 24/7, texts new leads back in 60 seconds, books showings and consults, and re-engages your past-client database. Built for real estate agents." />
-<link rel="canonical" href="https://belken.ai/aria/real-estate" />
+<title>Opportunity Audit and 90-Day Roadmap for Service Businesses | Belken</title>
+<meta name="description" content="The Belken Opportunity Audit is a deep diagnostic of your operations with a conservative ROI model and a prioritized 90-day roadmap. $1,997 one-time. Start with a free 20-minute assessment." />
+<link rel="canonical" href="https://belken.ai/audit" />
 <meta name="theme-color" content="#EEEAE1" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23121110'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%231F32FF'/%3E%3C/svg%3E" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://belken.ai/aria/real-estate" />
+<meta property="og:url" content="https://belken.ai/audit" />
 <meta property="og:site_name" content="Belken" />
-<meta property="og:title" content="ARIA for Real Estate: never miss a lead. Win back the clients you already have." />
-<meta property="og:description" content="The AI phone assistant for real estate agents. Answers 24/7, texts new leads back in 60 seconds, books showings, re-engages your past-client database." />
+<meta property="og:title" content="The Opportunity Audit by Belken" />
+<meta property="og:description" content="The Belken Opportunity Audit is a deep diagnostic of your operations with a conservative ROI model and a prioritized 90-day roadmap. $1,997 one-time. Start with a free 20-minute assessment." />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="The Opportunity Audit by Belken" />
+<meta name="twitter:description" content="The Belken Opportunity Audit is a deep diagnostic of your operations with a conservative ROI model and a prioritized 90-day roadmap. $1,997 one-time. Start with a free 20-minute assessment." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -153,9 +156,6 @@
   .dark .card h3{color:var(--paper-on-dark)}
   .dark .card p{color:rgba(237,234,225,.66)}
 
-  /* light card grid (used for "Built for how agents actually work" section) */
-  .three{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-
   /* steps */
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
   .step{border-top:2px solid rgba(237,234,225,.3);padding-top:24px;position:relative}
@@ -163,6 +163,13 @@
   .step .num{font-family:var(--mono);font-size:13px;color:#8ea2ff;font-weight:600;margin-bottom:8px}
   .step h4{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.02em;margin-bottom:7px;color:var(--paper-on-dark)}
   .step p{font-size:14.5px;color:rgba(237,234,225,.62);line-height:1.5}
+
+  /* light card grid (built-for section) */
+  .three{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .card-light{border:1.5px solid var(--ink);border-radius:var(--r);padding:34px 32px;background:var(--paper);transition:transform .26s cubic-bezier(.2,.7,.2,1),box-shadow .26s}
+  .card-light:hover{transform:translateY(-4px);box-shadow:9px 9px 0 var(--ink)}
+  .card-light h3{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.02em;margin-bottom:10px;line-height:1.1}
+  .card-light p{font-size:15px;color:var(--ink-soft);line-height:1.55}
 
   /* founding offer */
   .offer{border:2px solid var(--ultra);border-radius:24px;background:rgba(31,50,255,.05);padding:clamp(36px,5vw,60px);text-align:center;max-width:920px;margin:0 auto;position:relative;overflow:hidden}
@@ -215,12 +222,28 @@
     body{font-size:17px}
     .hero{padding:120px 0 52px}
     h1{font-size:clamp(26px,7vw,46px);line-height:1.06}
-    .three{grid-template-columns:1fr}
   }
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important}
     .rv,.bub,.booked{opacity:1!important;transform:none!important}
   }
+</style>
+<style>
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1120px;margin:0 auto}
+  .tiers .price{display:flex;flex-direction:column}
+  .tiers .price .btn{margin-top:auto;align-self:flex-start}
+  .tiers .price ul{margin-bottom:28px}
+  .tiers .price.feat .btn{background:var(--ultra);color:#fff}
+  .tiers .price.feat .btn:hover{background:#fff;color:var(--ink)}
+  .get{max-width:880px;margin:0 auto;border-top:1.5px solid var(--ink)}
+  .get li{list-style:none;display:grid;grid-template-columns:56px 1fr;gap:16px;padding:24px 4px;border-bottom:1px solid var(--line);align-items:baseline}
+  .get .n{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--ultra-deep);letter-spacing:.08em}
+  .get h3{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.02em;line-height:1.15}
+  .get p{color:var(--ink-soft);font-size:15.5px;margin-top:6px}
+  .sample-band{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+  .sample-band .btn{background:var(--ultra);color:#fff}
+  .sample-band .btn:hover{background:#fff;color:var(--ink)}
+  @media(max-width:980px){.tiers{grid-template-columns:1fr}.sample-band{grid-template-columns:1fr;gap:24px}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://belken.ai/#organization","name":"Belken","legalName":"BelKen Ventures Inc","url":"https://belken.ai/","logo":"https://belken.ai/favicon-512.png","email":"info@belken.ai","description":"Belken builds and runs autonomous operations for local service businesses. ARIA is Belken's AI phone assistant for service businesses: it answers every call 24/7, books jobs to your calendar, texts missed callers back, and calls past customers to rebook them."}</script>
 </head>
@@ -228,11 +251,11 @@
 
 <nav id="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="https://belken.ai"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">BELKEN<span class="slash">/</span><span class="sub">ARIA</span><span class="slash">/</span><span class="sub">Real Estate</span></a>
+    <a class="brand" href="https://belken.ai"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">BELKEN<span class="slash">/</span><span class="sub">Audit</span></a>
     <div class="nav-links">
-      <a href="#calc">What it costs you</a>
-      <a href="#how">How it works</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#path">The path</a>
+      <a href="#get">What you get</a>
+      <a href="/audit/sample">Sample report</a>
       <a class="btn btn-primary" data-mag href="#book">Book a call</a>
     </div>
     <button class="navtog" id="navtog" aria-label="Open menu" aria-expanded="false" aria-controls="mobnav">
@@ -240,197 +263,117 @@
     </button>
   </div>
   <div id="mobnav">
-    <a href="#calc">What it costs you</a>
-    <a href="#how">How it works</a>
-    <a href="#pricing">Pricing</a>
+    <a href="#path">The path</a>
+    <a href="#get">What you get</a>
+    <a href="/audit/sample">Sample report</a>
     <a class="btn btn-primary" href="#book">Book a free call</a>
   </div>
 </nav>
 
 <header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">ARIA for Real Estate &middot; OpenClaw</span>
-      <h1>The lead you miss at a showing buys through <span class="hl">another agent.<span class="underdraw"></span></span></h1>
-      <p class="lede">ARIA answers every call 24/7, texts new leads back within 60 seconds, books showings and consults, and works your past-client database to surface the ready ones. You stay in front of clients.</p>
-      <p class="lede" style="margin-top:12px;font-size:16.5px">ARIA runs on the OpenClaw stack. We design it once, wire it into your existing tools, and operate it for you.</p>
+  <div class="wrap">
+    <div style="max-width:880px">
+      <span class="eyebrow">Opportunity Audit &middot; 90-Day Roadmap</span>
+      <h1>See exactly where your business is <span class="hl">leaking money<span class="underdraw"></span></span>.</h1>
+      <p class="lede" style="max-width:56ch">The Opportunity Audit is a deep diagnostic of your current operations: the top 5 to 7 highest-leverage automation targets, a full ROI model with conservative estimates, and a prioritized 90-day build roadmap. $1,997 one-time.</p>
+      <p class="lede" style="margin-top:12px;font-size:16.5px;max-width:56ch">Most owners start with the free 20-minute assessment. No pitch. If we are not the right fit, we will tell you.</p>
       <div class="hero-cta">
-        <a class="btn btn-primary" data-mag href="#book">Book a free 15-min call <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-ghost" href="#calc">What missed calls cost you</a>
+        <a class="btn btn-primary" data-mag href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener">Book the free assessment <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="/audit/sample">See a sample audit report</a>
       </div>
-      <p class="micro">// Answers 24/7 · US-based · No long contracts</p>
+      <p class="micro">// Free assessment &middot; $1,997 Opportunity Audit &middot; Retainer from $4,500/mo</p>
     </div>
-
-    <aside class="scene" aria-label="Example call ARIA handled for a real estate agent">
-      <div class="scene-bar">
-        <span class="lt r"></span><span class="lt y"></span><span class="lt g"></span>
-        <span class="ttl">ARIA · incoming call · 5:28 PM</span>
-        <span class="live">answering</span>
-      </div>
-      <div class="chat">
-        <div class="bub them b1">Hi, I saw your listing on Maple Street, is it still available? Could I see it this weekend?</div>
-        <div class="bub aria b2">It is! Brennan Group, this is ARIA. I've got Saturday at 11 or 2 open for a showing. Which works better?</div>
-        <div class="bub them b3">Saturday at 11 would be great.</div>
-        <div class="bub aria b4">Perfect, you're set for Saturday at 11. Texting you the address and confirmation now.</div>
-        <div class="booked"><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Showing booked · on your calendar · lead texted</div>
-      </div>
-    </aside>
   </div>
 </header>
 
-<div class="marquee">
-  <div class="mq-track">
-    <span>Answers buyer &amp; seller calls instantly <i class="sep">/</i> Texts new leads back in under 60s <i class="sep">/</i> Books straight to your calendar <i class="sep">/</i> Re-engages your past-client database <i class="sep">/</i></span>
-    <span>Answers buyer &amp; seller calls instantly <i class="sep">/</i> Texts new leads back in under 60s <i class="sep">/</i> Books straight to your calendar <i class="sep">/</i> Re-engages your past-client database <i class="sep">/</i></span>
-  </div>
-</div>
-
-<section id="calc" class="sec">
+<section id="path" class="dark sec">
   <div class="wrap">
     <div class="sec-head rv">
-      <p class="sec-kick">// What it costs you</p>
-      <h2>What are missed leads actually costing you?</h2>
-      <p class="sec-sub">Move the sliders. This is your number, not ours.</p>
+      <p class="sec-kick">// The path</p>
+      <h2>Start with clarity. Scale to a system we run.</h2>
+      <p class="sec-sub">Prove the fit on a call, buy the roadmap that shows exactly where the money is, then hand us the build and the operating.</p>
     </div>
-    <div class="calc-wrap rv">
-      <div class="calc-controls">
-        <div class="calc-row">
-          <div class="lab"><span>Lead calls you miss per week</span><span class="val" id="cwLbl">6</span></div>
-          <input id="cw" type="range" min="1" max="30" value="6">
-        </div>
-        <div class="calc-row">
-          <div class="lab"><span>Average commission per closing</span><span class="val" id="ajLbl">$9,000</span></div>
-          <input id="aj" type="range" min="100" max="20000" step="500" value="9000">
-        </div>
-        <p class="calc-note">Only a fraction of leads ever close. This assumes about 1 in 20 of your missed leads would have. At these commissions, even one a month is real money.</p>
-      </div>
-      <div class="calc-result">
-        <p class="rk">Walking to another agent, every month</p>
-        <p class="big" id="lost">$11,691</p>
-        <p class="yr">about <b id="lostYr">$140,292</b> a year</p>
-        <a class="btn" href="#book">Stop the bleed <svg class="ico arr" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="how" class="dark sec">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="sec-kick">// How it works</p>
-      <h2>ARIA works two ways. Both grow your book.</h2>
-    </div>
-    <div class="two rv">
-      <div class="card">
-        <div class="badge"><svg class="ico" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-        <h3>Catches every buyer and seller call</h3>
-        <p>At a showing, in a closing, driving between properties. ARIA answers in your name, covers the basics about a listing, and books the showing or consult before they call the next agent on Zillow.</p>
-      </div>
-      <div class="card">
-        <div class="badge"><svg class="ico" viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.5 9a9 9 0 0 1 14.9-3.4L23 10M1 14l4.6 4.4A9 9 0 0 0 20.5 15"/></svg></div>
-        <h3>Re-engages the database you already built</h3>
-        <p>Past clients, old leads, your sphere. The people most likely to buy, sell, or refer. Upload the list and ARIA calls them by name to check in and book the conversation. Your database becomes a pipeline again.</p>
-      </div>
-    </div>
-    <div class="steps rv">
-      <div class="step"><div class="num">01</div><h4>One 15-minute setup call</h4><p>We learn your business and how you like calls handled. You touch nothing technical.</p></div>
-      <div class="step"><div class="num">02</div><h4>Keep your number</h4><p>ARIA picks up when you cannot. After hours, mid-showing, or all the time.</p></div>
-      <div class="step"><div class="num">03</div><h4>Bookings hit your calendar</h4><p>You get a text for every call. That is the whole job.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="sec-kick">// Built for your workflow</p>
-      <h2>Built for how agents actually work.</h2>
-    </div>
-    <div class="three rv">
-      <div class="card">
-        <h3>You cannot answer at a showing</h3>
-        <p>You are with clients, not staring at your phone. ARIA picks up every time so the next lead does not slip to a competitor.</p>
-      </div>
-      <div class="card">
-        <h3>Speed-to-lead wins the deal</h3>
-        <p>The agent who responds first usually gets the client. ARIA replies in under 60 seconds, day or night. Faster than any human can.</p>
-      </div>
-      <div class="card">
-        <h3>Your database is your goldmine</h3>
-        <p>Most agents sit on hundreds of old contacts they never work. ARIA calls them for you, by name, and books the ones who are ready.</p>
-      </div>
-      <div class="card">
-        <h3>Open house leads leak</h3>
-        <p>Sign calls and open house sign-ins pile up in a notebook. ARIA follows up with every one the same day, while the house is still fresh in their mind.</p>
-      </div>
-    </div>
-    <p class="rv" style="text-align:center;margin-top:40px;color:var(--ink-soft);font-size:15px">Run a different kind of business? <a href="/aria" style="color:var(--ultra);font-weight:700">See ARIA for your trade</a></p>
-  </div>
-</section>
-
-<section class="sec" style="padding-top:0">
-  <div class="wrap">
-    <div class="offer rv">
-      <p class="ok">Founding customer program</p>
-      <h2>We are new. That is your advantage.</h2>
-      <p class="lead">We are taking on our first <b>5 Frederick County real estate agents</b> at a founding rate on the Autonomous Operations Retainer. Hands-on setup, a direct line to the founder, and a rate that will not be offered again. In return, you become the case study we build this on.</p>
-      <div class="hero-cta" style="justify-content:center;margin-top:30px">
-        <a class="btn btn-primary" data-mag href="#book">Claim a founding spot <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </div>
-      <p class="fine">No long contract. If ARIA does not book you business, you walk. Simple.</p>
-    </div>
-  </div>
-</section>
-
-<section id="pricing" class="dark sec">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="sec-kick">// The offers</p>
-      <h2>One offer. We run it for you.</h2>
-      <p class="sec-sub">ARIA is part of the retainer. No per-minute meter. No surprise bills.</p>
-    </div>
-    <div class="price-grid rv">
-      <div class="price feat">
-        <span class="tag">How you get ARIA</span>
-        <h3>Autonomous Operations Retainer</h3>
-        <p class="desc">ARIA, operated for you as part of the retainer.</p>
-        <p class="amt">$4,500<small>/mo &middot; starting</small></p>
+    <div class="tiers rv">
+      <div class="price">
+        <span class="tag" style="color:var(--ultra-deep)">Tier 1 &middot; Entry</span>
+        <h3>Free Operations Assessment</h3>
+        <p class="desc">20 minutes &middot; no pitch</p>
+        <p class="amt">$0</p>
         <ul>
-          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Full setup, ongoing monitoring, and optimization</li>
-          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Inbound answering plus dead-list reactivation</li>
-          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Monthly reporting on actual outcomes: jobs booked, hours reclaimed, revenue recovered</li>
-          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> No new tools for your team to manage. We run it.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> The single highest-ROI opportunity in your business</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> An honest read on whether we are a fit</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Clarity, not a sales call</li>
         </ul>
+        <a class="btn btn-primary" href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener">Book the assessment</a>
+      </div>
+      <div class="price feat">
+        <span class="tag">Tier 2 &middot; Qualifier</span>
+        <h3>Opportunity Audit &amp; 90-Day Roadmap</h3>
+        <p class="desc">PDF report &middot; walkthrough &middot; live call</p>
+        <p class="amt">$1,997<small> one-time</small></p>
+        <ul>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Deep diagnostic of your current operations</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Top 5 to 7 highest-leverage automation targets</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Full ROI model, conservative estimates</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Prioritized 90-day build roadmap</li>
+        </ul>
+        <a class="btn" href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener">Get the audit <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="price">
-        <span class="tag" style="color:var(--ultra-deep)">Not sure yet</span>
-        <h3>Prove the number first</h3>
-        <p class="desc">Start smaller and let the math decide.</p>
-        <p class="amt">$0<small> today &middot; $1,997 audit</small></p>
+        <span class="tag" style="color:var(--ultra-deep)">Tier 3 &middot; The system</span>
+        <h3>Autonomous Operations Retainer</h3>
+        <p class="desc">design &middot; build &middot; deploy &middot; operate</p>
+        <p class="amt">$4,500<small>/mo &middot; starting</small></p>
         <ul>
-          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Free 20-minute assessment, no pitch</li>
-          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> $1,997 Opportunity Audit models what missed calls cost your business</li>
-          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> If the number does not justify the retainer, we tell you</li>
-          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Full offer ladder on the OpenClaw page</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Custom multi-agent system built for how your business runs</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Ongoing optimization and iteration every month</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Monthly reporting on real outcomes: jobs booked, hours reclaimed, revenue recovered</li>
         </ul>
+        <a class="btn btn-primary" href="/openclaw">See the full breakdown</a>
       </div>
     </div>
-    <p class="sec-sub rv" style="text-align:center;margin-top:30px">ARIA runs on the OpenClaw production engine. <a href="/openclaw" style="text-decoration:underline">Learn about the full engine</a>.</p>
+  </div>
+</section>
+
+<section id="get" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// What you get</p>
+      <h2>A roadmap that stands on its own.</h2>
+      <p class="sec-sub">Most owners start with the audit. The roadmap is built to stand on its own, even if you never hire us to build a thing.</p>
+    </div>
+    <ol class="get rv">
+      <li><span class="n">01</span><div><h3>A deep diagnostic of your operations</h3><p>We surface the highest-ROI places autonomous work can pay off, with a conservative dollar figure attached to each.</p></div></li>
+      <li><span class="n">02</span><div><h3>Your top 5 to 7 automation targets</h3><p>Missed calls, follow-ups, scheduling, reviews, and reactivation, ranked by what pays off first for your business.</p></div></li>
+      <li><span class="n">03</span><div><h3>A full ROI model, on conservative estimates</h3><p>Every figure traces back to the operating inputs we confirm with you, so the number is real and defensible.</p></div></li>
+      <li><span class="n">04</span><div><h3>A prioritized 90-day build roadmap</h3><p>Delivered as a PDF report with a walkthrough and a live call.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="dark sec">
+  <div class="wrap sample-band rv">
+    <div>
+      <p class="sec-kick">// Sample report</p>
+      <h2>See a real Opportunity Audit before you book.</h2>
+      <p class="sec-sub" style="max-width:52ch">The full sample report, prepared for an example 8-truck HVAC shop, shows how every number is derived from the inputs.</p>
+    </div>
+    <div><a class="btn" href="/audit/sample">Open the sample report <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
   </div>
 </section>
 
 <section id="book" class="sec">
   <div class="wrap">
     <div class="sec-head rv">
-      <p class="sec-kick">// Hear it for yourself</p>
-      <h2>Hear ARIA handle a buyer call. Free, 15 minutes.</h2>
-      <p class="sec-sub">No pressure, no jargon. We show you exactly how it sounds and what it would catch for your business.</p>
+      <p class="sec-kick">// Start here</p>
+      <h2>Twenty minutes. No pitch.</h2>
+      <p class="sec-sub">If we are not the right fit, we will tell you. If we are, you will leave with a clear picture of what an autonomous operations layer does for your numbers.</p>
     </div>
     <div class="cal-frame rv">
       <div class="calendly-inline-widget" data-url="https://calendly.com/belkenbot/free-30-min-discovery-call?hide_gdpr_banner=1" style="min-width:320px;height:680px;"></div>
     </div>
     <div class="hero-cta" style="justify-content:center;margin-top:26px">
-      <a class="btn btn-primary" data-mag href="https://calendly.com/belkenbot/free-30-min-discovery-call">Book a free call <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-primary" data-mag href="https://calendly.com/belkenbot/free-30-min-discovery-call">Book a free assessment <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
@@ -439,22 +382,15 @@
   <div class="wrap">
     <div class="foot-in">
       <div class="foot-brand">
-        <a class="brand" href="https://belken.ai"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">BELKEN<span class="slash">/</span><span class="sub">ARIA</span></a>
-        <p>ARIA is a Belken product. The AI phone assistant for service businesses. Never miss a call. Win back old clients.</p>
+        <a class="brand" href="https://belken.ai"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">BELKEN</a>
+        <p>We build and run your autonomous operations layer. ARIA is the ready-to-deploy version for local service businesses.</p>
       </div>
       <div class="fcol">
-        <h5>Start</h5>
-        <a href="#book">Book a call</a>
-        <a href="#calc">What it costs you</a>
-        <a href="https://belken.ai">belken.ai</a>
-      </div>
-      <div class="fcol">
-        <h5>ARIA Verticals</h5>
-        <a href="/aria">All industries</a>
-        <a href="/aria/plumbing">Plumbing</a>
-        <a href="/aria/hvac">HVAC</a>
-        <a href="/aria/medspa">Medspa</a>
-        <a href="/aria/law">Law Firms</a>
+        <h5>Explore</h5>
+        <a href="/">Home</a>
+        <a href="/openclaw">OpenClaw</a>
+        <a href="/aria">ARIA</a>
+        <a href="/audit/sample">Sample audit</a>
       </div>
       <div class="fcol">
         <h5>Contact</h5>
@@ -462,7 +398,7 @@
         <a href="https://calendly.com/belkenbot/free-30-min-discovery-call">Book a call</a>
       </div>
     </div>
-    <div class="foot-base">© 2026 Belken · US-based · built for American service businesses</div>
+    <div class="foot-base">© 2026 Belken Ventures</div>
   </div>
 </footer>
 
@@ -470,38 +406,13 @@
 <script>
   var nav=document.getElementById('nav');
   addEventListener('scroll',function(){nav.classList.toggle('stuck',scrollY>20)},{passive:true});
-
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
   document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
-
-  /* mobile menu */
   var navtog=document.getElementById('navtog'),mobnav=document.getElementById('mobnav');
   if(navtog&&mobnav){
     navtog.addEventListener('click',function(){var o=mobnav.classList.toggle('open');navtog.setAttribute('aria-expanded',o?'true':'false')});
     mobnav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mobnav.classList.remove('open');navtog.setAttribute('aria-expanded','false')})});
   }
-
-  /* magnetic buttons */
-  if(!matchMedia('(prefers-reduced-motion:reduce)').matches && matchMedia('(pointer:fine)').matches){
-    document.querySelectorAll('[data-mag]').forEach(function(b){
-      b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+((e.clientX-r.left-r.width/2)*.25)+'px,'+((e.clientY-r.top-r.height/2)*.35)+'px)'});
-      b.addEventListener('mouseleave',function(){b.style.transform=''});
-    });
-  }
-
-  /* cost calculator: real estate defaults: 6 missed calls/week, $9,000 avg commission, 1-in-20 close rate */
-  var cw=document.getElementById('cw'),aj=document.getElementById('aj');
-  var cwLbl=document.getElementById('cwLbl'),ajLbl=document.getElementById('ajLbl');
-  var lost=document.getElementById('lost'),lostYr=document.getElementById('lostYr');
-  var fmt=function(n){return '$'+Math.round(n).toLocaleString()};
-  function calc(){
-    var calls=+cw.value, job=+aj.value;
-    cwLbl.textContent=calls; ajLbl.textContent=fmt(job);
-    var monthly=calls*4.33*job*0.05;
-    lost.textContent=fmt(monthly);
-    lostYr.textContent=fmt(monthly*12);
-  }
-  cw.addEventListener('input',calc); aj.addEventListener('input',calc); calc();
 </script>
 </body>
 </html>
