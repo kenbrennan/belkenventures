@@ -3,9 +3,19 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- Title is set from auditData at render time (see RENDER step) so nothing
-     business-specific is hardcoded in static markup. Placeholder only: -->
-<title>AI Opportunity Audit | BelKen AI</title>
+<!-- The report body below is pre-rendered from auditData (same markup the RENDER
+     step produces) so crawlers and no-JS readers get real content. The RENDER step
+     still runs in the browser and rebuilds #app from auditData. If you edit auditData,
+     re-run the prerender so the static copy matches. -->
+<title>Sample AI Opportunity Audit: Summit Comfort Heating &amp; Air | BelKen AI</title>
+<meta name="description" content="A sample AI Opportunity Audit from BelKen AI, prepared for an example HVAC business, Summit Comfort Heating &amp; Air. See how every revenue, reactivation, and labor figure is derived from the stated inputs." />
+<link rel="canonical" href="https://belken.ai/audit/sample" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://belken.ai/audit/sample" />
+<meta property="og:site_name" content="Belken" />
+<meta property="og:title" content="Sample AI Opportunity Audit: Summit Comfort Heating &amp; Air | BelKen AI" />
+<meta property="og:description" content="A sample AI Opportunity Audit from BelKen AI, prepared for an example HVAC business, Summit Comfort Heating &amp; Air. See how every revenue, reactivation, and labor figure is derived from the stated inputs." />
+<meta name="twitter:card" content="summary" />
 
 <!-- =========================================================================
      BELKEN AI - AI OPPORTUNITY AUDIT (white-label deliverable, Phase 1)
@@ -62,7 +72,7 @@ const auditData = {
 
   // ---- 3. Headline framing (copy that sits on top of the computed numbers) ---
   framing: {
-    eyebrow: "AI Opportunity Audit",
+    eyebrow: "Sample AI Opportunity Audit",
     coverPromise: "A diagnostic of the revenue leaving through your phone lines, your dormant customer list, and your front-office workload, and exactly what to do about it.",
     execSummary:
       "Summit Comfort runs a healthy, busy shop. Demand is not the problem. Leakage is. " +
@@ -444,6 +454,7 @@ tailwind.config = {
     h1,h2,h3{ break-after:avoid; }
   }
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://belken.ai/#organization","name":"Belken","legalName":"BelKen Ventures Inc","url":"https://belken.ai/","logo":"https://belken.ai/favicon-512.png","email":"info@belken.ai","description":"Belken builds and runs autonomous operations for local service businesses. ARIA is Belken's AI phone assistant for service businesses: it answers every call 24/7, books jobs to your calendar, texts missed callers back, and calls past customers to rebook them."}</script>
 </head>
 
 <body class="font-serif">
@@ -456,7 +467,574 @@ tailwind.config = {
   </aside>
 
   <!-- App mounts here; everything is rendered by JS from auditData -->
-  <main id="app" class="print-pad" style="padding-left:64px;"></main>
+  <main id="app" class="print-pad" style="padding-left:64px;">
+  <section id="cover" data-tag="00" class="cover-dark relative" style="background:var(--ink); color:var(--paper); min-height:100vh;">
+    <div class="max-w-5xl mx-auto px-6 md:px-12 pt-12 pb-16" style="min-height:100vh; display:flex; flex-direction:column;">
+      <!-- masthead -->
+      <div class="flex items-center justify-between border-b border-white/15 pb-5">
+        <div class="u-display font-extrabold tracking-tight text-lg">BelKen<span style="color:var(--copper)">.</span>AI</div>
+        <div class="u-mono text-[.7rem]" style="color:#9aa0a8; letter-spacing:.14em;">
+          REPORT&nbsp;BKA-HVAC-0427 &middot; JUNE 25, 2026
+        </div>
+      </div>
+
+      <!-- hero -->
+      <div class="flex-1 grid md:grid-cols-[1.15fr_.85fr] gap-10 items-center py-12">
+        <div>
+          <div class="eyebrow mb-6" style="color:var(--copper)">Sample AI Opportunity Audit</div>
+          <h1 class="u-display font-black leading-[.95] tracking-tight"
+              style="font-size:clamp(2.5rem,6vw,4.4rem);">
+            Summit Comfort Heating & Air
+          </h1>
+          <p class="u-mono mt-4 text-sm" style="color:#9aa0a8; letter-spacing:.08em;">
+            Frederick, MD &nbsp;&middot;&nbsp; Residential HVAC service & install &nbsp;&middot;&nbsp; 8 trucks
+          </p>
+          <p class="u-serif mt-8 text-lg md:text-xl leading-relaxed max-w-xl" style="color:#d7d3ca;">
+            A diagnostic of the revenue leaving through your phone lines, your dormant customer list, and your front-office workload, and exactly what to do about it.
+          </p>
+          <div class="mt-9 u-mono text-[.72rem]" style="color:#7c828b; letter-spacing:.1em;">
+            PREPARED FOR OWNER / GENERAL MANAGER &nbsp;/&nbsp; PREPARED BY BELKEN AI
+          </div>
+        </div>
+
+        <!-- SIGNATURE: the leak gauge - recoverable revenue as a manometer reading -->
+        <div class="flex justify-center md:justify-end">
+          
+    <svg width="290" height="290" viewBox="0 0 290 290" role="img"
+         aria-label="Recoverable revenue gauge reading $188,060 per year" class="select-none">
+      <defs>
+        <radialGradient id="dialface" cx="50%" cy="42%" r="65%">
+          <stop offset="0%" stop-color="#23262d"/><stop offset="100%" stop-color="#101216"/>
+        </radialGradient>
+      </defs>
+      <circle cx="145" cy="145" r="138" fill="url(#dialface)" stroke="#3a3e47" stroke-width="2"/>
+      <circle cx="145" cy="145" r="118" fill="none" stroke="#2a2d34" stroke-width="1"/>
+      <!-- tick arc -->
+      <line x1="69.2" y1="54.6" x2="80.7" y2="68.4" stroke="#5B6470" stroke-width="2.4"/><line x1="116.5" y1="30.5" x2="118.9" y2="40.2" stroke="#5B6470" stroke-width="1.2"/><line x1="169.5" y1="29.6" x2="167.5" y2="39.4" stroke="#5B6470" stroke-width="1.2"/><line x1="217.6" y1="52.0" x2="211.5" y2="59.9" stroke="#5B6470" stroke-width="1.2"/><line x1="251.1" y1="93.3" x2="242.1" y2="97.7" stroke="#5B6470" stroke-width="1.2"/><line x1="263.0" y1="145.0" x2="245.0" y2="145.0" stroke="#5B6470" stroke-width="2.4"/><line x1="251.1" y1="196.7" x2="242.1" y2="192.3" stroke="#5B6470" stroke-width="1.2"/><line x1="217.6" y1="238.0" x2="211.5" y2="230.1" stroke="#5B6470" stroke-width="1.2"/><line x1="169.5" y1="260.4" x2="167.5" y2="250.6" stroke="#B45A2B" stroke-width="1.2"/><line x1="116.5" y1="259.5" x2="118.9" y2="249.8" stroke="#B45A2B" stroke-width="1.2"/><line x1="69.2" y1="235.4" x2="80.7" y2="221.6" stroke="#B45A2B" stroke-width="2.4"/>
+      <!-- red 'loss' zone arc on the high end -->
+      <path d="M 168.28610937158905 254.55253128218624
+               A 112 112 0 0 1 73.0077877151076 230.79697762932554"
+            fill="none" stroke="#B45A2B" stroke-width="4" stroke-linecap="round" transform="rotate(180 145 145)"/>
+      <text x="145" y="92" text-anchor="middle" fill="#7c828b" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2">RECOVERABLE / YR</text>
+      <!-- needle (animated from rest to reading) -->
+      <g class="gauge-needle" id="needle">
+        <polygon points="145,52 150,150 140,150" fill="#B45A2B"/>
+        <circle cx="145" cy="150" r="9" fill="#16181D" stroke="#B45A2B" stroke-width="2"/>
+      </g>
+      <text x="145" y="200" text-anchor="middle" fill="#F7F5F0" font-family="Archivo Expanded, Archivo, sans-serif" font-weight="900" font-size="30">$188K</text>
+      <text x="145" y="222" text-anchor="middle" fill="#9aa0a8" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1">EST. ANNUAL LEAK, SEALED</text>
+    </svg>
+        </div>
+      </div>
+
+      <!-- bottom: the two headline stats -->
+      <div class="grid grid-cols-2 gap-px border-t border-white/15 pt-8" style="border-color:rgba(255,255,255,.15)">
+        <div class="pr-6">
+          <div class="eyebrow mb-2" style="color:#7c828b;">Recoverable / year</div>
+          <div class="figure-xl fig-copper" style="color:var(--copper); font-size:clamp(2rem,4.5vw,3.1rem);">$188,060</div>
+          <div class="u-mono text-[.7rem] mt-2" style="color:#9aa0a8;">≈ $84,627 in gross profit at 45% margin</div>
+        </div>
+        <div class="pl-6 border-l border-white/15" style="border-color:rgba(255,255,255,.15)">
+          <div class="eyebrow mb-2" style="color:#7c828b;">Hours reclaimed / week</div>
+          <div class="figure-xl" style="color:var(--paper); font-size:clamp(2rem,4.5vw,3.1rem);">14 hrs</div>
+          <div class="u-mono text-[.7rem] mt-2" style="color:#9aa0a8;">728 office hours back per year</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <section id="exec" data-tag="00" class="py-16 md:py-24">
+    <div class="max-w-5xl mx-auto px-6 md:px-12">
+      
+      <div class="flex items-center gap-3 mb-5">
+        <span class="ticket ticket--copper">00</span>
+        <span class="eyebrow">Executive Summary</span>
+      </div>
+      <h2 class="u-display text-3xl md:text-[2.6rem] font-extrabold leading-[1.02] tracking-tight max-w-3xl mb-8 no-break-after">Demand isn't your problem. Leakage is.</h2>
+    
+      <div class="grid md:grid-cols-[1fr_320px] gap-10">
+        <p class="u-serif text-xl md:text-[1.45rem] leading-relaxed text-ink/90">Summit Comfort runs a healthy, busy shop. Demand is not the problem. Leakage is. Calls go unanswered after hours and during peak heat/cold snaps, a large dormant customer list sits untouched, and roughly two staff-days a week disappear into manual scheduling, callbacks, and review chasing. None of this requires more trucks or more ad spend to fix. It requires answering every call and following up on every lead automatically, around the clock.</p>
+        <div class="border-l-2 pl-6" style="border-color:var(--copper)">
+          <div class="eyebrow mb-3">The headline</div>
+          <p class="u-serif text-lg leading-snug mb-4">An estimated <strong class="fig-copper" style="color:var(--copper)">$188,060/yr</strong> is recoverable, plus <strong>14 hours a week</strong> of front-office time, without adding a single truck or a dollar of ad spend.</p>
+          <p class="u-mono text-[.7rem] text-steel leading-relaxed">Every figure in this report is derived from your operating inputs. See the ROI page for the arithmetic and the appendix for assumptions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="losing" data-tag="01" class="page-break py-16 md:py-24" style="background:#fff;">
+    <div class="max-w-5xl mx-auto px-6 md:px-12">
+      
+      <div class="flex items-center gap-3 mb-5">
+        <span class="ticket ticket--cool">01</span>
+        <span class="eyebrow">The Diagnosis</span>
+      </div>
+      <h2 class="u-display text-3xl md:text-[2.6rem] font-extrabold leading-[1.02] tracking-tight max-w-3xl mb-8 no-break-after">Where you're losing money right now</h2>
+    
+      <p class="u-serif text-lg text-ink/80 max-w-2xl mb-4 -mt-3">Five leaks, ranked. Each is a known pattern in residential HVAC, sized against your numbers.</p>
+      
+      <div class="avoid-break py-7 border-b border-line grid md:grid-cols-[88px_1fr] gap-5">
+        <div><span class="ticket ticket--cool">LEAK-01</span></div>
+        <div>
+          <h3 class="u-display text-xl font-bold tracking-tight mb-2">Calls slip through after-hours and during peak load</h3>
+          <p class="u-serif text-lg leading-relaxed text-ink/85 max-w-2xl">When the AC quits on the hottest Saturday of July, the homeowner calls three companies and books the first one that picks up. Voicemail loses that job. At your current volume, a fifth of inbound calls go unanswered.</p>
+          <div class="mt-4 flex items-baseline gap-3">
+           <span class="figure-xl fig-loss" style="color:var(--loss); font-size:1.9rem;">$142,940</span>
+           <span class="u-serif text-sm text-steel leading-snug">in unbooked work flowing out the phone line each year</span>
+         </div>
+        </div>
+      </div>
+      <div class="avoid-break py-7 border-b border-line grid md:grid-cols-[88px_1fr] gap-5">
+        <div><span class="ticket ticket--cool">LEAK-02</span></div>
+        <div>
+          <h3 class="u-display text-xl font-bold tracking-tight mb-2">A dormant customer list nobody is following up with</h3>
+          <p class="u-serif text-lg leading-relaxed text-ink/85 max-w-2xl">Every past customer is a known, trust-already-earned buyer who eventually needs a tune-up, a part, or a replacement system. Without a systematic follow-up, that list quietly ages out to whoever markets to them next.</p>
+          <div class="mt-4 flex items-baseline gap-3">
+           <span class="figure-xl fig-loss" style="color:var(--loss); font-size:1.9rem;">$45,120</span>
+           <span class="u-serif text-sm text-steel leading-snug">in reactivation revenue sitting idle in your database</span>
+         </div>
+        </div>
+      </div>
+      <div class="avoid-break py-7 border-b border-line grid md:grid-cols-[88px_1fr] gap-5">
+        <div><span class="ticket ticket--cool">LEAK-03</span></div>
+        <div>
+          <h3 class="u-display text-xl font-bold tracking-tight mb-2">Slow lead response on web + after-hours forms</h3>
+          <p class="u-serif text-lg leading-relaxed text-ink/85 max-w-2xl">Speed-to-lead decides who wins. A homeowner who fills out a form at 9pm and hears nothing until the next afternoon has usually already booked elsewhere. Every hour of delay erodes the close rate.</p>
+          <div class="mt-4 u-mono text-[.72rem] text-steel leading-relaxed border-t border-line pt-3">Compounds LEAK-01. Captured in the recovery figure below</div>
+        </div>
+      </div>
+      <div class="avoid-break py-7 border-b border-line grid md:grid-cols-[88px_1fr] gap-5">
+        <div><span class="ticket ticket--cool">LEAK-04</span></div>
+        <div>
+          <h3 class="u-display text-xl font-bold tracking-tight mb-2">Front office buried in manual scheduling, callbacks & intake</h3>
+          <p class="u-serif text-lg leading-relaxed text-ink/85 max-w-2xl">Roughly two staff-days a week go to repetitive coordination work: booking, confirming, reminding, chasing reviews. That's time, not revenue, but it's the most expensive kind: skilled people doing work software should do.</p>
+          <div class="mt-4 flex items-baseline gap-3">
+           <span class="figure-xl fig-loss" style="color:var(--loss); font-size:1.9rem;">$20,384</span>
+           <span class="u-serif text-sm text-steel leading-snug">in office labor spent on work an agent can run</span>
+         </div>
+        </div>
+      </div>
+      <div class="avoid-break py-7 border-b border-line grid md:grid-cols-[88px_1fr] gap-5">
+        <div><span class="ticket ticket--cool">LEAK-05</span></div>
+        <div>
+          <h3 class="u-display text-xl font-bold tracking-tight mb-2">Thin review pipeline limits how many calls you even get</h3>
+          <p class="u-serif text-lg leading-relaxed text-ink/85 max-w-2xl">Reviews are how the next customer chooses you. At ~4 new reviews a month you're under-indexed for a shop your size; competitors with steady, recent reviews outrank you in the map pack and win the click before the phone even rings.</p>
+          <div class="mt-4 u-mono text-[.72rem] text-steel leading-relaxed border-t border-line pt-3">Upstream of every leak above. Fixes itself once follow-up is automated</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="roi" data-tag="02" class="page-break py-16 md:py-24">
+    <div class="max-w-5xl mx-auto px-6 md:px-12">
+      
+      <div class="flex items-center gap-3 mb-5">
+        <span class="ticket ticket--copper">02</span>
+        <span class="eyebrow">The Arithmetic</span>
+      </div>
+      <h2 class="u-display text-3xl md:text-[2.6rem] font-extrabold leading-[1.02] tracking-tight max-w-3xl mb-8 no-break-after">What that leak is worth, shown, not asserted</h2>
+    
+      <p class="u-serif text-lg text-ink/80 max-w-2xl mb-10 -mt-3">No black box. Here is every step from your inputs to the recoverable figure on the cover. Change an input on our call and the total moves with it.</p>
+
+      <div class="grid lg:grid-cols-2 gap-x-14 gap-y-12">
+
+        <!-- LEDGER A: missed-call recovery -->
+        <div class="avoid-break">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="ticket">A</span>
+            <h3 class="u-display text-lg font-bold tracking-tight">Recovered missed calls</h3>
+          </div>
+          <div class="ledger-row"><span class="lbl">Inbound calls / month</span><span class="val">600</span></div>
+          <div class="ledger-row"><span class="lbl"><span class="ledger-op">×</span> Missed-call rate</span><span class="val">22%</span></div>
+          <div class="ledger-row"><span class="lbl"><span class="ledger-op">=</span> Missed calls / month</span><span class="val">132</span></div>
+          <div class="ledger-row"><span class="lbl"><span class="ledger-op">×</span> Recovered → booked rate</span><span class="val">12%</span></div>
+          <div class="ledger-row"><span class="lbl"><span class="ledger-op">=</span> Recovered jobs / month</span><span class="val">15.8</span></div>
+          <div class="ledger-row"><span class="lbl" style="padding-left:1rem;">↳ service @ $450</span><span class="val">15.2 jobs</span></div>
+          <div class="ledger-row"><span class="lbl" style="padding-left:1rem;">↳ install @ $8,000</span><span class="val">0.6 jobs</span></div>
+          <div class="ledger-row"><span class="lbl"><span class="ledger-op">=</span> Recovered revenue / month</span><span class="val">$11,912</span></div>
+          <div class="ledger-row" style="border-bottom:2px solid var(--ink);"><span class="lbl font-semibold"><span class="ledger-op">× 12 =</span> Annual</span><span class="val fig-copper" style="color:var(--copper); font-weight:700;">$142,940</span></div>
+        </div>
+
+        <!-- LEDGER B: dormant list -->
+        <div class="avoid-break">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="ticket">B</span>
+            <h3 class="u-display text-lg font-bold tracking-tight">Dormant-list reactivation</h3>
+          </div>
+          <div class="ledger-row"><span class="lbl">Lapsed customers in database</span><span class="val">2,400</span></div>
+          <div class="ledger-row"><span class="lbl"><span class="ledger-op">×</span> Annual reactivation rate</span><span class="val">3%</span></div>
+          <div class="ledger-row"><span class="lbl"><span class="ledger-op">=</span> Re-booked jobs / year</span><span class="val">60</span></div>
+          <div class="ledger-row"><span class="lbl" style="padding-left:1rem;">↳ weighted service + install mix</span><span class="val">$450 to $8K</span></div>
+          <div class="ledger-row" style="border-bottom:2px solid var(--ink);"><span class="lbl font-semibold"><span class="ledger-op">=</span> Annual</span><span class="val fig-copper" style="color:var(--copper); font-weight:700;">$45,120</span></div>
+
+          <div class="flex items-center gap-3 mb-4 mt-10">
+            <span class="ticket">C</span>
+            <h3 class="u-display text-lg font-bold tracking-tight">Front-office time reclaimed</h3>
+          </div>
+          <div class="ledger-row"><span class="lbl">Admin hours / week</span><span class="val">14 hrs</span></div>
+          <div class="ledger-row"><span class="lbl"><span class="ledger-op">× 52 =</span> Hours / year</span><span class="val">728 hrs</span></div>
+          <div class="ledger-row" style="border-bottom:2px solid var(--ink);"><span class="lbl font-semibold"><span class="ledger-op">×</span> $28/hr loaded</span><span class="val" style="font-weight:700;">$20,384</span></div>
+        </div>
+      </div>
+
+      <!-- TOTAL -->
+      <div class="avoid-break mt-14 p-8 md:p-10" style="background:var(--ink); color:var(--paper);">
+        <div class="grid md:grid-cols-[1fr_auto] gap-8 items-end">
+          <div>
+            <div class="eyebrow mb-3" style="color:var(--copper)">Total recoverable, A + B (revenue)</div>
+            <div class="figure-xl fig-copper" style="color:var(--copper); font-size:clamp(2.6rem,7vw,4.5rem);">$188,060<span class="u-mono text-base align-top" style="color:#9aa0a8;"> / yr</span></div>
+            <p class="u-mono text-[.74rem] mt-4 leading-relaxed" style="color:#9aa0a8; max-width:34rem;">
+              ≈ $84,627 in gross profit at a 45% blended margin, plus 728 office hours ($20,384) returned to capacity. Conservative by design. See appendix.
+            </p>
+          </div>
+          <div class="text-right">
+            <div class="eyebrow mb-2" style="color:#7c828b;">vs. the retainer</div>
+            <div class="u-mono text-sm" style="color:#d7d3ca;">$4,500 / mo = $54,000 / yr</div>
+            <div class="figure-xl mt-2" style="color:var(--paper); font-size:2.2rem;">3.5×</div>
+            <div class="u-mono text-[.7rem] mt-1" style="color:#7c828b;">recoverable revenue ÷ cost</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="map" data-tag="03" class="page-break py-16 md:py-24" style="background:#fff;">
+    <div class="max-w-5xl mx-auto px-6 md:px-12">
+      
+      <div class="flex items-center gap-3 mb-5">
+        <span class="ticket ticket--copper">03</span>
+        <span class="eyebrow">The Fix</span>
+      </div>
+      <h2 class="u-display text-3xl md:text-[2.6rem] font-extrabold leading-[1.02] tracking-tight max-w-3xl mb-8 no-break-after">Your AI opportunity map</h2>
+    
+      <p class="u-serif text-lg text-ink/80 max-w-2xl mb-10 -mt-3">Each leak maps to one thing BelKen runs for you. You don't buy tools or wire anything together. We operate the agent and you get the booked jobs.</p>
+      <div class="grid gap-6">
+    <div class="card avoid-break p-7 pt-9">
+      <span class="card-tag ticket ticket--copper">OPP-01</span>
+      <div class="grid md:grid-cols-[1fr_220px] gap-7">
+        <div>
+          <div class="eyebrow mb-2" style="color:var(--cool)">Our solution &middot; ARIA, the 24/7 AI voice agent</div>
+          <h3 class="u-display text-2xl font-extrabold tracking-tight leading-tight mb-3">Answer every call, 24/7, and book the job</h3>
+          <p class="u-serif text-lg leading-relaxed text-ink/85 mb-4">ARIA answers every inbound call BelKen runs for you: after hours, weekends, and when all lines are busy. She qualifies the caller, answers common questions, and books the appointment straight onto your calendar. The customer never hits voicemail.</p>
+          <div class="u-mono text-[.72rem] text-steel border-t border-line pt-3" style="letter-spacing:.04em;">▸ Directly closes LEAK-01 and LEAK-03.</div>
+        </div>
+        <div class="md:border-l md:pl-7 border-line grid grid-cols-2 md:grid-cols-1 gap-5 content-start">
+          <div>
+            <div class="eyebrow mb-1">What it saves</div>
+            <div class="figure-xl fig-copper" style="color:var(--copper); font-size:1.7rem;">$142,940<span class="u-mono text-xs" style="color:var(--steel)"> / yr</span></div><div class="u-mono text-[.74rem] text-steel mt-1">Recovers the LEAK-01 revenue above</div>
+          </div>
+          <div>
+            <div class="eyebrow mb-1">What it costs</div>
+            <div class="u-serif text-base font-semibold leading-snug">Included in the Autonomous Operations Retainer, starting $4,500/mo</div>
+          </div>
+          <div>
+            <div class="eyebrow mb-1">Setup time</div>
+            <div class="u-mono text-sm">Live in 4 days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card avoid-break p-7 pt-9">
+      <span class="card-tag ticket ticket--copper">OPP-02</span>
+      <div class="grid md:grid-cols-[1fr_220px] gap-7">
+        <div>
+          <div class="eyebrow mb-2" style="color:var(--cool)">Our solution &middot; ARIA Outbound reactivation campaigns</div>
+          <h3 class="u-display text-2xl font-extrabold tracking-tight leading-tight mb-3">Wake up the dormant customer list</h3>
+          <p class="u-serif text-lg leading-relaxed text-ink/85 mb-4">BelKen runs ARIA outbound across your lapsed customers: seasonal tune-up reminders, maintenance-plan invites, and replacement-system outreach for aging equipment. Conversations land on your calendar as booked jobs, not a list of names for staff to cold-call.</p>
+          <div class="u-mono text-[.72rem] text-steel border-t border-line pt-3" style="letter-spacing:.04em;">▸ Directly closes LEAK-02.</div>
+        </div>
+        <div class="md:border-l md:pl-7 border-line grid grid-cols-2 md:grid-cols-1 gap-5 content-start">
+          <div>
+            <div class="eyebrow mb-1">What it saves</div>
+            <div class="figure-xl fig-copper" style="color:var(--copper); font-size:1.7rem;">$45,120<span class="u-mono text-xs" style="color:var(--steel)"> / yr</span></div><div class="u-mono text-[.74rem] text-steel mt-1">Recovers the LEAK-02 revenue above</div>
+          </div>
+          <div>
+            <div class="eyebrow mb-1">What it costs</div>
+            <div class="u-serif text-base font-semibold leading-snug">Included in the Autonomous Operations Retainer, starting $4,500/mo</div>
+          </div>
+          <div>
+            <div class="eyebrow mb-1">Setup time</div>
+            <div class="u-mono text-sm">Campaign live in week 1</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card avoid-break p-7 pt-9">
+      <span class="card-tag ticket ticket--copper">OPP-03</span>
+      <div class="grid md:grid-cols-[1fr_220px] gap-7">
+        <div>
+          <div class="eyebrow mb-2" style="color:var(--cool)">Our solution &middot; BelKen Managed Agents</div>
+          <h3 class="u-display text-2xl font-extrabold tracking-tight leading-tight mb-3">Automate scheduling, reminders & intake</h3>
+          <p class="u-serif text-lg leading-relaxed text-ink/85 mb-4">We run the repetitive front-office flow: appointment confirmations, reminder texts, rescheduling, and structured intake that hands your dispatcher a clean, complete job ticket. Your office staff stop chasing and start closing.</p>
+          <div class="u-mono text-[.72rem] text-steel border-t border-line pt-3" style="letter-spacing:.04em;">▸ Directly closes LEAK-04.</div>
+        </div>
+        <div class="md:border-l md:pl-7 border-line grid grid-cols-2 md:grid-cols-1 gap-5 content-start">
+          <div>
+            <div class="eyebrow mb-1">What it saves</div>
+            <div class="figure-xl fig-copper" style="color:var(--copper); font-size:1.7rem;">$20,384<span class="u-mono text-xs" style="color:var(--steel)"> / yr</span></div><div class="u-mono text-[.74rem] text-steel mt-1">+ 728 hrs/yr reclaimed</div>
+          </div>
+          <div>
+            <div class="eyebrow mb-1">What it costs</div>
+            <div class="u-serif text-base font-semibold leading-snug">Included in the Autonomous Operations Retainer, starting $4,500/mo</div>
+          </div>
+          <div>
+            <div class="eyebrow mb-1">Setup time</div>
+            <div class="u-mono text-sm">Live in 4 days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card avoid-break p-7 pt-9">
+      <span class="card-tag ticket ticket--copper">OPP-04</span>
+      <div class="grid md:grid-cols-[1fr_220px] gap-7">
+        <div>
+          <div class="eyebrow mb-2" style="color:var(--cool)">Our solution &middot; BelKen Managed Agents review engine</div>
+          <h3 class="u-display text-2xl font-extrabold tracking-tight leading-tight mb-3">Turn finished jobs into a steady review stream</h3>
+          <p class="u-serif text-lg leading-relaxed text-ink/85 mb-4">Every completed job triggers a timed, personalized review request from BelKen's agent, routed to your Google profile, with negative-experience interception before it goes public. Steady recent reviews lift your map-pack ranking and feed the top of the funnel.</p>
+          <div class="u-mono text-[.72rem] text-steel border-t border-line pt-3" style="letter-spacing:.04em;">▸ Directly closes LEAK-05 and compounds OPP-01 volume.</div>
+        </div>
+        <div class="md:border-l md:pl-7 border-line grid grid-cols-2 md:grid-cols-1 gap-5 content-start">
+          <div>
+            <div class="eyebrow mb-1">What it saves</div>
+            <div class="u-display text-lg font-bold">Lifts new reviews from ~4 to ~22 / month</div>
+          </div>
+          <div>
+            <div class="eyebrow mb-1">What it costs</div>
+            <div class="u-serif text-base font-semibold leading-snug">Included in the Autonomous Operations Retainer, starting $4,500/mo</div>
+          </div>
+          <div>
+            <div class="eyebrow mb-1">Setup time</div>
+            <div class="u-mono text-sm">Live in 4 days</div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+    </div>
+  </section>
+  
+  <section id="plan" data-tag="04" class="page-break py-16 md:py-24">
+    <div class="max-w-5xl mx-auto px-6 md:px-12">
+      
+      <div class="flex items-center gap-3 mb-5">
+        <span class="ticket ticket--copper">04</span>
+        <span class="eyebrow">Onboarding</span>
+      </div>
+      <h2 class="u-display text-3xl md:text-[2.6rem] font-extrabold leading-[1.02] tracking-tight max-w-3xl mb-8 no-break-after">Your first four days with BelKen</h2>
+    
+      <p class="u-serif text-lg text-ink/80 max-w-2xl mb-6 -mt-3">From signed to answering calls in four working days. Your phone number and your team stay exactly as they are.</p>
+      <div>
+    <div class="avoid-break grid md:grid-cols-[120px_1fr] gap-5 py-7 border-b border-line">
+      <div>
+        <div class="u-display font-black text-3xl tracking-tight" style="color:var(--copper)">Day 1</div>
+      </div>
+      <div>
+        <h3 class="u-display text-xl font-bold tracking-tight mb-2">ARIA starts answering your missed calls</h3>
+        <p class="u-serif text-lg leading-relaxed text-ink/85 max-w-2xl">We point your after-hours and overflow lines to ARIA. From day one, the calls that used to hit voicemail get answered and booked. Nothing changes on your end. Your existing number stays the same.</p>
+      </div>
+    </div>
+    <div class="avoid-break grid md:grid-cols-[120px_1fr] gap-5 py-7 border-b border-line">
+      <div>
+        <div class="u-display font-black text-3xl tracking-tight" style="color:var(--copper)">Day 2</div>
+      </div>
+      <div>
+        <h3 class="u-display text-xl font-bold tracking-tight mb-2">Booking + calendar integration goes live</h3>
+        <p class="u-serif text-lg leading-relaxed text-ink/85 max-w-2xl">ARIA is wired into your scheduling calendar and job-ticket flow. Booked calls land as real appointments your dispatcher sees instantly, with clean intake notes attached.</p>
+      </div>
+    </div>
+    <div class="avoid-break grid md:grid-cols-[120px_1fr] gap-5 py-7 border-b border-line">
+      <div>
+        <div class="u-display font-black text-3xl tracking-tight" style="color:var(--copper)">Day 3</div>
+      </div>
+      <div>
+        <h3 class="u-display text-xl font-bold tracking-tight mb-2">Review engine + reminders switch on</h3>
+        <p class="u-serif text-lg leading-relaxed text-ink/85 max-w-2xl">Completed-job review requests and appointment reminders/confirmations start running automatically. Your office stops chasing; the review stream begins building.</p>
+      </div>
+    </div>
+    <div class="avoid-break grid md:grid-cols-[120px_1fr] gap-5 py-7 ">
+      <div>
+        <div class="u-display font-black text-3xl tracking-tight" style="color:var(--copper)">Day 4</div>
+      </div>
+      <div>
+        <h3 class="u-display text-xl font-bold tracking-tight mb-2">Dormant-list reactivation campaign launches</h3>
+        <p class="u-serif text-lg leading-relaxed text-ink/85 max-w-2xl">We load your lapsed-customer list and ARIA outbound begins seasonal tune-up and replacement outreach. First re-booked jobs typically appear within the first week.</p>
+      </div>
+    </div></div>
+    </div>
+  </section>
+  
+  <section id="stack" data-tag="05" class="page-break py-16 md:py-24" style="background:#fff;">
+    <div class="max-w-5xl mx-auto px-6 md:px-12">
+      
+      <div class="flex items-center gap-3 mb-5">
+        <span class="ticket ticket--cool">05</span>
+        <span class="eyebrow">The Ladder</span>
+      </div>
+      <h2 class="u-display text-3xl md:text-[2.6rem] font-extrabold leading-[1.02] tracking-tight max-w-3xl mb-8 no-break-after">Recommended stack & pricing</h2>
+    
+      <p class="u-serif text-lg text-ink/80 max-w-2xl mb-10 -mt-3">Start anywhere. Most HVAC shops your size go straight to the retainer because the recoverable revenue dwarfs the cost, but the door is open at every rung.</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
+    <div class="card avoid-break relative p-6 border-line" style="background:#fff; ">
+      
+      <div class="eyebrow mb-3" style="">AI Opportunity Assessment</div>
+      <div class="flex items-baseline gap-1 mb-3">
+        <span class="figure-xl" style="font-size:1.9rem; color:var(--ink)">$0</span>
+        <span class="u-mono text-xs" style="color:var(--steel)"></span>
+      </div>
+      <p class="u-serif text-[.98rem] leading-snug" style="color:var(--ink);opacity:.9;">A snapshot of your biggest leak and a recoverable-revenue estimate. No card, no call required.</p>
+      
+    </div>
+    <div class="card avoid-break relative p-6 " style="background:var(--ink); color:var(--paper); border-color:var(--ink)">
+      <span class="ticket ticket--copper absolute -top-3 left-6">This report</span>
+      <div class="eyebrow mb-3" style="color:var(--copper)">Opportunity Audit</div>
+      <div class="flex items-baseline gap-1 mb-3">
+        <span class="figure-xl" style="font-size:1.9rem; color:var(--paper)">$1,997</span>
+        <span class="u-mono text-xs" style="color:#9aa0a8">one-time</span>
+      </div>
+      <p class="u-serif text-[.98rem] leading-snug" style="color:#d7d3ca;opacity:.9;">This deliverable, built and walked through with you. Verified numbers, prioritized roadmap, and a fixed implementation scope.</p>
+      
+    </div>
+    <div class="card avoid-break relative p-6 border-line" style="background:#fff; ">
+      
+      <div class="eyebrow mb-3" style="">Autonomous Operations Retainer</div>
+      <div class="flex items-baseline gap-1 mb-3">
+        <span class="figure-xl" style="font-size:1.9rem; color:var(--ink)">$4,500</span>
+        <span class="u-mono text-xs" style="color:var(--steel)">/ month, starting</span>
+      </div>
+      <p class="u-serif text-[.98rem] leading-snug" style="color:var(--ink);opacity:.9;">We run ARIA and every agent above for you: answered calls, reactivation, scheduling, reviews. You get the outcome, not another tool to learn.</p>
+      <a href="https://calendly.com/belkenbot/free-30-min-discovery-call" class="no-print inline-block mt-5 u-mono text-[.74rem] font-bold tracking-wide px-4 py-2.5" style="background:var(--copper); color:#fff; letter-spacing:.06em;">BOOK A CALL →</a>
+    </div></div>
+      <p class="u-mono text-[.72rem] text-steel mt-8 max-w-3xl leading-relaxed">Everything in the Opportunity Map (ARIA inbound, ARIA outbound reactivation, scheduling, and the review engine) is included in the retainer. One price, one service, no per-tool fees.</p>
+    </div>
+  </section>
+  
+  <section id="why" data-tag="06" class="page-break py-16 md:py-24">
+    <div class="max-w-5xl mx-auto px-6 md:px-12">
+      
+      <div class="flex items-center gap-3 mb-5">
+        <span class="ticket ticket--copper">06</span>
+        <span class="eyebrow">The Difference</span>
+      </div>
+      <h2 class="u-display text-3xl md:text-[2.6rem] font-extrabold leading-[1.02] tracking-tight max-w-3xl mb-8 no-break-after">Why BelKen, not another tool</h2>
+    
+      <p class="u-serif text-lg text-ink/80 max-w-2xl mb-4 -mt-3">The alternative to BelKen is not "do nothing". The alternative is assembling and running all of this yourself. Here is the honest comparison.</p>
+      <div>
+    <div class="avoid-break grid md:grid-cols-[260px_1fr_1fr] gap-6 py-7 border-b border-line items-start">
+      <h3 class="u-display text-xl font-bold tracking-tight">We run it, you don't</h3>
+      <div>
+        <div class="eyebrow mb-2" style="color:var(--loss)">Doing it yourself</div>
+        <p class="u-serif text-base leading-relaxed text-ink/70">Buy four to six tools, wire them together, maintain them, and troubleshoot when a call drops.</p>
+      </div>
+      <div class="md:pl-6 md:border-l border-line">
+        <div class="eyebrow mb-2" style="color:var(--copper)">With BelKen</div>
+        <p class="u-serif text-base leading-relaxed text-ink/90">One managed service. We own the stack, the uptime, and the result. Nothing for your team to learn or babysit.</p>
+      </div>
+    </div>
+    <div class="avoid-break grid md:grid-cols-[260px_1fr_1fr] gap-6 py-7 border-b border-line items-start">
+      <h3 class="u-display text-xl font-bold tracking-tight">A real voice agent, live today</h3>
+      <div>
+        <div class="eyebrow mb-2" style="color:var(--loss)">Doing it yourself</div>
+        <p class="u-serif text-base leading-relaxed text-ink/70">Chatbots and web widgets that homeowners ignore, and that cannot answer a phone at 2am.</p>
+      </div>
+      <div class="md:pl-6 md:border-l border-line">
+        <div class="eyebrow mb-2" style="color:var(--copper)">With BelKen</div>
+        <p class="u-serif text-base leading-relaxed text-ink/90">ARIA answers the phone in a natural voice and books the job. Hear her live before you commit a dollar.</p>
+      </div>
+    </div>
+    <div class="avoid-break grid md:grid-cols-[260px_1fr_1fr] gap-6 py-7 border-b border-line items-start">
+      <h3 class="u-display text-xl font-bold tracking-tight">Built for the trades, not generic SaaS</h3>
+      <div>
+        <div class="eyebrow mb-2" style="color:var(--loss)">Doing it yourself</div>
+        <p class="u-serif text-base leading-relaxed text-ink/70">Horizontal tools that don't know what a capacitor, a tune-up, or a peak-season surge is.</p>
+      </div>
+      <div class="md:pl-6 md:border-l border-line">
+        <div class="eyebrow mb-2" style="color:var(--copper)">With BelKen</div>
+        <p class="u-serif text-base leading-relaxed text-ink/90">Configured around HVAC call patterns, seasonality, and your job types, out of the box.</p>
+      </div>
+    </div>
+    <div class="avoid-break grid md:grid-cols-[260px_1fr_1fr] gap-6 py-7 border-b border-line items-start">
+      <h3 class="u-display text-xl font-bold tracking-tight">Outcomes, measured</h3>
+      <div>
+        <div class="eyebrow mb-2" style="color:var(--loss)">Doing it yourself</div>
+        <p class="u-serif text-base leading-relaxed text-ink/70">A pile of dashboards and the homework of figuring out if any of it worked.</p>
+      </div>
+      <div class="md:pl-6 md:border-l border-line">
+        <div class="eyebrow mb-2" style="color:var(--copper)">With BelKen</div>
+        <p class="u-serif text-base leading-relaxed text-ink/90">We report recovered calls, booked jobs, and reactivated customers against the numbers in this audit.</p>
+      </div>
+    </div></div>
+    </div>
+  </section>
+  
+  <section id="next" data-tag="07" class="page-break py-20 md:py-28" style="background:var(--ink); color:var(--paper);">
+    <div class="max-w-5xl mx-auto px-6 md:px-12">
+      <div class="flex items-center gap-3 mb-7">
+        <span class="ticket ticket--copper">07</span>
+        <span class="eyebrow" style="color:#7c828b;">Your Next Step</span>
+      </div>
+      <h2 class="u-display font-black tracking-tight leading-[.98] mb-7" style="font-size:clamp(2.2rem,6vw,4rem); max-width:18ch;">See ARIA answer a call. Then decide.</h2>
+      <p class="u-serif text-xl leading-relaxed mb-10" style="color:#d7d3ca; max-width:42rem;">Book a free 30-minute discovery call. We'll confirm the numbers in this audit against your actual call data and let you hear ARIA handle a live HVAC call. No obligation, no pressure.</p>
+      <a href="https://calendly.com/belkenbot/free-30-min-discovery-call" class="inline-block u-display font-extrabold tracking-tight text-lg px-9 py-5" style="background:var(--copper); color:#fff;">
+        Book your free discovery call &nbsp;→
+      </a>
+      <div class="u-mono text-sm mt-6" style="color:#9aa0a8;">calendly.com/belkenbot/free-30-min-discovery-call</div>
+      <p class="u-serif text-base mt-8" style="color:#9aa0a8; max-width:42rem;">Prefer to hear it first? Ask for ARIA's live demo number on the call.</p>
+    </div>
+  </section>
+  
+  <section id="method" data-tag="08" class="page-break py-16 md:py-24" style="background:#fff;">
+    <div class="max-w-5xl mx-auto px-6 md:px-12">
+      
+      <div class="flex items-center gap-3 mb-5">
+        <span class="ticket ticket--cool">08</span>
+        <span class="eyebrow">Appendix</span>
+      </div>
+      <h2 class="u-display text-3xl md:text-[2.6rem] font-extrabold leading-[1.02] tracking-tight max-w-3xl mb-8 no-break-after">How this audit was built</h2>
+    
+      <div class="grid lg:grid-cols-[1fr_360px] gap-12">
+        <div>
+          <p class="u-serif text-lg leading-relaxed text-ink/85 mb-8 max-w-2xl">This audit is an estimate built entirely from the operating inputs listed below. Every figure on the ROI page is derived from these numbers using the stated arithmetic. Nothing is assumed beyond what is shown. On a discovery call we replace these estimates with your actual figures and the model updates accordingly.</p>
+          
+    <div class="avoid-break grid grid-cols-[40px_1fr] gap-4 py-4 border-b border-line">
+      <div class="u-mono text-sm text-steel font-bold">01</div>
+      <p class="u-serif text-base leading-relaxed text-ink/85">Revenue figures are conservative on purpose. We assume only 12% of recovered missed calls become booked jobs and only a 2.5% annual reactivation rate on the dormant list, both below typical results for a well-run campaign.</p>
+    </div>
+    <div class="avoid-break grid grid-cols-[40px_1fr] gap-4 py-4 border-b border-line">
+      <div class="u-mono text-sm text-steel font-bold">02</div>
+      <p class="u-serif text-base leading-relaxed text-ink/85">We report gross profit alongside revenue using a blended 45% margin, so the recoverable figure reflects money you keep, not just top-line sales.</p>
+    </div>
+    <div class="avoid-break grid grid-cols-[40px_1fr] gap-4 py-4 border-b border-line">
+      <div class="u-mono text-sm text-steel font-bold">03</div>
+      <p class="u-serif text-base leading-relaxed text-ink/85">Recovered and reactivated jobs are weighted as mostly standard service tickets. Installs are counted at just 4% of the mix, since after-hours and missed calls are overwhelmingly repair emergencies, not planned system replacements. This deliberately avoids inflating the total with high-ticket installs.</p>
+    </div>
+    <div class="avoid-break grid grid-cols-[40px_1fr] gap-4 py-4 border-b border-line">
+      <div class="u-mono text-sm text-steel font-bold">04</div>
+      <p class="u-serif text-base leading-relaxed text-ink/85">Front-office savings are stated as labor hours reclaimed, valued at a loaded office rate. They are a cost reduction and a capacity gain, not new sales.</p>
+    </div>
+    <div class="avoid-break grid grid-cols-[40px_1fr] gap-4 py-4 border-b border-line">
+      <div class="u-mono text-sm text-steel font-bold">05</div>
+      <p class="u-serif text-base leading-relaxed text-ink/85">This is a sample report for Summit Comfort Heating & Air, prepared to demonstrate BelKen's audit deliverable. All numbers are illustrative estimates derived from the inputs shown, not guarantees of results.</p>
+    </div>
+        </div>
+        <div class="avoid-break">
+          <div class="eyebrow mb-4">Inputs this report ran on</div>
+          <div class="border border-line p-5"><div class="ledger-row"><span class="lbl">Inbound calls / month</span><span class="val">600</span></div><div class="ledger-row"><span class="lbl">Missed-call rate</span><span class="val">22%</span></div><div class="ledger-row"><span class="lbl">Avg. service ticket</span><span class="val">$450</span></div><div class="ledger-row"><span class="lbl">Avg. install ticket</span><span class="val">$8,000</span></div><div class="ledger-row"><span class="lbl">Recovered missed call → booked</span><span class="val">12%</span></div><div class="ledger-row"><span class="lbl">Install share of recovered jobs</span><span class="val">4%</span></div><div class="ledger-row"><span class="lbl">Dormant customers</span><span class="val">2,400</span></div><div class="ledger-row"><span class="lbl">Annual reactivation rate</span><span class="val">3%</span></div><div class="ledger-row"><span class="lbl">Admin hours / week</span><span class="val">14 hrs</span></div><div class="ledger-row"><span class="lbl">Loaded office labor rate</span><span class="val">$28/hr</span></div><div class="ledger-row"><span class="lbl">Blended gross margin</span><span class="val">45%</span></div></div>
+          <p class="u-mono text-[.68rem] text-steel mt-4 leading-relaxed">Report BKA-HVAC-0427 &middot; generated June 25, 2026. Confirm these on your discovery call and the model recalculates live.</p>
+        </div>
+      </div>
+
+      <!-- footer -->
+      <div class="rule-ink mt-20 mb-6"></div>
+      <div class="flex flex-col md:flex-row justify-between gap-4 items-start md:items-center">
+        <div class="u-display font-extrabold tracking-tight text-lg">BelKen<span style="color:var(--copper)">.</span>AI</div>
+        <div class="u-mono text-[.7rem] text-steel" style="letter-spacing:.1em;">
+          AI OPPORTUNITY AUDIT &middot; PREPARED FOR SUMMIT COMFORT HEATING & AIR &middot; JUNE 25, 2026
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
 
 <script>
 /* ============================================================================
