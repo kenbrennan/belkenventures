@@ -6,10 +6,6 @@
 <title>TikTok Integration · Belken Studio</title>
 <meta name="description" content="How Belken Studio integrates with TikTok: authenticated users connect their own TikTok account to publish and schedule video content directly from the Belken Studio dashboard." />
 <link rel="canonical" href="https://belkenai.com/integrations/social/tiktok" />
-<meta name="theme-color" content="#EEEAE1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://belkenai.com/integrations/social/tiktok" />
 <meta property="og:site_name" content="Belken" />
@@ -18,224 +14,112 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Belken Studio × TikTok" />
 <meta name="twitter:description" content="How Belken Studio integrates with TikTok: authenticated users connect their own TikTok account to publish and schedule video content directly from the Belken Studio dashboard." />
+<meta name="theme-color" content="#EEEAE1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23121110'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%231F32FF'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root{
     --paper:#EEEAE1;--paper-2:#E4DFD3;--ink:#121110;--ink-soft:#3a382f;--line:#cdc6b6;
-    --ultra:#1F32FF;--ultra-deep:#0e1bb0;--flare:#FF4318;--paper-on-dark:#EDEAE1;
-    --display:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace;
-    --ease:cubic-bezier(.16,1,.3,1);
+    --ultra:#1F32FF;--ultra-deep:#0e1bb0;--flare:#FF4318;
+    --display:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace;--r:14px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%;overflow-x:hidden;scroll-behavior:smooth}
-  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  h1,h2,.brand{font-optical-sizing:auto}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   ::selection{background:var(--ultra);color:#fff}
-  a{color:inherit;text-decoration:none}
+  a{color:var(--ultra-deep);text-decoration:none}
+  a:hover{text-decoration:underline}
   :focus-visible{outline:2.5px solid var(--ultra);outline-offset:3px;border-radius:3px}
-  .wrap{width:100%;max-width:1320px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
-  .ico{stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+  .wrap{width:100%;max-width:840px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
   body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
     background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-    background-size:64px 64px;opacity:.16;
-    -webkit-mask-image:radial-gradient(circle at 78% 0%,#000 0%,transparent 60%);mask-image:radial-gradient(circle at 78% 0%,#000 0%,transparent 60%)}
-
-  /* nav (matches the home page) */
-  nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);background:rgba(238,234,225,.72);border-bottom:1px solid transparent;transition:border-color .35s var(--ease),background .35s var(--ease)}
-  nav.stuck{background:rgba(238,234,225,.88);border-color:var(--line)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
-  .brand{font-family:var(--display);font-weight:800;font-size:25px;letter-spacing:-.03em;display:flex;align-items:center;gap:11px}
-  .brand .brandmark{width:38px;height:38px;border-radius:9px;display:block;flex:0 0 auto}
-  .nav-links{display:flex;gap:32px;align-items:center;font-size:15px;font-weight:600}
-  .nav-links a:not(.btn){opacity:.7;transition:opacity .2s}
-  .nav-links a:not(.btn):hover,.nav-links a.here{opacity:1}
-  .nav-links a.here{box-shadow:inset 0 -2px 0 var(--ultra)}
-  .btn{font-family:var(--body);font-weight:700;font-size:15px;border:none;cursor:pointer;padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:9px;line-height:1;transition:transform .22s var(--ease),background .22s,color .22s,box-shadow .22s}
-  .btn-primary{background:var(--ink);color:var(--paper)}
-  .btn-primary:hover{background:var(--ultra);transform:translateY(-2px);box-shadow:0 15px 32px -14px rgba(31,50,255,.6)}
-  .navtog{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--ink);align-items:center;justify-content:center}
-  #mobnav{display:none}
-
-  /* hero */
-  .hero{position:relative;z-index:1;padding:160px 0 88px}
-  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:end}
-  .hero-grid>*{min-width:0}
-  .eyebrow{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ultra-deep);display:inline-flex;align-items:center;gap:10px;margin-bottom:24px}
-  .eyebrow::before{content:"";width:30px;height:2px;background:var(--ultra)}
-  h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,5.4vw,80px);line-height:1;letter-spacing:-.035em}
-  h1 .x{color:var(--ultra)}
-  .lede{margin-top:32px;font-size:clamp(17px,1.4vw,20px);max-width:56ch;color:var(--ink-soft);font-weight:500;line-height:1.6}
-
-  /* at-a-glance spec card (dark ink featured cell) */
-  .spec{background:var(--ink);color:var(--paper-on-dark);border-radius:18px;padding:32px 32px 16px;box-shadow:0 40px 80px -48px rgba(0,0,0,.6)}
-  .spec .k{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(237,234,225,.55);margin-bottom:16px;display:flex;align-items:center;gap:10px}
-  .spec .k .ico{width:16px;height:16px;color:var(--flare)}
-  .spec dl{display:grid;grid-template-columns:auto 1fr;border-top:1px solid rgba(237,234,225,.14)}
-  .spec dt,.spec dd{padding:16px 0;border-bottom:1px solid rgba(237,234,225,.14)}
-  .spec dl>:nth-last-child(-n+2){border-bottom:none}
-  .spec dt{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(237,234,225,.55);padding-right:24px}
-  .spec dd{font-size:15px;line-height:1.5}
-  .spec code{font-family:var(--mono);font-size:13px;color:#8ea2ff}
-
-  /* sections */
-  section{position:relative;z-index:1}
-  .blk{padding:96px 0}
-  .kicker{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ultra-deep);display:flex;align-items:center;gap:12px;margin-bottom:20px}
-  .kicker::before{content:"";width:34px;height:2px;background:var(--ultra)}
-  h2{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.4vw,60px);line-height:.99;letter-spacing:-.035em;max-width:18ch}
-  .sec-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
-  .sec-grid>*{min-width:0}
-
-  /* editorial index rows: how it works */
-  .rows{list-style:none;border-top:1.5px solid var(--ink)}
-  .rows li{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:24px 0;border-bottom:1px solid var(--line)}
-  .rows .n{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--ultra-deep);letter-spacing:.08em;padding-top:4px}
-  .rows p{color:var(--ink-soft);font-size:17px;line-height:1.6}
-  .rows b{display:block;font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.02em;color:var(--ink);margin-bottom:4px}
-
-  /* hairline grid: permissions */
-  .perm-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:48px;flex-wrap:wrap}
-  .perms{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
-  .perm{padding:32px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(238,234,225,.6);transition:background .45s var(--ease)}
-  .perm:hover{background:var(--paper-2)}
-  .perm code{display:inline-block;font-family:var(--mono);font-size:13px;font-weight:600;color:var(--ultra-deep);background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:4px 10px;margin-bottom:20px}
-  .perm p{color:var(--ink-soft);font-size:16px;line-height:1.6}
-
-  /* tinted band: data & control */
-  .band{background:var(--paper-2);border-block:1px solid var(--line)}
-  .band p{font-size:clamp(17px,1.4vw,20px);color:var(--ink-soft);line-height:1.65;max-width:62ch}
-  .band a,.contact a{color:var(--ultra-deep);font-weight:700;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px}
-  .band a:hover,.contact a:hover{color:var(--ultra)}
-  .contact{padding-block:64px 96px;font-size:17px;color:var(--ink-soft)}
-
-  /* footer (matches the home page) */
-  footer{border-top:1px solid var(--line);position:relative;z-index:1;padding:44px 0 40px}
-  .foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-  .foot-links{display:flex;gap:26px;font-size:14px;font-weight:600;flex-wrap:wrap}
-  .foot-links a{opacity:.7;transition:opacity .2s}.foot-links a:hover{opacity:1}
-  .foot-legal{font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
-  .foot-legal a{text-decoration:underline;text-underline-offset:3px}
-
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-  .reveal.in{opacity:1;transform:none}
-
-  @media(max-width:1100px){.nav-links{gap:22px}}
-  @media(max-width:980px){
-    .hero-grid,.sec-grid{grid-template-columns:1fr;gap:40px}
-    .perms{grid-template-columns:1fr}
-  }
-  @media(max-width:900px){
-    .nav-links{display:none}
-    .navtog{display:inline-flex}
-    #mobnav{display:block;position:fixed;top:74px;left:0;right:0;z-index:59;background:rgba(238,234,225,.97);backdrop-filter:blur(10px);border-bottom:1.5px solid var(--ink);transform:translateY(-14px);opacity:0;pointer-events:none;transition:transform .28s var(--ease),opacity .28s;padding:8px 0 16px}
-    #mobnav.open{transform:none;opacity:1;pointer-events:auto}
-    #mobnav a{display:block;padding:14px clamp(18px,4vw,40px);font-weight:600;font-size:17px;border-bottom:1px solid var(--line)}
-    #mobnav a:last-child{border-bottom:none}
-  }
-  @media(max-width:560px){
-    body{font-size:17px}
-    .hero{padding:120px 0 64px}
-    .blk{padding:72px 0}
-    .spec{padding:24px 24px 8px}
-    .spec dl{grid-template-columns:1fr}
-    .spec dt{padding-bottom:0;border-bottom:none}
-    .spec dd{padding-top:6px}
-    .spec dl>:nth-last-child(2){border-bottom:none}
-    .rows li{grid-template-columns:40px 1fr}
-    .perm{padding:24px}
-  }
-  @media(prefers-reduced-motion:reduce){*{transition:none!important}.reveal{opacity:1;transform:none}}
+    background-size:64px 64px;opacity:.14;
+    -webkit-mask-image:radial-gradient(circle at 80% 0%,#000 0%,transparent 58%);
+    mask-image:radial-gradient(circle at 80% 0%,#000 0%,transparent 58%)}
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);background:rgba(238,234,225,.82);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{font-family:var(--display);font-weight:800;font-size:23px;letter-spacing:-.02em;display:flex;align-items:center;gap:11px;color:var(--ink)}
+  .nav-links{display:flex;gap:26px;align-items:center;font-size:15px;font-weight:600}
+  .nav-links a{color:var(--ink);opacity:.7}
+  .nav-links a:hover{opacity:1;text-decoration:none}
+  main{position:relative;z-index:1;padding-top:118px;padding-bottom:96px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ultra);font-weight:600;margin-bottom:14px}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(38px,7vw,60px);line-height:1.02;letter-spacing:-.03em;margin-bottom:10px}
+  .eff{font-family:var(--mono);font-size:13px;color:var(--ink-soft);margin-bottom:42px}
+  .lede{font-size:19px;color:var(--ink-soft);margin-bottom:40px;line-height:1.6}
+  section{margin-bottom:34px;position:relative}
+  h2{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.01em;margin-bottom:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{font-family:var(--mono);font-size:14px;color:var(--ultra);font-weight:600;flex-shrink:0;min-width:26px}
+  h3{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em;margin:18px 0 8px}
+  p{margin-bottom:12px;color:var(--ink-soft)}
+  p strong{color:var(--ink);font-weight:700}
+  ul,ol{list-style:none;margin:12px 0}
+  li{position:relative;padding-left:22px;margin-bottom:9px;color:var(--ink-soft)}
+  li::before{content:"";position:absolute;left:3px;top:11px;width:7px;height:7px;background:var(--ultra);border-radius:2px}
+  li strong{color:var(--ink);font-weight:700}
+  ol{counter-reset:step}
+  ol li{counter-increment:step;padding-left:30px}
+  ol li::before{content:counter(step);font-family:var(--mono);font-size:12px;font-weight:600;color:#fff;background:var(--ultra);width:19px;height:19px;border-radius:5px;top:6px;left:0;display:flex;align-items:center;justify-content:center}
+  code{font-family:var(--mono);font-size:.88em;color:var(--ultra-deep);background:var(--paper-2);padding:2px 6px;border-radius:5px}
+  .card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;margin:18px 0}
+  .card p:last-child{margin-bottom:0}
+  .mail{font-family:var(--mono);font-weight:600}
+  footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:32px 0;font-family:var(--mono);font-size:13px;color:var(--ink-soft);text-align:center}
+  footer a{color:var(--ink-soft)}
+@media(max-width:480px){.nav-links{flex-wrap:wrap;justify-content:flex-end;gap:2px 14px;font-size:13px;max-width:62%;text-align:right}.brand{font-size:20px;gap:9px}.brandmark{width:32px;height:32px}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://belken.ai/#organization","name":"Belken","legalName":"BelKen Ventures Inc","url":"https://belken.ai/","logo":"https://belken.ai/favicon-512.png","email":"info@belken.ai","description":"Belken builds and runs autonomous operations for local service businesses. ARIA is Belken's AI phone assistant for service businesses: it answers every call 24/7, books jobs to your calendar, texts missed callers back, and calls past customers to rebook them."}</script>
 </head>
 <body>
 
-<nav id="nav"><div class="wrap nav-in">
-  <a class="brand" href="/"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">Belken</a>
-  <div class="nav-links">
-    <a href="/">Home</a><a href="/openclaw">OpenClaw</a><a href="/aria">ARIA</a><a class="here" href="/integrations/social/tiktok" aria-current="page">Belken Studio</a><a href="/docs">Docs</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
-  </div>
-  <button class="navtog" id="navtog" aria-label="Open menu" aria-expanded="false" aria-controls="mobnav">
-    <svg class="ico" viewBox="0 0 24 24" width="26" height="26"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-  </button>
-</div>
-<div id="mobnav">
-  <a href="/">Home</a><a href="/openclaw">OpenClaw</a><a href="/aria">ARIA</a><a href="/integrations/social/tiktok" aria-current="page">Belken Studio</a><a href="/docs">Docs</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
-</div></nav>
-
-<header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <p class="eyebrow">Integration</p>
-      <h1>Belken Studio <span class="x">&times;</span> TikTok</h1>
-      <p class="lede">
-        Belken Studio is an AI video creation and publishing platform by Belken. Our TikTok integration lets an authenticated
-        user securely connect their own TikTok account and publish or schedule video content to it directly
-        from the Belken Studio dashboard. We never post without the account owner&rsquo;s action and authorization.
-      </p>
+<nav>
+  <div class="wrap nav-in">
+    <a href="/" class="brand"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">Belken</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/data-deletion">Data Deletion</a>
     </div>
-    <aside class="spec" aria-label="Integration at a glance">
-      <p class="k"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg>At a glance</p>
-      <dl>
-        <dt>Sign-in</dt><dd>TikTok&rsquo;s official Login Kit / OAuth screen</dd>
-        <dt>Posting</dt><dd>TikTok Content Posting API, to the user&rsquo;s own account</dd>
-        <dt>Scopes</dt><dd><code>user.info.basic</code> &middot; <code>video.upload</code> &middot; <code>video.publish</code></dd>
-        <dt>Control</dt><dd>Nothing is sent to TikTok until the user confirms. Revoke access anytime.</dd>
-      </dl>
-    </aside>
   </div>
-</header>
+</nav>
 
-<section class="blk" style="padding-top:0">
-  <div class="wrap sec-grid">
-    <div class="reveal">
-      <p class="kicker">End to end</p>
-      <h2>How it works (end&#8209;to&#8209;end)</h2>
-    </div>
-    <ol class="rows reveal">
-      <li><span class="n">01</span><p><b>Connect:</b> The user clicks &ldquo;Connect TikTok&rdquo; in the Belken Studio dashboard and is sent to TikTok&rsquo;s official Login Kit / OAuth screen, where they review and approve the requested permissions.</p></li>
-      <li><span class="n">02</span><p><b>Authorize:</b> TikTok returns an access token scoped only to the permissions the user approved. Belken Studio stores this token securely and uses it solely on the user&rsquo;s behalf.</p></li>
-      <li><span class="n">03</span><p><b>Create &amp; review:</b> The user uploads or selects a video and writes a caption inside Belken Studio. Nothing is sent to TikTok until the user confirms.</p></li>
-      <li><span class="n">04</span><p><b>Publish or schedule:</b> On the user&rsquo;s command, Belken Studio uses the TikTok Content Posting API to upload the video to the user&rsquo;s own TikTok account, immediately or at a scheduled time the user chooses.</p></li>
-      <li><span class="n">05</span><p><b>Disconnect anytime:</b> The user can revoke access at any time from the Belken Studio dashboard or from their TikTok account settings, which immediately ends Belken Studio&rsquo;s access.</p></li>
-    </ol>
-  </div>
-</section>
-
-<section class="blk" style="padding-top:0">
+<main>
   <div class="wrap">
-    <div class="perm-head reveal">
-      <div>
-        <p class="kicker">Scopes</p>
-        <h2>Permissions we request, and why</h2>
-      </div>
-    </div>
-    <div class="perms reveal">
-      <div class="perm">
-        <code>user.info.basic</code>
-        <p>Read the connected account&rsquo;s basic profile (display name and avatar) so the user can confirm which TikTok account they are posting to.</p>
-      </div>
-      <div class="perm">
-        <code>video.upload</code>
-        <p>Upload a video the user created into their own TikTok account as a draft for the user to review and post.</p>
-      </div>
-      <div class="perm">
-        <code>video.publish</code>
-        <p>Publish or schedule the user&rsquo;s video to their own TikTok account when the user explicitly chooses to post.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <p class="eyebrow">Integration</p>
+    <h1>Belken Studio &times; TikTok</h1>
+    <p class="eff">Last updated: September 25, 2026</p>
 
-<section class="band blk">
-  <div class="wrap sec-grid">
-    <div class="reveal">
-      <p class="kicker">Privacy</p>
-      <h2>Your data &amp; control</h2>
-    </div>
-    <div class="reveal">
+    <p class="lede">
+      Belken Studio is an AI video creation and publishing platform by Belken. Our TikTok integration lets an authenticated
+      user securely connect their own TikTok account and publish or schedule video content to it directly
+      from the Belken Studio dashboard. We never post without the account owner&rsquo;s action and authorization.
+    </p>
+
+    <section>
+      <h2><span class="n">1</span>How it works (end&#8209;to&#8209;end)</h2>
+      <ol>
+        <li><strong>Connect:</strong> The user clicks &ldquo;Connect TikTok&rdquo; in the Belken Studio dashboard and is sent to TikTok&rsquo;s official Login Kit / OAuth screen, where they review and approve the requested permissions.</li>
+        <li><strong>Authorize:</strong> TikTok returns an access token scoped only to the permissions the user approved. Belken Studio stores this token securely and uses it solely on the user&rsquo;s behalf.</li>
+        <li><strong>Create &amp; review:</strong> The user uploads or selects a video and writes a caption inside Belken Studio. Nothing is sent to TikTok until the user confirms.</li>
+        <li><strong>Publish or schedule:</strong> On the user&rsquo;s command, Belken Studio uses the TikTok Content Posting API to upload the video to the user&rsquo;s own TikTok account, immediately or at a scheduled time the user chooses.</li>
+        <li><strong>Disconnect anytime:</strong> The user can revoke access at any time from the Belken Studio dashboard or from their TikTok account settings, which immediately ends Belken Studio&rsquo;s access.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2><span class="n">2</span>Permissions we request, and why</h2>
+      <ul>
+        <li><code>user.info.basic</code>: Read the connected account&rsquo;s basic profile (display name and avatar) so the user can confirm which TikTok account they are posting to.</li>
+        <li><code>video.upload</code>: Upload a video the user created into their own TikTok account as a draft for the user to review and post.</li>
+        <li><code>video.publish</code>: Publish or schedule the user&rsquo;s video to their own TikTok account when the user explicitly chooses to post.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="n">3</span>Your data &amp; control</h2>
       <p>
         Belken Studio accesses TikTok data only to provide the features above. We do not sell TikTok data, and we
         do not share it with third parties except the infrastructure providers required to operate the service.
@@ -244,31 +128,14 @@
         Your use of the integration is governed by our
         <a href="/terms">Terms of Service</a>.
       </p>
-    </div>
+    </section>
+
+    <p>Questions about this integration? Email <a href="mailto:info@belken.ai">info@belken.ai</a>.</p>
   </div>
-</section>
+</main>
 
-<div class="wrap contact">
-  <p>Questions about this integration? Email <a href="mailto:info@belken.ai">info@belken.ai</a>.</p>
-</div>
-
-<footer><div class="wrap">
-  <div class="foot-in">
-    <a class="brand" href="/"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">Belken</a>
-    <div class="foot-links">
-      <a href="/">Home</a><a href="/openclaw">OpenClaw</a><a href="/aria">ARIA</a><a href="/integrations/social/tiktok">Belken Studio</a><a href="/docs">Docs</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/data-deletion">Data Deletion</a>
-    </div>
-    <div class="foot-legal">&copy; 2026 Belken Ventures &middot; <a href="https://belkenai.com">belkenai.com</a></div>
-  </div>
-</div></footer>
-
-<script>
-  var nav=document.getElementById('nav');
-  addEventListener('scroll',function(){nav.classList.toggle('stuck',scrollY>20)},{passive:true});
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
-  var navtog=document.getElementById('navtog'),mobnav=document.getElementById('mobnav');
-  navtog.addEventListener('click',function(){var o=mobnav.classList.toggle('open');navtog.setAttribute('aria-expanded',o?'true':'false')});
-</script>
+<footer>
+  <div class="wrap">&copy; 2026 BelKen Ventures Inc &middot; <a href="https://belkenai.com">belkenai.com</a></div>
+</footer>
 </body>
 </html>
