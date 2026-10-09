@@ -86,7 +86,7 @@ h1 .underdraw{position:absolute;left:0;right:0;bottom:.02em;height:.1em;backgrou
 
 .phone{position:relative;justify-self:center;width:min(300px,78vw);aspect-ratio:9/19.5;border-radius:34px;background:var(--ink);padding:10px;box-shadow:0 44px 90px -42px rgba(0,0,0,.6)}
 .phone-screen{position:relative;width:100%;height:100%;border-radius:26px;overflow:hidden;background:#000}
-.phone-screen img{width:100%;height:100%;object-fit:cover}
+.phone-screen img{width:100%;height:100%;object-fit:contain;object-position:center}
 .phone .pill{position:absolute;top:14px;left:14px;z-index:2;display:inline-flex;align-items:center;gap:6px;background:rgba(18,17,16,.72);backdrop-filter:blur(6px);color:var(--paper-on-dark);font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.03em;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.14)}
 .phone .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--flare)}
 .phone .cap{position:absolute;left:50%;bottom:36px;transform:translateX(-50%);z-index:2;font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:.01em;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.7);white-space:nowrap}
@@ -108,8 +108,8 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,4.2vw,54px);l
 .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .flow.four{grid-template-columns:repeat(4,1fr)}
 .fcard{border:1.5px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper);display:flex;flex-direction:column}
-.fcard .shot{background:var(--ink);border-bottom:1.5px solid var(--line);aspect-ratio:4/3;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.fcard .shot img{width:100%;height:100%;object-fit:cover}
+.fcard .shot{background:var(--ink);border-bottom:1.5px solid var(--line);aspect-ratio:5/6;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.fcard .shot img{width:100%;height:100%;object-fit:contain;object-position:center}
 .fcard .body{padding:20px 20px 24px}
 .fcard .step-n{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--ultra-deep);margin-bottom:9px}
 .fcard h4{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.02em;margin-bottom:7px;line-height:1.15}
@@ -126,8 +126,8 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,4.2vw,54px);l
 .band ul{margin-top:22px;display:flex;flex-direction:column;gap:12px}
 .band li{list-style:none;display:flex;gap:11px;align-items:flex-start;font-size:16px;font-weight:500}
 .band li .ico{width:18px;height:18px;color:var(--ultra);margin-top:3px;flex:0 0 auto}
-.band-shot{justify-self:center;width:min(280px,72vw);aspect-ratio:9/16;border-radius:22px;overflow:hidden;border:1.5px solid var(--line);background:var(--ink)}
-.band-shot img{width:100%;height:100%;object-fit:cover}
+.band-shot{justify-self:center;width:min(300px,76vw);aspect-ratio:5/6;border-radius:22px;overflow:hidden;border:1.5px solid var(--line);background:var(--ink);display:flex;align-items:center;justify-content:center}
+.band-shot img{width:100%;height:100%;object-fit:contain;object-position:center}
 
 .cta-final{text-align:center;max-width:720px;margin:0 auto}
 .cta-final h2{color:var(--paper-on-dark)}
@@ -184,6 +184,7 @@ footer{border-top:1.5px solid var(--ink);padding:52px 0 64px;position:relative;z
     <div class="nav-links">
       <a href="#flow">How it works</a>
       <a href="#get">What you get</a>
+      <a href="#tiktok">Posting to TikTok</a>
       <a href="#faq">FAQ</a>
       <a class="btn btn-ultra" href="https://studio.belken.ai">Start in Studio</a>
     </div>
@@ -194,6 +195,7 @@ footer{border-top:1.5px solid var(--ink);padding:52px 0 64px;position:relative;z
   <div id="mobnav">
     <a href="#flow">How it works</a>
     <a href="#get">What you get</a>
+    <a href="#tiktok">Posting to TikTok</a>
     <a href="#faq">FAQ</a>
     <a class="btn btn-ultra" href="https://studio.belken.ai">Start in Studio</a>
   </div>
@@ -229,19 +231,19 @@ footer{border-top:1.5px solid var(--ink);padding:52px 0 64px;position:relative;z
     </div>
     <div class="flow four rv">
       <div class="fcard">
-        <div class="shot"><img src="/studio/img/step-paste.jpg" alt="Studio text prompt card with a script pasted in" width="820" height="615" loading="lazy" /></div>
+        <div class="shot"><img src="/studio/img/step-paste.jpg" alt="Studio text prompt card with a script pasted in" width="820" height="987" loading="lazy" /></div>
         <div class="body"><div class="step-n">01 · Paste</div><h4>Paste your script</h4><p>Drop in the words you want said. A hook, a product line, a founder note. Whatever you would say to camera.</p></div>
       </div>
       <div class="fcard">
-        <div class="shot"><img src="/studio/img/step-avatar.jpg" alt="Studio avatar selector showing a locked identity avatar and a stock presenter" width="820" height="615" loading="lazy" /></div>
+        <div class="shot"><img src="/studio/img/step-avatar.jpg" alt="Studio avatar selector showing a locked identity avatar and a stock presenter" width="820" height="987" loading="lazy" /></div>
         <div class="body"><div class="step-n">02 · Pick</div><h4>Pick your avatar</h4><p>Choose the face that delivers it. Use your own locked avatar or a stock presenter. The look stays the same across every video.</p></div>
       </div>
       <div class="fcard">
-        <div class="shot"><img src="/studio/img/step-generate.jpg" alt="Studio generate card showing persona, script ready, captions burned in, and a Generate button" width="820" height="615" loading="lazy" /></div>
+        <div class="shot"><img src="/studio/img/step-generate.jpg" alt="Studio generate card showing persona, script ready, captions burned in, and a Generate button" width="820" height="987" loading="lazy" /></div>
         <div class="body"><div class="step-n">03 · Generate</div><h4>Hit one button</h4><p>Pick the format, confirm captions are on, and press Generate. Studio renders the talking avatar and burns the captions in.</p></div>
       </div>
       <div class="fcard">
-        <div class="shot"><img src="/studio/img/result-head.jpg" alt="A finished vertical ad frame with an AI avatar and a burned-in caption" width="820" height="615" loading="lazy" /></div>
+        <div class="shot"><img src="/studio/img/result-head.jpg" alt="A finished vertical ad frame with an AI avatar and a burned-in caption" width="620" height="1102" loading="lazy" /></div>
         <div class="body"><div class="step-n">04 · Post</div><h4>Get a ready ad</h4><p>Out comes a vertical video with captions already on screen. Download it, or connect an account and post it to YouTube or TikTok.</p></div>
       </div>
     </div>
@@ -277,7 +279,24 @@ footer{border-top:1.5px solid var(--ink);padding:52px 0 64px;position:relative;z
         <li><svg class="ico" viewBox="0 0 24 24" style="color:#8ea2ff"><path d="M4 12l5 5L20 6"/></svg> The person on screen is an AI avatar, labeled on the video.</li>
       </ul>
     </div>
-    <div class="band-shot"><img src="/studio/img/step-avatar.jpg" alt="Studio avatar selector with a locked identity avatar chosen" width="820" height="1040" loading="lazy" /></div>
+    <div class="band-shot"><img src="/studio/img/step-avatar.jpg" alt="Studio avatar selector with a locked identity avatar chosen" width="820" height="987" loading="lazy" /></div>
+  </div>
+</section>
+
+<section id="tiktok" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// Posting to TikTok</p>
+      <h2>Connect your TikTok account and post from Studio.</h2>
+      <p class="sec-sub">Belken Studio makes short-form video, whether you generate it from a script with an avatar or turn your own long footage into clips, and it can publish the videos you make straight to your own TikTok account. Here is exactly how that connection works.</p>
+    </div>
+    <ul class="get rv">
+      <li><svg class="ico" viewBox="0 0 24 24" style="color:var(--ultra)"><path d="M4 12l5 5L20 6"/></svg> You connect your own TikTok account from inside Studio, and you can disconnect it at any time.</li>
+      <li><svg class="ico" viewBox="0 0 24 24" style="color:var(--ultra)"><path d="M4 12l5 5L20 6"/></svg> Studio posts only the videos you choose, to the account you linked. The connection is used to publish on your behalf and nothing else.</li>
+      <li><svg class="ico" viewBox="0 0 24 24" style="color:var(--ultra)"><path d="M4 12l5 5L20 6"/></svg> Before a video posts, Studio shows your TikTok creator info and TikTok's privacy and visibility options, and you confirm who can see it.</li>
+      <li><svg class="ico" viewBox="0 0 24 24" style="color:var(--ultra)"><path d="M4 12l5 5L20 6"/></svg> Videos made with an AI avatar are labeled as AI-generated content when they post.</li>
+      <li><svg class="ico" viewBox="0 0 24 24" style="color:var(--ultra)"><path d="M4 12l5 5L20 6"/></svg> Nothing leaves Studio without you reviewing it first. You stay in control of every post.</li>
+    </ul>
   </div>
 </section>
 
@@ -321,6 +340,12 @@ footer{border-top:1.5px solid var(--ink);padding:52px 0 64px;position:relative;z
         <h5>Start</h5>
         <a href="https://studio.belken.ai">Start in Studio</a>
         <a href="https://belken.ai">belken.ai</a>
+      </div>
+      <div class="fcol">
+        <h5>Legal</h5>
+        <a href="https://belken.ai/privacy">Privacy Policy</a>
+        <a href="https://belken.ai/terms">Terms of Service</a>
+        <a href="https://belken.ai/data-deletion">Data Deletion</a>
       </div>
       <div class="fcol">
         <h5>Contact</h5>
