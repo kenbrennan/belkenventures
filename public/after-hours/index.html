@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>After-hours phone line for local trades, done for you | Belken</title>
+<meta name="description" content="It is 8 PM and your phone is ringing. We answer the calls your crew cannot get to, take the problem, address, and callback number, and hand them to your team for the morning. We set it up and run it for you. Call the demo and play the customer." />
+<link rel="canonical" href="https://belken.ai/after-hours" />
+<meta name="theme-color" content="#EEEAE1" />
+<link rel="icon" href="/favicon.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://belken.ai/after-hours" />
+<meta property="og:site_name" content="Belken" />
+<meta property="og:title" content="After-hours phone line for local trades, done for you | Belken" />
+<meta property="og:description" content="It is 8 PM and your phone is ringing. We answer the calls your crew cannot get to, take the problem, address, and callback number, and hand them to your team for the morning. We set it up and run it for you. Call the demo and play the customer." />
+<meta property="og:image" content="https://belken.ai/favicon-512.png" />
+<meta name="twitter:card" content="summary" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --paper:#EEEAE1;--paper-2:#E4DFD3;--ink:#121110;--ink-soft:#3a382f;--line:#cdc6b6;
+  --ultra:#1F32FF;--ultra-deep:#0e1bb0;--flare:#FF4318;--paper-on-dark:#EDEAE1;
+  --display:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace;--r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%}
+::selection{background:var(--ultra);color:#fff}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2.5px solid var(--ultra);outline-offset:3px;border-radius:3px}
+.wrap{width:100%;max-width:1240px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+.ico{stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;opacity:.16;-webkit-mask-image:radial-gradient(circle at 72% 2%,#000 0%,transparent 62%);mask-image:radial-gradient(circle at 72% 2%,#000 0%,transparent 62%)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:.35s}
+nav.stuck{background:rgba(238,234,225,.82);border-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;display:flex;align-items:center;gap:9px}
+.brand .brandmark{width:36px;height:36px;border-radius:9px;display:block;flex:0 0 auto}
+.brand .sub{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--ultra-deep);letter-spacing:.04em}
+.brand .slash{color:var(--line);font-weight:400}
+.nav-links{display:flex;gap:28px;align-items:center;font-size:15px;font-weight:600}
+.nav-links a:not(.btn){opacity:.7;transition:.2s}
+.nav-links a:not(.btn):hover{opacity:1}
+.btn{font-family:var(--body);font-weight:700;font-size:15px;border:none;cursor:pointer;padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:9px;transition:transform .18s cubic-bezier(.2,.7,.2,1),background .22s,color .22s;line-height:1}
+.btn-primary{background:var(--ink);color:var(--paper)}
+.btn-primary:hover{background:var(--ultra)}
+.btn-call{background:var(--ultra);color:#fff}
+.btn-call:hover{background:var(--ultra-deep)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn .arr{transition:transform .22s cubic-bezier(.2,.7,.2,1)}
+.btn:hover .arr{transform:translateX(4px)}
+.navtog{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--ink)}
+#mobnav{display:none}
+@media(max-width:860px){
+  .nav-links{display:none}
+  .navtog{display:inline-flex}
+  #mobnav{display:block;position:fixed;top:72px;left:0;right:0;z-index:59;background:rgba(238,234,225,.97);backdrop-filter:blur(10px);
+    border-bottom:1.5px solid var(--ink);transform:translateY(-14px);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.16,1,.3,1),opacity .28s;padding:10px 0 16px}
+  #mobnav.open{transform:none;opacity:1;pointer-events:auto}
+  #mobnav a{display:block;padding:13px clamp(18px,4vw,40px);font-weight:600;font-size:17px;color:var(--ink);border-bottom:1px solid var(--line)}
+  #mobnav a:last-child{border-bottom:none}
+  #mobnav a.btn{margin:14px clamp(18px,4vw,40px) 2px;border-radius:999px;justify-content:center;color:#fff}
+}
+
+.hero{position:relative;z-index:1;padding:150px 0 72px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+.hero-grid>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ultra-deep);display:inline-flex;align-items:center;gap:10px;margin-bottom:26px}
+.eyebrow::before{content:"";width:30px;height:2px;background:var(--ultra)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,4.2vw,58px);line-height:1.04;letter-spacing:-.035em}
+h1 .hl{color:var(--ultra);position:relative;white-space:nowrap}
+h1 .underdraw{position:absolute;left:0;right:0;bottom:.02em;height:.1em;background:var(--flare);border-radius:2px;z-index:-1}
+.lede{margin-top:26px;font-size:clamp(17px,1.5vw,20px);max-width:46ch;color:var(--ink-soft);font-weight:500}
+.hero-cta{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.tel-num{font-family:var(--mono);font-weight:600}
+.micro{margin-top:20px;font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);letter-spacing:.02em}
+
+.scene{background:var(--ink);border-radius:18px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.55)}
+.scene-bar{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.1);font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:rgba(237,234,225,.62)}
+.scene-bar .lt{width:11px;height:11px;border-radius:50%}
+.lt.r{background:#ff5f57}.lt.y{background:#febc2e}.lt.g{background:#28c840}
+.scene-bar .ttl{margin-left:8px}
+.scene-bar .live{margin-left:auto;display:flex;align-items:center;gap:7px;color:#56e08a}
+.scene-bar .live::before{content:"";width:7px;height:7px;border-radius:50%;background:#56e08a;animation:pulse 1.6s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 7px rgba(86,224,138,0)}100%{box-shadow:0 0 0 0 rgba(86,224,138,0)}}
+.chat{padding:20px 18px;display:flex;flex-direction:column;gap:11px;font-size:14.5px}
+.bub{max-width:84%;padding:11px 15px;border-radius:16px;line-height:1.42;opacity:0;animation:pop .5s ease forwards}
+.bub.them{background:rgba(255,255,255,.08);color:var(--paper-on-dark);border-top-left-radius:5px;align-self:flex-start}
+.bub.line{background:var(--ultra);color:#fff;border-top-right-radius:5px;align-self:flex-end}
+.bub.b1{animation-delay:.15s}.bub.b2{animation-delay:.8s}.bub.b3{animation-delay:1.5s}.bub.b4{animation-delay:2.2s}
+.booked{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:#7ff0a8;padding:2px 4px;opacity:0;animation:pop .5s 3s ease forwards}
+.booked .ico{width:14px;height:14px;color:#7ff0a8}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+section{position:relative;z-index:1}
+.sec{padding:94px 0}
+.sec-head{text-align:center;max-width:780px;margin:0 auto 52px}
+.sec-kick{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ultra-deep);margin-bottom:14px}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,4.2vw,54px);line-height:1.0;letter-spacing:-.03em}
+.sec-sub{margin-top:16px;color:var(--ink-soft);font-weight:500;font-size:17px}
+
+.dark{background:var(--ink);color:var(--paper-on-dark);position:relative;overflow:hidden}
+.dark::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:60px 60px;-webkit-mask-image:radial-gradient(circle at 85% 0%,#000,transparent 65%);mask-image:radial-gradient(circle at 85% 0%,#000,transparent 65%)}
+.dark .wrap{position:relative;z-index:1}
+.dark .sec-kick{color:#8ea2ff}
+.dark h2{color:var(--paper-on-dark)}
+.dark .sec-sub{color:rgba(237,234,225,.66)}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:8px}
+.step{border-top:2px solid rgba(237,234,225,.3);padding-top:24px}
+.step .num{font-family:var(--mono);font-size:13px;color:#8ea2ff;font-weight:600;margin-bottom:10px}
+.step h4{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.02em;margin-bottom:8px;color:var(--paper-on-dark)}
+.step p{font-size:14.8px;color:rgba(237,234,225,.64);line-height:1.5}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.vs{border:1.5px solid var(--ink);border-radius:var(--r);padding:34px 32px;background:var(--paper)}
+.vs.them{opacity:.92}
+.vs.us{background:var(--ink);color:var(--paper-on-dark);border-color:var(--ink)}
+.vs .tag{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;margin-bottom:14px;display:inline-block}
+.vs.them .tag{color:var(--ink-soft)}
+.vs.us .tag{color:#8ea2ff}
+.vs h3{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.02em;margin-bottom:16px;line-height:1.1}
+.vs ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.vs li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;line-height:1.5}
+.vs li .ico{width:17px;height:17px;margin-top:3px;flex:0 0 auto}
+.vs.them li .ico{color:var(--ink-soft)}
+.vs.us li{color:rgba(237,234,225,.82)}
+.vs.us li .ico{color:#8ea2ff}
+
+.get{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 28px;max-width:960px;margin:0 auto}
+.get li{list-style:none;display:flex;gap:13px;align-items:flex-start;font-size:16.5px;font-weight:500;line-height:1.5;padding:4px 0}
+.get li .ico{width:20px;height:20px;color:var(--ultra);margin-top:3px;flex:0 0 auto}
+
+.callout{max-width:820px;margin:0 auto;border:1.5px solid var(--ultra);border-radius:18px;background:rgba(31,50,255,.05);padding:clamp(26px,4vw,40px);text-align:center}
+.callout .ok{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ultra-deep);margin-bottom:12px}
+.callout h3{font-family:var(--display);font-weight:800;font-size:clamp(24px,2.6vw,34px);letter-spacing:-.02em;line-height:1.1}
+.callout p{margin:14px auto 0;max-width:56ch;color:var(--ink-soft);font-size:16.5px}
+.callout .hero-cta{justify-content:center;margin-top:26px}
+
+.cal-frame{border:1.5px solid var(--ink);border-radius:18px;overflow:hidden;max-width:820px;margin:34px auto 0;background:var(--paper)}
+
+.faq{max-width:880px;margin:0 auto;border-top:1.5px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 4px;font-family:var(--display);font-weight:700;font-size:clamp(18px,1.6vw,22px);letter-spacing:-.02em;line-height:1.2}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ico{width:20px;height:20px;color:var(--ultra);transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.faq details[open] summary .ico{transform:rotate(45deg)}
+.faq .ans{padding:0 4px 24px;max-width:70ch;color:var(--ink-soft);font-size:16px;line-height:1.6}
+.faq .ans a{color:var(--ultra);font-weight:700}
+
+footer{border-top:1.5px solid var(--ink);padding:52px 0 110px;position:relative;z-index:1}
+.foot-in{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+.foot-brand{max-width:36ch}
+.foot-brand p{font-size:14.5px;color:var(--ink-soft);margin-top:14px}
+.fcol h5{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px}
+.fcol a{display:block;font-size:15px;font-weight:500;margin-bottom:9px;opacity:.8;transition:.2s}
+.fcol a:hover{opacity:1;color:var(--ultra)}
+.foot-base{margin-top:42px;padding-top:22px;border-top:1px solid var(--line);text-align:center;font-family:var(--mono);font-size:12px;color:var(--ink-soft);line-height:1.7}
+
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(18,17,16,.96);backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.12)}
+.callbar a{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--ultra);color:#fff;font-weight:700;font-size:17px;padding:15px;border-radius:999px}
+.callbar .sub{display:block;text-align:center;font-family:var(--mono);font-size:10.5px;color:rgba(237,234,225,.55);margin-top:7px;letter-spacing:.02em}
+@media(max-width:860px){.callbar{display:block}}
+
+.rv{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:42px}
+  .scene{max-width:520px}
+  .two{grid-template-columns:1fr}
+  .get{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;gap:30px}
+}
+@media(max-width:560px){
+  body{font-size:17px}
+  .hero{padding:118px 0 48px}
+  h1{font-size:clamp(27px,7.4vw,44px);line-height:1.06}
+  .hero-cta .btn{width:100%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv,.bub,.booked{opacity:1!important;transform:none!important}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://belken.ai/#organization","name":"Belken","legalName":"BelKen Ventures Inc","url":"https://belken.ai/","logo":"https://belken.ai/favicon-512.png","email":"info@belken.ai","description":"Belken sets up and runs an after-hours phone line for local trade businesses. It answers the calls your crew cannot get to, captures the problem, address, and callback number, and hands them to your team."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"We price it per shop after a short setup call. There is no per-minute meter and no long contract. Book a 15-minute setup call and we scope it to your hours and how many after-hours calls you actually get."}},{"@type":"Question","name":"Does it work with my existing number?","acceptedAnswer":{"@type":"Answer","text":"Yes. You keep your number. We answer the calls you cannot get to, after hours or when the crew is slammed, and leave the rest to you. Nothing about your current phone changes."}},{"@type":"Question","name":"What happens on a real emergency?","acceptedAnswer":{"@type":"Answer","text":"You tell us what counts as urgent for your local shop. Those calls get flagged so your on-call person can act on them right away instead of finding out in the morning."}},{"@type":"Question","name":"Is the voice a real person?","acceptedAnswer":{"@type":"Answer","text":"No. It is an AI voice. The demo line is a fictional shop so you can call it and hear exactly how it handles a call without bothering a real business. Play the customer and see for yourself."}},{"@type":"Question","name":"How fast can it be running for my shop?","acceptedAnswer":{"@type":"Answer","text":"It is a short setup, not a drawn-out project. We learn your name, your hours, your service area, and what counts as urgent on one call, then we wire it up and run it. We scope the timing with you on the setup call."}}]}</script>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="https://belken.ai"><img class="brandmark" src="/favicon.svg" alt="Belken" width="36" height="36">BELKEN<span class="slash">/</span><span class="sub">After-hours line</span></a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#vs">Done for you</a>
+      <a href="#get">What you get</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-call" href="tel:+12402624263"><svg class="ico" width="18" height="18" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call the demo</a>
+    </div>
+    <button class="navtog" id="navtog" aria-label="Open menu" aria-expanded="false" aria-controls="mobnav">
+      <svg class="ico" viewBox="0 0 24 24" width="26" height="26"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div id="mobnav">
+    <a href="#how">How it works</a>
+    <a href="#vs">Done for you</a>
+    <a href="#get">What you get</a>
+    <a href="#faq">FAQ</a>
+    <a class="btn btn-call" href="tel:+12402624263">Call the demo (240) 262-4263</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">After-hours answering for local trades · done for you</span>
+      <h1>It is 8 PM and your phone is ringing. <span class="hl">We pick it up.<span class="underdraw"></span></span></h1>
+      <p class="lede">When your crew is off the clock, the calls you miss go to the next shop on the list. Our after-hours line answers in your name, gets the problem, the address, and a callback number, and hands it to your team for the morning. You do not set anything up. We run the whole thing.</p>
+      <div class="hero-cta">
+        <a class="btn btn-call" href="tel:+12402624263"><svg class="ico" width="18" height="18" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call the demo <span class="tel-num">(240) 262-4263</span></a>
+        <a class="btn btn-ghost" href="https://calendly.com/belkenbot/free-30-min-discovery-call">Have us set it up</a>
+      </div>
+      <p class="micro">// Call it and play the customer. Demo line is a fictional shop. The voice is AI.</p>
+    </div>
+
+    <aside class="scene" aria-label="Example after-hours call the line handled">
+      <div class="scene-bar">
+        <span class="lt r"></span><span class="lt y"></span><span class="lt g"></span>
+        <span class="ttl">Demo line · incoming call · 8:04 PM</span>
+        <span class="live">answering</span>
+      </div>
+      <div class="chat">
+        <div class="bub them b1">Hey, my water heater is leaking all over the garage. Is anyone around tonight?</div>
+        <div class="bub line b2">You've reached Miller Services. First, shut the water off at the valve on top of the tank. I've got your address and number, and the on-call tech will call you first thing in the morning. That okay?</div>
+        <div class="bub them b3">Yeah, that works. Thank you.</div>
+        <div class="bub line b4">You're all set. I'm sending the details to the team now.</div>
+        <div class="booked"><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Details captured · problem, address, callback · passed to your team</div>
+      </div>
+    </aside>
+  </div>
+</header>
+
+<section id="how" class="dark sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// How it works</p>
+      <h2>Three things happen while you are off the clock.</h2>
+    </div>
+    <div class="steps rv">
+      <div class="step"><div class="num">01</div><h4>It answers</h4><p>Every call your team cannot get to, nights, weekends, or mid-job, gets picked up in your shop's name. No voicemail. No dead air. No caller left hanging.</p></div>
+      <div class="step"><div class="num">02</div><h4>It gets the details</h4><p>What is wrong, the address, and the best number to call back. The urgent ones get flagged, so a real emergency never looks like a routine message.</p></div>
+      <div class="step"><div class="num">03</div><h4>Your team calls back</h4><p>You get the call and the details, right away for the ones marked urgent, in the morning for the rest. Your crew does what it does best and books the job.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="vs" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// Done for you</p>
+      <h2>Most tools hand you software. We hand you a line that already answers.</h2>
+      <p class="sec-sub">The big platforms sell a DIY voice bot to agencies. We built this for the trades, and we run it for you.</p>
+    </div>
+    <div class="two rv">
+      <div class="vs them">
+        <span class="tag">A DIY voice tool</span>
+        <h3>You build it and babysit it</h3>
+        <ul>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14"/></svg> You sign up and start from a blank setup.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14"/></svg> You write the prompts and decide what it says.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14"/></svg> You wire it into your phone and test it yourself.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14"/></svg> When it answers wrong, that is on you to catch and fix.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14"/></svg> It is one more tool in the stack to manage.</li>
+        </ul>
+      </div>
+      <div class="vs us">
+        <span class="tag">Belken, done for you</span>
+        <h3>We set it up and run it</h3>
+        <ul>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> We set it up around how your shop actually works, on one call.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> We write it in your name and your words.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> We run it, watch it, and tune it over time.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> You get the calls and the details. That is your whole job.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Nothing new for your crew to learn.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="get" class="dark sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// What you get</p>
+      <h2>A line that answers when you cannot.</h2>
+    </div>
+    <ul class="get rv">
+      <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> A line that answers after hours, on weekends, and when the crew is slammed.</li>
+      <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> The problem, the address, and a callback number on every call.</li>
+      <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Urgent calls flagged so you jump on the real emergencies.</li>
+      <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Keep your existing number. We answer when you cannot.</li>
+      <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> No new app for your team to learn. We operate it.</li>
+      <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> A short setup call, then it runs in the background.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="callout rv">
+      <p class="ok">Hear it yourself</p>
+      <h3>Call the demo line and play the customer.</h3>
+      <p>The demo line is a fictional shop and the voice is AI. Call it, describe a problem like a water heater lets go, and hear exactly how it would answer for your business.</p>
+      <div class="hero-cta">
+        <a class="btn btn-call" href="tel:+12402624263"><svg class="ico" width="18" height="18" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call the demo <span class="tel-num">(240) 262-4263</span></a>
+        <a class="btn btn-ghost" href="https://calendly.com/belkenbot/free-30-min-discovery-call">Have us set it up</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="book" class="dark sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// Set it up</p>
+      <h2>Want it running for your shop?</h2>
+      <p class="sec-sub">Book a 15-minute setup call. We learn your hours and what counts as urgent, then we run it for you. No per-minute meter, no long contract.</p>
+    </div>
+    <div class="cal-frame rv">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/belkenbot/free-30-min-discovery-call?hide_gdpr_banner=1" style="min-width:320px;height:680px;"></div>
+    </div>
+    <div class="hero-cta rv" style="justify-content:center;margin-top:24px">
+      <a class="btn btn-call" href="tel:+12402624263"><svg class="ico" width="18" height="18" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Or call the demo first <span class="tel-num">(240) 262-4263</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// Questions</p>
+      <h2>Straight answers.</h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>What does it cost? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">We price it per shop after a short setup call. There is no per-minute meter and no long contract. Book a 15-minute setup call and we scope it to your hours and how many after-hours calls you actually get.</div></details>
+      <details><summary>Does it work with my existing number? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Yes. You keep your number. We answer the calls you cannot get to, after hours or when the crew is slammed, and leave the rest to you. Nothing about your current phone changes.</div></details>
+      <details><summary>What happens on a real emergency? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">You tell us what counts as urgent for your local shop. Those calls get flagged so your on-call person can act on them right away instead of finding out in the morning.</div></details>
+      <details><summary>Is the voice a real person? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">No. It is an AI voice. The demo line is a fictional shop so you can call it and hear exactly how it handles a call without bothering a real business. Play the customer and see for yourself.</div></details>
+      <details><summary>How fast can it be running for my shop? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">It is a short setup, not a drawn-out project. We learn your name, your hours, your service area, and what counts as urgent on one call, then we wire it up and run it. We scope the timing with you on the setup call.</div></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <div class="foot-brand">
+        <a class="brand" href="https://belken.ai"><img class="brandmark" src="/favicon.svg" alt="Belken" width="36" height="36">BELKEN<span class="slash">/</span><span class="sub">After-hours line</span></a>
+        <p>Belken sets up and runs an after-hours phone line for local trades. We answer the calls your crew cannot get to, take the details, and hand them to your team.</p>
+      </div>
+      <div class="fcol">
+        <h5>Start</h5>
+        <a href="tel:+12402624263">Call the demo (240) 262-4263</a>
+        <a href="https://calendly.com/belkenbot/free-30-min-discovery-call">Book a setup call</a>
+        <a href="https://belken.ai">belken.ai</a>
+      </div>
+      <div class="fcol">
+        <h5>By trade</h5>
+        <a href="/after-hours/hvac">HVAC</a>
+        <a href="/after-hours/plumbing">Plumbing</a>
+        <a href="/after-hours/roofing">Roofing</a>
+        <a href="/after-hours">All trades</a>
+      </div>
+      <div class="fcol">
+        <h5>Contact</h5>
+        <a href="mailto:info@belken.ai">info@belken.ai</a>
+      </div>
+    </div>
+    <div class="foot-base">© 2026 Belken · BelKen Ventures Inc · US-based · Demo line is a fictional shop and the voice is AI</div>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a href="tel:+12402624263"><svg class="ico" width="18" height="18" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call the demo · (240) 262-4263</a>
+  <span class="sub">Fictional shop · AI voice · play the customer</span>
+</div>
+
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+  var nav=document.getElementById('nav');
+  addEventListener('scroll',function(){nav.classList.toggle('stuck',scrollY>20)},{passive:true});
+  var tog=document.getElementById('navtog'),mob=document.getElementById('mobnav');
+  tog.addEventListener('click',function(){var o=mob.classList.toggle('open');tog.setAttribute('aria-expanded',o)});
+  mob.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mob.classList.remove('open');tog.setAttribute('aria-expanded',false)})});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+  // per-asset attribution: forward incoming utm_* / click ids onto the booking and
+  // signup links so each paid ad that drives a click is tracked. No params, no change.
+  (function(){
+    var incoming=new URLSearchParams(window.location.search);
+    var keep=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
+    var carry=new URLSearchParams();
+    keep.forEach(function(k){var v=incoming.get(k);if(v)carry.set(k,v)});
+    if(!carry.toString())return;
+    document.querySelectorAll('a[href*="calendly.com"],a[href*="studio.belken.ai"]').forEach(function(a){
+      try{var u=new URL(a.href,window.location.origin);carry.forEach(function(v,k){u.searchParams.set(k,v)});a.href=u.toString()}catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>

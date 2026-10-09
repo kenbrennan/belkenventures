@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Belken Studio: paste a script, pick your avatar, hit one button | Belken</title>
+<meta name="description" content="Belken Studio turns a script into a short-form ad with your avatar and captions burned in. Paste the script, pick your avatar, hit one button. Runs in your browser. Made with an AI avatar." />
+<link rel="canonical" href="https://belken.ai/studio" />
+<meta name="theme-color" content="#EEEAE1" />
+<link rel="icon" href="/favicon.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://belken.ai/studio" />
+<meta property="og:site_name" content="Belken" />
+<meta property="og:title" content="Belken Studio: paste a script, pick your avatar, hit one button" />
+<meta property="og:description" content="Turn a script into a short-form ad with your avatar and captions burned in. Paste the script, pick your avatar, hit one button. Runs in your browser." />
+<meta property="og:image" content="https://belken.ai/favicon-512.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Belken Studio: paste a script, pick your avatar, hit one button" />
+<meta name="twitter:description" content="Turn a script into a short-form ad with your avatar and captions burned in. Runs in your browser. Made with an AI avatar." />
+<meta name="twitter:image" content="https://belken.ai/favicon-512.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --paper:#EEEAE1;--paper-2:#E4DFD3;--ink:#121110;--ink-soft:#3a382f;--line:#cdc6b6;
+  --ultra:#1F32FF;--ultra-deep:#0e1bb0;--flare:#FF4318;--paper-on-dark:#EDEAE1;
+  --display:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace;--r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%}
+::selection{background:var(--ultra);color:#fff}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2.5px solid var(--ultra);outline-offset:3px;border-radius:3px}
+.wrap{width:100%;max-width:1240px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+.ico{stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+img{max-width:100%;display:block}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;opacity:.16;-webkit-mask-image:radial-gradient(circle at 72% 2%,#000 0%,transparent 62%);mask-image:radial-gradient(circle at 72% 2%,#000 0%,transparent 62%)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:.35s}
+nav.stuck{background:rgba(238,234,225,.82);border-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;display:flex;align-items:center;gap:9px}
+.brand .brandmark{width:36px;height:36px;border-radius:9px;display:block;flex:0 0 auto}
+.brand .sub{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--ultra-deep);letter-spacing:.04em}
+.brand .slash{color:var(--line);font-weight:400}
+.nav-links{display:flex;gap:28px;align-items:center;font-size:15px;font-weight:600}
+.nav-links a:not(.btn){opacity:.7;transition:.2s}
+.nav-links a:not(.btn):hover{opacity:1}
+.btn{font-family:var(--body);font-weight:700;font-size:15px;border:none;cursor:pointer;padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:9px;transition:transform .18s cubic-bezier(.2,.7,.2,1),background .22s,color .22s;line-height:1}
+.btn-primary{background:var(--ink);color:var(--paper)}
+.btn-primary:hover{background:var(--ultra)}
+.btn-ultra{background:var(--ultra);color:#fff}
+.btn-ultra:hover{background:var(--ultra-deep)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn .arr{transition:transform .22s cubic-bezier(.2,.7,.2,1)}
+.btn:hover .arr{transform:translateX(4px)}
+.navtog{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--ink)}
+#mobnav{display:none}
+@media(max-width:860px){
+  .nav-links{display:none}
+  .navtog{display:inline-flex}
+  #mobnav{display:block;position:fixed;top:72px;left:0;right:0;z-index:59;background:rgba(238,234,225,.97);backdrop-filter:blur(10px);
+    border-bottom:1.5px solid var(--ink);transform:translateY(-14px);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.16,1,.3,1),opacity .28s;padding:10px 0 16px}
+  #mobnav.open{transform:none;opacity:1;pointer-events:auto}
+  #mobnav a{display:block;padding:13px clamp(18px,4vw,40px);font-weight:600;font-size:17px;color:var(--ink);border-bottom:1px solid var(--line)}
+  #mobnav a:last-child{border-bottom:none}
+  #mobnav a.btn{margin:14px clamp(18px,4vw,40px) 2px;border-radius:999px;justify-content:center;color:#fff}
+}
+
+.hero{position:relative;z-index:1;padding:150px 0 72px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+.hero-grid>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ultra-deep);display:inline-flex;align-items:center;gap:10px;margin-bottom:26px}
+.eyebrow::before{content:"";width:30px;height:2px;background:var(--ultra)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,4.2vw,58px);line-height:1.04;letter-spacing:-.035em}
+h1 .hl{color:var(--ultra);position:relative;white-space:nowrap}
+h1 .underdraw{position:absolute;left:0;right:0;bottom:.02em;height:.1em;background:var(--flare);border-radius:2px;z-index:-1}
+.lede{margin-top:26px;font-size:clamp(17px,1.5vw,20px);max-width:48ch;color:var(--ink-soft);font-weight:500}
+.hero-cta{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.micro{margin-top:20px;font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);letter-spacing:.02em}
+
+.phone{position:relative;justify-self:center;width:min(300px,78vw);aspect-ratio:9/19.5;border-radius:34px;background:var(--ink);padding:10px;box-shadow:0 44px 90px -42px rgba(0,0,0,.6)}
+.phone-screen{position:relative;width:100%;height:100%;border-radius:26px;overflow:hidden;background:#000}
+.phone-screen img{width:100%;height:100%;object-fit:cover}
+.phone .pill{position:absolute;top:14px;left:14px;z-index:2;display:inline-flex;align-items:center;gap:6px;background:rgba(18,17,16,.72);backdrop-filter:blur(6px);color:var(--paper-on-dark);font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.03em;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.14)}
+.phone .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--flare)}
+.phone .cap{position:absolute;left:50%;bottom:36px;transform:translateX(-50%);z-index:2;font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:.01em;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.7);white-space:nowrap}
+
+section{position:relative;z-index:1}
+.sec{padding:94px 0}
+.sec-head{text-align:center;max-width:800px;margin:0 auto 56px}
+.sec-kick{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ultra-deep);margin-bottom:14px}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,4.2vw,54px);line-height:1.0;letter-spacing:-.03em}
+.sec-sub{margin-top:16px;color:var(--ink-soft);font-weight:500;font-size:17px;max-width:60ch;margin-inline:auto}
+
+.dark{background:var(--ink);color:var(--paper-on-dark);position:relative;overflow:hidden}
+.dark::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:60px 60px;-webkit-mask-image:radial-gradient(circle at 85% 0%,#000,transparent 65%);mask-image:radial-gradient(circle at 85% 0%,#000,transparent 65%)}
+.dark .wrap{position:relative;z-index:1}
+.dark .sec-kick{color:#8ea2ff}
+.dark h2{color:var(--paper-on-dark)}
+.dark .sec-sub{color:rgba(237,234,225,.66)}
+
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.flow.four{grid-template-columns:repeat(4,1fr)}
+.fcard{border:1.5px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper);display:flex;flex-direction:column}
+.fcard .shot{background:var(--ink);border-bottom:1.5px solid var(--line);aspect-ratio:4/3;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.fcard .shot img{width:100%;height:100%;object-fit:cover}
+.fcard .body{padding:20px 20px 24px}
+.fcard .step-n{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--ultra-deep);margin-bottom:9px}
+.fcard h4{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.02em;margin-bottom:7px;line-height:1.15}
+.fcard p{font-size:14.5px;color:var(--ink-soft);line-height:1.5}
+
+.get{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 28px;max-width:960px;margin:0 auto}
+.get li{list-style:none;display:flex;gap:13px;align-items:flex-start;font-size:16.5px;font-weight:500;line-height:1.5;padding:4px 0}
+.get li .ico{width:20px;height:20px;color:#8ea2ff;margin-top:3px;flex:0 0 auto}
+
+.band{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.band>*{min-width:0}
+.band h2{font-size:clamp(28px,3.4vw,42px)}
+.band p{margin-top:18px;color:var(--ink-soft);font-size:17px;line-height:1.6;max-width:48ch}
+.band ul{margin-top:22px;display:flex;flex-direction:column;gap:12px}
+.band li{list-style:none;display:flex;gap:11px;align-items:flex-start;font-size:16px;font-weight:500}
+.band li .ico{width:18px;height:18px;color:var(--ultra);margin-top:3px;flex:0 0 auto}
+.band-shot{justify-self:center;width:min(280px,72vw);aspect-ratio:9/16;border-radius:22px;overflow:hidden;border:1.5px solid var(--line);background:var(--ink)}
+.band-shot img{width:100%;height:100%;object-fit:cover}
+
+.cta-final{text-align:center;max-width:720px;margin:0 auto}
+.cta-final h2{color:var(--paper-on-dark)}
+.cta-final p{margin:16px auto 0;color:rgba(237,234,225,.7);max-width:52ch}
+.cta-final .hero-cta{justify-content:center;margin-top:30px}
+
+.faq{max-width:880px;margin:0 auto;border-top:1.5px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 4px;font-family:var(--display);font-weight:700;font-size:clamp(18px,1.6vw,22px);letter-spacing:-.02em;line-height:1.2}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ico{width:20px;height:20px;color:var(--ultra);transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.faq details[open] summary .ico{transform:rotate(45deg)}
+.faq .ans{padding:0 4px 24px;max-width:70ch;color:var(--ink-soft);font-size:16px;line-height:1.6}
+.faq .ans a{color:var(--ultra);font-weight:700}
+
+footer{border-top:1.5px solid var(--ink);padding:52px 0 64px;position:relative;z-index:1}
+.foot-in{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+.foot-brand{max-width:38ch}
+.foot-brand p{font-size:14.5px;color:var(--ink-soft);margin-top:14px}
+.fcol h5{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px}
+.fcol a{display:block;font-size:15px;font-weight:500;margin-bottom:9px;opacity:.8;transition:.2s}
+.fcol a:hover{opacity:1;color:var(--ultra)}
+.foot-base{margin-top:42px;padding-top:22px;border-top:1px solid var(--line);text-align:center;font-family:var(--mono);font-size:12px;color:var(--ink-soft);line-height:1.7}
+
+.rv{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:42px}
+  .flow,.flow.four{grid-template-columns:1fr 1fr}
+  .get{grid-template-columns:1fr}
+  .band{grid-template-columns:1fr;gap:32px}
+  .band-shot{order:-1}
+}
+@media(max-width:560px){
+  body{font-size:17px}
+  .hero{padding:118px 0 48px}
+  h1{font-size:clamp(28px,8vw,44px);line-height:1.06}
+  .flow,.flow.four{grid-template-columns:1fr}
+  .hero-cta .btn{width:100%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1!important;transform:none!important}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://belken.ai/#organization","name":"Belken","legalName":"BelKen Ventures Inc","url":"https://belken.ai/","logo":"https://belken.ai/favicon-512.png","email":"info@belken.ai"}</script>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="https://belken.ai"><img class="brandmark" src="/favicon.svg" alt="Belken" width="36" height="36">BELKEN<span class="slash">/</span><span class="sub">Studio</span></a>
+    <div class="nav-links">
+      <a href="#flow">How it works</a>
+      <a href="#get">What you get</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-ultra" href="https://studio.belken.ai">Start in Studio</a>
+    </div>
+    <button class="navtog" id="navtog" aria-label="Open menu" aria-expanded="false" aria-controls="mobnav">
+      <svg class="ico" viewBox="0 0 24 24" width="26" height="26"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div id="mobnav">
+    <a href="#flow">How it works</a>
+    <a href="#get">What you get</a>
+    <a href="#faq">FAQ</a>
+    <a class="btn btn-ultra" href="https://studio.belken.ai">Start in Studio</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Belken Studio · short-form ads in your browser</span>
+      <h1>Paste a script. Pick your avatar. <span class="hl">Hit one button.<span class="underdraw"></span></span></h1>
+      <p class="lede">Belken Studio turns a script into a short-form video with your avatar talking and captions burned in, ready to post. No camera, no editing timeline, no render farm to learn. It runs in your browser.</p>
+      <div class="hero-cta">
+        <a class="btn btn-ultra" href="https://studio.belken.ai">Start in Studio <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#flow">See the flow</a>
+      </div>
+      <p class="micro">// Create an account and start. The person on screen is an AI avatar.</p>
+    </div>
+
+    <div class="phone" aria-label="A finished Studio ad: an AI avatar talking with a burned-in caption">
+      <div class="phone-screen">
+        <img src="/studio/img/result-head.jpg" alt="A finished vertical ad frame: an AI avatar presenter mid-sentence, labeled AI avatar, with the caption MY VOICE burned in" width="620" height="1102" loading="eager" />
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="flow" class="dark sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// The whole flow</p>
+      <h2>Script to posted ad, in one sitting.</h2>
+      <p class="sec-sub">This is the real Studio flow, start to finish. You write the words, Studio does the shoot, the edit, and the captions.</p>
+    </div>
+    <div class="flow four rv">
+      <div class="fcard">
+        <div class="shot"><img src="/studio/img/step-paste.jpg" alt="Studio text prompt card with a script pasted in" width="820" height="615" loading="lazy" /></div>
+        <div class="body"><div class="step-n">01 · Paste</div><h4>Paste your script</h4><p>Drop in the words you want said. A hook, a product line, a founder note. Whatever you would say to camera.</p></div>
+      </div>
+      <div class="fcard">
+        <div class="shot"><img src="/studio/img/step-avatar.jpg" alt="Studio avatar selector showing a locked identity avatar and a stock presenter" width="820" height="615" loading="lazy" /></div>
+        <div class="body"><div class="step-n">02 · Pick</div><h4>Pick your avatar</h4><p>Choose the face that delivers it. Use your own locked avatar or a stock presenter. The look stays the same across every video.</p></div>
+      </div>
+      <div class="fcard">
+        <div class="shot"><img src="/studio/img/step-generate.jpg" alt="Studio generate card showing persona, script ready, captions burned in, and a Generate button" width="820" height="615" loading="lazy" /></div>
+        <div class="body"><div class="step-n">03 · Generate</div><h4>Hit one button</h4><p>Pick the format, confirm captions are on, and press Generate. Studio renders the talking avatar and burns the captions in.</p></div>
+      </div>
+      <div class="fcard">
+        <div class="shot"><img src="/studio/img/result-head.jpg" alt="A finished vertical ad frame with an AI avatar and a burned-in caption" width="820" height="615" loading="lazy" /></div>
+        <div class="body"><div class="step-n">04 · Post</div><h4>Get a ready ad</h4><p>Out comes a vertical video with captions already on screen. Download it, or connect an account and post it to YouTube or TikTok.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="get" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// What you get</p>
+      <h2>No camera. No timeline. No render farm.</h2>
+    </div>
+    <ul class="get rv">
+      <li><svg class="ico" viewBox="0 0 24 24" style="color:var(--ultra)"><path d="M4 12l5 5L20 6"/></svg> A talking avatar that says exactly what you paste, word for word.</li>
+      <li><svg class="ico" viewBox="0 0 24 24" style="color:var(--ultra)"><path d="M4 12l5 5L20 6"/></svg> Captions burned into the video, so it works with the sound off.</li>
+      <li><svg class="ico" viewBox="0 0 24 24" style="color:var(--ultra)"><path d="M4 12l5 5L20 6"/></svg> Vertical format, sized for TikTok, Reels, and Shorts.</li>
+      <li><svg class="ico" viewBox="0 0 24 24" style="color:var(--ultra)"><path d="M4 12l5 5L20 6"/></svg> The same avatar every time, so your videos look like one creator.</li>
+      <li><svg class="ico" viewBox="0 0 24 24" style="color:var(--ultra)"><path d="M4 12l5 5L20 6"/></svg> Runs in your web browser. Nothing to download or install.</li>
+      <li><svg class="ico" viewBox="0 0 24 24" style="color:var(--ultra)"><path d="M4 12l5 5L20 6"/></svg> Connect an account to post straight to YouTube or TikTok.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="dark sec">
+  <div class="wrap band rv">
+    <div>
+      <p class="sec-kick">// Same face, every time</p>
+      <h2>One avatar that carries the whole feed.</h2>
+      <p>The hardest part of posting every day is being on camera every day. Studio keeps one avatar locked, so every video you make looks like the same person showed up and shot it. You just change the script.</p>
+      <ul>
+        <li><svg class="ico" viewBox="0 0 24 24" style="color:#8ea2ff"><path d="M4 12l5 5L20 6"/></svg> Write once, generate as many videos as you need.</li>
+        <li><svg class="ico" viewBox="0 0 24 24" style="color:#8ea2ff"><path d="M4 12l5 5L20 6"/></svg> No reshoots when you change a line. Edit the script and run it again.</li>
+        <li><svg class="ico" viewBox="0 0 24 24" style="color:#8ea2ff"><path d="M4 12l5 5L20 6"/></svg> The person on screen is an AI avatar, labeled on the video.</li>
+      </ul>
+    </div>
+    <div class="band-shot"><img src="/studio/img/step-avatar.jpg" alt="Studio avatar selector with a locked identity avatar chosen" width="820" height="1040" loading="lazy" /></div>
+  </div>
+</section>
+
+<section class="dark sec" style="border-top:1px solid rgba(255,255,255,.08)">
+  <div class="wrap">
+    <div class="cta-final rv">
+      <h2>Make your first one.</h2>
+      <p>Create an account and start in Studio. Paste a script, pick an avatar, and see your first ad come out the other side.</p>
+      <div class="hero-cta">
+        <a class="btn btn-ultra" href="https://studio.belken.ai">Start in Studio <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <p class="micro" style="color:rgba(237,234,225,.5)">// The person on screen is an AI avatar.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// Questions</p>
+      <h2>Straight answers.</h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>Do I need a camera or any editing software? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">No. Studio runs in your web browser. You paste a script, pick an avatar, and hit Generate. There is no camera to set up and no editing timeline to learn.</div></details>
+      <details><summary>Is the person on screen real? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">No. The presenter is an AI avatar, and the video is labeled as made with an AI avatar. You choose which avatar delivers your script, and it stays the same across your videos.</div></details>
+      <details><summary>Can I post straight to TikTok or YouTube? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Yes. You can download the finished video, or connect a YouTube or TikTok account and publish from Studio. The connection is used to post for you, nothing more.</div></details>
+      <details><summary>Are the captions automatic? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Yes. Captions are burned into the video from your script, so it reads clearly with the sound off, which is how most short-form gets watched.</div></details>
+      <details><summary>How do I get started? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Create an account at <a href="https://studio.belken.ai">studio.belken.ai</a> and start. Paste a script, pick an avatar, and generate your first video.</div></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <div class="foot-brand">
+        <a class="brand" href="https://belken.ai"><img class="brandmark" src="/favicon.svg" alt="Belken" width="36" height="36">BELKEN<span class="slash">/</span><span class="sub">Studio</span></a>
+        <p>Belken Studio turns a script into a short-form video with your avatar and captions burned in. It runs in your browser.</p>
+      </div>
+      <div class="fcol">
+        <h5>Start</h5>
+        <a href="https://studio.belken.ai">Start in Studio</a>
+        <a href="https://belken.ai">belken.ai</a>
+      </div>
+      <div class="fcol">
+        <h5>Contact</h5>
+        <a href="mailto:info@belken.ai">info@belken.ai</a>
+      </div>
+    </div>
+    <div class="foot-base">© 2026 Belken · BelKen Ventures Inc · Videos are made with an AI avatar</div>
+  </div>
+</footer>
+
+<script>
+  var nav=document.getElementById('nav');
+  addEventListener('scroll',function(){nav.classList.toggle('stuck',scrollY>20)},{passive:true});
+  var tog=document.getElementById('navtog'),mob=document.getElementById('mobnav');
+  tog.addEventListener('click',function(){var o=mob.classList.toggle('open');tog.setAttribute('aria-expanded',o)});
+  mob.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mob.classList.remove('open');tog.setAttribute('aria-expanded',false)})});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+  // per-asset attribution: forward incoming utm_* / click ids onto the Studio
+  // signup links so each paid ad that drives a click is tracked.
+  (function(){
+    var incoming=new URLSearchParams(window.location.search);
+    var keep=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
+    var carry=new URLSearchParams();
+    keep.forEach(function(k){var v=incoming.get(k);if(v)carry.set(k,v)});
+    if(!carry.toString())return;
+    document.querySelectorAll('a[href*="studio.belken.ai"],a[href*="calendly.com"]').forEach(function(a){
+      try{var u=new URL(a.href,window.location.origin);carry.forEach(function(v,k){u.searchParams.set(k,v)});a.href=u.toString()}catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>
