@@ -664,7 +664,7 @@ tailwind.config = {
             <h3 class="u-display text-lg font-bold tracking-tight">Dormant-list reactivation</h3>
           </div>
           <div class="ledger-row"><span class="lbl">Lapsed customers in database</span><span class="val">2,400</span></div>
-          <div class="ledger-row"><span class="lbl"><span class="ledger-op">×</span> Annual reactivation rate</span><span class="val">3%</span></div>
+          <div class="ledger-row"><span class="lbl"><span class="ledger-op">×</span> Annual reactivation rate</span><span class="val">2.5%</span></div>
           <div class="ledger-row"><span class="lbl"><span class="ledger-op">=</span> Re-booked jobs / year</span><span class="val">60</span></div>
           <div class="ledger-row"><span class="lbl" style="padding-left:1rem;">↳ weighted service + install mix</span><span class="val">$450 to $8K</span></div>
           <div class="ledger-row" style="border-bottom:2px solid var(--ink);"><span class="lbl font-semibold"><span class="ledger-op">=</span> Annual</span><span class="val fig-copper" style="color:var(--copper); font-weight:700;">$45,120</span></div>
@@ -1019,7 +1019,7 @@ tailwind.config = {
         </div>
         <div class="avoid-break">
           <div class="eyebrow mb-4">Inputs this report ran on</div>
-          <div class="border border-line p-5"><div class="ledger-row"><span class="lbl">Inbound calls / month</span><span class="val">600</span></div><div class="ledger-row"><span class="lbl">Missed-call rate</span><span class="val">22%</span></div><div class="ledger-row"><span class="lbl">Avg. service ticket</span><span class="val">$450</span></div><div class="ledger-row"><span class="lbl">Avg. install ticket</span><span class="val">$8,000</span></div><div class="ledger-row"><span class="lbl">Recovered missed call → booked</span><span class="val">12%</span></div><div class="ledger-row"><span class="lbl">Install share of recovered jobs</span><span class="val">4%</span></div><div class="ledger-row"><span class="lbl">Dormant customers</span><span class="val">2,400</span></div><div class="ledger-row"><span class="lbl">Annual reactivation rate</span><span class="val">3%</span></div><div class="ledger-row"><span class="lbl">Admin hours / week</span><span class="val">14 hrs</span></div><div class="ledger-row"><span class="lbl">Loaded office labor rate</span><span class="val">$28/hr</span></div><div class="ledger-row"><span class="lbl">Blended gross margin</span><span class="val">45%</span></div></div>
+          <div class="border border-line p-5"><div class="ledger-row"><span class="lbl">Inbound calls / month</span><span class="val">600</span></div><div class="ledger-row"><span class="lbl">Missed-call rate</span><span class="val">22%</span></div><div class="ledger-row"><span class="lbl">Avg. service ticket</span><span class="val">$450</span></div><div class="ledger-row"><span class="lbl">Avg. install ticket</span><span class="val">$8,000</span></div><div class="ledger-row"><span class="lbl">Recovered missed call → booked</span><span class="val">12%</span></div><div class="ledger-row"><span class="lbl">Install share of recovered jobs</span><span class="val">4%</span></div><div class="ledger-row"><span class="lbl">Dormant customers</span><span class="val">2,400</span></div><div class="ledger-row"><span class="lbl">Annual reactivation rate</span><span class="val">2.5%</span></div><div class="ledger-row"><span class="lbl">Admin hours / week</span><span class="val">14 hrs</span></div><div class="ledger-row"><span class="lbl">Loaded office labor rate</span><span class="val">$28/hr</span></div><div class="ledger-row"><span class="lbl">Blended gross margin</span><span class="val">45%</span></div></div>
           <p class="u-mono text-[.68rem] text-steel mt-4 leading-relaxed">Report BKA-HVAC-0427 &middot; generated June 25, 2026. Confirm these on your discovery call and the model recalculates live.</p>
         </div>
       </div>
@@ -1053,7 +1053,7 @@ tailwind.config = {
   };
   const num0 = n => Math.round(n).toLocaleString("en-US");
   const num1 = n => (Math.round(n*10)/10).toLocaleString("en-US");
-  const pct  = n => Math.round(n*100) + "%";
+  const pct  = n => (Math.round(n*1000)/10) + "%";   // keep one decimal so 2.5% doesn't round to 3%
   const byKey = k => k ? c[k] : null;       // resolve a compute() key for copy
 
   // section registry for the rail/nav
