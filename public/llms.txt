@@ -46,6 +46,14 @@ Belken sets up and runs each of these for the shop:
 - [Belken Studio](https://belken.ai/studio): the self-serve short-form video product with an AI avatar
 - [Opportunity Audit](https://belken.ai/audit) and a [sample audit report](https://belken.ai/audit/sample)
 
+## Comparisons
+
+Honest, source-backed comparisons of Belken products against the tools people weigh them against. Facts are pulled from the live pages and dated.
+
+- [Comparisons hub](https://belken.ai/compare): all Belken comparisons
+- [Belken Studio vs OpusClip](https://belken.ai/compare/belken-studio-vs-opusclip): OpusClip clips existing long videos at volume; Belken Studio turns a script into a short with an AI avatar and also clips and publishes to your own accounts.
+- [AI Receptionist vs Smith.ai](https://belken.ai/compare/ai-receptionist-vs-smith-ai): Smith.ai is a self-serve service priced by call with real-people receptionists; the Belken AI Receptionist is set up and operated for you on a flat retainer.
+
 ## Contact
 
 - Email: info@belken.ai
