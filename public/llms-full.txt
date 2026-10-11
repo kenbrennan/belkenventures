@@ -1,0 +1,91 @@
+Belken: full description of every offer
+Source: https://belken.ai/ (facts drawn from the live pages)
+Last updated: 2026-10-11
+
+ABOUT BELKEN
+Belken (legal name BelKen Ventures Inc) builds and runs autonomous operations for local service businesses. Belken does not just hand over software. It designs the system once, wires it into the tools a business already uses, and operates it on the business's behalf. Contact: info@belken.ai. Book a free call: https://calendly.com/belkenbot/free-30-min-discovery-call.
+
+=====================================================================
+OFFER 1: AI RECEPTIONIST
+Page: https://belken.ai/aria
+=====================================================================
+
+What it is
+The AI Receptionist is Belken's ready-to-deploy AI phone receptionist, pre-tuned for local service businesses. It answers the phone in the business's own name and handles the call like a trained front-desk person would.
+
+Who it is for
+Local service businesses, especially the trades: plumbers, HVAC companies, roofers, and electricians. Belken also runs tuned versions for law firms, med spas, and real estate.
+
+How it works
+Belken designs the receptionist once, wires it into the tools the business already uses (calendar, CRM, phone), and operates it for the business. The business keeps its existing phone number. The receptionist answers every call 24/7, including nights and weekends. It books appointments straight onto the business's Google or Outlook calendar and texts the owner about every call. It recognizes emergencies, flags them as urgent, and transfers urgent calls to the owner's or the on-call tech's cell. It texts callers a confirmation and texts missed callers back in about 60 seconds. It also calls past customers by name to rebook them, follows up on open estimates, and requests reviews automatically. It never makes up prices.
+
+What it costs
+The AI Receptionist is included in the Autonomous Operations Retainer, which starts at $4,500 per month, with no per-minute meter. Setup starts with one 15-minute call.
+
+How to start
+Book a free call at https://calendly.com/belkenbot/free-30-min-discovery-call or email info@belken.ai.
+
+Trade-specific pages
+Plumbers: https://belken.ai/aria/plumbing
+HVAC: https://belken.ai/aria/hvac
+Roofers: https://belken.ai/aria/roofing
+Electricians: https://belken.ai/aria/electrical
+Law firms: https://belken.ai/aria/law
+Med spas: https://belken.ai/aria/medspa
+Real estate: https://belken.ai/aria/real-estate
+
+=====================================================================
+OFFER 2: OPENCLAW (flagship)
+Page: https://belken.ai/openclaw
+=====================================================================
+
+What it is
+OpenClaw is Belken's flagship offer: a production-grade multi-agent system custom-designed for how a specific business runs, and operated by Belken.
+
+Who it is for
+Local service businesses that want more than a single tool. It is the full autonomous operations layer, with the AI Receptionist as one part of a wider offer ladder.
+
+How it works
+Belken runs an offer ladder: a free assessment, a paid audit and roadmap, then a build-and-operate retainer. Belken designs, builds, deploys, and operates the system and reports monthly on outcomes.
+
+What it costs
+Free Operations Assessment: $0, 20 minutes, no pitch.
+Opportunity Audit and 90-Day Roadmap: $1,997 one-time. A deep diagnostic, the top 5 to 7 automation targets, a conservative ROI model, and a prioritized 90-day roadmap.
+Autonomous Operations Retainer: starting at $4,500 per month. Design, build, deploy, and operate, with monthly reporting on jobs booked, hours reclaimed, and revenue recovered.
+
+How to start
+Book a free call at https://calendly.com/belkenbot/free-30-min-discovery-call.
+
+=====================================================================
+OFFER 3: BELKEN STUDIO
+Page: https://belken.ai/studio   App: https://studio.belken.ai
+=====================================================================
+
+What it is
+Belken Studio is a self-serve video product that turns a script into a short-form video with an AI avatar talking and captions burned in, ready to post.
+
+Who it is for
+Anyone who wants to post short-form video regularly without being on camera or learning an editing timeline.
+
+How it works
+The flow is paste a script, pick an avatar, hit one button. Studio renders a talking avatar that says exactly what you paste, word for word, and burns the captions in. The output is a vertical video sized for TikTok, Reels, and Shorts, with captions already on screen. One avatar stays locked, so every video looks like the same creator; to change a line you edit the script and run it again. It runs in the browser with nothing to download or install. You can download the video, or connect an account and post straight to YouTube or TikTok. Nothing is posted without the account owner connecting the account and confirming the post. The person on screen is an AI avatar.
+
+What it costs
+No price is published on the public page. Create an account at https://studio.belken.ai to start.
+
+How to start
+Go to https://studio.belken.ai and create an account.
+
+=====================================================================
+OFFER 4: OPPORTUNITY AUDIT
+Page: https://belken.ai/audit   Sample: https://belken.ai/audit/sample
+=====================================================================
+
+What it is
+A paid diagnostic of where a business is losing time and money and what to automate first.
+
+What it costs
+$1,997 one-time. It includes a deep diagnostic, the top 5 to 7 automation targets, a conservative ROI model, and a prioritized 90-day roadmap.
+
+How to start
+Book a free call first at https://calendly.com/belkenbot/free-30-min-discovery-call. A sample audit report is at https://belken.ai/audit/sample.

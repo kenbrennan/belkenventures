@@ -1,6 +1,8 @@
 # Belken
 
-> Belken (BelKen Ventures Inc) builds and runs autonomous operations for local service businesses. Its flagship offer, OpenClaw, is a production-grade multi-agent system custom-designed for how a business runs and operated by Belken. The AI Receptionist is its ready-to-deploy product: an AI phone receptionist pre-tuned for local service businesses such as plumbers, HVAC companies, roofers, and electricians.
+> Belken (BelKen Ventures Inc) builds and runs autonomous operations for local service businesses. Its flagship offer, OpenClaw, is a production-grade multi-agent system custom-designed for how a business runs and operated by Belken. The AI Receptionist is its ready-to-deploy product: an AI phone receptionist pre-tuned for local service businesses such as plumbers, HVAC companies, roofers, and electricians. Belken Studio is its self-serve video product that turns a script into a short-form video with an AI avatar and captions.
+
+For a plain-text, answer-first description of every offer, see [/llms-full.txt](https://belken.ai/llms-full.txt).
 
 ## What the AI Receptionist does
 
@@ -14,6 +16,16 @@ Belken sets up and runs each of these for the shop:
 - Requests reviews automatically.
 - Never makes up prices.
 - The business keeps its existing phone number. Setup starts with one 15-minute call. Belken wires it into the tools a business already uses (calendar, CRM, phone) and operates it for the customer.
+
+## What Belken Studio does
+
+- Turns a script into a short-form video with an AI avatar talking and captions burned in, ready to post.
+- The flow is paste a script, pick an avatar, hit one button. Studio renders the talking avatar and burns the captions in.
+- Produces a vertical video sized for TikTok, Reels, and Shorts, with captions already on screen.
+- Keeps one locked avatar so every video looks like the same creator.
+- Runs in the browser, with nothing to download or install.
+- You can download the video, or connect an account and post straight to YouTube or TikTok. Nothing is posted without the account owner connecting the account and confirming the post.
+- The app runs at studio.belken.ai.
 
 ## How pricing works
 
@@ -31,6 +43,7 @@ Belken sets up and runs each of these for the shop:
 - [AI receptionist for roofers](https://belken.ai/aria/roofing)
 - [AI receptionist for electricians](https://belken.ai/aria/electrical)
 - [AI receptionist for law firms](https://belken.ai/aria/law), [med spas](https://belken.ai/aria/medspa), [real estate](https://belken.ai/aria/real-estate)
+- [Belken Studio](https://belken.ai/studio): the self-serve short-form video product with an AI avatar
 - [Opportunity Audit](https://belken.ai/audit) and a [sample audit report](https://belken.ai/audit/sample)
 
 ## Contact
