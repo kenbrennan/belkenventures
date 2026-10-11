@@ -3,6 +3,7 @@
     { "source": "/openclaw", "destination": "/openclaw.html" }
   ],
   "redirects": [
+    { "source": "/openclaw/", "destination": "/openclaw", "permanent": true },
     { "source": "/aria.html", "destination": "/aria", "permanent": true }
   ]
 }
