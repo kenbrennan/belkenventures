@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What is Multi-Agent AI Automation? How It Works &amp; Who It's For · Docs · Belken</title>
+<meta name="description" content="Multi-agent AI automation is a network of specialized AI agents that run real business tasks 24/7 (writing, research, outreach, content, and operations) without a human triggering each one. Here is how it works and when it makes sense." />
+<meta property="og:title" content="What is Multi-Agent AI Automation?" />
+<meta property="og:description" content="Plain-language guide: what multi-agent AI automation actually is, how it works, who it is for, and when OpenClaw is the right platform to run it on." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://belken.ai/docs/what-is-multi-agent-ai-automation" />
+<meta property="og:image" content="https://belken.ai/og/og-belken.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://belken.ai/og/og-belken.png" />
+<link rel="canonical" href="https://belken.ai/docs/what-is-multi-agent-ai-automation" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#EEEAE1;--paper-2:#E4DFD3;--ink:#121110;--ink-soft:#3a382f;
+    --line:#cdc6b6;--ultra:#1F32FF;--ultra-deep:#0e1bb0;--flare:#FF4318;
+    --display:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;overflow-x:hidden;scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:100%;max-width:1320px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+  .ico{stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:58px 58px;opacity:.18;
+    -webkit-mask-image:radial-gradient(430px circle at var(--gx,78%) var(--gy,8%),#000 0%,transparent 70%);
+    mask-image:radial-gradient(430px circle at var(--gx,78%) var(--gy,8%),#000 0%,transparent 70%);
+  }
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:70;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);background:rgba(238,234,225,.6)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.02em;display:flex;align-items:center;gap:11px}
+  .brand .brandmark{width:38px;height:38px;border-radius:9px;display:block;flex:0 0 auto}
+  .nav-links{display:flex;gap:32px;align-items:center;font-size:15px;font-weight:600}
+  .nav-links a:not(.btn){opacity:.7;transition:.2s}
+  .nav-links a:not(.btn):hover{opacity:1}
+  .nav-links a.here{opacity:1;color:var(--ultra)}
+
+  .btn{font-family:var(--body);font-weight:700;font-size:15px;border:none;cursor:pointer;
+    padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:9px;line-height:1;
+    transition:background .22s,color .22s}
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover{background:var(--ultra)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn .arr{transition:transform .22s cubic-bezier(.16,1,.3,1)}
+  .btn:hover .arr{transform:translateX(4px)}
+  .btn-lg{padding:17px 30px;font-size:17px}
+
+  section{position:relative;z-index:1}
+  .crumbs{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.55;
+          display:flex;gap:10px;align-items:center;margin-bottom:20px}
+  .crumbs a:hover{color:var(--ultra);opacity:1}
+  .hero{padding:132px 0 0}
+  h1{font-family:var(--display);font-weight:800;letter-spacing:-.032em;line-height:.98;
+     font-size:clamp(38px,5.6vw,64px);margin-bottom:20px;max-width:900px}
+  .lede{font-size:clamp(18px,1.9vw,21px);line-height:1.5;max-width:700px;color:var(--ink-soft)}
+  .lede strong{color:var(--ink);font-weight:700}
+
+  .facts{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;max-width:1046px;
+         border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .fact{flex:1 1 150px;padding:20px 22px 18px;border-right:1px solid var(--line)}
+  .fact:last-child{border-right:none}
+  .fact b{display:block;font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em;line-height:1}
+  .fact span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.58;display:block;margin-top:7px}
+
+  .doc{display:grid;grid-template-columns:220px 1fr;gap:56px;padding-top:56px;padding-bottom:100px;align-items:start}
+  @media(max-width:860px){.doc{grid-template-columns:1fr}.toc{display:none}}
+  .toc{position:sticky;top:100px;display:flex;flex-direction:column;gap:6px}
+  .toc .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.5;margin-bottom:8px}
+  .toc a{font-size:14px;font-weight:500;opacity:.6;padding:5px 0;transition:.18s;border-left:2px solid transparent;padding-left:10px}
+  .toc a:hover{opacity:1;border-left-color:var(--ultra);color:var(--ultra)}
+
+  .prose h2{font-family:var(--display);font-weight:800;font-size:clamp(24px,2.8vw,34px);letter-spacing:-.022em;margin:52px 0 18px;line-height:1.1}
+  .prose h3{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.015em;margin:32px 0 10px}
+  .prose p{margin-bottom:16px;color:var(--ink-soft)}
+  .prose p:last-child{margin-bottom:0}
+  .prose strong{color:var(--ink);font-weight:700}
+  .prose ul{padding-left:22px;margin-bottom:16px}
+  .prose ul li{margin-bottom:10px;color:var(--ink-soft)}
+  .prose ul li strong{color:var(--ink)}
+  .prose a.ln{color:var(--ultra);text-decoration:underline;text-underline-offset:3px}
+  .prose a.ln:hover{color:var(--ultra-deep)}
+
+  .steps{display:flex;flex-direction:column;gap:0;margin:32px 0;border-left:2px solid var(--line);padding-left:28px}
+  .step{padding-bottom:32px}
+  .step:last-child{padding-bottom:0}
+  .step .n{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.5;margin-bottom:8px}
+  .step h3{font-family:var(--display);font-weight:700;font-size:20px;margin-bottom:8px;margin-top:0}
+  .step p{color:var(--ink-soft);margin:0}
+
+  .note{background:var(--paper-2);border-left:3px solid var(--ultra);padding:20px 22px;border-radius:0 10px 10px 0;margin:32px 0}
+  .note b{display:block;font-weight:700;margin-bottom:8px}
+  .note p{color:var(--ink-soft);margin:0}
+
+  .compare{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:28px 0}
+  .compare-row{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--line)}
+  .compare-row:last-child{border-bottom:none}
+  .compare-row>div{padding:13px 16px;font-size:15px}
+  .compare-row.hdr>div{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.6;background:var(--paper-2);font-weight:600}
+  .compare-row>div.y{color:#1a6b2f;font-weight:600}
+  .compare-row>div.n{opacity:.5}
+  @media(max-width:640px){
+    .compare-row{grid-template-columns:1fr}
+    .compare-row>div{border-right:none}
+    .compare-row.hdr{display:none}
+  }
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s,transform .55s}
+  .reveal.in{opacity:1;transform:none}
+
+  .band{padding:80px 0}
+  .band.dark{background:var(--ink);color:var(--paper)}
+  .band h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.6vw,44px);letter-spacing:-.028em;max-width:760px;line-height:1.05;margin-bottom:16px}
+  .band p{font-size:clamp(16px,1.7vw,19px);opacity:.8;max-width:600px}
+
+  footer{padding:48px 0;border-top:1px solid var(--line)}
+  .foot-in{display:flex;flex-wrap:wrap;align-items:center;gap:20px 36px}
+  .foot-links{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:14px;opacity:.6}
+  .foot-links a:hover{opacity:1}
+  .foot-legal{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.4;margin-left:auto}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does a multi-agent fleet replace employees?","acceptedAnswer":{"@type":"Answer","text":"It replaces the work, not the judgment. Agents handle the execution of defined, repeatable tasks: researching, drafting, posting, and monitoring. Decisions that require business context, client relationships, or judgment calls still require a human. The fleet reduces the number of hours a person spends on execution so they can focus on the work that requires them specifically."}},{"@type":"Question","name":"How long does it take to set up a fleet?","acceptedAnswer":{"@type":"Answer","text":"It depends on the scope. Belken starts with a free 20-minute assessment, then a $1,997 Opportunity Audit that produces a prioritized 90-day roadmap, and builds in the order that roadmap sets. Work rolls out in stages rather than as one big launch."}},{"@type":"Question","name":"What happens when an agent makes a mistake?","acceptedAnswer":{"@type":"Answer","text":"Every decision an agent makes is logged with a reason. When an agent encounters an action it is not sure about, it writes the question to the decision queue instead of guessing. Mistakes that do happen are logged as lessons in the shared database so the same error does not repeat. On the Belken fleet, agents are configured with hard limits. They cannot spend money above a threshold, cannot contact third parties without authorization, and cannot push changes to production without a review step."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"OpenClaw","applicationCategory":"BusinessApplication","operatingSystem":"Linux","url":"https://belken.ai/openclaw","description":"OpenClaw is an open-source multi-agent AI runtime for production-grade autonomous operations. It provides session management, tool routing, scheduling, persistent memory, and agent-to-agent coordination for businesses that want AI agents running real work 24/7.","offers":{"@type":"Offer","price":"7500","priceCurrency":"USD","description":"Fleet installation starting price"},"provider":{"@type":"Organization","name":"Belken","url":"https://belken.ai"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://belken.ai/#organization","name":"Belken","legalName":"BelKen Ventures Inc","url":"https://belken.ai/","logo":"https://belken.ai/favicon-512.png","email":"info@belken.ai","description":"Belken builds and operates multi-agent AI fleets for businesses. Offers include OpenClaw fleet installations, AI receptionist for local service businesses, and Belken Studio for AI video clipping and content automation."}</script>
+</head>
+<body>
+<nav><div class="wrap nav-in">
+  <a class="brand" href="/"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">Belken</a>
+  <div class="nav-links">
+    <a href="/">Home</a><a href="/openclaw">OpenClaw</a><a href="/aria">AI Receptionist</a><a href="/studio">Belken Studio</a><a class="here" href="/docs">Docs</a>
+    <a class="btn btn-primary" href="/openclaw">See OpenClaw <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</div></nav>
+
+<section class="hero"><div class="wrap">
+  <div class="crumbs"><a href="/docs">Docs</a><span>/</span><span>OpenClaw</span><span>/</span><span>What is multi-agent AI automation</span></div>
+  <h1>What is multi-agent AI automation?</h1>
+  <p class="lede">Multi-agent AI automation is a network of specialized AI agents that <strong>run real business tasks around the clock</strong>: research, content, outreach, and operations, without a human triggering each one. Here is how it works and when it makes sense.</p>
+
+  <div class="facts">
+    <div class="fact"><b>24/7</b><span>unattended operation</span></div>
+    <div class="fact"><b>Multi-machine</b><span>fleet architecture</span></div>
+    <div class="fact"><b>$7.5k</b><span>installation starts at</span></div>
+    <div class="fact"><b>OpenClaw</b><span>the runtime</span></div>
+  </div>
+</div></section>
+
+<div class="wrap doc">
+  <aside class="toc">
+    <span class="k">On this page</span>
+    <a href="#what-it-is">What it actually does</a>
+    <a href="#how-it-works">How it works</a>
+    <a href="#vs-single-ai">vs. single AI tools</a>
+    <a href="#what-it-runs">What the fleet runs</a>
+    <a href="#openclaw">What is OpenClaw</a>
+    <a href="#hardware">Hardware needed</a>
+    <a href="#cost">What it costs</a>
+    <a href="#faq">Common questions</a>
+  </aside>
+
+  <main class="prose">
+    <h2 id="what-it-is">What multi-agent AI automation actually does</h2>
+    <p>The short version: you wake up to a completed work log. Agents pulled tasks from a queue overnight, took real actions (researching, writing, posting, monitoring) and left notes on what happened and what needs your review.</p>
+    <p>A multi-agent AI system does four things that a single AI tool cannot:</p>
+    <ul>
+      <li><strong>Runs without being asked.</strong> Agents have schedules, triggers, and queues. They do not wait for a human to open a chat window. A cron agent runs at 3 AM, checks for new leads, and drafts outreach before the business day starts.</li>
+      <li><strong>Delegates to specialists.</strong> A lead agent (the orchestrator) breaks a complex goal into subtasks and routes each one to the right specialist: a research agent, a writing agent, or a publishing agent. Each specialist has access to different tools and different data.</li>
+      <li><strong>Maintains memory across sessions.</strong> The fleet knows what it did last week, which decisions were approved, which contacts are in which stage of a pipeline. Memory is stored in a shared database, not inside a single conversation.</li>
+      <li><strong>Escalates only when it needs to.</strong> The fleet logs its own decisions and flags the ones that require human judgment. Everything else completes without interrupting the business owner. The daily brief surfaces what was done, what is blocked, and the single question that needs an answer.</li>
+    </ul>
+    <p>Belken builds, deploys, and operates these systems for businesses using <a class="ln" href="/openclaw">OpenClaw</a>, an open-source multi-agent runtime designed for production workloads, not demos.</p>
+
+    <h2 id="how-it-works">How it works, end to end</h2>
+    <p>A multi-agent fleet at the operational level looks like this on the Belken stack:</p>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="n">TASK QUEUE</div>
+        <div>
+          <h3>Work enters a shared queue</h3>
+          <p>Tasks come from the business owner, from cron schedules, from triggers (a new form submission, a new lead, a published video), or from other agents that generate subtasks. Each task has an owner, a description, and an acceptance criterion. Nothing moves without a clear definition of done.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">ORCHESTRATION</div>
+        <div>
+          <h3>The lead agent picks and routes</h3>
+          <p>The main session agent (on the Belken fleet this is Thor, running on a GPU workstation) reads the queue, picks the highest-priority doable task, and either handles it directly or spawns a sub-agent with the right tools and context. Hard decisions that require the business owner go to a decision queue instead of being acted on.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">EXECUTION</div>
+        <div>
+          <h3>Specialists do the work</h3>
+          <p>Each specialist agent has a defined tool set: browser access, search, code execution, API calls, and database writes. The research agent can browse the web and extract competitor data. The writing agent can draft posts and save them to a content library. The publishing agent can push to TikTok, Instagram, or a Belken Studio queue. Agents verify their own work before marking a task complete.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">MEMORY</div>
+        <div>
+          <h3>Results go to shared memory</h3>
+          <p>Every decision, lesson, and completed task writes to a shared Postgres database. Any agent in the fleet can query what was done before, who approved it, and what the outcome was. Memory persists across reboots, agent restarts, and model upgrades. This is what makes a fleet different from a collection of disconnected chatbots.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">BRIEF</div>
+        <div>
+          <h3>You get a morning summary</h3>
+          <p>At 8 AM the fleet sends a brief: what ran overnight, what shipped, what is blocked, and the one or two decisions that need your input. Most days the only action required is answering a yes-or-no question over Telegram. The fleet handles the rest.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="vs-single-ai">Multi-agent fleet vs. a single AI tool</h2>
+    <p>The practical difference between a multi-agent fleet and using ChatGPT or a single AI subscription:</p>
+
+    <div class="compare">
+      <div class="compare-row hdr">
+        <div>Capability</div>
+        <div>Single AI tool (ChatGPT, Claude)</div>
+        <div>Multi-agent fleet (OpenClaw)</div>
+      </div>
+      <div class="compare-row">
+        <div>Runs without prompting</div>
+        <div class="n">No: waits for human input</div>
+        <div class="y">Yes: scheduled and triggered</div>
+      </div>
+      <div class="compare-row">
+        <div>Persistent memory</div>
+        <div class="n">No: blank slate each session</div>
+        <div class="y">Yes: shared database, all sessions</div>
+      </div>
+      <div class="compare-row">
+        <div>Delegates to specialists</div>
+        <div class="n">No: single model, single context</div>
+        <div class="y">Yes: orchestrator + sub-agents</div>
+      </div>
+      <div class="compare-row">
+        <div>Takes real actions</div>
+        <div class="n">Mostly drafts text, rarely acts</div>
+        <div class="y">API calls, publishes, writes DBs</div>
+      </div>
+      <div class="compare-row">
+        <div>Logs decisions</div>
+        <div class="n">No audit trail</div>
+        <div class="y">Every decision logged with reason</div>
+      </div>
+      <div class="compare-row">
+        <div>Cost model</div>
+        <div>Monthly subscription per tool</div>
+        <div>Custom scope; Belken retainer from $4,500/mo</div>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>When a single AI tool is the right answer</b>
+      <p>If the tasks are short, happen during business hours, and only need a draft to review, a single AI tool is faster to start and cheaper. A fleet makes sense when work needs to happen overnight, spans multiple steps, requires real actions (not just text), or needs memory of prior context.</p>
+    </div>
+
+    <h2 id="what-it-runs">What a fleet actually runs in production</h2>
+    <p>On the Belken production fleet, agents run these tasks on an automated schedule every 24 hours:</p>
+    <ul>
+      <li><strong>Content pipeline.</strong> A work-loop agent pulls queued video scripts, generates talking-head avatar clips using Belken Studio, and hands them to a publishing agent that posts to TikTok and Instagram on a schedule.</li>
+      <li><strong>Lead research.</strong> A research agent scrapes inbound form submissions, looks up each business on the web, and writes a one-paragraph brief with the business name, phone, estimated revenue, and a recommended outreach angle. Delivered by 7 AM.</li>
+      <li><strong>Operations monitoring.</strong> A health-check agent pings the Studio API, the AI receptionist, and every external integration. If anything fails, it sends an alert and logs the failure before the business owner wakes up.</li>
+      <li><strong>GEO (Generative Engine Optimization).</strong> A writing agent produces definitional content pages, structured data markup, and sitemap updates that help AI engines like ChatGPT and Perplexity find and cite Belken's products in relevant answers.</li>
+      <li><strong>Decision support.</strong> The main orchestrator agent reads the task queue, picks the highest-value doable task, executes it, and appends a verified result to the morning brief. Blocked items go to a decision queue with one specific question.</li>
+    </ul>
+
+    <h2 id="openclaw">What is OpenClaw</h2>
+    <p>OpenClaw is the open-source multi-agent AI runtime that Belken uses to run its own fleet and deploys for clients. It is not a wrapper around ChatGPT. It is a production runtime with four components:</p>
+    <ul>
+      <li><strong>Gateway.</strong> An authenticated API server that routes messages between the business owner (Telegram, web, or API) and the agent network. Handles session state, model selection, and tool permissions.</li>
+      <li><strong>Agent configuration.</strong> Each agent is defined in a declarative config file that specifies its model, tools, memory access, scheduling rules, and the workspace it can write to. No code required to define a new agent role.</li>
+      <li><strong>Skill library.</strong> Reusable procedures stored as markdown files: how to run a GEO audit, how to generate a social clip, how to research a prospect. Agents load skills at runtime, so knowledge can be updated without redeploying agents.</li>
+      <li><strong>Shared memory.</strong> A Postgres database where every agent can log decisions, lessons, and task outcomes. The main orchestrator and all sub-agents read from the same source of truth, so context is never lost between sessions.</li>
+    </ul>
+    <p>More on OpenClaw: <a class="ln" href="/openclaw">belken.ai/openclaw</a>.</p>
+
+    <h2 id="hardware">What hardware you need</h2>
+    <p>A minimum fleet for a small business runs on a single Linux machine: a workstation or server with a modern CPU, 32 GB of RAM, and a reliable internet connection. GPU is optional. Agents that call external APIs (Anthropic, OpenAI, xAI) do not need local inference hardware. GPU matters if you run local image generation (ComfyUI for avatar ads) or local language models.</p>
+    <p>Belken's own production fleet uses three machines: an RTX 3090 GPU workstation for image and video generation, a Mac Mini as the coordination node and memory host, and a Linux server for always-on services. A client fleet typically starts with a single workstation and expands as workload grows.</p>
+
+    <h2 id="cost">What it costs</h2>
+    <p>Belken prices fleet work as an offer ladder, the same one listed on <a href="/openclaw">belken.ai/openclaw</a>:</p>
+    <ul>
+      <li><strong>Free Operations Assessment:</strong> 20 minutes, no pitch.</li>
+      <li><strong>Opportunity Audit and 90-Day Roadmap:</strong> $1,997 one-time.</li>
+      <li><strong>Autonomous Operations Retainer:</strong> starting at $4,500 per month. Belken designs, builds, deploys and operates the system, with monthly reporting.</li>
+    </ul>
+    <p>AI model usage depends on which models a fleet runs and how much work it does, so it is scoped during the audit.</p>
+
+    <h2 id="faq">Common questions</h2>
+
+    <h3>Does a multi-agent fleet replace employees?</h3>
+    <p>It replaces the work, not the judgment. Agents handle the execution of defined, repeatable tasks: researching, drafting, posting, and monitoring. Decisions that require business context, client relationships, or judgment calls still require a human. The fleet reduces the number of hours a person spends on execution so they can focus on the work that requires them specifically.</p>
+
+    <h3>How long does it take to set up a fleet?</h3>
+    <p>It depends on the scope. Belken starts with a free 20-minute assessment, then a $1,997 Opportunity Audit that produces a prioritized 90-day roadmap, and builds in the order that roadmap sets. Work rolls out in stages rather than as one big launch.</p>
+
+    <h3>What happens when an agent makes a mistake?</h3>
+    <p>Every decision an agent makes is logged with a reason. When an agent encounters an action it is not sure about, it writes the question to the decision queue instead of guessing. Mistakes that do happen are logged as lessons in the shared database so the same error does not repeat. On the Belken fleet, agents are configured with hard limits. They cannot spend money above a threshold, cannot contact third parties without authorization, and cannot push changes to production without a review step.</p>
+  </main>
+</div>
+
+<section class="band dark"><div class="wrap">
+  <h2 class="reveal">Want a fleet running for your business?</h2>
+  <p class="reveal">Belken builds and operates multi-agent AI fleets for businesses that want autonomous operations without hiring a team. Book a call to see whether a fleet makes sense for your workload.</p>
+  <div style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap">
+    <a class="btn btn-primary btn-lg reveal" href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener">Book a discovery call <svg class="ico arr" width="17" height="17" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="btn btn-ghost btn-lg reveal" href="/openclaw" style="color:var(--paper);border-color:rgba(237,234,225,.4)">See OpenClaw</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="foot-in">
+    <a class="brand" href="/"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">Belken</a>
+    <div class="foot-links">
+      <a href="/">Home</a><a href="/openclaw">OpenClaw</a><a href="/aria">AI Receptionist</a><a href="/studio">Belken Studio</a><a href="/docs">Docs</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+    </div>
+    <div class="foot-legal">© 2026 Belken Ventures</div>
+  </div>
+</div></footer>
+
+<script>
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.addEventListener('mousemove',e=>{document.body.style.setProperty('--gx',`${(e.clientX/innerWidth*100).toFixed(1)}%`);document.body.style.setProperty('--gy',`${(e.clientY/innerHeight*100).toFixed(1)}%`)});
+</script>
+</body>
+</html>
