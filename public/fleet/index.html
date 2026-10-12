@@ -218,7 +218,7 @@
   .rail .stop p{font-size:15px;color:var(--ink-soft);line-height:1.5}
 
   /* ===== PRICING ===== */
-  .pricing{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+  .pricing{margin-top:56px;display:grid;grid-template-columns:.9fr 1fr 1.25fr;gap:20px;align-items:stretch}
   .tier{border:1px solid var(--line);border-radius:20px;padding:34px 32px;display:flex;flex-direction:column;background:var(--paper);box-shadow:0 22px 46px -40px rgba(18,17,16,.3)}
   .tier.flag{background:var(--ink);color:var(--paper-on-dark);border-color:var(--ink);box-shadow:0 40px 80px -46px rgba(0,0,0,.55)}
   .tier .tno{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:16px;display:flex;align-items:center;gap:9px}
@@ -235,6 +235,7 @@
   .tier li .mk{color:var(--ultra);flex-shrink:0;margin-top:3px}
   .tier.flag li .mk{color:#8ea2ff}
   .tier .btn{width:100%;justify-content:center}
+  .lad-note{margin-top:26px;font-size:15px;color:var(--ink-soft)}
   .whymanaged{margin-top:34px;border:1px solid var(--line);border-left:4px solid var(--flare);border-radius:14px;background:var(--paper);padding:26px 30px;max-width:900px}
   .whymanaged p{color:var(--ink-soft);font-size:16.5px;line-height:1.65;margin:0}
   .whymanaged b{color:var(--ink);font-weight:700}
@@ -324,7 +325,7 @@
   }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://belken.ai/#organization","sameAs":["https://www.instagram.com/belken.ai/","https://www.instagram.com/belkenstudio/","https://www.facebook.com/1316128184921232","https://www.facebook.com/1172375935968744","https://www.youtube.com/@BelkenMedia"],"name":"Belken","legalName":"BelKen Ventures Inc","url":"https://belken.ai/","logo":"https://belken.ai/favicon-512.png","email":"info@belken.ai","description":"Belken builds and runs autonomous operations for local service businesses. The AI Receptionist is Belken's AI phone assistant for service businesses: it answers every call 24/7, books jobs to your calendar, transfers urgent calls to the owner's cell, texts missed callers back, and calls past customers to rebook them."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What do the agents actually do all day?","acceptedAnswer":{"@type":"Answer","text":"They run the recurring work your business depends on: producing content, watching your market, checking and reporting on the work, shipping against specs, and answering calls if you need it. Each one has a defined job and a log you can read any time."}},{"@type":"Question","name":"What access do you need, and how is it secured?","acceptedAnswer":{"@type":"Answer","text":"Only the tools each agent needs for its job, scoped per agent, with permission boundaries and audit logs on everything. You grant access on your own accounts, and you can revoke it at any time."}},{"@type":"Question","name":"Who is behind this?","acceptedAnswer":{"@type":"Answer","text":"Ken, a Principal DevOps Engineer with more than twenty years in infrastructure, who runs BelKen on the exact same stack we install for you. You are hiring the engineer who runs his own company on this."}},{"@type":"Question","name":"How fast do we see value?","acceptedAnswer":{"@type":"Answer","text":"First agents are live on real work in week one. By day 30 the full fleet is operating, with governance and reporting already in place."}},{"@type":"Question","name":"What does the retainer cover, and can we cancel?","acceptedAnswer":{"@type":"Answer","text":"Monthly operation and evolution of your fleet. We run it, retune it, add agents, and report on what it did. It is month to month, so you can cancel any time and keep what is yours."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What do the agents actually do all day?","acceptedAnswer":{"@type":"Answer","text":"They run the recurring work your business depends on: producing content, watching your market, checking and reporting on the work, shipping against specs, and answering calls if you need it. Each one has a defined job and a log you can read any time."}},{"@type":"Question","name":"What access do you need, and how is it secured?","acceptedAnswer":{"@type":"Answer","text":"Only the tools each agent needs for its job, scoped per agent, with permission boundaries and audit logs on everything. You grant access on your own accounts, and you can revoke it at any time."}},{"@type":"Question","name":"Who is behind this?","acceptedAnswer":{"@type":"Answer","text":"Ken, a Principal DevOps Engineer with more than twenty years in infrastructure, who runs BelKen on the exact same stack we install for you. You are hiring the engineer who runs his own company on this."}},{"@type":"Question","name":"How fast do we see value?","acceptedAnswer":{"@type":"Answer","text":"First agents are live on real work in week one. By day 30 the full fleet is operating, with governance and reporting already in place."}},{"@type":"Question","name":"What does the retainer cover?","acceptedAnswer":{"@type":"Answer","text":"Monthly operation and evolution of your fleet. We run it, retune it, add agents, and report on what it did."}}]}</script>
 </head>
 <body>
 <nav><div class="wrap nav-in">
@@ -507,40 +508,55 @@
 <!-- PRICING -->
 <section class="blk tint" id="pricing"><div class="wrap">
   <div class="reveal">
-    <div class="kicker">Pricing</div>
-    <h2>Real numbers.<br><em>No contact-us games.</em></h2>
-    <p class="sec-lede">Scope decides where you land in each range. We tell you the number on the call, not after three follow-ups.</p>
+    <div class="kicker">The offers</div>
+    <h2>Start with clarity.<br>Scale to a <em>system we run.</em></h2>
+    <p class="sec-lede">One clean path. Prove the fit on a call, buy the roadmap that shows exactly where the money is, then hand us the build and the operating.</p>
   </div>
   <div class="pricing">
     <div class="tier reveal">
-      <div class="tno">Deployment · one time</div>
-      <h3>Build and install the fleet</h3>
-      <div class="price">$7,500<small> to $15,000</small></div>
-      <div class="pnote">Depending on scope</div>
+      <div class="tno">Tier 1 · Entry</div>
+      <h3>Free Operations Assessment</h3>
+      <div class="price">$0</div>
+      <div class="pnote">20 minutes · no pitch</div>
       <ul>
-        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Discovery of the workflows that cost you the most</li>
-        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Agents built and wired to your tools and accounts</li>
-        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Governance, permissions, and audit logging set up</li>
-        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>First agents live on real work in week one</li>
+        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>The single highest-ROI opportunity in your business</li>
+        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>An honest read on whether we are a fit</li>
+        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Clarity, not a sales call</li>
       </ul>
-      <a class="btn btn-ghost" href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener">Book a fit call</a>
+      <a class="btn btn-ghost" href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener">Book the assessment</a>
+    </div>
+    <div class="tier reveal">
+      <div class="tno">Tier 2 · Qualifier</div>
+      <h3>Opportunity Audit &amp; 90-Day Roadmap</h3>
+      <div class="price">$1,997 <small>one-time</small></div>
+      <div class="pnote">PDF report · walkthrough · live call</div>
+      <ul>
+        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Deep diagnostic of your current operations</li>
+        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Top 5 to 7 highest-leverage automation targets</li>
+        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Full ROI model, conservative estimates</li>
+        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Prioritized 90-day build roadmap</li>
+      </ul>
+      <a class="btn btn-primary" href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener">Get the audit</a>
+      <a href="/audit/sample" style="display:block;text-align:center;margin-top:12px;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:inherit;text-decoration:underline;text-underline-offset:3px">View a sample audit report</a>
     </div>
     <div class="tier flag reveal">
-      <div class="tno">Managed operation <span class="tag">The product</span></div>
-      <h3>We run and evolve it every month</h3>
-      <div class="price">$3,000<small> to $7,500 / mo</small></div>
-      <div class="pnote">Month to month, cancel any time</div>
+      <div class="tno">Tier 3 · The system<span class="tag">Flagship</span></div>
+      <h3>Autonomous Operations Retainer</h3>
+      <div class="price"><small style="display:block;margin-bottom:4px">Starting at</small>$4,500<small>&nbsp;/ mo</small></div>
+      <div class="pnote">design · build · deploy · operate</div>
       <ul>
-        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>We operate the fleet so it keeps shipping</li>
-        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>New agents added and existing ones retuned as you grow</li>
-        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Weekly reporting on what the fleet did</li>
-        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>A human engineer accountable for the whole thing</li>
+        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Custom multi-agent system built for how your business runs</li>
+        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Production infrastructure: Docker, monitoring, persistent memory</li>
+        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Ongoing optimization and iteration every month</li>
+        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Monthly reporting on real outcomes: jobs booked, hours reclaimed, revenue recovered</li>
+        <li><span class="mk"><svg class="ico" width="17" height="17" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>We run it. You get the results. No new tools for your team to manage</li>
       </ul>
-      <a class="btn btn-flare" href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener">Book a fit call</a>
+      <a class="btn btn-flare" href="https://calendly.com/belkenbot/free-30-min-discovery-call" target="_blank" rel="noopener">Apply for the retainer</a>
     </div>
   </div>
+  <p class="lad-note reveal">Most owners start with the audit. The roadmap is built to stand on its own, even if you never hire us to build a thing.</p>
   <div class="whymanaged reveal">
-    <p><b>Why managed?</b> An unmanaged fleet decays. Agents drift, tools change, priorities move, and six months later it quietly stops earning its keep. Ours come with the operator who keeps it sharp, which is the whole point of the retainer.</p>
+    <p><b>Why managed?</b> An unmanaged fleet decays. Agents drift, tools change, priorities move, and six months later it quietly stops earning its keep. The retainer is the operator who keeps it sharp.</p>
   </div>
 </div></section>
 
@@ -599,8 +615,8 @@
       <p>First agents are live on real work in week one. By day 30 the full fleet is operating, with governance and reporting already in place.</p>
     </div>
     <div class="qa reveal">
-      <h3>What does the retainer cover, and can we cancel?</h3>
-      <p>Monthly operation and evolution of your fleet. We run it, retune it, add agents, and report on what it did. It is month to month, so you can cancel any time and keep what is yours.</p>
+      <h3>What does the retainer cover?</h3>
+      <p>Monthly operation and evolution of your fleet. We run it, retune it, add agents, and report on what it did.</p>
     </div>
   </div>
 </div></section>
