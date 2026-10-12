@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What is AI Video Clipping? How It Works &amp; Who It's For · Docs · Belken</title>
+<meta name="description" content="AI video clipping is software that watches a long video, finds the best moments, and exports short clips automatically, with captions, sized for TikTok and Reels. No timeline scrubbing, no manual editing." />
+<meta property="og:title" content="What is AI Video Clipping?" />
+<meta property="og:description" content="Plain-language guide: what AI video clipping software actually does, how it works, which tools exist, and when Belken Studio is the right choice." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://belken.ai/docs/what-is-ai-video-clipping" />
+<meta property="og:image" content="https://belken.ai/og/og-studio.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://belken.ai/og/og-studio.png" />
+<link rel="canonical" href="https://belken.ai/docs/what-is-ai-video-clipping" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#EEEAE1;--paper-2:#E4DFD3;--ink:#121110;--ink-soft:#3a382f;
+    --line:#cdc6b6;--ultra:#1F32FF;--ultra-deep:#0e1bb0;--flare:#FF4318;
+    --display:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;overflow-x:hidden;scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:100%;max-width:1320px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+  .ico{stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:58px 58px;opacity:.18;
+    -webkit-mask-image:radial-gradient(430px circle at var(--gx,78%) var(--gy,8%),#000 0%,transparent 70%);
+    mask-image:radial-gradient(430px circle at var(--gx,78%) var(--gy,8%),#000 0%,transparent 70%);
+  }
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:70;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);background:rgba(238,234,225,.6)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.02em;display:flex;align-items:center;gap:11px}
+  .brand .brandmark{width:38px;height:38px;border-radius:9px;display:block;flex:0 0 auto}
+  .nav-links{display:flex;gap:32px;align-items:center;font-size:15px;font-weight:600}
+  .nav-links a:not(.btn){opacity:.7;transition:.2s}
+  .nav-links a:not(.btn):hover{opacity:1}
+  .nav-links a.here{opacity:1;color:var(--ultra)}
+
+  .btn{font-family:var(--body);font-weight:700;font-size:15px;border:none;cursor:pointer;
+    padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:9px;line-height:1;
+    transition:background .22s,color .22s}
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover{background:var(--ultra)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn .arr{transition:transform .22s cubic-bezier(.16,1,.3,1)}
+  .btn:hover .arr{transform:translateX(4px)}
+  .btn-lg{padding:17px 30px;font-size:17px}
+
+  section{position:relative;z-index:1}
+  .crumbs{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.55;
+          display:flex;gap:10px;align-items:center;margin-bottom:20px}
+  .crumbs a:hover{color:var(--ultra);opacity:1}
+  .hero{padding:132px 0 0}
+  h1{font-family:var(--display);font-weight:800;letter-spacing:-.032em;line-height:.98;
+     font-size:clamp(38px,5.6vw,64px);margin-bottom:20px;max-width:900px}
+  .lede{font-size:clamp(18px,1.9vw,21px);line-height:1.5;max-width:700px;color:var(--ink-soft)}
+  .lede strong{color:var(--ink);font-weight:700}
+
+  .facts{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;max-width:1046px;
+         border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .fact{flex:1 1 150px;padding:20px 22px 18px;border-right:1px solid var(--line)}
+  .fact:last-child{border-right:none}
+  .fact b{display:block;font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em;line-height:1}
+  .fact span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.58;display:block;margin-top:7px}
+
+  .doc{display:grid;grid-template-columns:220px 1fr;gap:56px;padding-top:56px;padding-bottom:100px;align-items:start}
+  @media(max-width:860px){.doc{grid-template-columns:1fr}.toc{display:none}}
+  .toc{position:sticky;top:100px;display:flex;flex-direction:column;gap:6px}
+  .toc .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.5;margin-bottom:8px}
+  .toc a{font-size:14px;font-weight:500;opacity:.6;padding:5px 0;transition:.18s;border-left:2px solid transparent;padding-left:10px}
+  .toc a:hover{opacity:1;border-left-color:var(--ultra);color:var(--ultra)}
+
+  .prose h2{font-family:var(--display);font-weight:800;font-size:clamp(24px,2.8vw,34px);letter-spacing:-.022em;margin:52px 0 18px;line-height:1.1}
+  .prose h3{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.015em;margin:32px 0 10px}
+  .prose p{margin-bottom:16px;color:var(--ink-soft)}
+  .prose p:last-child{margin-bottom:0}
+  .prose strong{color:var(--ink);font-weight:700}
+  .prose ul{padding-left:22px;margin-bottom:16px}
+  .prose ul li{margin-bottom:10px;color:var(--ink-soft)}
+  .prose ul li strong{color:var(--ink)}
+  .prose a.ln{color:var(--ultra);text-decoration:underline;text-underline-offset:3px}
+  .prose a.ln:hover{color:var(--ultra-deep)}
+
+  .steps{display:flex;flex-direction:column;gap:0;margin:32px 0;border-left:2px solid var(--line);padding-left:28px}
+  .step{padding-bottom:32px}
+  .step:last-child{padding-bottom:0}
+  .step .n{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.5;margin-bottom:8px}
+  .step h3{font-family:var(--display);font-weight:700;font-size:20px;margin-bottom:8px;margin-top:0}
+  .step p{color:var(--ink-soft);margin:0}
+
+  .note{background:var(--paper-2);border-left:3px solid var(--ultra);padding:20px 22px;border-radius:0 10px 10px 0;margin:32px 0}
+  .note b{display:block;font-weight:700;margin-bottom:8px}
+  .note p{color:var(--ink-soft);margin:0}
+
+  .compare{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:28px 0}
+  .compare-row{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--line)}
+  .compare-row:last-child{border-bottom:none}
+  .compare-row>div{padding:13px 16px;font-size:15px}
+  .compare-row.hdr>div{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.6;background:var(--paper-2);font-weight:600}
+  .compare-row>div.y{color:#1a6b2f;font-weight:600}
+  .compare-row>div.n{opacity:.5}
+  @media(max-width:640px){
+    .compare-row{grid-template-columns:1fr}
+    .compare-row>div{border-right:none}
+    .compare-row.hdr{display:none}
+  }
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s,transform .55s}
+  .reveal.in{opacity:1;transform:none}
+
+  .band{padding:80px 0}
+  .band.dark{background:var(--ink);color:var(--paper)}
+  .band h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.6vw,44px);letter-spacing:-.028em;max-width:760px;line-height:1.05;margin-bottom:16px}
+  .band p{font-size:clamp(16px,1.7vw,19px);opacity:.8;max-width:600px}
+
+  footer{padding:48px 0;border-top:1px solid var(--line)}
+  .foot-in{display:flex;flex-wrap:wrap;align-items:center;gap:20px 36px}
+  .foot-links{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:14px;opacity:.6}
+  .foot-links a:hover{opacity:1}
+  .foot-legal{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.4;margin-left:auto}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is AI video clipping?","acceptedAnswer":{"@type":"Answer","text":"AI video clipping is software that analyzes a long video, a podcast, a YouTube video, a livestream, or a webinar, and automatically finds strong moments, cuts them into short clips, adds captions, and sizes them vertically for TikTok, Instagram Reels, and YouTube Shorts. You upload a long file and get back a set of ready-to-post short clips without scrubbing a timeline."}},{"@type":"Question","name":"How does AI video clipping work?","acceptedAnswer":{"@type":"Answer","text":"AI video clipping tools combine transcription, language models, and computer vision to spot segments worth posting. The AI reads the transcript to find quote-worthy lines and story beats, checks the audio and visuals, cuts those segments into short clips, adds captions from the transcript, and reframes the shot to a vertical 9:16 aspect ratio."}},{"@type":"Question","name":"What is a good AI tool to turn long videos into short clips?","acceptedAnswer":{"@type":"Answer","text":"Two widely used options are OpusClip and Belken Studio. OpusClip is a self-serve clipping tool with a free plan (source: opus.pro/pricing, checked 2026-10-12). Belken Studio clips your long footage into short clips, also turns a script into an AI avatar video, and publishes to your own connected accounts. It is self-serve. See studio.belken.ai."}},{"@type":"Question","name":"Does AI video clipping work for TikTok and Instagram Reels?","acceptedAnswer":{"@type":"Answer","text":"Yes. Clips export in the 9:16 vertical format TikTok and Instagram Reels use, with captions. Belken Studio can publish to your own connected TikTok and Instagram accounts. Instagram posts can be scheduled. TikTok posts go out immediately or land in your TikTok inbox as a draft, because TikTok's API does not allow scheduled posts. Nothing posts without your action."}},{"@type":"Question","name":"Can I generate an AI avatar video with Belken Studio?","acceptedAnswer":{"@type":"Answer","text":"Yes. Belken Studio turns a script into a short-form video with an AI avatar talking and captions burned in. You write the script, pick an avatar, and generate. This is separate from clipping: it creates new content rather than cutting existing footage. The person on screen is an AI avatar."}},{"@type":"Question","name":"How does Belken Studio compare to OpusClip?","acceptedAnswer":{"@type":"Answer","text":"Both clip long videos into short-form content. Belken Studio also turns a script into an AI avatar video; OpusClip's pricing page does not list a script-to-avatar feature. Both can publish to your own connected accounts. OpusClip has a free plan and a published price, and is self-serve. Full comparison: belken.ai/compare/belken-studio-vs-opusclip."}},{"@type":"Question","name":"How much does AI video clipping software cost?","acceptedAnswer":{"@type":"Answer","text":"Pricing depends on the tool and your usage. OpusClip's pricing page lists Free at $0, Starter at $15/mo, Pro at $29/mo, and a custom Business plan (source: opus.pro/pricing, checked 2026-10-12). Belken Studio is a paid, self-serve tool that includes clipping, AI avatar video, and publishing; it shows pricing in the app at studio.belken.ai."}},{"@type":"Question","name":"Does Belken Studio post to TikTok automatically?","acceptedAnswer":{"@type":"Answer","text":"Belken Studio publishes to your own connected accounts, and only when you act. YouTube, Facebook, and Instagram posts can be scheduled. TikTok cannot be scheduled through TikTok's API, so Studio either posts to TikTok immediately or sends the video to your TikTok inbox as a draft. Nothing posts without you posting it, scheduling it, or turning on an Autopilot rule."}},{"@type":"Question","name":"What video files does AI video clipping work with?","acceptedAnswer":{"@type":"Answer","text":"Most AI clipping tools accept common video files, and many also accept a video URL so you can skip the download. With Belken Studio you upload your long video or paste a video URL."}},{"@type":"Question","name":"Can I edit the clips after the AI cuts them?","acceptedAnswer":{"@type":"Answer","text":"You review the AI's candidates, preview each clip, and approve or remove them before anything publishes. The AI does the first pass; you make the final call on what goes out."}},{"@type":"Question","name":"Does Belken Studio require me to be on camera?","acceptedAnswer":{"@type":"Answer","text":"No. Clipping works on video you already have. The avatar feature creates video with no camera at all: you supply the script and Studio supplies the AI avatar. You can build a short-form calendar without appearing on camera."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Belken Studio","applicationCategory":"VideoEditing","operatingSystem":"Web","url":"https://studio.belken.ai","description":"Belken Studio is a self-serve AI video tool that turns long videos into short clips with auto-captions, turns a script into an AI avatar video, and publishes to your own connected YouTube, TikTok, Facebook, and Instagram accounts after you confirm each post.","provider":{"@type":"Organization","name":"Belken","url":"https://belken.ai"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://belken.ai/#organization","name":"Belken","legalName":"BelKen Ventures Inc","url":"https://belken.ai/","logo":"https://belken.ai/favicon-512.png","email":"info@belken.ai","description":"Belken builds AI-powered tools for creators and local service businesses. Belken Studio turns long videos into short clips with auto-captions and publishes them to your own connected TikTok, Instagram, Facebook, and YouTube accounts."}</script>
+</head>
+<body>
+<nav><div class="wrap nav-in">
+  <a class="brand" href="/"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">Belken</a>
+  <div class="nav-links">
+    <a href="/">Home</a><a href="/openclaw">OpenClaw</a><a href="/aria">AI Receptionist</a><a href="/studio">Belken Studio</a><a class="here" href="/docs">Docs</a>
+    <a class="btn btn-primary" href="/studio">See Belken Studio <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</div></nav>
+
+<section class="hero"><div class="wrap">
+  <div class="crumbs"><a href="/docs">Docs</a><span>/</span><span>Belken Studio</span><span>/</span><span>What is AI video clipping</span></div>
+  <h1>What is AI video clipping?</h1>
+  <p class="lede">AI video clipping is software that watches a long video and <strong>automatically finds the best moments, cuts them into short clips, and adds captions</strong>, ready for TikTok, Instagram Reels, and YouTube Shorts. No timeline scrubbing. No manual editing.</p>
+
+  <div class="facts">
+    <div class="fact"><b>9:16</b><span>vertical output</span></div>
+    <div class="fact"><b>Auto</b><span>captions</span></div>
+    <div class="fact"><b>Self-serve</b><span>Belken Studio</span></div>
+    <div class="fact"><b>3 platforms</b><span>TikTok, Reels, Shorts</span></div>
+  </div>
+</div></section>
+
+<div class="wrap doc">
+  <aside class="toc">
+    <span class="k">On this page</span>
+    <a href="#what-it-is">What it actually does</a>
+    <a href="#how-it-works">How it works</a>
+    <a href="#who-benefits">Who benefits most</a>
+    <a href="#vs-opusclip">vs. OpusClip</a>
+    <a href="#avatar-ads">Avatar video</a>
+    <a href="#publishing">Publishing</a>
+    <a href="#cost">What it costs</a>
+    <a href="#faq">Common questions</a>
+  </aside>
+
+  <main class="prose">
+    <h2 id="what-it-is">What AI video clipping actually does</h2>
+    <p>The short version: you upload a long video and get back a set of ready-to-post short clips. No editing skills required. No timeline to scrub through. No manually adding captions one line at a time.</p>
+    <p>An AI video clipping tool does four things that used to require a video editor:</p>
+    <ul>
+      <li><strong>Finds the best segments.</strong> The AI reads the transcript and identifies the most engaging moments (punchlines, argument peaks, useful tips, emotional beats) and marks them as clip candidates. It skips the filler, the "ums," and the slow parts.</li>
+      <li><strong>Cuts the clips.</strong> Each candidate segment gets cut to a short-form length. The AI adds a small buffer at the start and end so the clip does not feel abrupt.</li>
+      <li><strong>Adds captions automatically.</strong> Captions come from the transcript and are synced to the speech. Most tools style them for TikTok: large, centered, one or two words at a time.</li>
+      <li><strong>Reframes for vertical.</strong> Long videos are usually 16:9. Short-form platforms want 9:16. The AI reframes the shot, following the speaker's face if there is one, or intelligently cropping the frame, so the clip fills a phone screen without black bars.</li>
+    </ul>
+    <p>Beyond clipping, tools like Belken Studio add two more functions: AI avatar video generation (creating new talking-head video from a script, no camera required) and publishing finished clips to your own connected accounts on YouTube, Instagram, and TikTok.</p>
+
+    <h2 id="how-it-works">How it works, start to finish</h2>
+    <p>The process from long video to posted clips looks like this with Belken Studio:</p>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="n">UPLOAD</div>
+        <div>
+          <h3>Drop in the long video</h3>
+          <p>Upload your long video or paste a video URL. Belken Studio turns your long footage into short clips, so you start from video you already have.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">ANALYZE</div>
+        <div>
+          <h3>AI finds the best moments</h3>
+          <p>The AI transcribes the video, scores each segment by engagement potential, and generates a set of clip candidates for you to review.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">REVIEW</div>
+        <div>
+          <h3>You pick what to keep</h3>
+          <p>You see the candidates, preview each clip, and approve or remove them. Nothing gets published without your review.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">SCHEDULE OR POST</div>
+        <div>
+          <h3>Schedule or post each clip</h3>
+          <p>Approved clips go into a publishing queue for your own connected accounts. You can schedule posts to YouTube, Instagram, and Facebook. TikTok does not allow scheduled posts through its API, so Studio posts to TikTok right away or sends the clip to your TikTok inbox as a draft. Nothing posts until you post it, schedule it, or turn on an Autopilot rule.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="n">PUBLISH</div>
+        <div>
+          <h3>Clips go live, you see results</h3>
+          <p>Clips post to your connected accounts once you post or schedule them. Belken Studio has an Analytics view so you can see how your clips are performing.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="who-benefits">Who benefits most from AI video clipping</h2>
+    <p>Any creator or brand that produces long-form video and wants short-form reach without adding a video editor to the payroll. The specific cases where the ROI is clearest:</p>
+    <ul>
+      <li><strong>Podcasters.</strong> A long podcast episode holds many clip-worthy moments, and cutting them by hand is slow. AI clipping surfaces those moments quickly and keeps the posting calendar full without extra work.</li>
+      <li><strong>YouTubers and live streamers.</strong> Long YouTube videos and stream VODs are a rich source of short-form content. Clipping manually means watching your own footage again. AI clipping skips that entirely.</li>
+      <li><strong>Marketers and agencies.</strong> Short-form video is a core ad format on social platforms. Agencies that manage multiple clients can clip one long client session into a batch of social content.</li>
+      <li><strong>Coaches and course creators.</strong> Free short-form clips from paid long-form content is the standard top-of-funnel strategy. AI clipping makes it repeatable without a production team.</li>
+      <li><strong>Local businesses.</strong> Any business running a YouTube channel, a podcast, or a video series without posting those moments on TikTok is leaving short-form reach on the table.</li>
+    </ul>
+
+    <div class="note">
+      <b>The math is straightforward</b>
+      <p>A long video can hold many clips worth posting, and finding, cutting, captioning, and resizing each one by hand takes real time. AI clipping cuts the human work down to a quick review pass. At any hourly cost, whether your own time or an editor's, the math favors automation after the first video.</p>
+    </div>
+
+    <h2 id="vs-opusclip">Belken Studio vs. OpusClip</h2>
+    <p>OpusClip is a widely used AI video clipping tool with a published price and a free plan. Belken Studio is the right choice for creators who want more than clipping alone. Here is the honest comparison:</p>
+
+    <div class="compare">
+      <div class="compare-row hdr">
+        <div>Capability</div>
+        <div>OpusClip</div>
+        <div>Belken Studio</div>
+      </div>
+      <div class="compare-row reveal">
+        <div><strong>AI video clipping</strong></div>
+        <div class="y">Yes</div>
+        <div class="y">Yes</div>
+      </div>
+      <div class="compare-row reveal">
+        <div><strong>Auto-captions</strong></div>
+        <div class="y">Yes</div>
+        <div class="y">Yes</div>
+      </div>
+      <div class="compare-row reveal">
+        <div><strong>9:16 vertical reframe</strong></div>
+        <div class="y">Yes</div>
+        <div class="y">Yes</div>
+      </div>
+      <div class="compare-row reveal">
+        <div><strong>Direct TikTok publishing</strong></div>
+        <div class="y">Yes</div>
+        <div class="y">Yes</div>
+      </div>
+      <div class="compare-row reveal">
+        <div><strong>AI avatar video from a script</strong></div>
+        <div class="n">Not listed on pricing page</div>
+        <div class="y">Yes</div>
+      </div>
+      <div class="compare-row reveal">
+        <div><strong>Free plan</strong></div>
+        <div class="y">Yes ($0 plan)</div>
+        <div class="n">Not published</div>
+      </div>
+      <div class="compare-row reveal">
+        <div><strong>Starting price</strong></div>
+        <div>$0, $15/mo, $29/mo, or custom</div>
+        <div>No public price (shown in app)</div>
+      </div>
+    </div>
+
+    <p style="font-family:var(--mono);font-size:12px;letter-spacing:.04em;opacity:.6">Sources, checked 2026-10-12: opus.pro/pricing; belken.ai/compare/belken-studio-vs-opusclip.</p>
+
+    <p>The practical read: if you want to try AI clipping for free and do not need avatar videos, OpusClip is a good starting point. If you want clipping plus AI avatar video plus publishing to your own accounts in one place, Belken Studio is the better fit. Full side-by-side at <a class="ln" href="/compare/belken-studio-vs-opusclip">belken.ai/compare/belken-studio-vs-opusclip</a>.</p>
+
+    <h2 id="avatar-ads">What is AI avatar video generation?</h2>
+    <p>This is distinct from clipping. Instead of finding moments in existing footage, avatar video generation creates entirely new talking-head video from a text script. You write the script, pick an AI avatar, and the tool renders a video of that avatar delivering the script word for word with captions burned in. The person on screen is an AI avatar.</p>
+    <p>Use cases: product demos, ad creatives, social content, explainer videos: any format that would traditionally require a camera setup, a presenter, and a video editor. Belken Studio includes this alongside clipping, so one tool covers both new avatar videos and clips cut from footage you already have.</p>
+
+    <h2 id="publishing">Why built-in publishing matters</h2>
+    <p>Most creators who clip their content manually post inconsistently because the upload step is friction. Getting a clip out of a clipping tool and into TikTok requires downloading the file, opening TikTok, uploading, writing a caption, choosing a thumbnail, and hitting post. Doing that for several clips across several platforms is a lot of repetitive work.</p>
+    <p>Publishing from Studio removes that step. Belken Studio holds the clips in a queue and posts to your own connected accounts. You can schedule posts to YouTube, Instagram, and Facebook; TikTok posts go out immediately or to your TikTok inbox as a draft, since TikTok's API does not allow scheduling. Your job is to review the clips and decide when they go out. Nothing posts without your action.</p>
+    <p>This is the difference between a tool that helps you clip and a tool that keeps the calendar filled. For a business treating short-form content as a consistent channel, not a one-time experiment, built-in publishing is what makes the workflow repeatable.</p>
+
+    <h2 id="cost">What AI video clipping software costs</h2>
+    <p>Pricing depends on the tool and how much you use it. One concrete, published example:</p>
+    <ul>
+      <li><strong>OpusClip.</strong> Its pricing page lists Free at $0, Starter at $15/mo, Pro at $29/mo, and a custom Business plan. The free plan adds a watermark to captions. (Source: opus.pro/pricing, checked 2026-10-12.)</li>
+      <li><strong>Belken Studio.</strong> A paid, self-serve tool that includes clipping, AI avatar video, and publishing to your own connected accounts. It does not publish a price on its public page; pricing is shown in the app when you create an account at studio.belken.ai.</li>
+    </ul>
+    <p>The right question is not "what is the cheapest tool" but "what is the cost of the full workflow," counting the time it takes you to clip, caption, resize, and post each video by hand.</p>
+
+    <h2 id="faq">Common questions</h2>
+
+    <h3>What is AI video clipping?</h3>
+    <p>AI video clipping is software that analyzes a long video, a podcast, a YouTube video, a livestream, or a webinar, and automatically finds strong moments, cuts them into short clips, adds captions, and sizes them vertically for TikTok, Instagram Reels, and YouTube Shorts. You upload a long file and get back a set of ready-to-post short clips without scrubbing a timeline.</p>
+
+    <h3>How does AI video clipping work?</h3>
+    <p>AI video clipping tools combine transcription, language models, and computer vision to spot segments worth posting. The AI reads the transcript to find quote-worthy lines and story beats, checks the audio and visuals, cuts those segments into short clips, adds captions from the transcript, and reframes the shot to a vertical 9:16 aspect ratio.</p>
+
+    <h3>What is a good AI tool to turn long videos into short clips?</h3>
+    <p>Two widely used options are OpusClip and Belken Studio. OpusClip is a self-serve clipping tool with a free plan (source: opus.pro/pricing, checked 2026-10-12). Belken Studio clips your long footage into short clips, also turns a script into an AI avatar video, and publishes to your own connected accounts. It is self-serve. See studio.belken.ai.</p>
+
+    <h3>Does AI video clipping work for TikTok and Instagram Reels?</h3>
+    <p>Yes. Clips export in the 9:16 vertical format TikTok and Instagram Reels use, with captions. Belken Studio can publish to your own connected TikTok and Instagram accounts. Instagram posts can be scheduled. TikTok posts go out immediately or land in your TikTok inbox as a draft, because TikTok's API does not allow scheduled posts. Nothing posts without your action.</p>
+
+    <h3>Can I generate an AI avatar video with Belken Studio?</h3>
+    <p>Yes. Belken Studio turns a script into a short-form video with an AI avatar talking and captions burned in. You write the script, pick an avatar, and generate. This is separate from clipping: it creates new content rather than cutting existing footage. The person on screen is an AI avatar.</p>
+
+    <h3>How does Belken Studio compare to OpusClip?</h3>
+    <p>Both clip long videos into short-form content. Belken Studio also turns a script into an AI avatar video; OpusClip's pricing page does not list a script-to-avatar feature. Both can publish to your own connected accounts. OpusClip has a free plan and a published price, and is self-serve. Full comparison: belken.ai/compare/belken-studio-vs-opusclip.</p>
+
+    <h3>How much does AI video clipping software cost?</h3>
+    <p>Pricing depends on the tool and your usage. OpusClip's pricing page lists Free at $0, Starter at $15/mo, Pro at $29/mo, and a custom Business plan (source: opus.pro/pricing, checked 2026-10-12). Belken Studio is a paid, self-serve tool that includes clipping, AI avatar video, and publishing; it shows pricing in the app at studio.belken.ai.</p>
+
+    <h3>Does Belken Studio post to TikTok automatically?</h3>
+    <p>Belken Studio publishes to your own connected accounts, and only when you act. YouTube, Facebook, and Instagram posts can be scheduled. TikTok cannot be scheduled through TikTok's API, so Studio either posts to TikTok immediately or sends the video to your TikTok inbox as a draft. Nothing posts without you posting it, scheduling it, or turning on an Autopilot rule.</p>
+
+    <h3>What video files does AI video clipping work with?</h3>
+    <p>Most AI clipping tools accept common video files, and many also accept a video URL so you can skip the download. With Belken Studio you upload your long video or paste a video URL.</p>
+
+    <h3>Can I edit the clips after the AI cuts them?</h3>
+    <p>You review the AI's candidates, preview each clip, and approve or remove them before anything publishes. The AI does the first pass; you make the final call on what goes out.</p>
+
+    <h3>Does Belken Studio require me to be on camera?</h3>
+    <p>No. Clipping works on video you already have. The avatar feature creates video with no camera at all: you supply the script and Studio supplies the AI avatar. You can build a short-form calendar without appearing on camera.</p>
+  </main>
+</div>
+
+<section class="band dark"><div class="wrap">
+  <h2>Turn your long videos into a week of short-form content.</h2>
+  <p>Belken Studio clips your long videos, adds captions, and publishes them to your own connected TikTok, Instagram, and YouTube accounts. Create an account at studio.belken.ai.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:30px">
+    <a class="btn btn-primary btn-lg" style="background:var(--flare);color:#fff" href="/studio">See Belken Studio <svg class="ico arr" width="17" height="17" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="btn btn-ghost btn-lg" style="border-color:var(--paper);color:var(--paper)" href="/compare/belken-studio-vs-opusclip">Studio vs OpusClip</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="foot-in">
+    <a class="brand" href="/"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">Belken</a>
+    <div class="foot-links">
+      <a href="/">Home</a><a href="/openclaw">OpenClaw</a><a href="/aria">AI Receptionist</a><a href="/studio">Belken Studio</a><a href="/docs">Docs</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+    </div>
+    <div class="foot-legal">© 2026 Belken Ventures</div>
+  </div>
+</div></footer>
+
+<script>
+  const root=document.documentElement;
+  window.addEventListener('pointermove',e=>{
+    root.style.setProperty('--gx',(e.clientX/window.innerWidth*100).toFixed(1)+'%');
+    root.style.setProperty('--gy',(e.clientY/window.innerHeight*100).toFixed(1)+'%');
+  },{passive:true});
+  const io=new IntersectionObserver((es)=>{es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(n=>io.observe(n));
+</script>
+</body>
+</html>
