@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Receptionist for Law Firms: 24/7 Intake + After-Hours Answering · Belken</title>
+<meta name="description" content="An AI receptionist for law firms answers every call 24/7, takes new client intake, routes urgent legal matters to the on-call attorney, and texts missed callers back in 60 seconds — without a per-minute answering service or added staff." />
+<meta property="og:title" content="AI Receptionist for Law Firms" />
+<meta property="og:description" content="Plain-language guide: what an AI receptionist does for law firms, how it handles after-hours and urgent calls, how it compares to a legal answering service, and what setup looks like." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://belken.ai/docs/what-is-ai-receptionist-for-law-firms" />
+<link rel="canonical" href="https://belken.ai/docs/what-is-ai-receptionist-for-law-firms" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does an AI receptionist work for law firms?","acceptedAnswer":{"@type":"Answer","text":"Yes. Belken's AI Receptionist is configured for law firms and legal practices. It answers every call in your firm's name, collects new-client intake (matter type, urgency, contact details), books consultation appointments directly to your calendar, and routes urgent legal matters to the on-call attorney's cell phone. Belken sets it up and operates it for you."}},{"@type":"Question","name":"What does an AI receptionist do for a law firm?","acceptedAnswer":{"@type":"Answer","text":"An AI receptionist for a law firm answers every inbound call 24 hours a day, 7 days a week. It greets callers in your firm's name, collects the caller's name, contact information, the type of legal matter, and urgency level, then either books a consultation appointment on your calendar or routes an urgent matter directly to the on-call attorney's cell. Any caller who does not get through receives an automatic text in about 60 seconds so the potential client does not contact a competing firm."}},{"@type":"Question","name":"How does an AI receptionist handle urgent legal calls after hours?","acceptedAnswer":{"@type":"Answer","text":"When a caller describes a time-sensitive legal matter — a DUI arrest, an emergency custody situation, a domestic incident, or a restraining order that needs to be filed — the AI Receptionist recognizes the urgency and routes the call live to the on-call attorney's cell phone. Urgent legal calls cannot wait until the next business day. The escalation logic is configured for your firm's specific practice areas during setup."}},{"@type":"Question","name":"Can an AI receptionist take new client intake for a law firm?","acceptedAnswer":{"@type":"Answer","text":"Yes. Belken's AI Receptionist collects new-client intake on every call: the caller's name, phone number, email, the type of legal matter (criminal defense, family law, personal injury, business dispute, etc.), a brief description of the situation, and preferred consultation times. That information goes directly into your intake system or CRM so the attorney or intake coordinator sees a complete record before the consultation."}},{"@type":"Question","name":"Can a law firm AI receptionist handle consultation bookings?","acceptedAnswer":{"@type":"Answer","text":"Yes. The AI Receptionist books consultation appointments directly to your calendar during the call. The caller hears a confirmed appointment time before they hang up. Free initial consultations, paid consultations, and matter-type-specific appointments (estate planning, divorce, business formation) can each be routed to the right calendar and attorney."}},{"@type":"Question","name":"Can an AI receptionist call former law firm clients to rebook them?","acceptedAnswer":{"@type":"Answer","text":"Yes. Belken includes dead-list reactivation as part of the AI Receptionist. You upload a list of former clients. The AI calls each one by name, reminds them your firm is available, and books a consultation for anyone who has a new legal matter. Former clients who needed estate planning updates, business agreements, or family law changes and have not reached out are a significant source of unbilled revenue already sitting in your database."}},{"@type":"Question","name":"How much does an AI receptionist cost for a law firm?","acceptedAnswer":{"@type":"Answer","text":"Belken's AI Receptionist is included in the Autonomous Operations Retainer, starting at $4,500 per month. That is a flat rate with no per-minute meter. It covers setup, 24/7 legal-intake-tuned answering, urgent matter call routing, missed-call text-back, and former-client reactivation, all operated by Belken. Setup starts with a free 15-minute call. A $1,997 audit engagement is available first if you want to model what missed calls are costing the firm before committing."}},{"@type":"Question","name":"How long does it take to set up an AI receptionist for a law firm?","acceptedAnswer":{"@type":"Answer","text":"Setup starts with one 15-minute call. Belken learns your practice areas, configures the intake scripts, and wires the AI into your existing calendar and CRM. Your firm keeps its existing phone number. There is nothing to install or configure on your end. Belken operates and tunes the system from there."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://belken.ai/#organization","name":"Belken","legalName":"BelKen Ventures Inc","url":"https://belken.ai/","logo":"https://belken.ai/favicon-512.png","email":"info@belken.ai","description":"Belken builds and runs autonomous operations for local service businesses. The AI Receptionist is Belken's AI phone assistant pre-tuned for HVAC, plumbing, roofing, electrical, and professional service firms: it answers every call 24/7, books appointments to your calendar, transfers urgent calls to the on-call person, texts missed callers back, and calls past clients to rebook them."}</script>
+<style>
+  :root{
+    --paper:#EEEAE1;--paper-2:#E4DFD3;--ink:#121110;--ink-soft:#3a382f;
+    --line:#cdc6b6;--ultra:#1F32FF;--ultra-deep:#0e1bb0;--flare:#FF4318;
+    --display:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;overflow-x:hidden;scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:100%;max-width:1320px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+  .ico{stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:58px 58px;opacity:.18;
+    -webkit-mask-image:radial-gradient(430px circle at var(--gx,78%) var(--gy,8%),#000 0%,transparent 70%);
+    mask-image:radial-gradient(430px circle at var(--gx,78%) var(--gy,8%),#000 0%,transparent 70%);
+  }
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:70;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);background:rgba(238,234,225,.6)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.02em;display:flex;align-items:center;gap:11px}
+  .brand .brandmark{width:38px;height:38px;border-radius:9px;display:block;flex:0 0 auto}
+  .nav-links{display:flex;gap:32px;align-items:center;font-size:15px;font-weight:600}
+  .nav-links a:not(.btn){opacity:.7;transition:.2s}
+  .nav-links a:not(.btn):hover{opacity:1}
+  .nav-links a.here{opacity:1;color:var(--ultra)}
+
+  .btn{font-family:var(--body);font-weight:700;font-size:15px;border:none;cursor:pointer;
+    padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:9px;line-height:1;
+    transition:background .22s,color .22s}
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover{background:var(--ultra)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn .arr{transition:transform .22s cubic-bezier(.16,1,.3,1)}
+  .btn:hover .arr{transform:translateX(4px)}
+  .btn-lg{padding:17px 30px;font-size:17px}
+
+  section{position:relative;z-index:1}
+  .crumbs{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.55;
+          display:flex;gap:10px;align-items:center;margin-bottom:20px}
+  .crumbs a:hover{color:var(--ultra);opacity:1}
+  .hero{padding:132px 0 0}
+  h1{font-family:var(--display);font-weight:800;letter-spacing:-.032em;line-height:.98;
+     font-size:clamp(38px,5.6vw,64px);margin-bottom:20px;max-width:900px}
+  .lede{font-size:clamp(18px,1.9vw,21px);line-height:1.5;max-width:700px;color:var(--ink-soft)}
+  .lede strong{color:var(--ink);font-weight:700}
+
+  .facts{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;max-width:1046px;
+         border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .fact{flex:1 1 150px;padding:20px 22px 18px;border-right:1px solid var(--line)}
+  .fact:last-child{border-right:none}
+  .fact b{display:block;font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em;line-height:1}
+  .fact span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.58;display:block;margin-top:7px}
+
+  .doc{display:grid;grid-template-columns:222px 1fr;gap:64px;padding-block:56px 30px;align-items:start}
+  .toc{position:sticky;top:104px}
+  .toc .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.5;
+          padding-bottom:12px;border-bottom:1px solid var(--line);display:block;margin-bottom:14px}
+  .toc a{display:block;font-size:15px;padding:7px 0 7px 13px;border-left:2px solid var(--line);color:var(--ink-soft);transition:.2s}
+  .toc a:hover{border-left-color:var(--ultra);color:var(--ink)}
+
+  .prose{max-width:760px;min-width:0}
+  .prose h2{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1.02;
+            font-size:clamp(30px,3.6vw,42px);margin:0 0 18px;scroll-margin-top:96px}
+  .prose h2:not(:first-child){margin-top:74px;padding-top:34px;border-top:1px solid var(--line)}
+  .prose h3{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.015em;margin:34px 0 9px}
+  .prose p{margin-bottom:17px;color:var(--ink-soft)}
+  .prose p strong{color:var(--ink);font-weight:700}
+  .prose ul{margin:0 0 19px 0;padding:0;list-style:none}
+  .prose li{position:relative;padding-left:22px;margin-bottom:10px;color:var(--ink-soft)}
+  .prose li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:1.5px;background:var(--ultra)}
+  .prose a.ln{color:var(--ultra);font-weight:600;border-bottom:1px solid rgba(31,50,255,.3)}
+  .prose a.ln:hover{border-bottom-color:var(--ultra)}
+
+  .steps{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:30px 0}
+  .step{display:grid;grid-template-columns:90px 1fr;gap:0;border-bottom:1px solid var(--line)}
+  .step:last-child{border-bottom:none}
+  .step .n{background:var(--paper-2);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+           display:flex;align-items:center;justify-content:center;padding:22px 10px;color:var(--ultra-deep);font-weight:600}
+  .step>div:last-child{padding:22px 24px}
+  .step h3{margin:0 0 6px;font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.01em}
+  .step p{margin:0;color:var(--ink-soft);font-size:16px}
+
+  .compare{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:26px 0}
+  .compare-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-bottom:1px solid var(--line)}
+  .compare-row:last-child{border-bottom:none}
+  .compare-row.hdr{background:var(--paper-2);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+  .compare-row div{padding:13px 16px;font-size:16px;border-right:1px solid var(--line)}
+  .compare-row div:last-child{border-right:none}
+  .compare-row .y{color:#1a8f3c;font-weight:600}
+  .compare-row .n{color:#c0392b;font-weight:600}
+
+  .note{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:24px 0}
+  .note b{font-family:var(--display);font-weight:700;font-size:17px;display:block;margin-bottom:8px}
+  .note p{margin:0;color:var(--ink-soft);font-size:16px}
+
+  .band{padding:80px 0}
+  .band.dark{background:var(--ink);color:var(--paper)}
+  .band h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,4vw,44px);letter-spacing:-.03em;margin-bottom:14px}
+  .band p{font-size:18px;opacity:.75;max-width:600px}
+
+  footer{padding:40px 0;border-top:1px solid var(--line)}
+  .foot-in{display:flex;flex-wrap:wrap;align-items:center;gap:24px;justify-content:space-between}
+  .foot-links{display:flex;flex-wrap:wrap;gap:20px;font-size:14px;opacity:.6}
+  .foot-links a:hover{opacity:1;color:var(--ultra)}
+  .foot-legal{font-size:13px;opacity:.4;font-family:var(--mono)}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .48s ease,transform .48s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:768px){
+    .doc{grid-template-columns:1fr}
+    .toc{display:none}
+    .compare-row{grid-template-columns:1fr}
+    .compare-row.hdr{display:none}
+    .compare-row div{border-right:none;border-bottom:1px solid var(--line)}
+    .compare-row div:last-child{border-bottom:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in wrap">
+    <a class="brand" href="/">
+      <img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">
+      Belken
+    </a>
+    <div class="nav-links">
+      <a href="/openclaw">OpenClaw</a>
+      <a href="/aria" class="here">AI Receptionist</a>
+      <a href="/studio">Studio</a>
+      <a href="/docs">Docs</a>
+      <a class="btn btn-primary" href="/aria#book">Book a call <svg class="ico arr" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="crumbs">
+      <a href="/docs">Docs</a>
+      <svg class="ico" width="14" height="14" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      <span>AI Receptionist for Law Firms</span>
+    </div>
+    <h1>AI Receptionist<br>for Law Firms</h1>
+    <p class="lede">Legal calls do not wait — a DUI arrest at 11 PM, an emergency custody situation on a Saturday, a restraining order that cannot hold until Monday. <strong>An AI receptionist routes every call to the right outcome: book the consultation, escalate the urgent matter, or text the caller back in 60 seconds</strong> — without a per-minute legal answering service or adding staff.</p>
+    <div class="facts">
+      <div class="fact">
+        <b>24/7</b>
+        <span>Answers every call</span>
+      </div>
+      <div class="fact">
+        <b>~60 sec</b>
+        <span>Missed-call text-back</span>
+      </div>
+      <div class="fact">
+        <b>$4,500/mo</b>
+        <span>Flat retainer, no per-min</span>
+      </div>
+      <div class="fact">
+        <b>15 min</b>
+        <span>Setup call to go live</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="doc">
+    <nav class="toc" aria-label="Table of contents">
+      <span class="k">On this page</span>
+      <a href="#what-it-does">What it does</a>
+      <a href="#urgent-calls">Urgent legal calls</a>
+      <a href="#intake">New client intake</a>
+      <a href="#consultations">Consultation booking</a>
+      <a href="#reactivation">Rebook former clients</a>
+      <a href="#vs-answering">vs. answering service</a>
+      <a href="#setup">Setup</a>
+      <a href="#cost">Cost</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <main class="prose">
+
+      <h2 id="what-it-does">What an AI receptionist does for a law firm</h2>
+      <p>An AI receptionist answers your law firm's inbound calls around the clock. It greets callers in your firm's name, collects intake information, and either books the consultation directly to your calendar or routes a time-sensitive legal matter to the on-call attorney's cell phone.</p>
+      <p>Belken's AI Receptionist is configured for legal practices. It understands the difference between a caller who wants to schedule an estate planning consultation next week and a caller whose spouse just had them served with emergency custody papers — and it handles each one differently. For calls that come in when nobody answers, it texts the caller back automatically in about 60 seconds so the potential client does not contact a competing firm while they are still deciding where to go.</p>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="n">ANSWER</div>
+          <div>
+            <h3>Picks up in your firm's name</h3>
+            <p>The AI answers as your firm, not a generic menu. It is scripted for legal intake and tuned for how your calls actually sound — new clients, existing client questions, consultation requests, and after-hours urgent matters.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="n">QUALIFY</div>
+          <div>
+            <h3>Gathers what it needs to book or escalate</h3>
+            <p>Caller's name, contact details, practice area, brief description of the matter, and urgency level. The AI distinguishes a routine consultation request from a time-sensitive legal situation before deciding the next step.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="n">BOOK</div>
+          <div>
+            <h3>Consultation appointment goes on your calendar</h3>
+            <p>Routine consultations get booked directly into whatever scheduling tool the firm already uses. The caller hears a confirmed appointment time before they hang up — and a complete intake record lands in your system.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="n">ESCALATE</div>
+          <div>
+            <h3>Urgent matters go to a real attorney</h3>
+            <p>DUI arrest, emergency custody, domestic violence situation, restraining order — the AI routes the call live to the on-call attorney's cell phone. Time-sensitive legal matters do not go to a booking queue.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="n">FOLLOW UP</div>
+          <div>
+            <h3>Missed callers get a text in ~60 seconds</h3>
+            <p>Any caller who does not get through receives an automatic text. The conversation continues by text and can convert to a booked consultation without a callback — before the caller finds another attorney.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="urgent-calls">How urgent legal calls are handled after hours</h2>
+      <p>Many of the most valuable legal matters arrive outside business hours. A DUI arrest happens at 2 AM on a Saturday. An emergency protective order needs to be filed before a court opens Monday morning. A business partner locks someone out of their own company on a holiday weekend. These callers are not browsing — they are in crisis, they are calling the first number they can find, and they will hire the first attorney who picks up.</p>
+      <p>Belken's AI Receptionist is configured to recognize when a caller is describing a time-sensitive matter. When that happens, it routes the call live to the on-call attorney's cell phone. It does not send a time-sensitive matter to a voicemail or a consultation booking flow. The escalation logic — exactly which matter types and phrases trigger a live transfer — is configured during setup to match your firm's practice areas and on-call coverage.</p>
+
+      <div class="note">
+        <b>After-hours coverage built into the flat rate</b>
+        <p>The AI Receptionist runs 24/7 as part of the retainer. There is no separate after-hours add-on. Urgent legal matters happen at night and on weekends — that coverage is included at the flat rate, not billed per-minute when you need it most.</p>
+      </div>
+
+      <h2 id="intake">New client intake: what gets collected on every call</h2>
+      <p>The AI Receptionist collects complete intake information on every new caller before the consultation is booked. The attorney or intake coordinator sees a full record, not a message slip with a name and a phone number.</p>
+      <p>For a new client call, the AI gathers:</p>
+      <ul>
+        <li>Full name and contact information (phone, email)</li>
+        <li>Practice area — criminal, family, personal injury, estate, business, etc.</li>
+        <li>Brief description of the matter in the caller's own words</li>
+        <li>Urgency level and any relevant dates (court dates, filing deadlines)</li>
+        <li>How they found the firm (referral, search, prior client)</li>
+        <li>Preferred consultation format and available times</li>
+      </ul>
+      <p>That record goes directly into your intake system or CRM. Every consultation is pre-loaded with context before the attorney walks in. No intake call to return. No duplicate questions when the client arrives.</p>
+
+      <h2 id="consultations">Consultation booking: free, paid, and matter-specific</h2>
+      <p>Not all consultations are the same. A criminal defense firm might offer a free 30-minute initial consultation. An estate planning practice might charge for a 90-minute intake meeting. A business law firm might route different matter types — contract disputes, business formation, employment — to different attorneys with different calendar availability.</p>
+      <p>Belken configures the AI Receptionist to handle these distinctions correctly. Free initial consultations, paid consultations, and matter-type-specific appointments each route to the right calendar and the right attorney. The caller hears a confirmed appointment before they hang up. No follow-up call needed to finalize the booking.</p>
+      <p>After-hours consultations can be booked for the next available morning or afternoon slot. The caller does not have to wait on hold or call back during business hours to get on the schedule.</p>
+
+      <h2 id="reactivation">Rebook former clients</h2>
+      <p>Most law firms have a database of former clients whose matters closed but whose legal needs did not end. The estate planning client who executed their will three years ago and has not called since buying a new house. The business client whose LLC formation closed but who has since taken on partners. The family law client whose divorce finalized but who needs to modify a custody agreement.</p>
+      <p>Belken includes former-client reactivation as part of the AI Receptionist. You upload a list of past clients. The AI calls each one by name, mentions that your firm is available for new matters, and books a consultation for anyone who is ready. This is revenue your firm already paid to earn — it is sitting in a closed-file database waiting to be called.</p>
+      <p>Reactivation calls go out automatically on a cadence Belken configures during setup. You see which former clients booked, which declined, and which asked to be called back at a different time. No paralegal time spent on outreach calls.</p>
+
+      <h2 id="vs-answering">AI receptionist vs. a traditional legal answering service</h2>
+      <p>Many law firms already use a live legal answering service for after-hours coverage. The comparison is worth making directly:</p>
+
+      <div class="compare">
+        <div class="compare-row hdr">
+          <div>Capability</div>
+          <div>Legal answering service</div>
+          <div>AI receptionist (Belken)</div>
+        </div>
+        <div class="compare-row reveal">
+          <div><strong>Available 24/7</strong></div>
+          <div class="y">Yes (if you pay for it)</div>
+          <div class="y">Yes, always included</div>
+        </div>
+        <div class="compare-row reveal">
+          <div><strong>Books consultations on the spot</strong></div>
+          <div class="n">No (takes a message)</div>
+          <div class="y">Yes (books during the call)</div>
+        </div>
+        <div class="compare-row reveal">
+          <div><strong>Collects full intake record</strong></div>
+          <div class="n">Name and number only</div>
+          <div class="y">Yes (complete intake)</div>
+        </div>
+        <div class="compare-row reveal">
+          <div><strong>Texts missed callers</strong></div>
+          <div class="n">No</div>
+          <div class="y">Yes (~60 seconds)</div>
+        </div>
+        <div class="compare-row reveal">
+          <div><strong>Routes urgent matters live</strong></div>
+          <div class="y">Usually yes</div>
+          <div class="y">Yes (matter-type-aware)</div>
+        </div>
+        <div class="compare-row reveal">
+          <div><strong>Distinguishes practice areas</strong></div>
+          <div class="n">Generic script</div>
+          <div class="y">Yes (configured per firm)</div>
+        </div>
+        <div class="compare-row reveal">
+          <div><strong>Calls former clients to rebook</strong></div>
+          <div class="n">No</div>
+          <div class="y">Yes (reactivation included)</div>
+        </div>
+        <div class="compare-row reveal">
+          <div><strong>Per-minute billing</strong></div>
+          <div class="n">Yes (spikes on busy evenings)</div>
+          <div class="y">No (flat retainer)</div>
+        </div>
+        <div class="compare-row reveal">
+          <div><strong>Handles simultaneous call volume</strong></div>
+          <div class="n">Limited by staffing</div>
+          <div class="y">Unlimited simultaneous calls</div>
+        </div>
+      </div>
+
+      <p>The practical difference is that a legal answering service takes a message. An AI receptionist closes the booking, collects the full intake, and routes the urgent matter. For a law firm where a caller who does not get a confirmed appointment or an immediate response will call the next attorney they find, that difference determines whether the matter becomes a client relationship or someone else's case.</p>
+
+      <h2 id="setup">How setup works for law firms</h2>
+      <p>Belken sets up and operates the AI Receptionist for you. Here is what that looks like:</p>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="n">STEP 1</div>
+          <div>
+            <h3>15-minute discovery call</h3>
+            <p>Belken asks about your firm: practice areas, how you handle new client intake, your calendar and CRM tools, how after-hours urgent matters are handled today, and what a typical inbound call sounds like. This takes 15 minutes.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="n">STEP 2</div>
+          <div>
+            <h3>Belken builds and wires it in</h3>
+            <p>Belken configures the AI, writes the legal-intake scripts — including urgent-matter escalation logic and practice-area routing — and wires it into your existing calendar, CRM, and phone. Your firm keeps its existing phone number. There is nothing to install or configure on your end.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="n">STEP 3</div>
+          <div>
+            <h3>Live, monitored, and tuned</h3>
+            <p>Belken operates the system from there. If a script needs adjusting based on how your calls actually sound, Belken handles it. You see the booked consultations. Monthly reporting shows consultations booked, urgent matters escalated, intake quality, and former clients reactivated.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="cost">What it costs</h2>
+      <p>Belken's AI Receptionist is included in the <strong>Autonomous Operations Retainer, starting at $4,500 per month</strong>. That is a flat rate with no per-minute meter. The retainer covers setup, 24/7 legal-intake-tuned answering, urgent matter call routing, missed-call text-back, former-client reactivation calls, and ongoing monitoring — all operated by Belken.</p>
+      <p>There are two starting points before the retainer:</p>
+      <ul>
+        <li><strong>Free 20-minute assessment</strong> — Belken walks through what the AI Receptionist would do for your specific practice, at no cost and with no pitch.</li>
+        <li><strong>$1,997 Opportunity Audit</strong> — Belken models what your missed calls and after-hours non-responses are costing your firm using your real call data, before any retainer commitment. If the number does not justify the retainer, Belken says so.</li>
+      </ul>
+      <p>The founding-client program is specifically for law firms and service businesses in the Frederick County, Maryland area. No long contract — if the AI Receptionist does not book consultations, you walk.</p>
+
+      <h2 id="faq">Common questions</h2>
+
+      <h3>Does an AI receptionist work for law firms?</h3>
+      <p>Yes. Belken's AI Receptionist is configured for law firms. It answers every call in your firm's name, collects complete new-client intake, books consultation appointments to your calendar, and routes urgent matters directly to the on-call attorney's cell. Belken sets it up and operates it for you.</p>
+
+      <h3>What does an AI receptionist do for a law firm?</h3>
+      <p>It answers every inbound call 24/7 in your firm's name, collects full intake information (matter type, urgency, contact details), books the consultation on your calendar, routes time-sensitive matters live to the on-call attorney, and texts any missed caller back in about 60 seconds. It also runs former-client reactivation — calling past clients by name to rebook them for new matters.</p>
+
+      <h3>How does an AI receptionist handle urgent legal calls after hours?</h3>
+      <p>When a caller describes a time-sensitive matter — a DUI arrest, an emergency custody situation, a domestic violence incident, a business lockout — the AI recognizes it and routes the call live to the on-call attorney's cell phone. Urgent legal matters do not go to a booking queue. The escalation logic is configured for your practice areas during setup.</p>
+
+      <h3>Can an AI receptionist take new client intake for a law firm?</h3>
+      <p>Yes. The AI collects complete intake on every new caller: name, contact info, practice area, description of the matter, urgency level, any relevant deadlines, and preferred consultation times. That record goes directly into your intake system before the consultation — no intake call to return, no duplicate questions when the client arrives.</p>
+
+      <h3>Can a law firm AI receptionist handle consultation bookings?</h3>
+      <p>Yes. The AI books consultations directly to your calendar during the call. Free consultations, paid consultations, and matter-type-specific appointments route to the right attorney and calendar. The caller hears a confirmed time before they hang up.</p>
+
+      <h3>Can an AI receptionist call former law firm clients to rebook them?</h3>
+      <p>Yes. Belken includes former-client reactivation as part of the AI Receptionist. You upload your past client list. The AI calls each one by name, mentions the firm is available for new matters, and books a consultation for anyone who is ready. Former clients whose legal needs have continued or changed are a significant source of revenue sitting in a closed-file database.</p>
+
+      <h3>How much does an AI receptionist cost for a law firm?</h3>
+      <p>Belken's AI Receptionist is included in the Autonomous Operations Retainer, starting at $4,500 per month with no per-minute meter. That covers setup, 24/7 legal-intake-tuned answering, urgent matter routing, missed-call texts, and former-client reactivation, all operated by Belken. Setup starts with a free 15-minute call. A $1,997 audit is available first to model the ROI before any commitment.</p>
+
+      <h3>How long does setup take for a law firm?</h3>
+      <p>Setup starts with one 15-minute call. Belken learns your practice areas, configures the intake and escalation scripts, and wires the AI into your existing calendar, CRM, and phone. Your firm keeps its existing phone number. There is nothing to install or configure on your end. Belken operates and tunes the system from there.</p>
+
+    </main>
+  </div>
+</div>
+
+<section class="band dark">
+  <div class="wrap">
+    <h2>Every call answered. Every consultation booked.</h2>
+    <p>Book a 15-minute call. Belken walks through exactly what the AI Receptionist would do for your firm — at no cost and with no pitch.</p>
+    <div style="margin-top:32px;display:flex;gap:16px;flex-wrap:wrap">
+      <a class="btn btn-primary btn-lg" href="/aria#book" style="background:var(--paper);color:var(--ink)">Book a free call <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost btn-lg" href="/audit" style="border-color:rgba(238,234,225,.35);color:var(--paper)">Start with an audit</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <a class="brand" href="/" style="font-size:20px">
+        <img class="brandmark" src="/favicon.svg" alt="Belken" width="32" height="32">
+        Belken
+      </a>
+      <nav class="foot-links">
+        <a href="/aria">AI Receptionist</a>
+        <a href="/studio">Studio</a>
+        <a href="/openclaw">OpenClaw</a>
+        <a href="/fleet">Fleet</a>
+        <a href="/docs">Docs</a>
+        <a href="/audit">Audit</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </nav>
+      <span class="foot-legal">© 2026 BelKen Ventures Inc</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  document.addEventListener('mousemove',e=>{
+    const x=(e.clientX/window.innerWidth*100).toFixed(1);
+    const y=(e.clientY/window.innerHeight*100).toFixed(1);
+    document.body.style.setProperty('--gx',x+'%');
+    document.body.style.setProperty('--gy',y+'%');
+  });
+})();
+</script>
+</body>
+</html>
