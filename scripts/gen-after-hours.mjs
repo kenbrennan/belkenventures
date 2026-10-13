@@ -281,7 +281,7 @@ const CROSSLINKS = [
 function faqItems(t) {
   return [
     ['What does it cost?',
-     `We price it per shop after a short setup call. There is no per-minute meter and no long contract. Book a 15-minute setup call and we scope it to your hours and how many after-hours calls you actually get.`],
+     `We price it per shop after a short setup call. There is no per-minute meter and no long contract. Book a 20-minute setup call and we scope it to your hours and how many after-hours calls you actually get.`],
     ['Does it work with my existing number?',
      `Yes. You keep your number. We answer the calls you cannot get to, after hours or when the crew is slammed, and leave the rest to you. Nothing about your current phone changes.`],
     ['What happens on a real emergency?',
@@ -465,7 +465,7 @@ function page(t) {
     <div class="sec-head rv">
       <p class="sec-kick">// Set it up</p>
       <h2>Want it running for your shop?</h2>
-      <p class="sec-sub">Book a 15-minute setup call. We learn your hours and what counts as urgent, then we run it for you. No per-minute meter, no long contract.</p>
+      <p class="sec-sub">Book a 20-minute setup call. We learn your hours and what counts as urgent, then we run it for you. No per-minute meter, no long contract.</p>
     </div>
     <div class="cal-frame rv">
       <div class="calendly-inline-widget" data-url="${CAL}?hide_gdpr_banner=1" style="min-width:320px;height:680px;"></div>
