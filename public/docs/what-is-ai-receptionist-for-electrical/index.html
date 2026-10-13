@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Receptionist for Electrical Contractors: 24/7 Answering + Emergency Routing · Belken</title>
+<meta name="description" content="An AI receptionist for electrical contractors answers every call 24/7, routes safety emergencies to the owner's cell, books estimates and repairs, and texts missed callers back in 60 seconds — without adding staff or paying per minute." />
+<meta property="og:title" content="AI Receptionist for Electrical Contractors" />
+<meta property="og:description" content="Plain-language guide: what an AI receptionist does for electricians, how it handles after-hours and emergency calls, how it compares to an answering service, and what setup looks like." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://belken.ai/docs/what-is-ai-receptionist-for-electrical" />
+<link rel="canonical" href="https://belken.ai/docs/what-is-ai-receptionist-for-electrical" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does an AI receptionist work for electrical contractors?","acceptedAnswer":{"@type":"Answer","text":"Yes. Belken's AI Receptionist is pre-tuned for electrical contractors. It answers every call in your business name, understands electrical service calls and emergency language, books appointments and estimates to your existing calendar, and routes safety emergencies directly to the owner's or on-call electrician's cell phone. Belken sets it up and operates it for you."}},{"@type":"Question","name":"What does an AI receptionist do for an electrical company?","acceptedAnswer":{"@type":"Answer","text":"An AI receptionist for an electrical company answers every inbound call 24 hours a day, 7 days a week. It greets callers in your business name, gathers their name, address, and what type of electrical work they need, books the appointment or estimate directly to your calendar, and texts any caller who could not get through in about 60 seconds. It also routes urgent calls — burning smell from an outlet, panel failure, no power — directly to the owner's or on-call electrician's cell phone."}},{"@type":"Question","name":"How does an AI receptionist handle electrical emergency calls?","acceptedAnswer":{"@type":"Answer","text":"When a caller describes a safety emergency — a burning smell from an outlet, a breaker that keeps tripping, sparks, no power after a storm — the AI Receptionist recognizes the urgency and routes the call live to the owner's or on-call electrician's cell phone. Electrical emergencies are fire hazards and cannot wait for a booking queue. The escalation logic is configured for your business during setup."}},{"@type":"Question","name":"Can an AI answer electrical contractor calls after hours?","acceptedAnswer":{"@type":"Answer","text":"Yes. The AI Receptionist answers 24 hours a day, 7 days a week, including nights, weekends, and holidays. For electrical contractors, after-hours coverage matters most during storm season when power outages and panel damage happen overnight. The AI books the appointment or escalates the emergency regardless of what time it is."}},{"@type":"Question","name":"How does an AI receptionist help electrical companies during storm season?","acceptedAnswer":{"@type":"Answer","text":"During storm season, electrical contractors get flooded with calls about power outages, surge damage, and panel failures — often late at night or on weekends when no one is in the office. The AI Receptionist handles every call simultaneously. Genuine emergencies go directly to the on-call electrician's cell. Non-urgent requests get booked to the next available slot. No caller gets a busy signal or voicemail during the surge."}},{"@type":"Question","name":"Can an AI receptionist book EV charger installation calls?","acceptedAnswer":{"@type":"Answer","text":"Yes. The AI Receptionist is tuned to recognize EV charger installation requests and books them as estimate calls rather than repair calls. It gathers the homeowner's address, the type of charger they need (Level 1 vs. Level 2), and the panel's current load — the same questions your estimator would ask — and puts the estimate appointment directly on your calendar."}},{"@type":"Question","name":"How much does an AI receptionist cost for an electrical contractor?","acceptedAnswer":{"@type":"Answer","text":"Belken's AI Receptionist is included in the Autonomous Operations Retainer, starting at $4,500 per month. That is a flat rate with no per-minute meter and no overage fees. It covers setup, 24/7 answering, live emergency call routing, missed-call text-back, and dead-list reactivation calls, all operated by Belken. Setup starts with a free 15-minute call. A $1,997 audit engagement is available first if you want to see the numbers before committing."}},{"@type":"Question","name":"How long does it take to set up an AI receptionist for an electrical contractor?","acceptedAnswer":{"@type":"Answer","text":"Setup starts with one 15-minute call. Belken learns your business, configures the AI, and wires it into your existing calendar, CRM, and phone. Your business keeps its existing phone number. There is nothing to install or configure on your end. Belken operates and tunes the system from there."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://belken.ai/#organization","name":"Belken","legalName":"BelKen Ventures Inc","url":"https://belken.ai/","logo":"https://belken.ai/favicon-512.png","email":"info@belken.ai","description":"Belken builds and runs autonomous operations for local service businesses. The AI Receptionist is Belken's AI phone assistant pre-tuned for HVAC, plumbing, roofing, and electrical trades: it answers every call 24/7, books jobs to your calendar, transfers urgent calls to the owner's cell, texts missed callers back, and calls past customers to rebook them."}</script>
+<style>
+  :root{
+    --paper:#EEEAE1;--paper-2:#E4DFD3;--ink:#121110;--ink-soft:#3a382f;
+    --line:#cdc6b6;--ultra:#1F32FF;--ultra-deep:#0e1bb0;--flare:#FF4318;
+    --display:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;overflow-x:hidden;scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:100%;max-width:1320px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+  .ico{stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:58px 58px;opacity:.18;
+    -webkit-mask-image:radial-gradient(430px circle at var(--gx,78%) var(--gy,8%),#000 0%,transparent 70%);
+    mask-image:radial-gradient(430px circle at var(--gx,78%) var(--gy,8%),#000 0%,transparent 70%);
+  }
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:70;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);background:rgba(238,234,225,.6)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.02em;display:flex;align-items:center;gap:11px}
+  .brand .brandmark{width:38px;height:38px;border-radius:9px;display:block;flex:0 0 auto}
+  .nav-links{display:flex;gap:32px;align-items:center;font-size:15px;font-weight:600}
+  .nav-links a:not(.btn){opacity:.7;transition:.2s}
+  .nav-links a:not(.btn):hover{opacity:1}
+  .nav-links a.here{opacity:1;color:var(--ultra)}
+
+  .btn{font-family:var(--body);font-weight:700;font-size:15px;border:none;cursor:pointer;
+    padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:9px;line-height:1;
+    transition:background .22s,color .22s}
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover{background:var(--ultra)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn .arr{transition:transform .22s cubic-bezier(.16,1,.3,1)}
+  .btn:hover .arr{transform:translateX(4px)}
+  .btn-lg{padding:17px 30px;font-size:17px}
+
+  section{position:relative;z-index:1}
+  .crumbs{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.55;
+          display:flex;gap:10px;align-items:center;margin-bottom:20px}
+  .crumbs a:hover{color:var(--ultra);opacity:1}
+  .hero{padding:132px 0 0}
+  h1{font-family:var(--display);font-weight:800;letter-spacing:-.032em;line-height:.98;
+     font-size:clamp(38px,5.6vw,64px);margin-bottom:20px;max-width:900px}
+  .lede{font-size:clamp(18px,1.9vw,21px);line-height:1.5;max-width:700px;color:var(--ink-soft)}
+  .lede strong{color:var(--ink);font-weight:700}
+
+  .facts{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;max-width:1046px;
+         border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .fact{flex:1 1 150px;padding:20px 22px 18px;border-right:1px solid var(--line)}
+  .fact:last-child{border-right:none}
+  .fact b{display:block;font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em;line-height:1}
+  .fact span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.58;display:block;margin-top:7px}
+
+  .doc{display:grid;grid-template-columns:222px 1fr;gap:64px;padding-block:56px 30px;align-items:start}
+  .toc{position:sticky;top:104px}
+  .toc .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.5;
+          padding-bottom:12px;border-bottom:1px solid var(--line);display:block;margin-bottom:14px}
+  .toc a{display:block;font-size:15px;padding:7px 0 7px 13px;border-left:2px solid var(--line);color:var(--ink-soft);transition:.2s}
+  .toc a:hover{border-left-color:var(--ultra);color:var(--ink)}
+
+  .prose{max-width:760px;min-width:0}
+  .prose h2{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1.02;
+            font-size:clamp(30px,3.6vw,42px);margin:0 0 18px;scroll-margin-top:96px}
+  .prose h2:not(:first-child){margin-top:74px;padding-top:34px;border-top:1px solid var(--line)}
+  .prose h3{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.015em;margin:34px 0 9px}
+  .prose p{margin-bottom:17px;color:var(--ink-soft)}
+  .prose p strong{color:var(--ink);font-weight:700}
+  .prose ul{margin:0 0 19px 0;padding:0;list-style:none}
+  .prose li{position:relative;padding-left:22px;margin-bottom:10px;color:var(--ink-soft)}
+  .prose li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:1.5px;background:var(--ultra)}
+  .prose a.ln{color:var(--ultra);font-weight:600;border-bottom:1px solid rgba(31,50,255,.3)}
+  .prose a.ln:hover{border-bottom-color:var(--ultra)}
+
+  .steps{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:30px 0}
+  .step{display:grid;grid-template-columns:90px 1fr;gap:0;border-bottom:1px solid var(--line)}
+  .step:last-child{border-bottom:none}
+  .step .n{background:var(--paper-2);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+           display:flex;align-items:center;justify-content:center;padding:22px 10px;color:var(--ultra-deep);font-weight:600}
+  .step>div:last-child{padding:22px 24px}
+  .step h3{margin:0 0 6px;font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.01em}
+  .step p{margin:0;color:var(--ink-soft);font-size:16px}
+
+  .compare{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:26px 0}
+  .compare-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-bottom:1px solid var(--line)}
+  .compare-row:last-child{border-bottom:none}
+  .compare-row.hdr{background:var(--paper-2);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+  .compare-row div{padding:13px 16px;font-size:16px;border-right:1px solid var(--line)}
+  .compare-row div:last-child{border-right:none}
+  .compare-row .y{color:#1a8f3c;font-weight:600}
+  .compare-row .n{color:#c0392b;font-weight:600}
+
+  .note{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:24px 0}
+  .note b{font-family:var(--display);font-weight:700;font-size:17px;display:block;margin-bottom:8px}
+  .note p{margin:0;color:var(--ink-soft);font-size:16px}
+
+  .band{padding:80px 0}
+  .band.dark{background:var(--ink);color:var(--paper)}
+  .band h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,4vw,44px);letter-spacing:-.03em;margin-bottom:14px}
+  .band p{font-size:18px;opacity:.75;max-width:600px}
+
+  footer{padding:40px 0;border-top:1px solid var(--line)}
+  .foot-in{display:flex;flex-wrap:wrap;align-items:center;gap:24px;justify-content:space-between}
+  .foot-links{display:flex;flex-wrap:wrap;gap:20px;font-size:14px;opacity:.6}
+  .foot-links a:hover{opacity:1;color:var(--ultra)}
+  .foot-legal{font-size:13px;opacity:.4;font-family:var(--mono)}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .48s ease,transform .48s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:768px){
+    .doc{grid-template-columns:1fr}
+    .toc{display:none}
+    .compare-row{grid-template-columns:1fr}
+    .compare-row.hdr{display:none}
+    .compare-row div{border-right:none;border-bottom:1px solid var(--line)}
+    .compare-row div:last-child{border-bottom:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in wrap">
+    <a class="brand" href="/">
+      <img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">
+      Belken
+    </a>
+    <div class="nav-links">
+      <a href="/openclaw">OpenClaw</a>
+      <a href="/aria" class="here">AI Receptionist</a>
+      <a href="/studio">Studio</a>
+      <a href="/docs">Docs</a>
+      <a class="btn btn-primary" href="/aria#book">Book a call <svg class="ico arr" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="crumbs">
+      <a href="/docs">Docs</a>
+      <svg class="ico" width="14" height="14" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      <span>AI Receptionist for Electrical Contractors</span>
+    </div>
+    <h1>AI Receptionist<br>for Electrical Contractors</h1>
+    <p class="lede">Electrical calls do not wait — a burning outlet at 10 PM is a safety emergency, not a message to return tomorrow. <strong>An AI receptionist routes every call to the right outcome: book it, escalate it, or text the caller back in 60 seconds</strong> — without adding staff or a per-minute answering service.</p>
+    <div class="facts">
+      <div class="fact">
+        <b>24/7</b>
+        <span>Answers every call</span>
+      </div>
+      <div class="fact">
+        <b>~60 sec</b>
+        <span>Missed-call text-back</span>
+      </div>
+      <div class="fact">
+        <b>$4,500/mo</b>
+        <span>Flat retainer, no per-min</span>
+      </div>
+      <div class="fact">
+        <b>15 min</b>
+        <span>Setup call to go live</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="doc">
+    <nav class="toc" aria-label="Table of contents">
+      <span class="k">On this page</span>
+      <a href="#what-it-does">What it does</a>
+      <a href="#emergencies">Emergency calls</a>
+      <a href="#storm-season">Storm season</a>
+      <a href="#ev-chargers">EV charger calls</a>
+      <a href="#reactivation">Rebook old customers</a>
+      <a href="#vs-answering">vs. answering service</a>
+      <a href="#setup">Setup</a>
+      <a href="#cost">Cost</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <main class="prose">
+
+      <h2 id="what-it-does">What an AI receptionist does for an electrical contractor</h2>
+      <p>An AI receptionist answers your electrical company's inbound calls around the clock. It greets the caller in your business name, asks what they need, and either books the appointment or estimate directly to your calendar, or routes a safety emergency to the owner's or on-call electrician's cell phone.</p>
+      <p>Belken's AI Receptionist is pre-tuned for electrical trades. It understands the difference between a routine outlet replacement request and a breaker that keeps tripping with a burning smell — and it handles each one differently. For calls that come in when nobody picks up, it texts the caller back automatically in about 60 seconds so the lead does not go cold.</p>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="n">ANSWER</div>
+          <div>
+            <h3>Picks up in your business name</h3>
+            <p>The AI answers as your business, not a generic menu. It is scripted for electrical trades and tuned for how your calls actually sound — estimates, repairs, panel work, and EV charger installs.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="n">QUALIFY</div>
+          <div>
+            <h3>Gathers what it needs to book or escalate</h3>
+            <p>Caller's name, address, what the electrical issue is, and urgency level. The AI distinguishes routine service calls from safety emergencies before deciding the next step.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="n">BOOK</div>
+          <div>
+            <h3>Appointment or estimate hits your calendar</h3>
+            <p>Routine work gets booked directly into whatever scheduling tool the business already uses. The caller hears a confirmed time before they hang up.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="n">ESCALATE</div>
+          <div>
+            <h3>Safety emergencies go to a real person</h3>
+            <p>Burning smell, sparks, panel failure, no power after a surge — the AI routes the call live to the owner's or on-call electrician's cell phone. Electrical emergencies are fire hazards and do not go to a booking queue.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="n">FOLLOW UP</div>
+          <div>
+            <h3>Missed callers get a text in ~60 seconds</h3>
+            <p>Any caller who does not get through receives an automatic text. The conversation continues by text and can convert to a booked estimate without a callback.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="emergencies">How electrical emergency calls are handled</h2>
+      <p>Electrical emergencies are different from scheduling calls. A homeowner calling about a burning smell from an outlet, breakers that trip and will not reset, sparks near a panel, or a complete power loss after a storm needs an immediate response — not a voicemail or an appointment two days out.</p>
+      <p>Belken's AI Receptionist is configured to recognize when a caller is describing a safety emergency. When that happens, it routes the call live to the owner's or on-call electrician's cell phone. It does not try to book a safety issue into a routine slot. The escalation logic — exactly what triggers a live transfer — is configured during setup to match how your business actually handles urgent calls.</p>
+
+      <div class="note">
+        <b>After-hours safety coverage built in</b>
+        <p>The AI Receptionist runs 24/7 as part of the retainer. There is no separate after-hours add-on. Electrical emergencies happen at night and on weekends — that coverage is included at the flat rate.</p>
+      </div>
+
+      <h2 id="storm-season">Storm season: when every electrical contractor's phone floods</h2>
+      <p>During and after a major storm, electrical contractors in a service area can receive more calls in one night than they normally handle in a week. Power outages, surge damage, downed-line hazards, and flooded panel boxes all generate simultaneous inbound calls — at 2 AM, on a Sunday, during a holiday weekend.</p>
+      <p>An AI receptionist handles every call simultaneously. There is no busy signal, no voicemail during the surge, and no caller who calls a competitor because they could not get through. Genuine safety emergencies get routed live to the on-call electrician's cell. Non-urgent calls — surge damage assessment, insurance documentation requests, panel inspection scheduling — get booked to the next available slot.</p>
+      <p>This is the moment where electrical contractors lose the most leads: not because they cannot do the work, but because they cannot answer every call at once while they are actively managing a storm response.</p>
+
+      <h2 id="ev-chargers">EV charger installation: a growing booking category</h2>
+      <p>EV charger installation calls are a distinct booking category that does not fit standard repair intake. A homeowner calling about a Level 2 charger install needs a panel assessment and an estimate, not a repair slot. The AI Receptionist is configured to handle these calls correctly.</p>
+      <p>When a caller asks about EV charger installation, the AI gathers the information your estimator would need: the address, whether they already have a 240-volt circuit, the type of vehicle and charger, and the best time for an estimate visit. That information goes directly to your calendar as an estimate appointment, not a generic service call.</p>
+      <p>As EV adoption grows in your service area, the volume of these calls will increase. Having an AI handle the intake correctly — rather than taking a message — means every estimate gets booked when the caller is still on the phone.</p>
+
+      <h2 id="reactivation">Rebook old electrical customers</h2>
+      <p>Most electrical contractors have a list of past customers they have not heard from in a year or more. Homeowners who got a panel upgrade and never called back about the generator install they mentioned. Customers whose last service was a repair and who are overdue for a safety inspection. Businesses that had wiring work done during a renovation and have not been in touch since.</p>
+      <p>Belken includes a dead-list reactivation feature as part of the AI Receptionist. You upload your old customer list. The AI calls each customer by name, reminds them your business is there, and rebooks the ones who are ready. This is revenue your company already paid to earn — it is sitting in a spreadsheet waiting to be called.</p>
+
+      <h2 id="vs-answering">AI receptionist vs. a traditional electrical answering service</h2>
+      <p>Many electrical contractors already use a live answering service for after-hours coverage. The comparison is worth making directly:</p>
+
+      <div class="compare">
+        <div class="compare-row hdr">
+          <div>Capability</div>
+          <div>Live answering service</div>
+          <div>AI receptionist (Belken)</div>
+        </div>
+        <div class="compare-row reveal">
+          <div><strong>Available 24/7</strong></div>
+          <div class="y">Yes (if you pay for it)</div>
+          <div class="y">Yes, always included</div>
+        </div>
+        <div class="compare-row reveal">
+          <div><strong>Books appointments and estimates</strong></div>
+          <div class="n">No (takes a message)</div>
+          <div class="y">Yes (books on the spot)</div>
+        </div>
+        <div class="compare-row reveal">
+          <div><strong>Texts missed callers</strong></div>
+          <div class="n">No</div>
+          <div class="y">Yes (~60 seconds)</div>
+        </div>
+        <div class="compare-row reveal">
+          <div><strong>Routes electrical emergencies live</strong></div>
+          <div class="y">Usually yes</div>
+          <div class="y">Yes (safety-aware escalation)</div>
+        </div>
+        <div class="compare-row reveal">
+          <div><strong>Handles EV charger intake correctly</strong></div>
+          <div class="n">Generic script</div>
+          <div class="y">Yes (estimate vs. repair routing)</div>
+        </div>
+        <div class="compare-row reveal">
+          <div><strong>Calls old customers to rebook</strong></div>
+          <div class="n">No</div>
+          <div class="y">Yes (dead-list reactivation)</div>
+        </div>
+        <div class="compare-row reveal">
+          <div><strong>Per-minute billing</strong></div>
+          <div class="n">Yes (adds up during storm surges)</div>
+          <div class="y">No (flat retainer)</div>
+        </div>
+        <div class="compare-row reveal">
+          <div><strong>Handles simultaneous call surges</strong></div>
+          <div class="n">Limited by staffing</div>
+          <div class="y">Unlimited simultaneous calls</div>
+        </div>
+      </div>
+
+      <p>The practical difference is that an answering service takes a message. An AI receptionist closes the booking or escalates the emergency. For an electrical contractor where a caller who does not get an appointment or an immediate response will call the next licensed electrician on their list, that difference determines whether the job goes to your business or to a competitor.</p>
+
+      <h2 id="setup">How setup works for electrical contractors</h2>
+      <p>Belken sets up and operates the AI Receptionist for you. Here is what that looks like:</p>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="n">STEP 1</div>
+          <div>
+            <h3>15-minute discovery call</h3>
+            <p>Belken asks about your business: what electrical services you offer, your service area, the scheduling tool you use, how you handle safety emergencies, and what a typical inbound call sounds like. This takes 15 minutes.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="n">STEP 2</div>
+          <div>
+            <h3>Belken builds and wires it in</h3>
+            <p>Belken configures the AI, writes the electrical-trade-specific scripts — including emergency escalation logic and EV charger intake — and wires it into your existing calendar, CRM, and phone. Your business keeps its existing phone number. There is nothing to install or configure on your end.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="n">STEP 3</div>
+          <div>
+            <h3>Live, monitored, and tuned</h3>
+            <p>Belken operates the system from there. If a script needs adjusting based on how your calls actually sound, Belken handles it. You see the booked jobs. Monthly reporting shows jobs booked, emergencies escalated, hours reclaimed, and revenue recovered.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="cost">What it costs</h2>
+      <p>Belken's AI Receptionist is included in the <strong>Autonomous Operations Retainer, starting at $4,500 per month</strong>. That is a flat rate with no per-minute meter and no overage charges for high-volume periods like storm season. The retainer covers setup, 24/7 electrical-trade-tuned answering, live emergency call routing, missed-call text-back, dead-list reactivation calls, and ongoing monitoring — all operated by Belken.</p>
+      <p>There are two starting points before the retainer:</p>
+      <ul>
+        <li><strong>Free 20-minute assessment</strong> — Belken walks through what the AI Receptionist would do for your specific electrical business, at no cost and with no pitch.</li>
+        <li><strong>$1,997 Opportunity Audit</strong> — Belken models what your missed calls are actually costing your business using your real call data, before any retainer commitment. If the number does not justify the retainer, Belken says so.</li>
+      </ul>
+      <p>The founding-customer program is specifically for HVAC, plumbing, roofing, and electrical businesses in the Frederick County, Maryland area. No long contract — if the AI Receptionist does not book jobs, you walk.</p>
+
+      <h2 id="faq">Common questions</h2>
+
+      <h3>Does an AI receptionist work for electrical contractors?</h3>
+      <p>Yes. Belken's AI Receptionist is pre-tuned for electrical contractors. It answers every call in your business name, understands electrical service calls and emergency language, books appointments and estimates to your existing calendar, and routes safety emergencies directly to the owner's or on-call electrician's cell. Belken sets it up and operates it for you.</p>
+
+      <h3>What does an AI receptionist do for an electrical company?</h3>
+      <p>It answers every inbound call 24/7 in your business name, gathers the information needed to book the job or estimate, puts the appointment on your calendar, routes urgent safety emergencies live to the on-call electrician, and texts any missed caller back in about 60 seconds. It also runs dead-list reactivation — calling old customers by name to rebook them.</p>
+
+      <h3>How does an AI receptionist handle electrical emergency calls?</h3>
+      <p>When a caller describes a safety emergency — burning smell, sparks, no power after a surge, breaker that will not reset — the AI recognizes it and routes the call live to the owner's or on-call electrician's cell phone. Electrical emergencies do not go to a booking queue. The escalation logic is configured for your specific business during setup.</p>
+
+      <h3>Can an AI answer electrical contractor calls after hours?</h3>
+      <p>Yes. The AI Receptionist runs 24/7 including nights, weekends, and holidays. After-hours coverage is built into the flat retainer — there is no separate charge for night and weekend calls. Storm-season and post-outage calls are included at the same rate.</p>
+
+      <h3>How does an AI receptionist help during storm season?</h3>
+      <p>It handles every inbound call simultaneously, so no caller gets a busy signal or voicemail during a post-storm surge. Safety emergencies go directly to the on-call electrician's cell. Non-urgent repair and assessment requests get booked to the next available slot. Per-minute answering service costs spike during surges; the AI Receptionist does not.</p>
+
+      <h3>Can an AI receptionist book EV charger installation calls?</h3>
+      <p>Yes. The AI is configured to handle EV charger intake as an estimate call rather than a repair call. It gathers the caller's address, charger type, and panel details — the same information your estimator needs — and books the estimate appointment directly on your calendar.</p>
+
+      <h3>How much does an AI receptionist cost for an electrical contractor?</h3>
+      <p>Belken's AI Receptionist is included in the Autonomous Operations Retainer, starting at $4,500 per month with no per-minute meter. That covers setup, 24/7 answering, live emergency routing, missed-call texts, and dead-list reactivation, all operated by Belken. Setup starts with a free 15-minute call. A $1,997 audit engagement is available first if you want to prove the ROI before committing.</p>
+
+      <h3>How long does setup take for an electrical contractor?</h3>
+      <p>Setup starts with one 15-minute call. Belken configures the AI, writes the electrical scripts, and wires it into your existing calendar and phone. Your business keeps its existing phone number. There is nothing to install or configure on your end.</p>
+
+    </main>
+  </div>
+</div>
+
+<section class="band dark"><div class="wrap">
+  <h2>Hear your AI receptionist handle an electrical call.</h2>
+  <p>Belken sets up and operates the AI Receptionist for electrical contractors and other local service businesses. A free 15-minute call shows you exactly how it sounds for your trade and what it would catch for your business.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:30px">
+    <a class="btn btn-primary btn-lg" style="background:var(--flare);color:#fff" href="/aria">See AI Receptionist <svg class="ico arr" width="17" height="17" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="btn btn-ghost btn-lg" style="border-color:var(--paper);color:var(--paper)" href="/docs">All docs</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="foot-in">
+    <a class="brand" href="/"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">Belken</a>
+    <div class="foot-links">
+      <a href="/">Home</a><a href="/openclaw">OpenClaw</a><a href="/aria">AI Receptionist</a><a href="/studio">Belken Studio</a><a href="/docs">Docs</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+    </div>
+    <div class="foot-legal">© 2026 Belken Ventures</div>
+  </div>
+</div></footer>
+
+<script>
+  const root=document.documentElement;
+  window.addEventListener('pointermove',e=>{
+    root.style.setProperty('--gx',(e.clientX/window.innerWidth*100).toFixed(1)+'%');
+    root.style.setProperty('--gy',(e.clientY/window.innerHeight*100).toFixed(1)+'%');
+  },{passive:true});
+  const io=new IntersectionObserver((es)=>{es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(n=>io.observe(n));
+</script>
+</body>
+</html>
