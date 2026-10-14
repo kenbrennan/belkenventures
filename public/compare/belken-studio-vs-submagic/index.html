@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Belken Studio vs Submagic: which short-form video tool should you choose? | Belken</title>
+<meta name="description" content="A plain comparison of Belken Studio and Submagic. Submagic adds animated captions and effects to videos you already have. Belken Studio generates a short-form video from a script with a talking AI avatar. See which fits." />
+<link rel="canonical" href="https://belken.ai/compare/belken-studio-vs-submagic" />
+<meta name="theme-color" content="#EEEAE1" />
+<link rel="icon" href="/favicon.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://belken.ai/compare/belken-studio-vs-submagic" />
+<meta property="og:site_name" content="Belken" />
+<meta property="og:title" content="Belken Studio vs Submagic: which short-form video tool should you choose?" />
+<meta property="og:description" content="Submagic adds animated captions and effects to videos you already have. Belken Studio generates a short from a script with a talking AI avatar and captions burned in." />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image" content="https://belken.ai/og/og-compare.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Belken Studio vs Submagic" />
+<meta name="twitter:description" content="Submagic adds animated captions to existing videos. Belken Studio generates a short from a script with a talking AI avatar." />
+<meta name="twitter:image" content="https://belken.ai/og/og-compare.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --paper:#EEEAE1;--paper-2:#E4DFD3;--ink:#121110;--ink-soft:#3a382f;--line:#cdc6b6;
+  --ultra:#1F32FF;--ultra-deep:#0e1bb0;--flare:#FF4318;--paper-on-dark:#EDEAE1;
+  --display:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace;--r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%}
+::selection{background:var(--ultra);color:#fff}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2.5px solid var(--ultra);outline-offset:3px;border-radius:3px}
+.wrap{width:100%;max-width:1100px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+.ico{stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+img{max-width:100%;display:block}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;opacity:.16;-webkit-mask-image:radial-gradient(circle at 72% 2%,#000 0%,transparent 62%);mask-image:radial-gradient(circle at 72% 2%,#000 0%,transparent 62%)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:.35s}
+nav.stuck{background:rgba(238,234,225,.82);border-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;display:flex;align-items:center;gap:9px}
+.brand .brandmark{width:36px;height:36px;border-radius:9px;display:block;flex:0 0 auto}
+.brand .sub{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--ultra-deep);letter-spacing:.04em}
+.brand .slash{color:var(--line);font-weight:400}
+.nav-links{display:flex;gap:28px;align-items:center;font-size:15px;font-weight:600}
+.nav-links a:not(.btn){opacity:.7;transition:.2s}
+.nav-links a:not(.btn):hover{opacity:1}
+.btn{font-family:var(--body);font-weight:700;font-size:15px;border:none;cursor:pointer;padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:9px;transition:transform .18s cubic-bezier(.2,.7,.2,1),background .22s,color .22s;line-height:1}
+.btn-primary{background:var(--ink);color:var(--paper)}
+.btn-primary:hover{background:var(--ultra)}
+.btn-ultra{background:var(--ultra);color:#fff}
+.btn-ultra:hover{background:var(--ultra-deep)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn .arr{transition:transform .22s cubic-bezier(.2,.7,.2,1)}
+.btn:hover .arr{transform:translateX(4px)}
+.navtog{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--ink)}
+#mobnav{display:none}
+@media(max-width:860px){
+  .nav-links{display:none}
+  .navtog{display:inline-flex}
+  #mobnav{display:block;position:fixed;top:72px;left:0;right:0;z-index:59;background:rgba(238,234,225,.97);backdrop-filter:blur(10px);
+    border-bottom:1.5px solid var(--ink);transform:translateY(-14px);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.16,1,.3,1),opacity .28s;padding:10px 0 16px}
+  #mobnav.open{transform:none;opacity:1;pointer-events:auto}
+  #mobnav a{display:block;padding:13px clamp(18px,4vw,40px);font-weight:600;font-size:17px;color:var(--ink);border-bottom:1px solid var(--line)}
+  #mobnav a:last-child{border-bottom:none}
+  #mobnav a.btn{margin:14px clamp(18px,4vw,40px) 2px;border-radius:999px;justify-content:center;color:#fff}
+}
+
+.hero{position:relative;z-index:1;padding:140px 0 56px}
+.eyebrow{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ultra-deep);display:inline-flex;align-items:center;gap:10px;margin-bottom:22px}
+.eyebrow::before{content:"";width:30px;height:2px;background:var(--ultra)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,56px);line-height:1.05;letter-spacing:-.035em;max-width:16ch}
+h1 .hl{color:var(--ultra)}
+.answer{margin-top:26px;font-size:clamp(17px,1.5vw,20px);max-width:62ch;color:var(--ink-soft);font-weight:500}
+.answer strong{color:var(--ink);font-weight:700}
+.hero-cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.micro{margin-top:18px;font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);letter-spacing:.02em}
+
+section{position:relative;z-index:1}
+.sec{padding:64px 0}
+.sec-head{max-width:760px;margin:0 0 34px}
+.sec-kick{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ultra-deep);margin-bottom:12px}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.6vw,42px);line-height:1.04;letter-spacing:-.03em}
+.sec-sub{margin-top:14px;color:var(--ink-soft);font-weight:500;font-size:17px;max-width:64ch}
+
+.cmp-wrap{overflow-x:auto;border:1.5px solid var(--line);border-radius:var(--r);background:var(--paper);-webkit-overflow-scrolling:touch}
+table.cmp{width:100%;border-collapse:collapse;min-width:560px;font-size:15px}
+.cmp th,.cmp td{text-align:left;padding:15px 18px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.cmp tr:last-child td,.cmp tr:last-child th{border-bottom:none}
+.cmp thead th{font-family:var(--display);font-weight:800;font-size:16px;letter-spacing:-.01em;background:var(--paper-2);position:sticky;top:0}
+.cmp thead th:nth-child(2){color:var(--ultra-deep)}
+.cmp tbody td:first-child,.cmp tbody th:first-child{font-weight:600;color:var(--ink);width:24%;min-width:150px}
+.cmp tbody td:nth-child(2){background:rgba(31,50,255,.045)}
+.cmp td .mut{color:var(--ink-soft);font-size:13.5px}
+
+.choose{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.choose .card{border:1.5px solid var(--line);border-radius:var(--r);padding:28px 26px 30px;background:var(--paper);display:flex;flex-direction:column}
+.choose .card.b{border-color:var(--ultra);border-width:2px}
+.choose .tag{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ultra-deep);margin-bottom:10px}
+.choose h3{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;margin-bottom:16px;line-height:1.15}
+.choose ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+.choose li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;font-weight:500;line-height:1.5}
+.choose li .ico{width:18px;height:18px;color:var(--ultra);margin-top:3px;flex:0 0 auto}
+
+.faq{max-width:880px;margin:0;border-top:1.5px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px 4px;font-family:var(--display);font-weight:700;font-size:clamp(17px,1.6vw,21px);letter-spacing:-.02em;line-height:1.2}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ico{width:20px;height:20px;color:var(--ultra);transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.faq details[open] summary .ico{transform:rotate(45deg)}
+.faq .ans{padding:0 4px 24px;max-width:72ch;color:var(--ink-soft);font-size:16px;line-height:1.6}
+.faq .ans a{color:var(--ultra);font-weight:700}
+
+.dark{background:var(--ink);color:var(--paper-on-dark);position:relative;overflow:hidden}
+.dark::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:60px 60px;-webkit-mask-image:radial-gradient(circle at 85% 0%,#000,transparent 65%);mask-image:radial-gradient(circle at 85% 0%,#000,transparent 65%)}
+.dark .wrap{position:relative;z-index:1}
+.cta-final{text-align:center;max-width:720px;margin:0 auto}
+.cta-final h2{color:var(--paper-on-dark)}
+.cta-final p{margin:16px auto 0;color:rgba(237,234,225,.7);max-width:52ch}
+.cta-final .hero-cta{justify-content:center;margin-top:28px}
+
+.sources{border:1.5px solid var(--line);border-radius:var(--r);padding:24px 26px;background:var(--paper-2)}
+.sources h3{font-family:var(--mono);font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px}
+.sources ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.sources li{font-size:14.5px;line-height:1.5;word-break:break-word}
+.sources a{color:var(--ultra-deep);font-weight:600}
+.sources .note{margin-top:14px;font-size:13px;color:var(--ink-soft);line-height:1.55}
+
+footer{border-top:1.5px solid var(--ink);padding:52px 0 64px;position:relative;z-index:1}
+.foot-in{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+.foot-brand{max-width:38ch}
+.foot-brand p{font-size:14.5px;color:var(--ink-soft);margin-top:14px}
+.fcol h5{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px}
+.fcol a{display:block;font-size:15px;font-weight:500;margin-bottom:9px;opacity:.8;transition:.2s}
+.fcol a:hover{opacity:1;color:var(--ultra)}
+.foot-base{margin-top:42px;padding-top:22px;border-top:1px solid var(--line);text-align:center;font-family:var(--mono);font-size:12px;color:var(--ink-soft);line-height:1.7}
+
+.rv{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important;transition:none!important}}
+
+@media(max-width:760px){
+  .choose{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  body{font-size:17px}
+  .hero{padding:112px 0 44px}
+  .hero-cta .btn{width:100%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1!important;transform:none!important}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://belken.ai/#organization","name":"Belken","legalName":"BelKen Ventures Inc","url":"https://belken.ai/","logo":"https://belken.ai/favicon-512.png","email":"info@belken.ai"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the main difference between Belken Studio and Submagic?","acceptedAnswer":{"@type":"Answer","text":"Submagic takes videos you already have and adds animated captions, auto-zoom, emoji overlays, and other effects on top. Belken Studio creates the video from a script you paste: it renders a talking AI avatar, burns in the captions, and outputs a short ready to post. If you have footage and want to dress it up with captions and effects, Submagic is built for that. If you want to start from a script with no footage at all, Belken Studio makes the video for you."}},{"@type":"Question","name":"Does Submagic generate videos from a script?","acceptedAnswer":{"@type":"Answer","text":"Submagic is a caption and editing tool. Its core workflow starts from footage you provide, and it has also added AI avatars for making shorts without filming. Belken Studio renders an AI avatar that speaks your script word for word and burns in the captions automatically."}},{"@type":"Question","name":"Does Belken Studio add captions to videos I already have?","acceptedAnswer":{"@type":"Answer","text":"Belken Studio burns captions in from your script when it generates the avatar video. It can also clip your own long footage into shorts. If your primary need is adding stylized animated captions to an existing video, Submagic is purpose-built for that use case."}},{"@type":"Question","name":"How much does each cost?","acceptedAnswer":{"@type":"Answer","text":"Submagic publishes plans on its website; check its pricing page for current numbers, as they change. Belken Studio does not publish a price on its public page. Pricing is shown in the app when you create an account at studio.belken.ai."}},{"@type":"Question","name":"Which should I choose?","acceptedAnswer":{"@type":"Answer","text":"If you already have footage and want to make it pop with animated captions and effects, choose Submagic. If you want to turn a script into a short-form video with a consistent AI avatar, with no footage required, choose Belken Studio."}}]}</script>
+<noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="https://belken.ai"><img class="brandmark" src="/favicon.svg" alt="Belken" width="36" height="36">BELKEN<span class="slash">/</span><span class="sub">Compare</span></a>
+    <div class="nav-links">
+      <a href="#summary">Summary</a>
+      <a href="#table">Comparison</a>
+      <a href="#choose">Choose</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-ultra" href="https://studio.belken.ai">Start in Studio</a>
+    </div>
+    <button class="navtog" id="navtog" aria-label="Open menu" aria-expanded="false" aria-controls="mobnav">
+      <svg class="ico" viewBox="0 0 24 24" width="26" height="26"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div id="mobnav">
+    <a href="#summary">Summary</a>
+    <a href="#table">Comparison</a>
+    <a href="#choose">Choose</a>
+    <a href="#faq">FAQ</a>
+    <a class="btn btn-ultra" href="https://studio.belken.ai">Start in Studio</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap" id="summary">
+    <span class="eyebrow">Belken Studio vs Submagic</span>
+    <h1>Belken Studio vs <span class="hl">Submagic</span></h1>
+    <p class="answer">If you already have footage and want to add animated captions, auto-zoom, and effects on top of it, <strong>Submagic</strong> is built for that. If you are starting from a script with no footage and want a short made for you with a consistent talking AI avatar, <strong>Belken Studio</strong> fits better. They start from different places: existing video versus a blank page.</p>
+    <div class="hero-cta">
+      <a class="btn btn-ultra" href="https://studio.belken.ai">Start in Studio <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="#table">See the comparison</a>
+    </div>
+    <p class="micro">// Belken facts from belken.ai. Submagic facts from submagic.co, checked 2026-10-14. The person on screen in Studio is an AI avatar.</p>
+  </div>
+</header>
+
+<section id="table" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// Side by side</p>
+      <h2>How they compare</h2>
+      <p class="sec-sub">Belken details come from belken.ai. Submagic details come from its own public pages, checked on 2026-10-14. Where a fact was not on a page we read, we left it out.</p>
+    </div>
+    <div class="cmp-wrap rv">
+      <table class="cmp">
+        <thead><tr><th scope="col">Feature</th><th scope="col">Belken Studio</th><th scope="col">Submagic</th></tr></thead>
+        <tbody>
+          <tr><td>What it mainly does</td><td>Turns a script into a short-form video with a talking AI avatar and captions burned in. Can also clip your own long footage.</td><td>Adds animated captions, auto-zoom, emoji overlays, and visual effects to videos you already have.</td></tr>
+          <tr><td>Starting input</td><td>A script, with no footage needed. Or your own long video.</td><td>An existing video you upload or import.</td></tr>
+          <tr><td>On-camera presenter</td><td>An AI avatar delivers your script, labeled as an AI avatar.</td><td>Uses the people in your footage, and now also offers AI avatars for filming-free shorts.</td></tr>
+          <tr><td>Captions</td><td>Burned in automatically from your script, sized and styled for vertical video.</td><td>Animated captions with multiple style templates; this is Submagic's core feature.</td></tr>
+          <tr><td>Vertical format for TikTok, Reels, Shorts</td><td>Yes.</td><td>Yes, with auto-reframe for vertical output.</td></tr>
+          <tr><td>Publish to your accounts</td><td>Connect YouTube or TikTok and post after you confirm each video.</td><td>Export and post from the platform; check their site for current publishing integrations.</td></tr>
+          <tr><td>Generate from script, no footage needed</td><td>Yes, core feature.</td><td>Yes, through its newer AI avatar feature. Its core workflow still starts from footage you provide.</td></tr>
+          <tr><td>Price</td><td>Shown in the app when you create an account. No public price.</td><td>Plans published on submagic.co. Check their site for current pricing.</td></tr>
+          <tr><td>Where it runs</td><td>In your web browser.</td><td>In your web browser.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="choose" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// The honest call</p>
+      <h2>Which one fits you</h2>
+    </div>
+    <div class="choose rv">
+      <div class="card b">
+        <p class="tag">Choose Belken Studio if</p>
+        <h3>You are starting from a script, not footage</h3>
+        <ul>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> You do not have footage to work from and want a short made from a script, with a consistent talking AI avatar.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> You want script-to-video, clipping, and publishing to your own accounts in one place.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> You want one locked avatar so your whole feed looks like the same creator.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> You would rather not be on camera at all.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="tag">Choose Submagic if</p>
+        <h3>You already have footage and want better captions</h3>
+        <ul>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> You record yourself or run a podcast and want animated captions and effects added to your existing clips.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Stylized captions, auto-zoom, and visual effects are the primary thing you need.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> The real person in your footage is the point, so you do not want an AI avatar on screen.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> You want a self-serve caption tool with a published price and a free tier.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// Questions</p>
+      <h2>Straight answers</h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>What is the main difference between Belken Studio and Submagic? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Submagic takes videos you already have and adds animated captions, auto-zoom, emoji overlays, and other effects on top. Belken Studio creates the video from a script you paste: it renders a talking AI avatar, burns in the captions, and outputs a short ready to post. If you have footage and want to dress it up with captions and effects, Submagic is built for that. If you want to start from a script with no footage at all, Belken Studio makes the video for you.</div></details>
+      <details><summary>Does Submagic generate videos from a script? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Submagic is a caption and editing tool. Its core workflow starts from footage you provide, and it has also added AI avatars for making shorts without filming. Belken Studio renders an AI avatar that speaks your script word for word and burns in the captions automatically.</div></details>
+      <details><summary>Does Belken Studio add captions to videos I already have? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Belken Studio burns captions in from your script when it generates the avatar video. It can also clip your own long footage into shorts. If your primary need is adding stylized animated captions to an existing video, Submagic is purpose-built for that use case.</div></details>
+      <details><summary>How much does each cost? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Submagic publishes plans on its website; check <a href="https://www.submagic.co" target="_blank" rel="noopener">submagic.co</a> for current pricing. Belken Studio does not publish a price on its public page. Pricing is shown in the app when you create an account at <a href="https://studio.belken.ai">studio.belken.ai</a>.</div></details>
+      <details><summary>Which should I choose? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">If you already have footage and want to make it pop with animated captions and effects, choose Submagic. If you want to turn a script into a short-form video with a consistent AI avatar, no camera, no footage needed, choose Belken Studio.</div></details>
+    </div>
+  </div>
+</section>
+
+<section class="dark sec">
+  <div class="wrap">
+    <div class="cta-final rv">
+      <h2>Make your first one.</h2>
+      <p>Create an account and start in Belken Studio. Paste a script, pick an avatar, and see your first short come out the other side.</p>
+      <div class="hero-cta">
+        <a class="btn btn-ultra" href="https://studio.belken.ai">Start in Studio <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <p class="micro" style="color:rgba(237,234,225,.5)">// The person on screen in Studio is an AI avatar.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sources rv">
+      <h3>Sources, checked 2026-10-14</h3>
+      <ul>
+        <li>Belken Studio: <a href="https://belken.ai/studio">https://belken.ai/studio</a></li>
+        <li>Belken Studio app landing: <a href="https://studio.belken.ai/">https://studio.belken.ai/</a></li>
+        <li>Belken offer descriptions: <a href="https://belken.ai/llms-full.txt">https://belken.ai/llms-full.txt</a></li>
+        <li>Submagic: <a href="https://www.submagic.co">https://www.submagic.co</a></li>
+      </ul>
+      <p class="note">Prices and features change. We listed only what was on these pages on the date above. Where we could not verify a fact from a page we read, we left it out.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <div class="foot-brand">
+        <a class="brand" href="https://belken.ai"><img class="brandmark" src="/favicon.svg" alt="Belken" width="36" height="36">BELKEN<span class="slash">/</span><span class="sub">Compare</span></a>
+        <p>Honest comparisons of Belken products and the tools people weigh them against. Facts come from the live pages, checked on the date shown.</p>
+      </div>
+      <div class="fcol">
+        <h5>Compare</h5>
+        <a href="/compare">All comparisons</a>
+        <a href="/compare/belken-studio-vs-opusclip">Studio vs OpusClip</a>
+        <a href="/compare/belken-studio-vs-submagic">Studio vs Submagic</a>
+        <a href="/compare/ai-receptionist-vs-smith-ai">AI Receptionist vs Smith.ai</a>
+        <a href="/compare/ai-receptionist-vs-goodcall">AI Receptionist vs Goodcall</a>
+        <a href="/compare/ai-receptionist-vs-rosie">AI Receptionist vs Rosie</a>
+      </div>
+      <div class="fcol">
+        <h5>Explore</h5>
+        <a href="/">Home</a>
+        <a href="/studio">Belken Studio</a>
+        <a href="/aria">AI Receptionist</a>
+        <a href="mailto:info@belken.ai">info@belken.ai</a>
+      </div>
+    </div>
+    <div class="foot-base">© 2026 Belken · BelKen Ventures Inc · Videos are made with an AI avatar</div>
+  </div>
+</footer>
+
+<script>
+  var nav=document.getElementById('nav');
+  addEventListener('scroll',function(){nav.classList.toggle('stuck',scrollY>20)},{passive:true});
+  var tog=document.getElementById('navtog'),mob=document.getElementById('mobnav');
+  tog.addEventListener('click',function(){var o=mob.classList.toggle('open');tog.setAttribute('aria-expanded',o)});
+  mob.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mob.classList.remove('open');tog.setAttribute('aria-expanded',false)})});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  (function(){
+    var incoming=new URLSearchParams(window.location.search);
+    var keep=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
+    var carry=new URLSearchParams();
+    keep.forEach(function(k){var v=incoming.get(k);if(v)carry.set(k,v)});
+    if(!carry.toString())return;
+    document.querySelectorAll('a[href*="studio.belken.ai"],a[href*="calendly.com"]').forEach(function(a){
+      try{var u=new URL(a.href,window.location.origin);carry.forEach(function(v,k){u.searchParams.set(k,v)});a.href=u.toString()}catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>
