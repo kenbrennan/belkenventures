@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What is Dead Customer Reactivation? · Docs · Belken</title>
+<meta name="description" content="Dead customer reactivation contacts past customers who went quiet and turns them into booked jobs. Learn how AI outbound follow-up works for service businesses and why lapsed customers are your cheapest leads." />
+<meta property="og:title" content="What is Dead Customer Reactivation for Service Businesses?" />
+<meta property="og:description" content="Dead customer reactivation calls and texts past customers who stopped calling. An AI-operated outbound sequence recovers booked jobs from customers who already trust you, at zero ad spend." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://belken.ai/docs/what-is-dead-customer-reactivation" />
+<link rel="canonical" href="https://belken.ai/docs/what-is-dead-customer-reactivation" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#EEEAE1;--paper-2:#E4DFD3;--ink:#121110;--ink-soft:#3a382f;
+    --line:#cdc6b6;--ultra:#1F32FF;--ultra-deep:#0e1bb0;--flare:#FF4318;
+    --display:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;overflow-x:hidden;scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:100%;max-width:1320px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+  .ico{stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:58px 58px;opacity:.18;
+    -webkit-mask-image:radial-gradient(430px circle at var(--gx,78%) var(--gy,8%),#000 0%,transparent 70%);
+    mask-image:radial-gradient(430px circle at var(--gx,78%) var(--gy,8%),#000 0%,transparent 70%);
+  }
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:70;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);background:rgba(238,234,225,.6)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.02em;display:flex;align-items:center;gap:11px}
+  .brand .brandmark{width:38px;height:38px;border-radius:9px;display:block;flex:0 0 auto}
+  .nav-links{display:flex;gap:32px;align-items:center;font-size:15px;font-weight:600}
+  .nav-links a:not(.btn){opacity:.7;transition:.2s}
+  .nav-links a:not(.btn):hover{opacity:1}
+  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;font-weight:700;cursor:pointer;transition:.18s;white-space:nowrap;font-family:var(--body)}
+  .btn-sm{padding:10px 20px;font-size:14px}
+  .btn-primary{background:var(--ultra);color:#fff;border:none}
+  .btn-primary:hover{background:var(--ultra-deep)}
+  .btn-ghost{border:1.5px solid var(--ink);color:var(--ink);background:transparent}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn-lg{padding:16px 32px;font-size:17px}
+  .arr{display:inline-block}
+
+  .hero{padding:clamp(120px,14vw,180px) 0 clamp(60px,8vw,100px);position:relative;z-index:1}
+  .kicker{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;opacity:.55;margin-bottom:18px}
+  .hero h1{font-family:var(--display);font-size:clamp(38px,6vw,76px);font-weight:800;letter-spacing:-.03em;line-height:1.05;max-width:18ch}
+  .lede{font-size:clamp(18px,2.2vw,22px);color:var(--ink-soft);margin-top:24px;max-width:58ch;line-height:1.5}
+  .facts{display:flex;flex-wrap:wrap;gap:28px;margin-top:40px}
+  .fact{display:flex;flex-direction:column;gap:2px}
+  .fact b{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.03em;color:var(--ultra)}
+  .fact span{font-size:14px;font-weight:600;opacity:.6;letter-spacing:.03em;text-transform:uppercase}
+
+  .toc{margin:clamp(30px,4vw,48px) 0;display:flex;flex-wrap:wrap;gap:12px;list-style:none}
+  .toc li a{display:block;padding:8px 16px;border:1.5px solid var(--line);border-radius:99px;font-size:14px;font-weight:600;opacity:.75;transition:.18s}
+  .toc li a:hover{border-color:var(--ultra);color:var(--ultra);opacity:1}
+
+  main{position:relative;z-index:1;padding-bottom:clamp(60px,8vw,100px)}
+  main h2{font-family:var(--display);font-size:clamp(24px,3.2vw,38px);font-weight:800;letter-spacing:-.025em;line-height:1.15;margin:clamp(44px,6vw,72px) 0 18px}
+  main h3{font-family:var(--display);font-size:clamp(18px,2.2vw,24px);font-weight:700;letter-spacing:-.02em;margin:28px 0 10px}
+  main p{color:var(--ink-soft);margin-bottom:18px;max-width:72ch}
+  main p strong{color:var(--ink)}
+  main ul,main ol{color:var(--ink-soft);padding-left:24px;margin-bottom:18px}
+  main li{margin-bottom:8px;max-width:72ch}
+
+  .steps{display:flex;flex-direction:column;gap:20px;margin:28px 0}
+  .step{display:flex;gap:24px;align-items:flex-start;padding:24px;border:1.5px solid var(--line);border-radius:16px;background:var(--paper-2)}
+  .step .n{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ultra);flex:0 0 auto;padding-top:3px}
+
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr 1fr;border:1.5px solid var(--line);border-radius:16px;overflow:hidden;margin:28px 0;font-size:15px}
+  .compare-row{display:contents}
+  .compare-row > div{padding:14px 18px;border-bottom:1px solid var(--line)}
+  .compare-row:last-child > div{border-bottom:none}
+  .compare-row.header > div{background:var(--paper-2);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;opacity:.7}
+  .y{color:#1a6b1a;font-weight:600}
+  .y::before{content:"✓ "}
+  .n{color:#8b2500;font-weight:600}
+  .n::before{content:"✗ "}
+  .y::before,.n::before{font-weight:800}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s}
+  .reveal.in{opacity:1;transform:none}
+
+  details{border:1.5px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
+  details[open]{border-color:var(--ultra)}
+  summary{padding:18px 22px;font-weight:700;font-size:17px;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:22px;font-weight:400;flex:0 0 auto;color:var(--ultra);transition:.2s}
+  details[open] summary::after{content:"−"}
+  details p{padding:0 22px 20px;color:var(--ink-soft);max-width:72ch}
+
+  .band{padding:clamp(60px,8vw,100px) 0}
+  .band.dark{background:var(--ink);color:var(--paper)}
+  .band.dark p{color:rgba(238,234,225,.7)}
+
+  footer{background:var(--ink);color:var(--paper);padding:clamp(32px,4vw,56px) 0}
+  .foot-in{display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between}
+  .foot-links{display:flex;flex-wrap:wrap;gap:24px;font-size:14px;opacity:.6}
+  .foot-links a:hover{opacity:1;color:var(--paper)}
+  .foot-legal{font-size:13px;opacity:.4}
+
+  @media(max-width:680px){
+    .nav-links .hide-sm{display:none}
+    .compare-grid{grid-template-columns:1fr 1fr}
+    .compare-row > div:first-child{grid-column:1/-1;font-weight:700;background:var(--paper-2);border-bottom:none}
+    .compare-row.header > div:first-child{display:none}
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is dead customer reactivation?","acceptedAnswer":{"@type":"Answer","text":"Dead customer reactivation is an outbound follow-up process that contacts past customers who have stopped booking jobs with your business. These are people who used your service once or several times and then went quiet — not because they had a bad experience, but because life moved on and they forgot to call back. Reactivation reaches out to them by phone or text to remind them you exist, offer a reason to rebook, and convert them back into paying customers."}},{"@type":"Question","name":"Why is reactivating old customers cheaper than finding new ones?","acceptedAnswer":{"@type":"Answer","text":"A past customer already knows your business, already trusted you enough to hire you once, and does not need to be convinced you are credible. The cost to re-engage them is a phone call or text. The cost to acquire a new customer in the trades runs from Google Ads spend to leads from directories, referral programs, and marketing. Past customers convert at a higher rate than cold leads and require no ad budget. For most service businesses, the dead list sitting in their CRM or job management software is their cheapest source of new revenue."}},{"@type":"Question","name":"What businesses benefit most from dead customer reactivation?","acceptedAnswer":{"@type":"Answer","text":"Any service business with a repeat-service model: HVAC (annual tune-ups, seasonal maintenance), plumbing (annual inspections, recurring issues), roofing (post-storm follow-up, annual gutter cleaning), pest control (quarterly service), landscaping (seasonal contracts), and electrical (panel upgrades, EV charger installs). If customers need the service more than once over their lifetime, reactivation works."}},{"@type":"Question","name":"How does AI-operated dead customer reactivation work?","acceptedAnswer":{"@type":"Answer","text":"An AI-operated reactivation system works from the business's existing customer list. It calls or texts past customers with a scripted message written for the specific trade, identifies who is interested in rebooking, and hands off confirmed appointments to the business calendar. The business owner does not make the calls. The AI handles the outreach volume and routes warm leads to the team."}},{"@type":"Question","name":"What does dead customer reactivation cost?","acceptedAnswer":{"@type":"Answer","text":"Belken includes dead-list reactivation in its Autonomous Operations Retainer, starting at $4,500 per month. That flat rate also covers 24/7 live call answering, appointment booking, missed-call text-back, and live call transfer to the owner's cell. There is no per-call or per-minute fee. For businesses that want to verify the opportunity first, Belken offers a $1,997 Opportunity Audit."}},{"@type":"Question","name":"How many customers are typically in a dead list?","acceptedAnswer":{"@type":"Answer","text":"Most service businesses running for two or more years have hundreds of past customers who have not called in over 12 months. The exact number depends on how long the business has been operating and how many jobs they run per year. Even a small HVAC or plumbing operation typically has 200 to 500 lapsed customers in their job history. Reactivating even a small fraction of those translates directly to booked revenue."}},{"@type":"Question","name":"Is dead customer reactivation the same as a marketing campaign?","acceptedAnswer":{"@type":"Answer","text":"It is different from advertising. A marketing campaign reaches cold prospects who have never heard of you. Reactivation reaches warm contacts who already know your work. The messaging, conversion rate, and economics are different. Reactivation is not about brand awareness — it is about reminding a known customer that the service they used before is still available and offering a clear reason to book now."}},{"@type":"Question","name":"How does dead customer reactivation fit with an AI receptionist?","acceptedAnswer":{"@type":"Answer","text":"They work the inbound and outbound sides of the same phone number. The AI Receptionist handles inbound: it answers every call live, books the job, texts missed callers back. Dead-list reactivation handles outbound: it calls past customers from the business list and converts them back to active jobs. Together, they close the full customer lifecycle — nothing falls out of the system on either end."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://belken.ai/#organization","name":"Belken","legalName":"BelKen Ventures Inc","url":"https://belken.ai/","logo":"https://belken.ai/favicon-512.png","email":"info@belken.ai","description":"Belken builds and runs autonomous operations for local service businesses. The AI Receptionist answers every call 24/7, books jobs to your calendar, transfers urgent calls to the owner's cell, texts missed callers back in about 60 seconds, and calls past customers to rebook them."}</script>
+</head>
+<body>
+
+<nav><div class="wrap nav-in">
+  <a class="brand" href="/"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">Belken</a>
+  <div class="nav-links">
+    <a href="/aria" class="hide-sm">AI Receptionist</a>
+    <a href="/studio" class="hide-sm">Studio</a>
+    <a href="/docs">Docs</a>
+    <a href="/aria" class="btn btn-primary btn-sm">Get started</a>
+  </div>
+</div></nav>
+
+<div class="hero wrap">
+  <div class="kicker">Guide · AI Receptionist</div>
+  <h1>What is dead customer reactivation?</h1>
+  <p class="lede">Dead customer reactivation contacts past customers who stopped booking jobs with your business and turns them into booked appointments — <strong>at zero ad spend</strong>. Your past customer list is your cheapest source of new revenue.</p>
+  <div class="facts">
+    <div class="fact"><b>$0</b><span>ad spend</span></div>
+    <div class="fact"><b>Warm</b><span>known customers</span></div>
+    <div class="fact"><b>AI</b><span>operated</span></div>
+  </div>
+  <ul class="toc">
+    <li><a href="#what-it-is">What it is</a></li>
+    <li><a href="#how-it-works">How it works</a></li>
+    <li><a href="#who-needs-it">Who needs it</a></li>
+    <li><a href="#vs-ads">vs. paid ads</a></li>
+    <li><a href="#setup">Setup</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</div>
+
+<main>
+<div class="wrap">
+
+  <h2 id="what-it-is">What it is</h2>
+  <p>Every service business has a dead list: past customers who hired them once or several times and then went quiet. They are not unhappy customers. They just moved on, forgot to schedule their next service, or got busy. They are also your most convertible leads because they already know and trust your work.</p>
+  <p>Dead customer reactivation is an outbound follow-up process that contacts those lapsed customers — by phone call or text — and gives them a clear reason to rebook. The goal is to pull revenue out of a list the business already owns, without spending a dollar on advertising.</p>
+  <p>The term "dead list" comes from CRM and email marketing terminology: contacts who have gone dark, stopped responding, or have not transacted in 90, 180, or 365 days. In the trades, the list lives in the job management software or a spreadsheet. Most businesses never touch it.</p>
+
+  <h2 id="how-it-works">How it works</h2>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="n">STEP 1</div>
+      <div>
+        <h3>Pull the customer list</h3>
+        <p>The starting point is any list of past customers: names, phone numbers, and the last date of service. This comes from job management software (ServiceTitan, Jobber, Housecall Pro), a CRM, or a spreadsheet. Belken works with whatever format the business has.</p>
+      </div>
+    </div>
+    <div class="step reveal">
+      <div class="n">STEP 2</div>
+      <div>
+        <h3>Identify lapsed contacts</h3>
+        <p>Customers who have not booked in 6, 12, or 24 months are the reactivation targets. The threshold depends on the service type: an HVAC maintenance customer should ideally book twice a year; a one-time job customer might be 18 months out. Belken segments the list and writes the outreach for each tier.</p>
+      </div>
+    </div>
+    <div class="step reveal">
+      <div class="n">STEP 3</div>
+      <div>
+        <h3>AI makes outbound calls and sends texts</h3>
+        <p>The AI calls each contact in the business's name with a short, natural-sounding message written for the specific trade. It is not a robocall. The script identifies the business, references the past relationship, and offers a clear reason to rebook now — seasonal maintenance, a limited-time check-up, or a reminder that their last service was over a year ago.</p>
+      </div>
+    </div>
+    <div class="step reveal">
+      <div class="n">STEP 4</div>
+      <div>
+        <h3>Warm leads book directly to the calendar</h3>
+        <p>When a contact expresses interest, the AI books the appointment to the business calendar. No hand-off required, no callback to schedule. The business sees new appointments arriving from customers who were already paid and gone. Urgent calls or customers who want to speak with a person are transferred live to the owner's cell.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="who-needs-it">Who needs it most</h2>
+  <p>Any service business with a repeat-service model and a history of past customers who have gone quiet. The industries where reactivation works best are:</p>
+  <ul>
+    <li><strong>HVAC:</strong> Annual tune-up and maintenance customers are a predictable reactivation target. If a customer had a spring tune-up last year and has not called this spring, they are a reactivation candidate. The outreach message writes itself.</li>
+    <li><strong>Plumbing:</strong> Past customers with recurring issues (old pipes, water heater age, slow drains) are worth a follow-up call offering an inspection. Customers who had an emergency plumbing job done are also candidates — they now know your number works.</li>
+    <li><strong>Pest control:</strong> Quarterly service customers who lapsed after one or two treatments are the clearest reactivation targets. The pest problem did not go away; they just stopped calling.</li>
+    <li><strong>Roofing:</strong> Post-storm follow-up with customers from past storm seasons. A homeowner who had a roof repair done two years ago during a hail season will get another hail season eventually.</li>
+    <li><strong>Landscaping:</strong> Annual or seasonal contract customers who did not renew. A reminder call before the new season is a natural reactivation moment.</li>
+    <li><strong>Electrical:</strong> Customers who had panel work or EV charger installs and may now need permits closed, inspections scheduled, or additional work as their needs grow.</li>
+  </ul>
+
+  <h2 id="vs-ads">Dead customer reactivation vs. paid advertising</h2>
+  <p>The economics are different at every level. A paid ad reaches someone who has never heard of you. A reactivation call reaches someone who paid you before.</p>
+  <div class="compare-grid reveal">
+    <div class="compare-row header">
+      <div>Factor</div>
+      <div>Paid advertising (new leads)</div>
+      <div>Dead customer reactivation</div>
+    </div>
+    <div class="compare-row reveal">
+      <div><strong>Ad spend required</strong></div>
+      <div class="n">Yes — ongoing to maintain volume</div>
+      <div class="y">$0 — works from existing customer list</div>
+    </div>
+    <div class="compare-row reveal">
+      <div><strong>Contact trust level</strong></div>
+      <div class="n">Cold — never heard of you</div>
+      <div class="y">Warm — already paid you once</div>
+    </div>
+    <div class="compare-row reveal">
+      <div><strong>Conversion rate</strong></div>
+      <div class="n">Lower — unknown brand, unknown need timing</div>
+      <div class="y">Higher — past customer, known service need</div>
+    </div>
+    <div class="compare-row reveal">
+      <div><strong>Sales cycle</strong></div>
+      <div class="n">Longer — educate, qualify, convert</div>
+      <div class="y">Shorter — already qualified, just rebook</div>
+    </div>
+    <div class="compare-row reveal">
+      <div><strong>List you already own</strong></div>
+      <div class="n">No — paid per click, per lead</div>
+      <div class="y">Yes — business owns the contact list</div>
+    </div>
+    <div class="compare-row reveal">
+      <div><strong>Scales with business history</strong></div>
+      <div class="n">Ad budget has to scale too</div>
+      <div class="y">Older business = larger dead list = more opportunity</div>
+    </div>
+  </div>
+
+  <h2 id="setup">How it fits with the full AI Receptionist</h2>
+  <p>Dead-list reactivation is the outbound half of Belken's AI Receptionist. The inbound half — answering every call live, booking jobs on the spot, texting missed callers back in about 60 seconds — handles all the new business that comes to you. Reactivation handles the old business that stopped coming.</p>
+  <p>Together, they close the full customer lifecycle:</p>
+  <ul>
+    <li><strong>New inbound calls</strong> are answered live and booked.</li>
+    <li><strong>Missed inbound calls</strong> get a text back in about 60 seconds, keeping the caller engaged.</li>
+    <li><strong>Lapsed past customers</strong> get an outbound reactivation call or text from the dead list.</li>
+  </ul>
+  <p>A service business running all three has covered every revenue leak: the calls they did not answer, and the customers who stopped calling.</p>
+  <p>Belken builds and operates the full system as a <strong>flat-rate retainer, starting at $4,500 per month</strong>. Setup starts with a free 15-minute call. For businesses that want to see the size of their opportunity first, Belken offers a $1,997 Opportunity Audit that maps the dead list and estimates recoverable revenue before any retainer commitment.</p>
+
+  <h2 id="faq">Common questions</h2>
+
+  <details>
+    <summary>What is dead customer reactivation?</summary>
+    <p>Dead customer reactivation is an outbound follow-up process that contacts past customers who have stopped booking jobs with your business. These are people who used your service once or several times and then went quiet — not because they had a bad experience, but because life moved on and they forgot to call back. Reactivation reaches out to them by phone or text to remind them you exist, offer a reason to rebook, and convert them back into paying customers.</p>
+  </details>
+
+  <details>
+    <summary>Why is reactivating old customers cheaper than finding new ones?</summary>
+    <p>A past customer already knows your business, already trusted you enough to hire you once, and does not need to be convinced you are credible. The cost to re-engage them is a phone call or text. The cost to acquire a new customer in the trades runs from Google Ads spend to leads from directories, referral programs, and marketing. Past customers convert at a higher rate than cold leads and require no ad budget. For most service businesses, the dead list sitting in their CRM or job management software is their cheapest source of new revenue.</p>
+  </details>
+
+  <details>
+    <summary>What businesses benefit most from dead customer reactivation?</summary>
+    <p>Any service business with a repeat-service model: HVAC (annual tune-ups, seasonal maintenance), plumbing (annual inspections, recurring issues), roofing (post-storm follow-up, annual gutter cleaning), pest control (quarterly service), landscaping (seasonal contracts), and electrical (panel upgrades, EV charger installs). If customers need the service more than once over their lifetime, reactivation works.</p>
+  </details>
+
+  <details>
+    <summary>How does AI-operated dead customer reactivation work?</summary>
+    <p>An AI-operated reactivation system works from the business's existing customer list. It calls or texts past customers with a scripted message written for the specific trade, identifies who is interested in rebooking, and hands off confirmed appointments to the business calendar. The business owner does not make the calls. The AI handles the outreach volume and routes warm leads to the team.</p>
+  </details>
+
+  <details>
+    <summary>What does dead customer reactivation cost?</summary>
+    <p>Belken includes dead-list reactivation in its Autonomous Operations Retainer, starting at $4,500 per month. That flat rate also covers 24/7 live call answering, appointment booking, missed-call text-back, and live call transfer to the owner's cell. There is no per-call or per-minute fee. For businesses that want to verify the opportunity first, Belken offers a $1,997 Opportunity Audit.</p>
+  </details>
+
+  <details>
+    <summary>How many customers are typically in a dead list?</summary>
+    <p>Most service businesses running for two or more years have hundreds of past customers who have not called in over 12 months. The exact number depends on how long the business has been operating and how many jobs they run per year. Even a small HVAC or plumbing operation typically has 200 to 500 lapsed customers in their job history. Reactivating even a small fraction of those translates directly to booked revenue.</p>
+  </details>
+
+  <details>
+    <summary>Is dead customer reactivation the same as a marketing campaign?</summary>
+    <p>It is different from advertising. A marketing campaign reaches cold prospects who have never heard of you. Reactivation reaches warm contacts who already know your work. The messaging, conversion rate, and economics are different. Reactivation is not about brand awareness — it is about reminding a known customer that the service they used before is still available and offering a clear reason to book now.</p>
+  </details>
+
+  <details>
+    <summary>How does dead customer reactivation fit with an AI receptionist?</summary>
+    <p>They work the inbound and outbound sides of the same phone number. The AI Receptionist handles inbound: it answers every call live, books the job, texts missed callers back. Dead-list reactivation handles outbound: it calls past customers from the business list and converts them back to active jobs. Together, they close the full customer lifecycle — nothing falls out of the system on either end.</p>
+  </details>
+
+</div>
+</main>
+
+<section class="band dark"><div class="wrap">
+  <h2>Your best leads are already in your job history.</h2>
+  <p>Belken sets up and operates the full AI Receptionist for local service businesses: live answering, missed-call texts, and dead-list reactivation. It starts with a free 15-minute call.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:30px">
+    <a class="btn btn-primary btn-lg" style="background:var(--flare);color:#fff" href="/aria">See AI Receptionist <svg class="ico arr" width="17" height="17" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="btn btn-ghost btn-lg" style="border-color:var(--paper);color:var(--paper)" href="/docs">All docs</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="foot-in">
+    <a class="brand" href="/"><img class="brandmark" src="/favicon.svg" alt="Belken" width="38" height="38">Belken</a>
+    <div class="foot-links">
+      <a href="/">Home</a><a href="/openclaw">OpenClaw</a><a href="/aria">AI Receptionist</a><a href="/studio">Belken Studio</a><a href="/docs">Docs</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+    </div>
+    <div class="foot-legal">© 2026 Belken Ventures</div>
+  </div>
+</div></footer>
+
+<script>
+  const root=document.documentElement;
+  window.addEventListener('pointermove',e=>{
+    root.style.setProperty('--gx',(e.clientX/window.innerWidth*100).toFixed(1)+'%');
+    root.style.setProperty('--gy',(e.clientY/window.innerHeight*100).toFixed(1)+'%');
+  },{passive:true});
+  const io=new IntersectionObserver((es)=>{es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(n=>io.observe(n));
+</script>
+</body>
+</html>
