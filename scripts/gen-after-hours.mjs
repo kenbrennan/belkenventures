@@ -251,6 +251,24 @@ const TRADES = {
     booked: 'Urgent call flagged · problem, address, callback · passed to your team',
     emergencyWord: 'a pipe bursts overnight',
   },
+  electrical: {
+    slug: 'electrical', navsub: 'Electrical', tradeWord: 'electrical shop',
+    title: 'After-hours phone line for electricians, done for you | Belken',
+    desc: 'A circuit trips or an outlet sparks at night and the customer is calling around. We answer the calls your electrical crew cannot get to, take the problem, address, and callback number, and hand them to your team for the morning. We set it up and run it for you. Call the demo and play the customer.',
+    canon: 'https://belken.ai/after-hours/electrical',
+    eyebrow: 'After-hours answering for electricians · done for you',
+    h1: 'A circuit trips at 10 PM and your phone is ringing. <span class="hl">We pick it up.<span class="underdraw"></span></span>',
+    lede: 'Sparking outlets, tripped panels, and dead power at night mean a homeowner who will call every electrician in their area until someone picks up. Our after-hours line answers in your name, gets the problem, the address, and a callback number, and hands it to your team for the morning. You do not set anything up. We run the whole thing.',
+    sceneTtl: 'Demo line · incoming call · 10:12 PM',
+    bubbles: [
+      ['them', "The circuit breaker tripped and now half the house has no power. It won't reset. Is anyone available tonight?"],
+      ['line', "You've reached Miller Electric. Don't keep forcing the breaker if it trips again — that can be a sign of an overload or a wiring issue. I've got your address and number and flagged this for the on-call electrician to call you first thing. Anyone in the home who needs power for medical equipment?"],
+      ['them', "No, we're okay. Just really dark over here."],
+      ['line', "Noted. I'm sending this to the team now as urgent."],
+    ],
+    booked: 'Electrical call flagged · problem, address, callback · passed to your team',
+    emergencyWord: 'a circuit trips or an outlet sparks',
+  },
   roofing: {
     slug: 'roofing', navsub: 'Roofing', tradeWord: 'roofing company',
     title: 'After-hours phone line for roofers, done for you | Belken',
@@ -275,6 +293,7 @@ const CROSSLINKS = [
   ['/after-hours/hvac', 'HVAC'],
   ['/after-hours/plumbing', 'Plumbing'],
   ['/after-hours/roofing', 'Roofing'],
+  ['/after-hours/electrical', 'Electrical'],
   ['/after-hours', 'All trades'],
 ]
 
