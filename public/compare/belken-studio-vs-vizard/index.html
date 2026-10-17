@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Belken Studio vs Vizard: which AI video clipping tool should you use? | Belken</title>
+<meta name="description" content="Vizard is an AI video editing and clipping tool that cuts long footage into short-form clips. Belken Studio clips long videos, generates new shorts from a script with an AI avatar, and publishes directly to your TikTok and YouTube accounts." />
+<meta name="belken:card" content='{"meta":"Short-form video","order":22,"desc":"Vizard clips long footage into short-form content. Belken Studio does that plus generates new videos from a script with an AI avatar and publishes directly to your TikTok and YouTube accounts."}' />
+<link rel="canonical" href="https://belken.ai/compare/belken-studio-vs-vizard" />
+<meta name="theme-color" content="#EEEAE1" />
+<link rel="icon" href="/favicon.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://belken.ai/compare/belken-studio-vs-vizard" />
+<meta property="og:site_name" content="Belken" />
+<meta property="og:title" content="Belken Studio vs Vizard: which AI video clipping tool should you use?" />
+<meta property="og:description" content="Vizard clips long footage into short-form content with AI. Belken Studio does that plus generates new videos from a script with an AI avatar and publishes directly to your TikTok and YouTube." />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image" content="https://belken.ai/og/og-compare.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Belken Studio vs Vizard" />
+<meta name="twitter:description" content="Vizard clips long footage into short-form content. Belken Studio clips long videos, generates avatar videos from a script, and publishes to TikTok and YouTube in one place." />
+<meta name="twitter:image" content="https://belken.ai/og/og-compare.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --paper:#EEEAE1;--paper-2:#E4DFD3;--ink:#121110;--ink-soft:#3a382f;--line:#cdc6b6;
+  --ultra:#1F32FF;--ultra-deep:#0e1bb0;--flare:#FF4318;--paper-on-dark:#EDEAE1;
+  --display:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif;--mono:"JetBrains Mono",monospace;--r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%}
+::selection{background:var(--ultra);color:#fff}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2.5px solid var(--ultra);outline-offset:3px;border-radius:3px}
+.wrap{width:100%;max-width:1100px;margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+.ico{stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+img{max-width:100%;display:block}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;opacity:.16;-webkit-mask-image:radial-gradient(circle at 72% 2%,#000 0%,transparent 62%);mask-image:radial-gradient(circle at 72% 2%,#000 0%,transparent 62%)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:.35s}
+nav.stuck{background:rgba(238,234,225,.82);border-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;display:flex;align-items:center;gap:9px}
+.brand .brandmark{width:36px;height:36px;border-radius:9px;display:block;flex:0 0 auto}
+.brand .sub{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--ultra-deep);letter-spacing:.04em}
+.brand .slash{color:var(--line);font-weight:400}
+.nav-links{display:flex;gap:28px;align-items:center;font-size:15px;font-weight:600}
+.nav-links a:not(.btn){opacity:.7;transition:.2s}
+.nav-links a:not(.btn):hover{opacity:1}
+.btn{font-family:var(--body);font-weight:700;font-size:15px;border:none;cursor:pointer;padding:13px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:9px;transition:transform .18s cubic-bezier(.2,.7,.2,1),background .22s,color .22s;line-height:1}
+.btn-primary{background:var(--ink);color:var(--paper)}
+.btn-primary:hover{background:var(--ultra)}
+.btn-ultra{background:var(--ultra);color:#fff}
+.btn-ultra:hover{background:var(--ultra-deep)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn .arr{transition:transform .22s cubic-bezier(.2,.7,.2,1)}
+.btn:hover .arr{transform:translateX(4px)}
+.navtog{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--ink)}
+#mobnav{display:none}
+@media(max-width:860px){
+  .nav-links{display:none}
+  .navtog{display:inline-flex}
+  #mobnav{display:block;position:fixed;top:72px;left:0;right:0;z-index:59;background:rgba(238,234,225,.97);backdrop-filter:blur(10px);
+    border-bottom:1.5px solid var(--ink);transform:translateY(-14px);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.16,1,.3,1),opacity .28s;padding:10px 0 16px}
+  #mobnav.open{transform:none;opacity:1;pointer-events:auto}
+  #mobnav a{display:block;padding:13px clamp(18px,4vw,40px);font-weight:600;font-size:17px;color:var(--ink);border-bottom:1px solid var(--line)}
+  #mobnav a:last-child{border-bottom:none}
+  #mobnav a.btn{margin:14px clamp(18px,4vw,40px) 2px;border-radius:999px;justify-content:center;color:#fff}
+}
+
+.hero{position:relative;z-index:1;padding:140px 0 56px}
+.eyebrow{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ultra-deep);display:inline-flex;align-items:center;gap:10px;margin-bottom:22px}
+.eyebrow::before{content:"";width:30px;height:2px;background:var(--ultra)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,56px);line-height:1.05;letter-spacing:-.035em;max-width:16ch}
+h1 .hl{color:var(--ultra)}
+.answer{margin-top:26px;font-size:clamp(17px,1.5vw,20px);max-width:62ch;color:var(--ink-soft);font-weight:500}
+.answer strong{color:var(--ink);font-weight:700}
+.hero-cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.micro{margin-top:18px;font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);letter-spacing:.02em}
+
+section{position:relative;z-index:1}
+.sec{padding:64px 0}
+.sec-head{max-width:760px;margin:0 0 34px}
+.sec-kick{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ultra-deep);margin-bottom:12px}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.6vw,42px);line-height:1.04;letter-spacing:-.03em}
+.sec-sub{margin-top:14px;color:var(--ink-soft);font-weight:500;font-size:17px;max-width:64ch}
+
+.cmp-wrap{overflow-x:auto;border:1.5px solid var(--line);border-radius:var(--r);background:var(--paper);-webkit-overflow-scrolling:touch}
+table.cmp{width:100%;border-collapse:collapse;min-width:560px;font-size:15px}
+.cmp th,.cmp td{text-align:left;padding:15px 18px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.cmp tr:last-child td,.cmp tr:last-child th{border-bottom:none}
+.cmp thead th{font-family:var(--display);font-weight:800;font-size:16px;letter-spacing:-.01em;background:var(--paper-2);position:sticky;top:0}
+.cmp thead th:nth-child(2){color:var(--ultra-deep)}
+.cmp tbody td:first-child,.cmp tbody th:first-child{font-weight:600;color:var(--ink);width:24%;min-width:150px}
+.cmp tbody td:nth-child(2){background:rgba(31,50,255,.045)}
+.cmp td .mut{color:var(--ink-soft);font-size:13.5px}
+
+.choose{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.choose .card{border:1.5px solid var(--line);border-radius:var(--r);padding:28px 26px 30px;background:var(--paper);display:flex;flex-direction:column}
+.choose .card.b{border-color:var(--ultra);border-width:2px}
+.choose .tag{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ultra-deep);margin-bottom:14px}
+.choose .card.b .tag{color:var(--ultra)}
+.choose h3{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.2vw,26px);letter-spacing:-.02em;margin-bottom:18px;line-height:1.1}
+.choose ul{list-style:none;display:flex;flex-direction:column;gap:13px;margin-top:4px}
+.choose li{display:flex;gap:12px;font-size:15.5px;color:var(--ink-soft);line-height:1.45}
+.choose li .ico{width:18px;height:18px;color:var(--ultra);margin-top:3px;flex:0 0 auto}
+@media(max-width:700px){.choose{grid-template-columns:1fr}}
+
+.faq{max-width:880px;margin:0;border-top:1.5px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px 4px;font-family:var(--display);font-weight:700;font-size:clamp(17px,1.6vw,21px);letter-spacing:-.02em;line-height:1.2}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ico{width:20px;height:20px;color:var(--ultra);transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.faq details[open] summary .ico{transform:rotate(45deg)}
+.faq .ans{padding:0 4px 24px;max-width:72ch;color:var(--ink-soft);font-size:16px;line-height:1.6}
+.faq .ans a{color:var(--ultra);font-weight:700}
+
+.dark{background:var(--ink);color:var(--paper-on-dark);position:relative;overflow:hidden}
+.dark::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:60px 60px;-webkit-mask-image:radial-gradient(circle at 85% 0%,#000,transparent 65%);mask-image:radial-gradient(circle at 85% 0%,#000,transparent 65%)}
+.dark .wrap{position:relative;z-index:1}
+.cta-final{text-align:center;max-width:720px;margin:0 auto}
+.cta-final h2{color:var(--paper-on-dark)}
+.cta-final p{color:rgba(237,234,225,.7);margin-top:14px;font-size:18px}
+
+.sources{max-width:760px}
+.sources h3{font-family:var(--display);font-weight:700;font-size:18px;margin-bottom:14px}
+.sources ul{list-style:none;display:flex;flex-direction:column;gap:8px;font-size:14.5px;color:var(--ink-soft)}
+.sources ul a{color:var(--ultra);font-weight:600;word-break:break-all}
+.sources .note{margin-top:16px;font-size:14px;color:var(--ink-soft);font-style:italic}
+
+footer{border-top:1.5px solid var(--line);padding:56px 0 36px;position:relative;z-index:1}
+.foot-in{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+.foot-brand p{margin-top:12px;font-size:15px;color:var(--ink-soft);max-width:34ch;line-height:1.6}
+.fcol h5{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ultra-deep);margin-bottom:14px}
+.fcol{display:flex;flex-direction:column;gap:10px;font-size:15px;font-weight:600}
+.fcol a:not(h5){opacity:.7;transition:.18s}
+.fcol a:hover{opacity:1}
+.foot-base{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-soft)}
+@media(max-width:720px){.foot-in{grid-template-columns:1fr;gap:28px}}
+
+.rv{opacity:0;transform:translateY(18px);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://belken.ai/#organization","name":"Belken","legalName":"BelKen Ventures Inc","url":"https://belken.ai/","logo":"https://belken.ai/favicon-512.png","email":"info@belken.ai"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the main difference between Belken Studio and Vizard?","acceptedAnswer":{"@type":"Answer","text":"Both tools clip long videos into shorter segments for social media. The main difference is what else each one does. Vizard is an AI video editing and clipping platform: you bring in your footage and it identifies the best moments, resizes them to vertical format, and adds subtitles. Belken Studio does that clipping, but it also generates brand-new videos from a script using an AI avatar, so you can create content even without any existing footage. Belken Studio also connects to your social accounts and publishes the finished video directly to TikTok or YouTube, without a separate scheduling tool."}},{"@type":"Question","name":"Does Vizard create AI avatar videos from a script?","acceptedAnswer":{"@type":"Answer","text":"Vizard's main product is focused on editing and clipping footage you already have. Belken Studio includes an AI avatar feature: you paste a script, the tool renders an avatar speaking it with burned-in captions in vertical format, and you can post it directly to TikTok or YouTube. If you want to create short-form content without existing footage or without going on camera, that is what Belken Studio's avatar feature covers."}},{"@type":"Question","name":"Can both clip long videos into short social clips?","acceptedAnswer":{"@type":"Answer","text":"Yes. Both tools can take a long video and extract shorter segments for TikTok, YouTube Shorts, and Reels. Both add automatic captions. Vizard focuses on this clipping and editing workflow as its core product. Belken Studio includes the same long-video clipping plus the AI avatar video generation and direct social publishing in one place."}},{"@type":"Question","name":"Does Belken Studio or Vizard publish directly to TikTok and YouTube?","acceptedAnswer":{"@type":"Answer","text":"Belken Studio connects to your TikTok, YouTube, Facebook Page, and Instagram accounts and publishes the video after you confirm it, without requiring a separate scheduling tool. Vizard's direct social publishing capabilities were not confirmed from a live page read, so check vizard.ai for the current feature set."}},{"@type":"Question","name":"How much does each one cost?","acceptedAnswer":{"@type":"Answer","text":"Belken Studio does not publish a price on its public pages. Pricing is shown in the app when you create an account at studio.belken.ai. Vizard's pricing page uses JavaScript that could not be parsed in this review, so we did not find a confirmed price. Check vizard.ai/pricing for current Vizard plans before making a decision."}},{"@type":"Question","name":"Which should I choose?","acceptedAnswer":{"@type":"Answer","text":"If you have existing footage that you want to clip and edit into short-form social content, Vizard is built around that workflow. If you want to both clip existing footage and create brand-new short-form videos from a script without going on camera, with one consistent AI avatar across your feed, published directly to TikTok or YouTube, Belken Studio puts all of that in one place."}}]}</script>
+<noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="https://belken.ai">
+      <img class="brandmark" src="/favicon.svg" alt="Belken" width="36" height="36">
+      BELKEN<span class="slash">/</span><span class="sub">Compare</span>
+    </a>
+    <div class="nav-links">
+      <a href="#summary">Summary</a>
+      <a href="#table">Comparison</a>
+      <a href="#choose">Choose</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-ultra" href="https://studio.belken.ai">Start in Studio</a>
+    </div>
+    <button class="navtog" id="navtog" aria-label="Open menu" aria-expanded="false" aria-controls="mobnav">
+      <svg class="ico" viewBox="0 0 24 24" width="26" height="26"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div id="mobnav">
+    <a href="#summary">Summary</a>
+    <a href="#table">Comparison</a>
+    <a href="#choose">Choose</a>
+    <a href="#faq">FAQ</a>
+    <a class="btn btn-ultra" href="https://studio.belken.ai">Start in Studio</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow rv">Short-form video // AI clipping</p>
+    <h1 class="rv">Belken Studio vs <span class="hl">Vizard</span></h1>
+    <p class="answer rv"><strong>Vizard</strong> is an AI video editing and clipping tool: bring in your footage and it extracts engaging moments, resizes to vertical, and adds subtitles. <strong>Belken Studio</strong> does that clipping, plus generates new videos from a script with an AI avatar, and publishes directly to your TikTok and YouTube accounts.</p>
+    <div class="hero-cta rv">
+      <a class="btn btn-ultra" href="https://studio.belken.ai">Start in Studio <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="#table">See the comparison</a>
+    </div>
+    <p class="micro rv">// Belken facts from belken.ai. Vizard facts from vizard.ai homepage, checked 2026-10-17. Vizard pricing page is JS-only; exact plan prices not confirmed.</p>
+  </div>
+</header>
+
+<section id="summary" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// In plain English</p>
+      <h2>Both clip. Belken Studio also creates and publishes.</h2>
+      <p class="sec-sub">Vizard and Belken Studio both turn long videos into short-form clips. The difference is what else each tool does in the same workflow.</p>
+    </div>
+    <div class="rv" style="max-width:760px;font-size:17px;line-height:1.7;color:var(--ink-soft)">
+      <p>Vizard is a focused AI video editor and clipper. You import your long-form content, and it uses AI to find engaging moments, cut them to the right length, center the speaker in a vertical frame, add subtitles, and remove filler words. The idea is to make it fast to turn a podcast, stream, or long recording into several TikTok-ready clips without hand-editing each one.</p>
+      <p style="margin-top:20px">Belken Studio also clips long videos. But it adds two things Vizard does not. First, a script-to-avatar feature: paste a script and the tool generates a short-form video with a consistent AI avatar speaking it, captions burned in, formatted for TikTok or Reels. You can create content without any existing footage and without ever going on camera. Second, direct social publishing: connect your TikTok or YouTube account and publish from inside the same tool, without exporting to a file and then uploading separately.</p>
+      <p style="margin-top:20px">If your main task is editing existing footage into clips, Vizard is a tight tool for that. If you want to combine long-video clipping with generating new avatar videos from scratch and publishing directly to your channels, Belken Studio handles all three in one place.</p>
+    </div>
+  </div>
+</section>
+
+<section id="table" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// Side by side</p>
+      <h2>How they compare</h2>
+      <p class="sec-sub">Belken details come from belken.ai. Vizard details come from the vizard.ai homepage, checked 2026-10-17. Vizard's pricing page is JavaScript-only; exact prices were not confirmed, so we omit them here.</p>
+    </div>
+    <div class="cmp-wrap rv">
+      <table class="cmp">
+        <thead><tr><th scope="col">Feature</th><th scope="col">Belken Studio</th><th scope="col">Vizard</th></tr></thead>
+        <tbody>
+          <tr><td>What it mainly does</td><td>Clips long videos into social-ready shorts, generates new videos from a script using an AI avatar, and publishes to your connected TikTok and YouTube accounts.</td><td>AI video editing and clipping tool. Identifies engaging moments in long footage, clips them, resizes to vertical, adds auto-subtitles, and removes filler words.</td></tr>
+          <tr><td>Long-video clipping</td><td>Yes. Import a long video and it extracts short clips with burned-in captions for TikTok and YouTube Shorts.</td><td>Yes. Core feature. Vizard automatically identifies and clips engaging moments from your footage.</td></tr>
+          <tr><td>AI avatar video from script</td><td>Yes. Paste a script and it renders a short with a consistent AI avatar, captions, and vertical format. No footage needed.</td><td>Not listed as a feature on vizard.ai as of 2026-10-17.</td></tr>
+          <tr><td>Short-form video (9:16)</td><td>Yes. Output is formatted for TikTok, Reels, and YouTube Shorts.</td><td>Yes. Auto-resize to vertical is a listed Vizard feature.</td></tr>
+          <tr><td>Auto captions / subtitles</td><td>Yes. Captions are burned in to the short-form clips.</td><td>Yes. Listed as a Vizard feature for clips and edited videos.</td></tr>
+          <tr><td>Filler word removal</td><td>Not listed as a named feature on belken.ai as of 2026-10-17.</td><td>Yes. Vizard lists removing filler words from footage as a feature.</td></tr>
+          <tr><td>Publish to social accounts</td><td>Connect YouTube, TikTok, Facebook Page, or Instagram and post directly after confirming each video.</td><td>Not confirmed from a live page read. Check vizard.ai for current publishing integrations.</td></tr>
+          <tr><td>Free tier</td><td>Not listed publicly. Create an account at studio.belken.ai to see current access.</td><td>Vizard has a free option based on the product homepage, though exact limits are on their pricing page at vizard.ai/pricing.</td></tr>
+          <tr><td>Pricing</td><td>Shown in the app. No public price on studio.belken.ai.</td><td>Vizard's pricing page is JavaScript-rendered; we could not confirm plan names or prices. Check <a href="https://vizard.ai/pricing" target="_blank" rel="noopener">vizard.ai/pricing</a> directly.</td></tr>
+          <tr><td>Who it's designed for</td><td>Businesses and creators who want to build a short-form social presence using both clipped footage and AI avatar videos, posted from one tool.</td><td>Creators, podcasters, and marketers who want to turn existing long-form recordings into multiple short clips quickly, without heavy manual editing.</td></tr>
+          <tr><td>Where it runs</td><td>In your web browser.</td><td>In your web browser.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="choose" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// The honest call</p>
+      <h2>Which one fits you</h2>
+    </div>
+    <div class="choose rv">
+      <div class="card b">
+        <p class="tag">Choose Belken Studio if</p>
+        <h3>You want clipping, avatar video, and publishing in one place</h3>
+        <ul>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> You want to clip long footage AND create new short-form content from a script, without switching between multiple tools.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> You want to post without ever going on camera, using a consistent AI avatar across your entire social feed.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> You want to connect your TikTok or YouTube account and publish directly from inside the tool, without exporting and re-uploading.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> You want one locked avatar so your whole feed looks like the same creator, not a mix of different faces or styles.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="tag">Choose Vizard if</p>
+        <h3>You have footage and want AI to do the editing</h3>
+        <ul>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> You already have long recordings, podcasts, or streams and want a fast way to pull clips without editing by hand.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> Filler word removal and auto-transcript-based editing are important to your workflow.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> You want a tool focused entirely on the clipping and editing side rather than a broader content creation workflow.</li>
+          <li><svg class="ico" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg> You have existing footage from your face on camera and need a tool to maximize the number of clips you get from each recording.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">// Questions</p>
+      <h2>Straight answers</h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>What is the main difference between Belken Studio and Vizard? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Both tools clip long videos into shorter segments for social media. The main difference is what else each one does. Vizard is focused on editing and clipping footage you already have: it finds engaging moments, resizes to vertical, adds subtitles, and removes filler words. Belken Studio does that clipping, but it also generates brand-new short-form videos from a script using an AI avatar, so you can create content even without any existing footage. Belken Studio also connects to your social accounts and publishes the finished video directly to TikTok or YouTube, without a separate scheduling tool.</div></details>
+      <details><summary>Does Vizard create AI avatar videos from a script? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Not as a listed feature on vizard.ai as of 2026-10-17. Vizard is built around editing footage you bring in. Belken Studio includes an AI avatar feature: you paste a script, the tool renders an avatar speaking it with burned-in captions in vertical format, and you can post it directly to TikTok or YouTube. If you want to create short-form content without existing footage and without going on camera, that is what Belken Studio's avatar feature is for.</div></details>
+      <details><summary>Can both clip long videos into short social clips? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Yes. Both tools can take a long video and extract shorter segments for TikTok, YouTube Shorts, and Reels. Both add automatic captions or subtitles to the clips. Vizard focuses on this clipping and editing workflow as its core product and has features like filler word removal built around it. Belken Studio includes the same long-video clipping alongside AI avatar video generation and direct social publishing in one place.</div></details>
+      <details><summary>Does Belken Studio or Vizard publish directly to TikTok and YouTube? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Belken Studio connects to your TikTok, YouTube, Facebook Page, and Instagram accounts and publishes the video after you confirm it, without needing a separate scheduler. Vizard's direct social publishing capabilities were not confirmed from a live page read on 2026-10-17. Check vizard.ai directly for the current feature set before deciding.</div></details>
+      <details><summary>How much does each one cost? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Belken Studio does not publish a price on its public pages. Pricing is shown in the app when you create an account at <a href="https://studio.belken.ai">studio.belken.ai</a>. Vizard's pricing page uses JavaScript and could not be parsed in this review. We did not confirm specific plan prices. Check <a href="https://vizard.ai/pricing" target="_blank" rel="noopener">vizard.ai/pricing</a> for current plans before making a decision.</div></details>
+      <details><summary>Which should I choose? <svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">If your primary goal is editing and clipping existing footage, including filler word removal and multi-clip batch extraction from long recordings, Vizard is built around that workflow. If you want to both clip existing footage and create brand-new short-form videos from a script without going on camera, with one consistent AI avatar across your feed, published directly to TikTok or YouTube without a separate tool, Belken Studio handles all three in one place.</div></details>
+    </div>
+  </div>
+</section>
+
+<section class="dark sec" style="padding:80px 0">
+  <div class="wrap">
+    <div class="cta-final rv">
+      <h2>Clip, create, and publish from one place</h2>
+      <p>Long-video clipping, AI avatar shorts from a script, and direct publishing to TikTok and YouTube. Belken Studio handles all three.</p>
+      <div style="margin-top:32px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <a class="btn btn-ultra" href="https://studio.belken.ai">Open Belken Studio <svg class="ico arr" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" style="color:var(--paper-on-dark);border-color:rgba(237,234,225,.4)" href="https://belken.ai/compare">See all comparisons</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:48px">
+  <div class="wrap">
+    <div class="sources rv">
+      <h3>Sources, checked 2026-10-17</h3>
+      <ul>
+        <li>Vizard homepage: <a href="https://vizard.ai" target="_blank" rel="noopener">vizard.ai</a></li>
+        <li>Vizard pricing (JS-rendered, not parsed): <a href="https://vizard.ai/pricing" target="_blank" rel="noopener">vizard.ai/pricing</a></li>
+        <li>Belken Studio: <a href="https://studio.belken.ai" target="_blank" rel="noopener">studio.belken.ai</a></li>
+        <li>Belken: <a href="https://belken.ai" target="_blank" rel="noopener">belken.ai</a></li>
+      </ul>
+      <p class="note">Vizard pricing was not confirmed from a live page read. Verify at vizard.ai/pricing before making a purchase decision. This page reflects what was live on the dates noted.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <div class="foot-brand">
+        <a class="brand" href="https://belken.ai"><img class="brandmark" src="/favicon.svg" alt="Belken" width="32" height="32"> BELKEN</a>
+        <p>AI video tools and operations for service businesses and content creators.</p>
+      </div>
+      <div class="fcol">
+        <h5>Products</h5>
+        <a href="https://studio.belken.ai">Studio</a>
+        <a href="https://belken.ai/aria">AI Receptionist</a>
+        <a href="https://belken.ai/openclaw">OpenClaw</a>
+      </div>
+      <div class="fcol">
+        <h5>Compare</h5>
+        <a href="/compare/belken-studio-vs-opusclip">vs OpusClip</a>
+        <a href="/compare/belken-studio-vs-heygen">vs HeyGen</a>
+        <a href="/compare/belken-studio-vs-synthesia">vs Synthesia</a>
+        <a href="/compare">All comparisons</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <p>&copy; 2026 BelKen Ventures Inc. Not affiliated with Vizard. All trademarks are property of their respective owners.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const nav=document.getElementById('nav');
+  const tog=document.getElementById('navtog');
+  const mob=document.getElementById('mobnav');
+  window.addEventListener('scroll',()=>nav.classList.toggle('stuck',window.scrollY>10),{passive:true});
+  tog&&tog.addEventListener('click',()=>{const o=mob.classList.toggle('open');tog.setAttribute('aria-expanded',o)});
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
